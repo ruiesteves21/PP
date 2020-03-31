@@ -16,7 +16,10 @@ public class Doente {
     private int id_Doente;
     private String nome;
     private String localidade;
-    private String gravidade; //moderado, grave, muito grave
+    private String gravidade;
+    private boolean gravidadeModerada; 
+    private boolean gravidadeGrave;
+    private boolean gravidadeMuitoGrave;
     private Calendar data_entrada;
     private Calendar data_saida;
     
@@ -88,15 +91,27 @@ public class Doente {
     {
         gravidade = "Não iníciada";
     }
+    
+    public boolean isGravidadeModerada(){
+        return gravidadeModerada ;
+    }
 
     public void setGravidadeModerada()
     {
         gravidade = "Moderada";
     }
+    
+    public boolean isGravidadeGrave(){
+        return gravidadeGrave ;
+    }
 
     public void setGravidadeGrave()
     {
        gravidade = "Grave";
+    }
+    
+    public boolean isGravidadeMuitoGrave(){
+        return gravidadeMuitoGrave ;
     }
     
     public void setGravidadeMuitoGrave()
