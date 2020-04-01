@@ -12,6 +12,7 @@ import java.util.Calendar;
  * @author rodrm
  */
 public class Equipamento {
+    
     private int id_Equip;
     private String indicacao; //livre, ocupado
     private Calendar data_ocupado;
@@ -73,6 +74,4 @@ public class Equipamento {
     public String toString() {
         return "Equipamento{" + "id_Equip=" + id_Equip + ", indicacao=" + indicacao + ", data_ocupado=" + data_ocupado + '}';
     }
-    
 }
-
