@@ -4,8 +4,8 @@
  * and open the template in the editor.
  */
 package backend;
+
 import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Calendar;
 
 
@@ -14,37 +14,50 @@ import java.util.Calendar;
  * @author Rui Esteves
  */
 public class ListaDoente implements java.io.Serializable  {
+    
     private ArrayList<Doente> listaD;
-    public ListaDoente(){
+    
+    public ListaDoente()
+    {
         this.listaD= new ArrayList();
-        
     }
     
-    public ArrayList<Doente> getListaD(){
+    public ArrayList<Doente> getListaD()
+    {
         return listaD;
     }
     
-    public void setListaD(ArrayList<Doente> listaD){
+    public void setListaD(ArrayList<Doente> listaD)
+    {
         this.listaD = listaD;
     }
     
-    public void addDoente(Doente x){
+    public void addDoente(Doente x)
+    {
         listaD.add(x);
     }
     
-    public void removeDoente(Doente x){
+    public void removeDoente(Doente x)
+    {
         listaD.remove(x);
     }
     
-    public int tamanho(){
+    public int tamanho()
+    {
         return listaD.size();
     }
     
-    public String toString(){
+    public boolean existe(Doente d)
+    {
+        return listaD.contains(d);
+    }
+    
+    public String toString()
+    {
         return listaD.toString();
     }
     
-   public double perDoenteModerada(){
+   /*public double perDoenteModerada(){
        int contador = 0;
        for (Doente d: listaD){
            if (d.isGravidadeModerada()){
@@ -84,7 +97,7 @@ public class ListaDoente implements java.io.Serializable  {
        }else{
          return (contador/ listaD.size())*100;
        }
-   }
+   }*/
     
     
     

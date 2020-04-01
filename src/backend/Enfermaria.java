@@ -13,6 +13,7 @@ public class Enfermaria {
     private int id_Enfermaria;
     private String tipo; //normal, UCI
     private int n_camas;
+    private ListaDoente doentes;
     
     public Enfermaria () 
     {
@@ -36,7 +37,12 @@ public class Enfermaria {
     public int getN_camas() {
         return n_camas;
     }
-
+    
+    public ListaDoente getDoentes()
+    {
+        return doentes;
+    }
+    
     public void setId_Enfermaria(int id_Enfermaria) {
         this.id_Enfermaria = id_Enfermaria;
     }
@@ -64,7 +70,8 @@ public class Enfermaria {
     {
         tipo = "Normal";
     }
-
+    
+    
     @Override
     public String toString() {
         return "Enfermaria{" + "id_Enfermaria=" + id_Enfermaria + ", tipo=" + tipo + ", n_camas=" + n_camas + '}';
