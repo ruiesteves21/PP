@@ -9,13 +9,15 @@ import java.util.Calendar;
 
 /**
  *
- * @author rodrm
+ * @author Rui Esteves
  */
 public class Equipamento {
     
     private int id_Equip;
     private String indicacao; //livre, ocupado
     private Calendar data_ocupado;
+    private boolean disponivel;
+    private boolean indisponivel;
     
     public Equipamento() 
     {
@@ -63,12 +65,21 @@ public class Equipamento {
     {
         indicacao = "Livre";
     }
+    
+    public boolean isDisponivel(){
+        return disponivel ;
+    }
 
     public void setIndicacaoOcupada(Calendar dt)
     {
        indicacao = "Ocupada";
         data_ocupado = dt;
     }
+    
+    public boolean isIndisponivel(){
+        return indisponivel ;
+    }
+
 
     @Override
     public String toString() {

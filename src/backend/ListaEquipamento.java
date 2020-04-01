@@ -48,11 +48,11 @@ public class ListaEquipamento {
         return listaE.toString();
     }
     
-    public double perDisponivelSim()
+    public double perDisponivel()
     {
     int contador = 0;
     for (Equipamento e: listaE){
-        if (e.isDisponivelSim()){
+        if (e.isDisponivel()){
            contador ++;
         }
     }
@@ -64,11 +64,11 @@ public class ListaEquipamento {
     }
     }
     
-    public double perDisponivelNao()
+    public double perIndisponivel()
     {
     int contador = 0;
     for (Equipamento e: listaE){
-        if (e.isDisponivelNao()){
+        if (e.isIndisponivel()){
            contador ++;
         }
     }
