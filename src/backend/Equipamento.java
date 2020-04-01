@@ -3,68 +3,76 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package Backend;
+package backend;
 
 import java.util.Calendar;
 
 /**
  *
- * @author pedro
+ * @author rodrm
  */
 public class Equipamento {
-    private int id_Equipamento;
-    private String nome;
-    private String disponivel;
-    private boolean disponivelSim;
-    private boolean disponivelNao;
+    private int id_Equip;
+    private String indicacao; //livre, ocupado
+    private Calendar data_ocupado;
     
-    public Equipamento(){
-    
-    }
-    
-    public Equipamento(int id_Equipameno, String nome,String disponivel){
-        this.id_Equipamento = id_Equipamento;
-        this.nome = nome;
-        this.disponivel = "Sim"; 
-    }
-    
-    public int getId_Equipamento(){
-        return id_Equipamento;
-    }
-    public String getNome() {
-        return nome;
-    }
-    public String getDisponivel(){
-        return disponivel;
+    public Equipamento() 
+    {
+        
     }
 
-    public void setId_Equipamento(int id_Equipamento) {
-        this.id_Equipamento = id_Equipamento;
-    }
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-    public void setDisponivel(String disponivel){
-        this.disponivel = disponivel;
-    }
-    
-     // Metodos para alterar o estado da tarefa
-    public void setDisponivelNaoIniciada(){
-        disponivel = "Sim";
-    }
-    
-    public boolean isDisponivelNao(){
-        return disponivelNao;
-    }
-    public void setDisponivelNao(){
-        disponivel = "Nao";
-    }
-    
-    public boolean isDisponivelSim(){
-        return disponivelSim;
-    }
-    public void setDisponivelSim(){
-        disponivel = "Sim";
+    public Equipamento(int id_Equip) {
+        this.id_Equip = id_Equip;
+        this.indicacao = "Não iniciado";
     }
 
+    public int getId_Equip() {
+        return id_Equip;
+    }
+
+    public String getIndicacao() {
+        return indicacao;
+    }
+
+    public Calendar getData_ocupado() {
+        return data_ocupado;
+    }
+    
+
+    public void setId_Equip(int id_Equip) {
+        this.id_Equip = id_Equip;
+    }
+
+    public void setIndicacao(String indicacao) {
+        this.indicacao = indicacao;
+    }
+
+    public void setData_ocupado(Calendar data_ocupado) {
+        this.data_ocupado = data_ocupado;
+    }
+    
+    
+    // Metodos para alterar o estado da tarefa
+    public void setIndicacaoNaoIniciada()
+    {
+        indicacao = "Não iníciada";
+    }
+
+    public void setIndicacaoLivre()
+    {
+        indicacao = "Livre";
+    }
+
+    public void setIndicacaoOcupada(Calendar dt)
+    {
+       indicacao = "Ocupada";
+        data_ocupado = dt;
+    }
+
+    @Override
+    public String toString() {
+        return "Equipamento{" + "id_Equip=" + id_Equip + ", indicacao=" + indicacao + ", data_ocupado=" + data_ocupado + '}';
+    }
+    
 }
+
