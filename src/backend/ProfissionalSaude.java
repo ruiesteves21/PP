@@ -23,7 +23,7 @@ public class ProfissionalSaude {
         this.nome = nome;
     }
 
-    public int getId_prof_saude() {
+    public int getIdProfSaude() {
         return idProfsaude;
     }
 
