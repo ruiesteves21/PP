@@ -26,7 +26,7 @@ public class Enfermaria {
         this.nCamas = nCamas;
     }
 
-    public int getId_Enfermaria() {
+    public int getIdEnfermaria() {
         return idEnfermaria;
     }
 
@@ -43,7 +43,7 @@ public class Enfermaria {
         return doentes;
     }
     
-    public void setId_Enfermaria(int idEnfermaria) {
+    public void setIdEnfermaria(int idEnfermaria) {
         this.idEnfermaria = idEnfermaria;
     }
 
@@ -51,7 +51,7 @@ public class Enfermaria {
         this.tipo = tipo;
     }
 
-    public void setN_camas(int nCamas) {
+    public void setNCamas(int nCamas) {
         this.nCamas = nCamas;
     }
     
