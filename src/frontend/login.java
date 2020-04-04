@@ -32,6 +32,7 @@ public class login extends javax.swing.JPanel {
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
 
         setBackground(new java.awt.Color(255, 255, 255));
         setName(""); // NOI18N
@@ -44,19 +45,22 @@ public class login extends javax.swing.JPanel {
 
         jLabel2.setText("Password:");
         add(jLabel2);
-        jLabel2.setBounds(20, 110, 60, 14);
+        jLabel2.setBounds(20, 110, 60, 13);
         add(jTextField1);
-        jTextField1.setBounds(160, 80, 140, 20);
+        jTextField1.setBounds(160, 80, 140, 19);
         jTextField1.getAccessibleContext().setAccessibleName("txt1");
 
         add(jTextField2);
-        jTextField2.setBounds(160, 110, 140, 20);
+        jTextField2.setBounds(160, 110, 140, 19);
         jTextField2.getAccessibleContext().setAccessibleName("txt2");
 
         jButton1.setText("Entrar");
         add(jButton1);
-        jButton1.setBounds(160, 150, 73, 23);
+        jButton1.setBounds(160, 150, 73, 21);
         jButton1.getAccessibleContext().setAccessibleName("bt_entrar");
+
+        add(jPanel1);
+        jPanel1.setBounds(270, 180, 80, 70);
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
@@ -66,6 +70,7 @@ public class login extends javax.swing.JPanel {
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JPanel jPanel1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
