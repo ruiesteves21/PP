@@ -13,9 +13,9 @@ import java.util.Calendar;
  */
 public class Equipamento {
     
-    private int id_Equip;
+    private int idEquip;
     private String indicacao; //livre, ocupado
-    private Calendar data_ocupado;
+    private Calendar dataOcupado;
     private boolean disponivel;
     private boolean indisponivel;
     
@@ -24,13 +24,13 @@ public class Equipamento {
         
     }
 
-    public Equipamento(int id_Equip) {
-        this.id_Equip = id_Equip;
+    public Equipamento(int idEquip) {
+        this.idEquip = idEquip;
         this.indicacao = "Não iniciado";
     }
 
-    public int getId_Equip() {
-        return id_Equip;
+    public int getIdEquip() {
+        return idEquip;
     }
 
     public String getIndicacao() {
@@ -38,20 +38,20 @@ public class Equipamento {
     }
 
     public Calendar getData_ocupado() {
-        return data_ocupado;
+        return dataOcupado;
     }
     
 
-    public void setId_Equip(int id_Equip) {
-        this.id_Equip = id_Equip;
+    public void setId_Equip(int idEquip) {
+        this.idEquip = idEquip;
     }
 
     public void setIndicacao(String indicacao) {
         this.indicacao = indicacao;
     }
 
-    public void setData_ocupado(Calendar data_ocupado) {
-        this.data_ocupado = data_ocupado;
+    public void setData_ocupado(Calendar dataOcupado) {
+        this.dataOcupado = dataOcupado;
     }
     
     
@@ -73,7 +73,7 @@ public class Equipamento {
     public void setIndicacaoOcupada(Calendar dt)
     {
        indicacao = "Ocupada";
-        data_ocupado = dt;
+        dataOcupado = dt;
     }
     
     public boolean isIndisponivel(){
@@ -83,6 +83,6 @@ public class Equipamento {
 
     @Override
     public String toString() {
-        return "Equipamento{" + "id_Equip=" + id_Equip + ", indicacao=" + indicacao + ", data_ocupado=" + data_ocupado + '}';
+        return "Equipamento{" + "idEquip=" + idEquip + ", indicacao=" + indicacao + ", dataOcupado=" + dataOcupado + '}';
     }
 }

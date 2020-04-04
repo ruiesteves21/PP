@@ -13,33 +13,33 @@ import java.util.Calendar;
  * @author rodrm
  */
 public class Doente {
-    private int id_Doente;
+    private int idDoente;
     private String nome;
     private String localidade;
     private String gravidade;
     private boolean gravidadeModerada; 
     private boolean gravidadeGrave;
     private boolean gravidadeMuitoGrave;
-    private Calendar data_entrada;
-    private Calendar data_saida;
+    private Calendar dataEntrada;
+    private Calendar dataSaida;
     
     public Doente()
     {
         
     }
 
-    public Doente(int id_Doente, String nome, String localidade, Calendar data_entrada, Calendar data_saida) {
-        this.id_Doente = id_Doente;
+    public Doente(int idDoente, String nome, String localidade, Calendar dataEntrada, Calendar dataSaida) {
+        this.idDoente = idDoente;
         this.nome = nome;
         this.localidade = localidade;
         this.gravidade = "Não iniciada";
-        this.data_entrada = data_entrada;
-        this.data_saida = data_saida;
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
     }
     
     
     public int getId_Doente() {
-        return id_Doente;
+        return idDoente;
     }
 
     public String getNome() {
@@ -54,16 +54,16 @@ public class Doente {
         return gravidade;
     }
 
-    public Calendar getData_entrada() {
-        return data_entrada;
+    public Calendar getDataEntrada() {
+        return dataEntrada;
     }
 
-    public Calendar getData_saida() {
-        return data_saida;
+    public Calendar getDataSaida() {
+        return dataSaida;
     }
 
-    public void setId_Doente(int id_Doente) {
-        this.id_Doente = id_Doente;
+    public void setId_Doente(int idDoente) {
+        this.idDoente = idDoente;
     }
 
     public void setNome(String nome) {
@@ -78,12 +78,12 @@ public class Doente {
         this.gravidade = gravidade;
     }
 
-    public void setData_entrada(Calendar data_entrada) {
-        this.data_entrada = data_entrada;
+    public void setData_entrada(Calendar dataEntrada){
+        this.dataEntrada = dataEntrada;
     }
 
-    public void setData_saida(Calendar data_saida) {
-        this.data_saida = data_saida;
+    public void setData_saida(Calendar dataSaida){
+        this.dataSaida =dataSaida;
     }
     
     // Metodos para alterar o estado da tarefa
@@ -121,7 +121,7 @@ public class Doente {
     
     @Override
     public String toString() {
-        return "Doente{" + "id_Doente=" + id_Doente + ", nome=" + nome + ", localidade=" + localidade + ", gravidade=" + gravidade + ", data_entrada=" + data_entrada + ", data_saida=" + data_saida + '}';
+        return "Doente{" + "idDoente=" + idDoente + ", nome=" + nome + ", localidade=" + localidade + ", gravidade=" + gravidade + ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida + '}';
     }
     
     
