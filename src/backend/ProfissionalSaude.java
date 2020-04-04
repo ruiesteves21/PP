@@ -31,7 +31,7 @@ public class ProfissionalSaude {
         return nome;
     }
 
-    public void setId_prof_saude(int idProfsaude) {
+    public void setIdProfSaude(int idProfsaude) {
         this.idProfsaude = idProfsaude;
     }
 
