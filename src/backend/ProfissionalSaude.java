@@ -23,7 +23,7 @@ public class ProfissionalSaude {
         this.nome = nome;
     }
 
-    public int getIdProfSaude() {
+    public int getId_prof_saude() {
         return idProfsaude;
     }
 
@@ -31,7 +31,7 @@ public class ProfissionalSaude {
         return nome;
     }
 
-    public void setIdProfSaude(int idProfsaude) {
+    public void setId_prof_saude(int idProfsaude) {
         this.idProfsaude = idProfsaude;
     }
 
@@ -43,4 +43,6 @@ public class ProfissionalSaude {
     public String toString() {
         return "ProfissionalSaude{" + "idProfsaude=" + idProfsaude + ", nome=" + nome + '}';
     }
+    
+    
 }

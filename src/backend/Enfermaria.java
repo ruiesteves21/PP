@@ -10,9 +10,9 @@ package backend;
  * @author rodrm
  */
 public class Enfermaria {
-    private int id_Enfermaria;
+    private int idEnfermaria;
     private String tipo; //normal, UCI
-    private int n_camas;
+    private int nCamas;
     private ListaDoente doentes;
     
     public Enfermaria () 
@@ -20,22 +20,22 @@ public class Enfermaria {
     
     }
 
-    public Enfermaria(int id_Enfermaria, int n_camas) {
-        this.id_Enfermaria = id_Enfermaria;
+    public Enfermaria(int idEnfermaria, int nCamas) {
+        this.idEnfermaria = idEnfermaria;
         this.tipo = "Não iniciada";
-        this.n_camas = n_camas;
+        this.nCamas = nCamas;
     }
 
     public int getId_Enfermaria() {
-        return id_Enfermaria;
+        return idEnfermaria;
     }
 
     public String getTipo() {
         return tipo;
     }
 
-    public int getN_camas() {
-        return n_camas;
+    public int getNcamas() {
+        return nCamas;
     }
     
     public ListaDoente getDoentes()
@@ -43,16 +43,16 @@ public class Enfermaria {
         return doentes;
     }
     
-    public void setId_Enfermaria(int id_Enfermaria) {
-        this.id_Enfermaria = id_Enfermaria;
+    public void setId_Enfermaria(int idEnfermaria) {
+        this.idEnfermaria = idEnfermaria;
     }
 
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
 
-    public void setN_camas(int n_camas) {
-        this.n_camas = n_camas;
+    public void setN_camas(int nCamas) {
+        this.nCamas = nCamas;
     }
     
     // Metodos para alterar o tipo de enfermaria
@@ -74,7 +74,7 @@ public class Enfermaria {
     
     @Override
     public String toString() {
-        return "Enfermaria{" + "id_Enfermaria=" + id_Enfermaria + ", tipo=" + tipo + ", n_camas=" + n_camas + '}';
+        return "Enfermaria{" + "idEnfermaria=" + idEnfermaria + ", tipo=" + tipo + ", nCamas=" + nCamas + '}';
     }
     
     
