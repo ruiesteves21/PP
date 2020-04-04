@@ -12,7 +12,7 @@ package backend;
 public class Hospital {
     private String nome;
     private String localidade;
-    private int id_Hospital;
+    private int idHospital;
     
     public Hospital() 
     {
@@ -22,7 +22,7 @@ public class Hospital {
     public Hospital(String nome, String localidade, int id_Hospital) {
         this.nome = nome;
         this.localidade = localidade;
-        this.id_Hospital = id_Hospital;
+        this.idHospital = idHospital;
     }
     
     //Getters
@@ -35,7 +35,7 @@ public class Hospital {
     }
 
     public int getId_Hospital() {
-        return id_Hospital;
+        return idHospital;
     }
     
     //Setters
@@ -47,13 +47,13 @@ public class Hospital {
         this.localidade = localidade;
     }
 
-    public void setId_Hospital(int id_Hospital) {
-        this.id_Hospital = id_Hospital;
+    public void setId_Hospital(int idHospital) {
+        this.idHospital = idHospital;
     }
 
     @Override
     public String toString() {
-        return "Hospital{" + "nome=" + nome + ", localidade=" + localidade + ", id_Hospital=" + id_Hospital + '}';
+        return "Hospital{" + "nome=" + nome + ", localidade=" + localidade + ", idHospital=" + idHospital + '}';
     }
     
     
