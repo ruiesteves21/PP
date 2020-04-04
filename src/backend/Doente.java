@@ -4,41 +4,48 @@
  * and open the template in the editor.
  */
 package backend;
-
-
+import java.time.LocalDate;
 import java.util.Calendar;
-
 /**
  *
- * @author rodrm
+ * @author Rui Esteves
  */
 public class Doente {
     private int idDoente;
+    private int nCama;
     private String nome;
     private String localidade;
     private String gravidade;
-    private boolean gravidadeModerada; 
-    private boolean gravidadeGrave;
-    private boolean gravidadeMuitoGrave;
-    private Calendar dataEntrada;
-    private Calendar dataSaida;
+    private String enfermaria;
+    private LocalDate dataEntrada;
+    private LocalDate dataSaida;
+
     
     public Doente()
     {
-        
+        this.idDoente = 0;
+        this.nome = new String();
+        this.localidade = new String();
+        this.enfermaria = new String();
+        this.nCama = 0;
+        this.gravidade = new String();
+        this.dataEntrada = LocalDate.now();
+        this.dataSaida = LocalDate.now(); 
     }
 
-    public Doente(int idDoente, String nome, String localidade, Calendar dataEntrada, Calendar dataSaida) {
+    public Doente(int idDoente, String nome, String localidade, LocalDate dataEntrada, LocalDate dataSaida,String enfermaria,int nCama) {
         this.idDoente = idDoente;
         this.nome = nome;
         this.localidade = localidade;
-        this.gravidade = "Não iniciada";
+        this.gravidade = gravidade;
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
+        this.nCama = nCama;
+        this.enfermaria = enfermaria;
     }
     
-    
-    public int getId_Doente() {
+    //getters
+    public int getIdDoente() {
         return idDoente;
     }
 
@@ -54,15 +61,16 @@ public class Doente {
         return gravidade;
     }
 
-    public Calendar getDataEntrada() {
+    public LocalDate getDataEntrada() {
         return dataEntrada;
     }
 
-    public Calendar getDataSaida() {
+    public LocalDate getDataSaida() {
         return dataSaida;
     }
-
-    public void setId_Doente(int idDoente) {
+    
+    //setters
+    public void setIdDoente(int idDoente) {
         this.idDoente = idDoente;
     }
 
@@ -73,55 +81,78 @@ public class Doente {
     public void setLocalidade(String localidade) {
         this.localidade = localidade;
     }
-
-    public void setGravidade(String gravidade) {
-        this.gravidade = gravidade;
-    }
-
-    public void setData_entrada(Calendar dataEntrada){
+   
+    public void setDataEntrada(LocalDate dataEntrada){
         this.dataEntrada = dataEntrada;
     }
 
-    public void setData_saida(Calendar dataSaida){
-        this.dataSaida =dataSaida;
+    public void setDataSaida(LocalDate dataSaida){
+        this.dataSaida = dataSaida;
     }
     
-    // Metodos para alterar o estado da tarefa
-    public void setGravidadeNaoIniciada()
-    {
-        gravidade = "Não iníciada";
+    public void setEnfermaria(String enf){
+        this.enfermaria = enf;
     }
     
-    public boolean isGravidadeModerada(){
-        return gravidadeModerada ;
-    }
-
-    public void setGravidadeModerada()
-    {
-        gravidade = "Moderada";
-    }
-    
-    public boolean isGravidadeGrave(){
-        return gravidadeGrave ;
-    }
-
-    public void setGravidadeGrave()
-    {
-       gravidade = "Grave";
-    }
-    
-    public boolean isGravidadeMuitoGrave(){
-        return gravidadeMuitoGrave ;
+    public void setCama(int nova){
+        if(nova>= 1)
+            this.nCama = nova;
+        else {
+            System.out.println("ERRO:Número da cama começa em 1.");
+        }
     }
     
     public void setGravidadeMuitoGrave()
     {
        gravidade = "Muito grave";
     }
+   
+    public void setGravidadeGrave()
+    {
+       gravidade = "Grave";
+    }
+    
+    public void setGravidadeModerada()
+    {
+        this.gravidade = "Moderada";
+    }
+    
+    //getters
+    
+    public String getEnfermaria(){
+        return this.enfermaria;
+    }
+    
+    public int getNCama(){
+        return this.nCama;
+    }
+    // Metodos para alterar o estado do Doente
+    public void setGravidadeNaoRegistada()
+    {
+        gravidade = "Não Registada";
+    }
+    
+    public boolean isGravidadeModerada(){
+        return ("Moderada".equals(this.gravidade)) ;
+    }
+    
+    public boolean isGravidadeGrave(){
+        return ("Grave".equals(this.gravidade)) ;
+    }
+    
+    public boolean isGravidadeMuitoGrave(){
+         return ("Muito Grave".equals(this.gravidade)) ;
+    }
+    
+    
+    public void setTeveAlta(Calendar dt){
+        this.gravidade = "Teve Alta";
+        this.dataSaida = LocalDate.now();
+    }
     
     @Override
     public String toString() {
-        return "Doente{" + "idDoente=" + idDoente + ", nome=" + nome + ", localidade=" + localidade + ", gravidade=" + gravidade + ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida + '}';
+        return "Doente{" + "idDoente=" + idDoente + ", nome=" + nome + ", localidade=" + localidade + ", gravidade=" + gravidade + ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida + ", enfermaria=" + enfermaria + ", nCama =" + nCama + '}';
     }
     
     
