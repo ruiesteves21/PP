@@ -43,6 +43,4 @@ public class ProfissionalSaude {
     public String toString() {
         return "ProfissionalSaude{" + "idProfsaude=" + idProfsaude + ", nome=" + nome + '}';
     }
-    
-    
 }
