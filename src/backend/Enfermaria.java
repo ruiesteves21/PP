@@ -9,7 +9,7 @@ package backend;
  *
  * @author rodrm
  */
-public class Enfermaria {
+public class Enfermaria extends ProfissionalSaude {
     private int idEnfermaria;
     private String tipo; //normal, UCI
     private int nCamas;

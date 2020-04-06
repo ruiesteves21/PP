@@ -9,7 +9,7 @@ package backend;
  *
  * @author rodrm
  */
-public class Medico {
+public class Medico extends ProfissionalSaude {
     private String especialidade;
     private String nome;
     private String password;
