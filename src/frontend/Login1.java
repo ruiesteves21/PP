@@ -34,33 +34,45 @@ public class Login1 extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
+        jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel1.setText("Nome:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(30, 100, 35, 14);
+        jLabel1.setBounds(340, 170, 50, 20);
 
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("Senha:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 130, 35, 14);
+        jLabel2.setBounds(340, 220, 50, 20);
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(90, 100, 150, 20);
+        jTextField1.setBounds(410, 160, 180, 30);
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(90, 130, 150, 20);
+        jTextField2.setBounds(410, 210, 170, 30);
 
+        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
         jLabel3.setText("Se não está inscrito clique abaixo...");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(90, 210, 170, 14);
+        jLabel3.setBounds(410, 300, 190, 20);
 
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setText("Entrar");
         getContentPane().add(jButton1);
-        jButton1.setBounds(90, 170, 90, 23);
+        jButton1.setBounds(410, 260, 90, 29);
 
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton2.setText("Inscrever");
         getContentPane().add(jButton2);
-        jButton2.setBounds(90, 230, 90, 23);
+        jButton2.setBounds(410, 340, 90, 29);
+
+        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundo_medico3.jpg"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(0, -10, 720, 480);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -107,6 +119,7 @@ public class Login1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables
