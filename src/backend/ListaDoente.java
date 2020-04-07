@@ -52,6 +52,7 @@ public class ListaDoente implements java.io.Serializable  {
         return listaD.contains(d);
     }
     
+    @Override
     public String toString()
     {
         return listaD.toString();

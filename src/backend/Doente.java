@@ -21,16 +21,7 @@ public class Doente {
     private LocalDate dataSaida;
 
     
-    public Doente()
-    {
-        this.idDoente = 0;
-        this.nome = new String();
-        this.localidade = new String();
-        this.enfermaria = new String();
-        this.nCama = 0;
-        this.gravidade = new String();
-        this.dataEntrada = LocalDate.now();
-        this.dataSaida = LocalDate.now(); 
+    public Doente(){   
     }
 
     public Doente(int idDoente, String nome, String localidade, LocalDate dataEntrada, LocalDate dataSaida,String enfermaria,int nCama) {
@@ -42,6 +33,8 @@ public class Doente {
         this.dataSaida = dataSaida;
         this.nCama = nCama;
         this.enfermaria = enfermaria;
+        this.dataEntrada = LocalDate.now();
+        this.dataSaida = LocalDate.now(); 
     }
     
     //getters
