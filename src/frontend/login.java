@@ -45,23 +45,23 @@ public class login extends javax.swing.JPanel {
 
         jLabel2.setText("Password:");
         add(jLabel2);
-        jLabel2.setBounds(20, 110, 60, 13);
+        jLabel2.setBounds(20, 110, 60, 14);
         add(jTextField1);
-        jTextField1.setBounds(160, 80, 140, 19);
+        jTextField1.setBounds(160, 80, 140, 20);
         jTextField1.getAccessibleContext().setAccessibleName("txt1");
 
         add(jTextField2);
-        jTextField2.setBounds(160, 110, 140, 19);
+        jTextField2.setBounds(160, 110, 140, 20);
         jTextField2.getAccessibleContext().setAccessibleName("txt2");
 
         jButton1.setText("Entrar");
         add(jButton1);
-        jButton1.setBounds(160, 150, 73, 21);
+        jButton1.setBounds(160, 150, 73, 23);
         jButton1.getAccessibleContext().setAccessibleName("bt_entrar");
 
         jLabel3.setText("jLabel3");
         add(jLabel3);
-        jLabel3.setBounds(150, 230, 240, 60);
+        jLabel3.setBounds(70, 220, 240, 60);
 
         getAccessibleContext().setAccessibleName("");
     }// </editor-fold>//GEN-END:initComponents
