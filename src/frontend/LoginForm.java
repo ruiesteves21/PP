@@ -5,16 +5,19 @@
  */
 package frontend;
 
+import backend.Sistema;
+
 /**
  *
  * @author ssoar
  */
 public class LoginForm extends javax.swing.JFrame {
 
+    private Sistema sis;
     /**
      * Creates new form NewJFrame
      */
-    public LoginForm() {
+    public LoginForm(Sistema s) {
         initComponents();
     }
 

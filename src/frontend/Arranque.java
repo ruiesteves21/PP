@@ -30,7 +30,7 @@ public class Arranque {
         Sistema sis = new Sistema();
         sis = (Sistema) sis.lerSistema();
         gravou = true;
-        Login login = new Login(sis);
+        LoginForm login = new LoginForm(sis);
         login.setVisible(true);
     }
 }
