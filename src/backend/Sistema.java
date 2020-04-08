@@ -50,7 +50,7 @@ public class Sistema implements Serializable
         return listaE;
     }
 
-    public void setListaP(ListaEnfermaria listaE)
+    public void setListaE(ListaEnfermaria listaE)
     {
         this.listaE = listaE;
     }
