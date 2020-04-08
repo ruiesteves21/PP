@@ -9,12 +9,12 @@ package frontend;
  *
  * @author ssoar
  */
-public class Login1 extends javax.swing.JFrame {
+public class Perfil extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      */
-    public Login1() {
+    public Perfil() {
         initComponents();
     }
 
@@ -27,55 +27,73 @@ public class Login1 extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jLabel3 = new javax.swing.JLabel();
+        jTextField4 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jLabel4 = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel1.setText("Nome:");
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(340, 170, 50, 20);
-
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel2.setText("Senha:");
+        jLabel2.setText("Nome :");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(340, 220, 50, 20);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(410, 160, 180, 30);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(410, 210, 180, 30);
+        jLabel2.setBounds(240, 100, 50, 20);
 
-        jLabel3.setBackground(new java.awt.Color(255, 255, 255));
-        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
-        jLabel3.setText("Se não está inscrito clique abaixo...");
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel3.setText("Email :");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(410, 300, 190, 20);
+        jLabel3.setBounds(240, 150, 50, 20);
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel4.setText("Data de Nascimento :");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(240, 200, 140, 20);
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel5.setText("Especialidade :");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(240, 250, 100, 20);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(310, 150, 120, 30);
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(390, 200, 130, 30);
+
+        jTextField4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jTextField4ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jTextField4);
+        jTextField4.setBounds(310, 100, 120, 30);
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setText("Entrar");
+        jButton1.setText("Editar");
         getContentPane().add(jButton1);
-        jButton1.setBounds(410, 260, 90, 29);
+        jButton1.setBounds(400, 350, 80, 30);
 
         jButton2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton2.setText("Inscrever");
+        jButton2.setText("Sair");
         getContentPane().add(jButton2);
-        jButton2.setBounds(410, 340, 90, 29);
+        jButton2.setBounds(510, 350, 80, 30);
 
-        jLabel4.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundo_medico3.jpg"))); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(0, -10, 720, 480);
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundo_perfil.jpg"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, -40, 780, 490);
+        jLabel1.getAccessibleContext().setAccessibleName("");
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jTextField4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField4ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jTextField4ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -94,13 +112,13 @@ public class Login1 extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Login1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Login1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Login1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Login1.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
         //</editor-fold>
@@ -108,7 +126,7 @@ public class Login1 extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new Login1().setVisible(true);
+                new Perfil().setVisible(true);
             }
         });
     }
@@ -120,7 +138,9 @@ public class Login1 extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField4;
     // End of variables declaration//GEN-END:variables
 }
