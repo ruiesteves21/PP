@@ -55,7 +55,7 @@ public class LoginForm extends javax.swing.JFrame {
         getContentPane().add(jTextField1);
         jTextField1.setBounds(410, 160, 180, 30);
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(410, 210, 170, 30);
+        jTextField2.setBounds(410, 210, 180, 30);
 
         jLabel3.setBackground(new java.awt.Color(255, 255, 255));
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 12)); // NOI18N
