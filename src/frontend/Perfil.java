@@ -9,12 +9,12 @@ package frontend;
  *
  * @author ssoar
  */
-public class PaginaInicialUtilizador extends javax.swing.JFrame {
+public class Perfil extends javax.swing.JFrame {
 
     /**
-     * Creates new form PaginaInicialUtilizador
+     * Creates new form Perfil_novo
      */
-    public PaginaInicialUtilizador() {
+    public Perfil() {
         initComponents();
     }
 
@@ -27,55 +27,64 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jTextField1 = new javax.swing.JTextField();
+        jTextField2 = new javax.swing.JTextField();
+        jTextField3 = new javax.swing.JTextField();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jLabel1 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel1.setText("Nome :");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(130, 150, 50, 20);
+
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel2.setText("Email :");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(130, 190, 50, 20);
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel3.setText("Especialidade :");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(130, 230, 100, 20);
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(230, 190, 120, 20);
+        getContentPane().add(jTextField2);
+        jTextField2.setBounds(230, 150, 120, 20);
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(230, 230, 120, 20);
+
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setText("Lista de Hospitais");
+        jButton1.setText("Editar");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(50, 100, 180, 29);
+        jButton1.setBounds(330, 330, 70, 29);
 
         jButton2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton2.setText("Lista de Equipamentos");
+        jButton2.setText("Voltar");
         getContentPane().add(jButton2);
-        jButton2.setBounds(50, 140, 180, 29);
+        jButton2.setBounds(430, 330, 70, 29);
 
-        jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton4.setText("Lista de Doentes");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(50, 180, 180, 29);
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
+        jLabel4.setText("Perfil");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(250, 30, 50, 25);
 
-        jButton5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton5.setText("Perfil");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(50, 220, 180, 29);
-
-        jButton6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton6.setText("Sair");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton6);
-        jButton6.setBounds(500, 350, 70, 20);
-
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_1.jpg"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 610, 390);
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundo_perfil.jpg"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(0, 0, 570, 410);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -83,10 +92,6 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -105,20 +110,21 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PaginaInicialUtilizador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PaginaInicialUtilizador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PaginaInicialUtilizador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PaginaInicialUtilizador.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new PaginaInicialUtilizador().setVisible(true);
+                //new Perfil_novo().setVisible(true);
             }
         });
     }
@@ -126,9 +132,13 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField jTextField1;
+    private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

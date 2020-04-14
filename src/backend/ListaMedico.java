@@ -35,6 +35,16 @@ public class ListaMedico {
         listaM.add(m);
     }
     
+    public void removeMedico(Medico m)
+    {
+        listaM.remove(m);
+    }
+    
+     public int tamanho()
+    {
+        return listaM.size();
+    }
+     
     public boolean existe(Medico m)
     {
         return listaM.contains(m);

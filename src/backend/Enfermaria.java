@@ -13,7 +13,7 @@ public class Enfermaria extends ProfissionalSaude {
     private int idEnfermaria;
     private String tipo; //normal, UCI
     private int nCamas;
-    private ListaDoente doentes;
+    private ListaDoente listaD;
     
     public Enfermaria () 
     {
@@ -37,10 +37,9 @@ public class Enfermaria extends ProfissionalSaude {
     public int getNcamas() {
         return nCamas;
     }
-    
-    public ListaDoente getDoentes()
-    {
-        return doentes;
+
+    public ListaDoente getDoentes() {
+        return listaD;
     }
     
     public void setIdEnfermaria(int idEnfermaria) {

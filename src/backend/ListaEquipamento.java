@@ -13,70 +13,70 @@ import java.util.ArrayList;
  */
 public class ListaEquipamento {
     
-    private ArrayList<Equipamento> listaE;
+    private ArrayList<Equipamento> listaEquip;
 
     public ListaEquipamento()
     {
-        this.listaE = new ArrayList<Equipamento>();
+        this.listaEquip = new ArrayList<Equipamento>();
     }
 
-    public ArrayList<Equipamento> getListaE() {
-        return listaE;
+    public ArrayList<Equipamento> getListaEquip() {
+        return listaEquip;
     }
 
-    public void setListaE(ArrayList<Equipamento> listaE) {
-        this.listaE = listaE;
+    public void setListaEquip(ArrayList<Equipamento> listaEquip) {
+        this.listaEquip = listaEquip;
     }
     
     public void addEquipamento(Equipamento e)
     {
-        listaE.add(e);
+        listaEquip.add(e);
     }
     
     public void removeEquipamento(Equipamento e)
     {
-        listaE.remove(e);
+        listaEquip.remove(e);
     }
     
     public int tamanho()
     {
-        return listaE.size();
-    }
-    
-    public String toString()
-    {
-        return listaE.toString();
+        return listaEquip.size();
     }
     
     public double perDisponivel()
     {
     int contador = 0;
-    for (Equipamento e: listaE){
+    for (Equipamento e: listaEquip){
         if (e.isDisponivel()){
            contador ++;
         }
     }
-    if (listaE.size()==0)
+    if (listaEquip.size()==0)
     {
         return 0;
     }else{
-        return (contador/ listaE.size())*100;
+        return (contador/ listaEquip.size())*100;
     }
     }
     
     public double perIndisponivel()
     {
     int contador = 0;
-    for (Equipamento e: listaE){
+    for (Equipamento e: listaEquip){
         if (e.isIndisponivel()){
            contador ++;
         }
     }
-    if (listaE.size()==0)
+    if (listaEquip.size()==0)
     {
         return 0;
     }else{
-        return (contador/ listaE.size())*100;
+        return (contador/ listaEquip.size())*100;
     }
+    }
+    
+    public String toString()
+    {
+        return listaEquip.toString();
     }
 }

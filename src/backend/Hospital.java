@@ -13,6 +13,10 @@ public class Hospital {
     private String nome;
     private String localidade;
     private int idHospital;
+    private ListaDoente listaD; 
+    private ListaEnfermaria listaE;
+    private ListaEquipamento listaEquip;
+    
     
     public Hospital() 
     {
@@ -49,6 +53,22 @@ public class Hospital {
 
     public void setId_Hospital(int idHospital) {
         this.idHospital = idHospital;
+    }
+
+    public int getIdHospital() {
+        return idHospital;
+    }
+
+    public ListaDoente getListaD() {
+        return listaD;
+    }
+
+    public ListaEnfermaria getListaE() {
+        return listaE;
+    }
+
+    public ListaEquipamento getListaEquip() {
+        return listaEquip;
     }
 
     @Override
