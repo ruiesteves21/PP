@@ -40,6 +40,8 @@ public class ListaHospitais extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
+        jTextField3 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,23 +50,23 @@ public class ListaHospitais extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setText("Filtrar");
         getContentPane().add(jButton1);
-        jButton1.setBounds(110, 190, 80, 29);
+        jButton1.setBounds(110, 240, 80, 29);
 
         jButton2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton2.setText("Editar");
         getContentPane().add(jButton2);
-        jButton2.setBounds(20, 190, 80, 29);
+        jButton2.setBounds(20, 240, 80, 29);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Codigo do Hospital", "Nome do Hospital"
+                "Codigo do Hospital", "Nome do Hospital", "Localidade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -74,7 +76,7 @@ public class ListaHospitais extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(200, 50, 280, 300);
+        jScrollPane1.setBounds(220, 50, 300, 300);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel1.setText("Lista de Hospitais");
@@ -98,20 +100,27 @@ public class ListaHospitais extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton4.setText("Inserir");
         getContentPane().add(jButton4);
-        jButton4.setBounds(20, 140, 80, 29);
+        jButton4.setBounds(20, 190, 80, 29);
 
         jButton6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton6.setText("Excluir");
         getContentPane().add(jButton6);
-        jButton6.setBounds(110, 140, 80, 29);
+        jButton6.setBounds(110, 190, 80, 29);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(410, 10, 24, 30);
+        jLabel7.setBounds(460, 10, 24, 30);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(450, 10, 30, 30);
+        jLabel5.setBounds(490, 10, 30, 30);
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel6.setText("Localidade :");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(20, 140, 80, 20);
+        getContentPane().add(jTextField3);
+        jTextField3.setBounds(110, 140, 100, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_3.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -166,10 +175,12 @@ public class ListaHospitais extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
+    private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }

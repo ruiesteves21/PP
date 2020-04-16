@@ -36,6 +36,8 @@ public class FichaHospital extends javax.swing.JFrame {
         jButton4 = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -54,31 +56,39 @@ public class FichaHospital extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel3.setText("Ficha Hospital");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(240, 10, 120, 20);
+        jLabel3.setBounds(120, 0, 120, 20);
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setText("Lista Enfermarias");
         getContentPane().add(jButton1);
-        jButton1.setBounds(20, 130, 180, 29);
+        jButton1.setBounds(20, 160, 180, 29);
 
         jButton2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton2.setText("Lista de Doentes");
         getContentPane().add(jButton2);
-        jButton2.setBounds(20, 170, 180, 29);
+        jButton2.setBounds(20, 200, 180, 29);
 
         jButton3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton3.setText("Lista de Profissionais");
         getContentPane().add(jButton3);
-        jButton3.setBounds(20, 210, 180, 29);
+        jButton3.setBounds(20, 240, 180, 29);
 
         jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton4.setText("Lista de Equipamentos");
         getContentPane().add(jButton4);
-        jButton4.setBounds(20, 250, 180, 29);
+        jButton4.setBounds(20, 280, 180, 29);
         getContentPane().add(jTextField1);
         jTextField1.setBounds(110, 90, 130, 30);
         getContentPane().add(jTextField2);
         jTextField2.setBounds(110, 40, 130, 30);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(290, 0, 24, 30);
+
+        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(330, 0, 30, 30);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_3.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -132,6 +142,8 @@ public class FichaHospital extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables

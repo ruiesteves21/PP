@@ -29,7 +29,8 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -44,17 +45,20 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(10, 110, 150, 29);
+        jButton1.setBounds(10, 130, 150, 29);
 
         jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton4.setText("Lista de Doentes");
         getContentPane().add(jButton4);
-        jButton4.setBounds(10, 160, 150, 30);
+        jButton4.setBounds(10, 180, 150, 30);
 
-        jButton5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton5.setText("Perfil");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(10, 210, 150, 30);
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/perfilIcon.png"))); // NOI18N
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(20, 10, 30, 30);
+
+        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(60, 10, 24, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_1.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -105,7 +109,8 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
