@@ -28,10 +28,8 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private void initComponents() {
 
         jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
         jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -46,36 +44,21 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(50, 100, 180, 29);
-
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton2.setText("Lista de Equipamentos");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(50, 140, 180, 29);
+        jButton1.setBounds(10, 110, 150, 29);
 
         jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton4.setText("Lista de Doentes");
         getContentPane().add(jButton4);
-        jButton4.setBounds(50, 180, 180, 29);
+        jButton4.setBounds(10, 160, 150, 30);
 
         jButton5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton5.setText("Perfil");
         getContentPane().add(jButton5);
-        jButton5.setBounds(50, 220, 180, 29);
-
-        jButton6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton6.setText("Sair");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton6);
-        jButton6.setBounds(500, 350, 70, 20);
+        jButton5.setBounds(10, 210, 150, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_1.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 610, 390);
+        jLabel1.setBounds(-150, -10, 610, 410);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -83,10 +66,6 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -125,10 +104,8 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
 }

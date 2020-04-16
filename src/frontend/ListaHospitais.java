@@ -29,7 +29,6 @@ public class ListaHospitais extends javax.swing.JFrame {
 
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
@@ -38,8 +37,9 @@ public class ListaHospitais extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
         jTextField2 = new javax.swing.JTextField();
         jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -48,17 +48,12 @@ public class ListaHospitais extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setText("Filtrar");
         getContentPane().add(jButton1);
-        jButton1.setBounds(330, 340, 80, 29);
+        jButton1.setBounds(110, 190, 80, 29);
 
         jButton2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton2.setText("Editar");
         getContentPane().add(jButton2);
-        jButton2.setBounds(430, 340, 80, 29);
-
-        jButton3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton3.setText("Voltar");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(530, 340, 80, 29);
+        jButton2.setBounds(20, 190, 80, 29);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -79,12 +74,12 @@ public class ListaHospitais extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(330, 30, 280, 300);
+        jScrollPane1.setBounds(200, 50, 280, 300);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel1.setText("Lista de Hospitais");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(230, 0, 150, 25);
+        jLabel1.setBounds(170, 10, 150, 25);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel3.setText("Codigo :");
@@ -105,15 +100,18 @@ public class ListaHospitais extends javax.swing.JFrame {
         getContentPane().add(jButton4);
         jButton4.setBounds(20, 140, 80, 29);
 
-        jButton5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton5.setText("Limpar");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(20, 190, 80, 29);
-
         jButton6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton6.setText("Excluir");
         getContentPane().add(jButton6);
-        jButton6.setBounds(20, 240, 80, 29);
+        jButton6.setBounds(110, 140, 80, 29);
+
+        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(410, 10, 24, 30);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(450, 10, 30, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_3.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -161,14 +159,14 @@ public class ListaHospitais extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JTextField jTextField1;
