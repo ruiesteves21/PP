@@ -32,14 +32,14 @@ public class ListaDoente implements java.io.Serializable  {
         this.listaD = listaD;
     }
     
-    public void addDoente(Doente x)
+    public void addDoente(Doente d)
     {
-        listaD.add(x);
+        listaD.add(d);
     }
     
-    public void removeDoente(Doente x)
+    public void removeDoente(Doente d)
     {
-        listaD.remove(x);
+        listaD.remove(d);
     }
     
     public int tamanho()

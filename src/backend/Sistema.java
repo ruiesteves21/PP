@@ -22,7 +22,7 @@ public class Sistema implements Serializable
     private ListaMedico listaM;
     private ListaEnfermaria listaE;
     private ListaEquipamento listaEquip;
-    private Medico utilizadorLogin;
+    private Admin utilizadorLogin;
     private final String nomeFichDados = "Sistema.dat";
     private int projetoSel;
 
@@ -31,7 +31,7 @@ public class Sistema implements Serializable
         listaM = new ListaMedico();
         listaE = new ListaEnfermaria();
         utilizadorLogin = null;
-        listaM.addUtilizador(new Medico("cardiologista", "admin", "admin", "admin@admin.com"));
+        listaM.addUtilizador(new Admin("admin", "admin", "admin@admin.com"));
 
     }
 
@@ -63,12 +63,12 @@ public class Sistema implements Serializable
         this.listaEquip = listaEquip;
     }
     
-    public Medico getUtilizadorLogin()
+    public Admin getUtilizadorLogin()
     {
         return utilizadorLogin;
     }
 
-    public void setUtilizadorLogin(Medico utilizadorLogin)
+    public void setUtilizadorLogin(Admin utilizadorLogin)
     {
         this.utilizadorLogin = utilizadorLogin;
     }

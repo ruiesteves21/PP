@@ -32,6 +32,16 @@ public class ListaEnfermaria {
         listaE.add(e);
     }
     
+     public void removeEnfermaria(Enfermaria e)
+    {
+        listaE.remove(e);
+    }
+    
+     public int tamanho()
+    {
+        return listaE.size();
+    }
+    
     /**
      * Este metodo serve para saber todos as enfermarias em que o doente está internado
      * @param d
