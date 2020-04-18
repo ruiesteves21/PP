@@ -10,49 +10,48 @@ package backend;
  * @author Rui Esteves
  */
 public class Admin extends Medico  {
-    private String nome;
-    private String password;
-    private String email;
+    private String nomeAdmin;
+    private String passwordAdmin;
+    private String emailAdmin;
 
     public Admin() {
     }
     
-     public Admin(String nome, String password, String email) {
-        this.nome = nome;
-        this.password = password;
-        this.email = email;
-       
+     public Admin(String nomeAdmin, String passwordAdmin, String emailAdmin) {
+        this.nomeAdmin = nomeAdmin;
+        this.passwordAdmin = passwordAdmin;
+        this.emailAdmin = emailAdmin;
     }
 
-    @Override
-    public void setNome(String nome){
-        this.nome = nome;
+    
+    public void setNomeAdmin(String nomeAdmin){
+        this.nomeAdmin = nomeAdmin;
     }
     
-    public void setPassword(String password){
-        this.password = password;
+    public void setPasswordAdmin(String passwordAdmin){
+        this.passwordAdmin = passwordAdmin;
     }
     
-    public void setEmail(String email){
-        this.email = email;
+    public void setEmailAdmin(String emailAdmin){
+        this.emailAdmin = emailAdmin;
     }
     
-    public String getNome(){
-        return nome;
+    public String getNomeAdmin(){
+        return nomeAdmin;
     }
     
-    public String getPassword(){
-        return password;
+    public String getPasswordAdmin(){
+        return passwordAdmin;
     }
     
-    public String getEmail(){
-        return email;
+    public String getEmailAdmin(){
+        return emailAdmin;
     }
     
     
     @Override
     public String toString() {
-        return "Admin{" + ", nome=" + nome + ", password=" + password + ", email=" + email + '}';
+        return "Admin{" + ", nome=" + nomeAdmin + ", password=" + passwordAdmin + ", email=" + emailAdmin + '}';
     }
     
     

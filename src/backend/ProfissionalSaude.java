@@ -11,37 +11,37 @@ package backend;
  */
 public class ProfissionalSaude {
     private int idProfsaude;
-    private String nome;
+    private String nomePS;
 
     public ProfissionalSaude() 
     {
         
     }
 
-    public ProfissionalSaude(int idProfSaude, String nome) {
+    public ProfissionalSaude(int idProfSaude, String nomePS) {
         this.idProfsaude = idProfsaude;
-        this.nome = nome;
+        this.nomePS = nomePS;
     }
 
     public int getId_prof_saude() {
         return idProfsaude;
     }
 
-    public String getNome() {
-        return nome;
+    public String getNomePS() {
+        return nomePS;
     }
 
     public void setId_prof_saude(int idProfsaude) {
         this.idProfsaude = idProfsaude;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public void setNomePS(String nomePS) {
+        this.nomePS = nomePS;
     }
 
     @Override
     public String toString() {
-        return "ProfissionalSaude{" + "idProfsaude=" + idProfsaude + ", nome=" + nome + '}';
+        return "ProfissionalSaude{" + "idProfsaude=" + idProfsaude + ", nome=" + nomePS + '}';
     }
     
     
