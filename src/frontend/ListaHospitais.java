@@ -76,26 +76,26 @@ public class ListaHospitais extends javax.swing.JFrame {
         jScrollPane1.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(220, 50, 300, 300);
+        jScrollPane1.setBounds(250, 50, 300, 300);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel1.setText("Lista de Hospitais");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(170, 10, 150, 25);
+        jLabel1.setBounds(190, 10, 150, 25);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel3.setText("Codigo :");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 50, 60, 20);
+        jLabel3.setBounds(20, 60, 60, 20);
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(90, 50, 100, 30);
+        jTextField1.setBounds(110, 60, 100, 30);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel4.setText("Nome :");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 90, 60, 20);
+        jLabel4.setBounds(20, 100, 60, 20);
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(90, 90, 100, 30);
+        jTextField2.setBounds(110, 100, 100, 30);
 
         jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton4.setText("Inserir");
@@ -109,11 +109,11 @@ public class ListaHospitais extends javax.swing.JFrame {
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(460, 10, 24, 30);
+        jLabel7.setBounds(480, 10, 24, 30);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(490, 10, 30, 30);
+        jLabel5.setBounds(520, 10, 30, 30);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setText("Localidade :");

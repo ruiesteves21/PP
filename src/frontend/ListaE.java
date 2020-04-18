@@ -57,7 +57,7 @@ public class ListaE extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código da Enfermaria", "Nome", "Tipo", "Nº camas", "Nº Doentes"
+                "Código", "Nome", "Tipo", "Nº camas", "Nº Doentes"
             }
         ) {
             Class[] types = new Class [] {

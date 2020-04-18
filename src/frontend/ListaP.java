@@ -64,11 +64,11 @@ public class ListaP extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código do Profissional", "Nome", "Função", "Especialidade", "Enfermaria", "Hospital"
+                "Código", "Nome", "Função", "Especialidade", "Enfermaria"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Double.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Double.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -83,42 +83,42 @@ public class ListaP extends javax.swing.JFrame {
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel6.setText("Nome :");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(70, 120, 50, 20);
+        jLabel6.setBounds(10, 120, 50, 20);
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel7.setText("Função :");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(60, 160, 60, 20);
+        jLabel7.setBounds(10, 160, 60, 20);
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel8.setText("Especialidade :");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(20, 200, 100, 20);
+        jLabel8.setBounds(10, 200, 100, 20);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel9.setText("Hospital :");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(50, 270, 70, 20);
+        jLabel9.setBounds(10, 280, 70, 20);
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel10.setText("Codigo :");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(60, 80, 60, 20);
+        jLabel10.setBounds(10, 80, 60, 20);
 
         jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton4.setText("Inserir");
         getContentPane().add(jButton4);
-        jButton4.setBounds(220, 310, 80, 29);
+        jButton4.setBounds(100, 310, 80, 29);
 
         jButton5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton5.setText("Excluir");
         getContentPane().add(jButton5);
-        jButton5.setBounds(310, 310, 80, 29);
+        jButton5.setBounds(190, 310, 80, 29);
 
         jButton6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton6.setText("Limpar");
         getContentPane().add(jButton6);
-        jButton6.setBounds(130, 310, 80, 30);
+        jButton6.setBounds(10, 310, 80, 30);
 
         jButton7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton7.setText("Filtrar");
@@ -135,14 +135,15 @@ public class ListaP extends javax.swing.JFrame {
         getContentPane().add(jButton8);
         jButton8.setBounds(440, 310, 80, 29);
         getContentPane().add(jTextField4);
-        jTextField4.setBounds(130, 110, 120, 30);
+        jTextField4.setBounds(120, 110, 120, 30);
         getContentPane().add(jTextField6);
-        jTextField6.setBounds(130, 190, 120, 30);
+        jTextField6.setBounds(120, 190, 120, 30);
         getContentPane().add(jTextField7);
-        jTextField7.setBounds(130, 270, 120, 30);
+        jTextField7.setBounds(120, 270, 120, 30);
         getContentPane().add(jTextField8);
-        jTextField8.setBounds(130, 70, 120, 30);
+        jTextField8.setBounds(120, 70, 120, 30);
 
+        jComboBox1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Médico", "Enfermeiro" }));
         jComboBox1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -150,14 +151,14 @@ public class ListaP extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(130, 150, 120, 30);
+        jComboBox1.setBounds(120, 150, 120, 30);
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel11.setText("Enfermaria :");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(40, 240, 80, 20);
+        jLabel11.setBounds(10, 240, 80, 20);
         getContentPane().add(jTextField9);
-        jTextField9.setBounds(130, 230, 120, 30);
+        jTextField9.setBounds(120, 230, 120, 30);
 
         jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         getContentPane().add(jLabel12);
