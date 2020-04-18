@@ -15,7 +15,9 @@ public class Medico extends ProfissionalSaude {
     private String password;
     private String email;
 
-    public Medico() {
+    public Medico()
+    {
+        
     }
 
     public Medico(String especialidade, String nome, String password, String email) {

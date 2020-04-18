@@ -24,7 +24,7 @@ public class Doente {
     public Doente(){   
     }
 
-    public Doente(int idDoente, String nome, String localidade, LocalDate dataEntrada, LocalDate dataSaida,String enfermaria,int nCama) {
+    public Doente(int idDoente, String nome, String localidade, String gravidade, LocalDate dataEntrada, LocalDate dataSaida,int nCama, String enfermaria) {
         this.idDoente = idDoente;
         this.nome = nome;
         this.localidade = localidade;
@@ -60,6 +60,14 @@ public class Doente {
 
     public LocalDate getDataSaida() {
         return dataSaida;
+    }
+    
+    public String getEnfermaria(){
+        return this.enfermaria;
+    }
+    
+    public int getNCama(){
+        return this.nCama;
     }
     
     //setters
@@ -110,15 +118,7 @@ public class Doente {
         this.gravidade = "Moderada";
     }
     
-    //getters
     
-    public String getEnfermaria(){
-        return this.enfermaria;
-    }
-    
-    public int getNCama(){
-        return this.nCama;
-    }
     // Metodos para alterar o estado do Doente
     public void setGravidadeNaoRegistada()
     {

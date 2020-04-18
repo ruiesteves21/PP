@@ -12,35 +12,49 @@ import java.util.ArrayList;
  * @author rodrm
  */
 public class ListaHospital {
-     private ArrayList<Hospital> listaH;
+     private ArrayList<Hospital> listaHospital;
      
      public ListaHospital()
     {
-        this.listaH = new ArrayList<Hospital>();
+        this.listaHospital = new ArrayList<Hospital>();
     }
 
-    public ArrayList<Hospital> getListaH()
+    public ArrayList<Hospital> getListaHospital()
     {
-        return listaH;
+        return listaHospital;
     }
 
-    public void setListaH(ArrayList<Hospital> listaH)
+    public void setListaHospital(ArrayList<Hospital> listaHospital)
     {
-        this.listaH = listaH;
+        this.listaHospital = listaHospital;
     }
 
-    public void addUtilizador(Hospital h)
+    public void adicionar(Hospital hospital)
     {
-        listaH.add(h);
+        listaHospital.add(hospital);
     }
     
-    public void removeHospital(Hospital h)
+    public void remover(Hospital hospital)
     {
-        listaH.remove(h);
+        listaHospital.remove(hospital);
     }
     
      public int tamanho()
     {
-        return listaH.size();
+        return listaHospital.size();
     }
+
+    @Override
+    public String toString()
+    {
+        String s = "";
+
+        for (Hospital hospital : listaHospital) {
+            s += hospital.toString() + "\n";
+        }
+
+        return s;
+    }
+     
+    
 }

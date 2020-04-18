@@ -19,48 +19,48 @@ import javax.swing.JOptionPane;
  */
 public class Sistema implements Serializable
 {
-    private ListaMedico listaM;
-    private ListaEnfermaria listaE;
-    private ListaEquipamento listaEquip;
+    private ListaMedico listaMedico;
+    private ListaEnfermaria listaEnfermaria;
+    private ListaEquipamento listaEquipamento;
     private Admin utilizadorLogin;
     private final String nomeFichDados = "Sistema.dat";
     private int projetoSel;
 
     public Sistema()
     {
-        listaM = new ListaMedico();
-        listaE = new ListaEnfermaria();
+        listaMedico = new ListaMedico();
+        listaEnfermaria = new ListaEnfermaria();
         utilizadorLogin = null;
-        listaM.addUtilizador(new Admin("admin", "admin", "admin@admin.com"));
+        listaMedico.adicionar(new Admin("admin", "admin", "admin@admin.com"));
 
     }
 
-    public ListaMedico getListaM()
+    public ListaMedico getListaMedico()
     {
-        return listaM;
+        return listaMedico;
     }
 
-    public void setListaM(ListaMedico listaM)
+    public void setListaMedico(ListaMedico listaMedico)
     {
-        this.listaM = listaM;
+        this.listaMedico = listaMedico;
     }
 
-    public ListaEnfermaria getListaE()
+    public ListaEnfermaria getListaEnfermaria()
     {
-        return listaE;
+        return listaEnfermaria;
     }
 
-    public void setListaE(ListaEnfermaria listaE)
+    public void setListaEnfermaria(ListaEnfermaria listaEnfermaria)
     {
-        this.listaE = listaE;
+        this.listaEnfermaria = listaEnfermaria;
     }
     
-    public ListaEquipamento getListaEquip() {
-        return listaEquip;
+    public ListaEquipamento getListaEquipamento() {
+        return listaEquipamento;
     }
 
-    public void setListaEquip(ListaEquipamento listaEquip) {
-        this.listaEquip = listaEquip;
+    public void setListaEquipamento(ListaEquipamento listaEquipamento) {
+        this.listaEquipamento = listaEquipamento;
     }
     
     public Admin getUtilizadorLogin()

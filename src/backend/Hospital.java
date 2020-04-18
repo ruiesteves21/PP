@@ -13,9 +13,9 @@ public class Hospital {
     private String nome;
     private String localidade;
     private int idHospital;
-    private ListaDoente listaD; 
-    private ListaEnfermaria listaE;
-    private ListaEquipamento listaEquip;
+    private ListaDoente listaDoente; 
+    private ListaEnfermaria listaEnfermaria;
+    private ListaEquipamento listaEquipamento;
     
     
     public Hospital() 
@@ -23,7 +23,7 @@ public class Hospital {
     
     }
 
-    public Hospital(String nome, String localidade, int id_Hospital) {
+    public Hospital(String nome, String localidade, int idHospital) {
         this.nome = nome;
         this.localidade = localidade;
         this.idHospital = idHospital;
@@ -38,7 +38,7 @@ public class Hospital {
         return localidade;
     }
 
-    public int getId_Hospital() {
+    public int getIdHospital() {
         return idHospital;
     }
     
@@ -55,20 +55,16 @@ public class Hospital {
         this.idHospital = idHospital;
     }
 
-    public int getIdHospital() {
-        return idHospital;
+    public ListaDoente getListaDoente() {
+        return listaDoente;
     }
 
-    public ListaDoente getListaD() {
-        return listaD;
+    public ListaEnfermaria getListaEnfermaria() {
+        return listaEnfermaria;
     }
 
-    public ListaEnfermaria getListaE() {
-        return listaE;
-    }
-
-    public ListaEquipamento getListaEquip() {
-        return listaEquip;
+    public ListaEquipamento getListaEquipamento() {
+        return listaEquipamento;
     }
 
     @Override

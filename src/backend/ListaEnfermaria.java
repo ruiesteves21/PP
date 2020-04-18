@@ -12,55 +12,72 @@ import java.util.ArrayList;
  */
 public class ListaEnfermaria {
     
-     private ArrayList<Enfermaria> listaE;
+     private ArrayList<Enfermaria> listaEnfermaria;
 
     public ListaEnfermaria()
     {
-        this.listaE = new ArrayList<Enfermaria>();
+        this.listaEnfermaria = new ArrayList<Enfermaria>();
     }
 
-    public ArrayList<Enfermaria> getListaE() {
-        return listaE;
+    public ArrayList<Enfermaria> getListaEnfermaria() {
+        return listaEnfermaria;
     }
 
-    public void setListaE(ArrayList<Enfermaria> listaE) {
-        this.listaE = listaE;
+    public void setListaEnfermaria(ArrayList<Enfermaria> listaEnfermaria) {
+        this.listaEnfermaria = listaEnfermaria;
     }
     
-    public void addEnfermaria(Enfermaria e)
+    public void adicionar(Enfermaria enfermaria)
     {
-        listaE.add(e);
+        listaEnfermaria.add(enfermaria);
     }
     
-     public void removeEnfermaria(Enfermaria e)
+     public void remover(Enfermaria enfermaria)
     {
-        listaE.remove(e);
+        listaEnfermaria.remove(enfermaria);
     }
     
      public int tamanho()
     {
-        return listaE.size();
+        return listaEnfermaria.size();
     }
     
     /**
      * Este metodo serve para saber todos as enfermarias em que o doente está internado
-     * @param d
+     * @param doente
      * @return Lista de Enfermarias em que o doente se encontra
      */
     
-    public ArrayList<Enfermaria> listaEnfermariaDoente(Doente d)
+    public ArrayList<Enfermaria> listaEnfermariaDoente(Doente doente)
     {
-        ArrayList<Enfermaria> nE = new ArrayList<>();
+        ArrayList<Enfermaria> nEnfermaria = new ArrayList<>();
 
-        for (Enfermaria e : listaE) {
-            if (e.getDoentes().existe(d)) {
-                nE.add(e);
+        for (Enfermaria enfermaria : listaEnfermaria) {
+            if (enfermaria.getDoentes().existe(doente)) {
+                nEnfermaria.add(enfermaria);
             }
         }
 
-        return nE;
+        return nEnfermaria;
     }
     
-     
+    /**
+     * Este metodo serve para saber todos as enfermarias onde o equipamento está colocado
+     * @param equipamento
+     * @return Lista de Enfermarias em que o equipamento se encontra
+     */
+    
+    public ArrayList<Enfermaria> listaEnfermariaEquipamento (Equipamento equipamento)
+    {
+        ArrayList<Enfermaria> nEquipamento = new ArrayList<>();
+
+        for (Enfermaria enfermaria : listaEnfermaria) {
+            if (enfermaria.getEquipamento().existe(equipamento)) {
+                nEquipamento.add(enfermaria);
+            }
+        }
+
+        return nEquipamento;
+    }
     
 }

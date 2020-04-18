@@ -15,88 +15,88 @@ import java.util.Calendar;
  */
 public class ListaDoente implements java.io.Serializable  {
     
-    private ArrayList<Doente> listaD;
+    private ArrayList<Doente> listaDoente;
     
     public ListaDoente()
     {
-        this.listaD= new ArrayList();
+        this.listaDoente= new ArrayList();
     }
     
-    public ArrayList<Doente> getListaD()
+    public ArrayList<Doente> getListaDoente()
     {
-        return listaD;
+        return listaDoente;
     }
     
-    public void setListaD(ArrayList<Doente> listaD)
+    public void setListaDoente(ArrayList<Doente> listaDoente)
     {
-        this.listaD = listaD;
+        this.listaDoente = listaDoente;
     }
     
-    public void addDoente(Doente d)
+    public void adicionar(Doente doente)
     {
-        listaD.add(d);
+        listaDoente.add(doente);
     }
     
-    public void removeDoente(Doente d)
+    public void remover(Doente doente)
     {
-        listaD.remove(d);
+        listaDoente.remove(doente);
     }
     
     public int tamanho()
     {
-        return listaD.size();
+        return listaDoente.size();
     }
     
-    public boolean existe(Doente d)
+    public boolean existe(Doente doente)
     {
-        return listaD.contains(d);
+        return listaDoente.contains(doente);
     }
     
     @Override
     public String toString()
     {
-        return listaD.toString();
+        return listaDoente.toString();
     }
     
    /*public double perDoenteModerada(){
        int contador = 0;
-       for (Doente d: listaD){
+       for (Doente d: listaDoente){
            if (d.isGravidadeModerada()){
                contador ++;
            }
        }
-       if (listaD.size()==0){
+       if (listaDoente.size()==0){
            return 0;
        }else{
-         return (contador/ listaD.size())*100;
+         return (contador/ listaDoente.size())*100;
        }
    }
    
     public double perDoenteGrave(){
        int contador = 0;
-       for (Doente d: listaD){
+       for (Doente d: listaDoente){
            if (d.isGravidadeGrave()){
                contador ++;
            }
        }
-       if (listaD.size()==0){
+       if (listaDoente.size()==0){
            return 0;
        }else{
-         return (contador/ listaD.size())*100;
+         return (contador/ listaDoente.size())*100;
        }
    }
    
     public double perDoenteMuitoGrave(){
        int contador = 0;
-       for (Doente d: listaD){
+       for (Doente d: listaDoente){
            if (d.isGravidadeMuitoGrave()){
                contador ++;
            }
        }
-       if (listaD.size()==0){
+       if (listaDoente.size()==0){
            return 0;
        }else{
-         return (contador/ listaD.size())*100;
+         return (contador/ listaDoente.size())*100;
        }
    }*/
     

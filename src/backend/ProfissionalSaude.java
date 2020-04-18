@@ -10,8 +10,8 @@ package backend;
  * @author rodrm
  */
 public class ProfissionalSaude {
-    private int idProfsaude;
-    private String nomeProfsaude;
+    private int idProfSaude;
+    private String nomeProfSaude;
 
     public ProfissionalSaude() 
     {
@@ -19,29 +19,29 @@ public class ProfissionalSaude {
     }
 
     public ProfissionalSaude(int idProfSaude, String nomeProfsaude) {
-        this.idProfsaude = idProfsaude;
-        this.nomeProfsaude = nomeProfsaude;
+        this.idProfSaude = idProfSaude;
+        this.nomeProfSaude = nomeProfsaude;
     }
 
-    public int getId_prof_saude() {
-        return idProfsaude;
+    public int getIdProfSaude() {
+        return idProfSaude;
     }
 
     public String getNomePS() {
-        return nomeProfsaude;
+        return nomeProfSaude;
     }
 
-    public void setId_prof_saude(int idProfsaude) {
-        this.idProfsaude = idProfsaude;
+    public void setIdProfSaude(int idProfSaude) {
+        this.idProfSaude = idProfSaude;
     }
 
-    public void setNomePS(String nomeProfsaude) {
-        this.nomeProfsaude = nomeProfsaude;
+    public void setNomePS(String nomeProfSaude) {
+        this.nomeProfSaude = nomeProfSaude;
     }
 
     @Override
     public String toString() {
-        return "ProfissionalSaude{" + "idProfsaude=" + idProfsaude + ", nome=" + nomeProfsaude + '}';
+        return "ProfissionalSaude{" + "idProfsaude=" + idProfSaude + ", nome=" + nomeProfSaude + '}';
     }
     
     

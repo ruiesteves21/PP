@@ -15,7 +15,7 @@ public class Equipamento {
     
     private int idEquip;
     private String indicacao; //livre, ocupado
-    private Calendar dataOcupado;
+    private Calendar  dataOcupado;
     private boolean disponivel;
     private boolean indisponivel;
     
@@ -42,7 +42,7 @@ public class Equipamento {
     }
     
 
-    public void setId_Equip(int idEquip) {
+    public void setIdEquip(int idEquip) {
         this.idEquip = idEquip;
     }
 
@@ -50,7 +50,7 @@ public class Equipamento {
         this.indicacao = indicacao;
     }
 
-    public void setData_ocupado(Calendar dataOcupado) {
+    public void setDataOcupado(Calendar dataOcupado) {
         this.dataOcupado = dataOcupado;
     }
     

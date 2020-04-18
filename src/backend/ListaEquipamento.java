@@ -13,70 +13,76 @@ import java.util.ArrayList;
  */
 public class ListaEquipamento {
     
-    private ArrayList<Equipamento> listaEquip;
+    private ArrayList<Equipamento> listaEquipamento;
 
     public ListaEquipamento()
     {
-        this.listaEquip = new ArrayList<Equipamento>();
+        this.listaEquipamento = new ArrayList<Equipamento>();
     }
 
-    public ArrayList<Equipamento> getListaEquip() {
-        return listaEquip;
+    public ArrayList<Equipamento> getListaEquipamento() {
+        return listaEquipamento;
     }
 
-    public void setListaEquip(ArrayList<Equipamento> listaEquip) {
-        this.listaEquip = listaEquip;
+    public void setListaEquipamento(ArrayList<Equipamento> listaEquipamento) {
+        this.listaEquipamento = listaEquipamento;
     }
     
-    public void addEquipamento(Equipamento e)
+    public void adicionar(Equipamento equipamento)
     {
-        listaEquip.add(e);
+        listaEquipamento.add(equipamento);
     }
     
-    public void removeEquipamento(Equipamento e)
+    public void remover(Equipamento equipamento)
     {
-        listaEquip.remove(e);
+        listaEquipamento.remove(equipamento);
     }
     
     public int tamanho()
     {
-        return listaEquip.size();
+        return listaEquipamento.size();
+    }
+    
+    public boolean existe(Equipamento equipamento)
+    {
+        return listaEquipamento.contains(equipamento);
     }
     
     public double perDisponivel()
     {
     int contador = 0;
-    for (Equipamento e: listaEquip){
-        if (e.isDisponivel()){
+    for (Equipamento equipamento: listaEquipamento){
+        if (equipamento.isDisponivel()){
            contador ++;
         }
     }
-    if (listaEquip.size()==0)
+    if (listaEquipamento.isEmpty())
     {
         return 0;
     }else{
-        return (contador/ listaEquip.size())*100;
+        return (contador/ listaEquipamento.size())*100;
     }
     }
     
     public double perIndisponivel()
     {
     int contador = 0;
-    for (Equipamento e: listaEquip){
-        if (e.isIndisponivel()){
+    for (Equipamento equipamento: listaEquipamento){
+        if (equipamento.isIndisponivel()){
            contador ++;
         }
     }
-    if (listaEquip.size()==0)
+    if (listaEquipamento.isEmpty())
     {
         return 0;
     }else{
-        return (contador/ listaEquip.size())*100;
+        return (contador/ listaEquipamento.size())*100;
     }
     }
     
+    @Override
     public String toString()
     {
-        return listaEquip.toString();
+        return listaEquipamento.toString();
     }
 }

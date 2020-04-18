@@ -13,55 +13,55 @@ import java.util.ArrayList;
  */
 public class ListaMedico {
     
-     private ArrayList<Medico> listaM;
+     private ArrayList<Medico> listaMedico;
      
      public ListaMedico()
     {
-        this.listaM = new ArrayList<Medico>();
+        this.listaMedico = new ArrayList<Medico>();
     }
 
-    public ArrayList<Medico> getListaM()
+    public ArrayList<Medico> getListaMedico()
     {
-        return listaM;
+        return listaMedico;
     }
 
-    public void setListaM(ArrayList<Medico> listaM)
+    public void setListaMedico(ArrayList<Medico> listaMedico)
     {
-        this.listaM = listaM;
+        this.listaMedico = listaMedico;
     }
 
-    public void addUtilizador(Medico m)
+    public void adicionar(Medico medico)
     {
-        listaM.add(m);
+        listaMedico.add(medico);
     }
     
-    public void removeMedico(Medico m)
+    public void remover(Medico medico)
     {
-        listaM.remove(m);
+        listaMedico.remove(medico);
     }
     
      public int tamanho()
     {
-        return listaM.size();
+        return listaMedico.size();
     }
      
-    public boolean existe(Medico m)
+    public boolean existe(Medico medico)
     {
-        return listaM.contains(m);
+        return listaMedico.contains(medico);
     }
 
     /**
      * Este metodo serve para saber a posicao de um utilizador na lista
      *
-     * @param m
+     * @param medico
      * @return index da listaU. Se dado um utilizador que não exite devolve -1
      */
-    public int posicao(Medico m)
+    public int posicao(Medico medico)
     {
-        if (m == null || !this.existe(m)) {
+        if (medico == null || !this.existe(medico)) {
             return -1; // Caso que o utlizador não é validos
         }
-        return listaM.indexOf(m);
+        return listaMedico.indexOf(medico);
     }
 
     /**
@@ -72,10 +72,10 @@ public class ListaMedico {
      */
     public Medico devolveUtilizador(int i)
     {
-        if (i > listaM.size() || i < 0) {
+        if (i > listaMedico.size() || i < 0) {
             return null;
         }
-        return listaM.get(i);
+        return listaMedico.get(i);
     }
 
     public Medico devolveUtilizador(String nome)
@@ -84,9 +84,9 @@ public class ListaMedico {
             return null;
         }
 
-        for (Medico m : listaM) {
-            if (m.getNome().equals(nome)) {
-                return m;
+        for (Medico medico : listaMedico) {
+            if (medico.getNome().equals(nome)) {
+                return medico;
             }
         }
         // Caso em que não há utilizador com o mesmo nome
@@ -101,8 +101,8 @@ public class ListaMedico {
      */
     public boolean verficarMesmoNome(String s)
     {
-        for (Medico m : listaM) {
-            if (m.getNome().equals(s)) {
+        for (Medico medico : listaMedico) {
+            if (medico.getNome().equals(s)) {
                 return true;
             }
         }
@@ -114,8 +114,8 @@ public class ListaMedico {
     {
         String s = "";
 
-        for (Medico m : listaM) {
-            s += m.toString() + "\n";
+        for (Medico medico : listaMedico) {
+            s += medico.toString() + "\n";
         }
 
         return s;

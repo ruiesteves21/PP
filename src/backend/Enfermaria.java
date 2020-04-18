@@ -13,7 +13,8 @@ public class Enfermaria extends ProfissionalSaude {
     private int idEnfermaria;
     private String tipo; //normal, UCI
     private int nCamas;
-    private ListaDoente listaD;
+    private ListaDoente listaDoente;
+    private ListaEquipamento listaEquipamento;
     
     public Enfermaria () 
     {
@@ -24,6 +25,8 @@ public class Enfermaria extends ProfissionalSaude {
         this.idEnfermaria = idEnfermaria;
         this.tipo = "Não iniciada";
         this.nCamas = nCamas;
+        this.listaDoente = new ListaDoente();
+        this.listaEquipamento = new ListaEquipamento();
     }
 
     public int getIdEnfermaria() {
@@ -39,7 +42,11 @@ public class Enfermaria extends ProfissionalSaude {
     }
 
     public ListaDoente getDoentes() {
-        return listaD;
+        return listaDoente;
+    }
+    
+    public ListaEquipamento getEquipamento() {
+        return listaEquipamento;
     }
     
     public void setIdEnfermaria(int idEnfermaria) {

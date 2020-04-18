@@ -9,12 +9,12 @@ package frontend;
  *
  * @author pedro
  */
-public class ListaP extends javax.swing.JFrame {
+public class ListaProfissionalSaude extends javax.swing.JFrame {
 
     /**
      * Creates new form ListaProfissionais
      */
-    public ListaP() {
+    public ListaProfissionalSaude() {
         initComponents();
     }
 
@@ -186,7 +186,7 @@ public class ListaP extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main1(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -213,7 +213,7 @@ public class ListaP extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new ListaP().setVisible(true);
+                //new ListaProfissionalSaude().setVisible(true);
             }
         });
     }
