@@ -43,11 +43,12 @@ public class ListaEq extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
         jComboBox2 = new javax.swing.JComboBox<>();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,7 +76,7 @@ public class ListaEq extends javax.swing.JFrame {
         }
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(260, 60, 330, 190);
+        jScrollPane3.setBounds(260, 50, 330, 230);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel3.setText("Lista de Equipamentos");
@@ -139,22 +140,17 @@ public class ListaEq extends javax.swing.JFrame {
         jButton6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton6.setText("Excluir");
         getContentPane().add(jButton6);
-        jButton6.setBounds(40, 330, 80, 29);
+        jButton6.setBounds(230, 290, 80, 29);
 
         jButton7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton7.setText("Filtrar");
         getContentPane().add(jButton7);
-        jButton7.setBounds(280, 290, 80, 29);
+        jButton7.setBounds(430, 290, 80, 29);
 
         jButton8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton8.setText("Editar");
         getContentPane().add(jButton8);
-        jButton8.setBounds(390, 290, 80, 29);
-
-        jButton9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton9.setText("Voltar");
-        getContentPane().add(jButton9);
-        jButton9.setBounds(490, 290, 80, 29);
+        jButton8.setBounds(330, 290, 80, 29);
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel8.setText("Enfermaria :");
@@ -166,13 +162,23 @@ public class ListaEq extends javax.swing.JFrame {
         getContentPane().add(jLabel9);
         jLabel9.setBounds(70, 140, 40, 20);
 
+        jComboBox1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Livre", "Ocupado" }));
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(120, 170, 100, 30);
 
+        jComboBox2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jComboBox2.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Ventilador", "desfibrilhador", "Outro" }));
         getContentPane().add(jComboBox2);
         jComboBox2.setBounds(120, 130, 100, 30);
+
+        jLabel10.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(520, 10, 24, 30);
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(560, 10, 30, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/listaEquipamentosfundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -234,10 +240,11 @@ public class ListaEq extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JComboBox<String> jComboBox2;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

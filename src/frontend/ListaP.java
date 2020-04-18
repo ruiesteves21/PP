@@ -40,7 +40,6 @@ public class ListaP extends javax.swing.JFrame {
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
         jTextField4 = new javax.swing.JTextField();
         jTextField6 = new javax.swing.JTextField();
         jTextField7 = new javax.swing.JTextField();
@@ -48,6 +47,8 @@ public class ListaP extends javax.swing.JFrame {
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         jTextField9 = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,7 +57,7 @@ public class ListaP extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel3.setText("Lista de Profissionais de Saúde");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(160, 10, 270, 20);
+        jLabel3.setBounds(200, 10, 270, 20);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -77,7 +78,7 @@ public class ListaP extends javax.swing.JFrame {
         jScrollPane3.setViewportView(jTable1);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(280, 70, 330, 190);
+        jScrollPane3.setBounds(280, 70, 330, 230);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel6.setText("Nome :");
@@ -107,22 +108,22 @@ public class ListaP extends javax.swing.JFrame {
         jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton4.setText("Inserir");
         getContentPane().add(jButton4);
-        jButton4.setBounds(170, 330, 80, 29);
+        jButton4.setBounds(220, 310, 80, 29);
 
         jButton5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton5.setText("Excluir");
         getContentPane().add(jButton5);
-        jButton5.setBounds(70, 370, 80, 29);
+        jButton5.setBounds(310, 310, 80, 29);
 
         jButton6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton6.setText("Limpar");
         getContentPane().add(jButton6);
-        jButton6.setBounds(70, 330, 80, 30);
+        jButton6.setBounds(130, 310, 80, 30);
 
         jButton7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton7.setText("Filtrar");
         getContentPane().add(jButton7);
-        jButton7.setBounds(300, 300, 80, 29);
+        jButton7.setBounds(530, 310, 80, 29);
 
         jButton8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton8.setText("Editar");
@@ -132,17 +133,7 @@ public class ListaP extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton8);
-        jButton8.setBounds(410, 300, 80, 29);
-
-        jButton9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton9.setText("Voltar");
-        jButton9.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton9ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton9);
-        jButton9.setBounds(520, 300, 80, 29);
+        jButton8.setBounds(440, 310, 80, 29);
         getContentPane().add(jTextField4);
         jTextField4.setBounds(130, 110, 120, 30);
         getContentPane().add(jTextField6);
@@ -168,6 +159,14 @@ public class ListaP extends javax.swing.JFrame {
         getContentPane().add(jTextField9);
         jTextField9.setBounds(130, 230, 120, 30);
 
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(530, 30, 24, 30);
+
+        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(570, 30, 30, 30);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/listaProfissionaisfundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 620, 410);
@@ -178,10 +177,6 @@ public class ListaP extends javax.swing.JFrame {
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton8ActionPerformed
-
-    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton9ActionPerformed
 
     private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
         // TODO add your handling code here:
@@ -228,12 +223,13 @@ public class ListaP extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;

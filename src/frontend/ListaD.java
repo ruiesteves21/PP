@@ -52,9 +52,6 @@ public class ListaD extends javax.swing.JFrame {
         jTextField11 = new javax.swing.JTextField();
         jTextField12 = new javax.swing.JTextField();
         jTextField13 = new javax.swing.JTextField();
-        jDateChooser1 = new com.toedter.calendar.JDateChooser();
-        jDateChooser2 = new com.toedter.calendar.JDateChooser();
-        jDateChooser3 = new com.toedter.calendar.JDateChooser();
         jComboBox1 = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
@@ -199,12 +196,6 @@ public class ListaD extends javax.swing.JFrame {
         jTextField12.setBounds(90, 390, 100, 30);
         getContentPane().add(jTextField13);
         jTextField13.setBounds(90, 350, 100, 30);
-        getContentPane().add(jDateChooser1);
-        jDateChooser1.setBounds(720, 350, 120, 30);
-        getContentPane().add(jDateChooser2);
-        jDateChooser2.setBounds(720, 410, 120, 30);
-        getContentPane().add(jDateChooser3);
-        jDateChooser3.setBounds(90, 440, 100, 30);
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Moderado", "Grave", "Muito Grave" }));
         jComboBox1.setToolTipText("");
@@ -286,9 +277,6 @@ public class ListaD extends javax.swing.JFrame {
     private javax.swing.JButton jButton8;
     private javax.swing.JButton jButton9;
     private javax.swing.JComboBox<String> jComboBox1;
-    private com.toedter.calendar.JDateChooser jDateChooser1;
-    private com.toedter.calendar.JDateChooser jDateChooser2;
-    private com.toedter.calendar.JDateChooser jDateChooser3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
