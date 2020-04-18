@@ -11,16 +11,16 @@ package backend;
  */
 public class ProfissionalSaude {
     private int idProfsaude;
-    private String nomePS;
+    private String nomeProfsaude;
 
     public ProfissionalSaude() 
     {
         
     }
 
-    public ProfissionalSaude(int idProfSaude, String nomePS) {
+    public ProfissionalSaude(int idProfSaude, String nomeProfsaude) {
         this.idProfsaude = idProfsaude;
-        this.nomePS = nomePS;
+        this.nomeProfsaude = nomeProfsaude;
     }
 
     public int getId_prof_saude() {
@@ -28,20 +28,20 @@ public class ProfissionalSaude {
     }
 
     public String getNomePS() {
-        return nomePS;
+        return nomeProfsaude;
     }
 
     public void setId_prof_saude(int idProfsaude) {
         this.idProfsaude = idProfsaude;
     }
 
-    public void setNomePS(String nomePS) {
-        this.nomePS = nomePS;
+    public void setNomePS(String nomeProfsaude) {
+        this.nomeProfsaude = nomeProfsaude;
     }
 
     @Override
     public String toString() {
-        return "ProfissionalSaude{" + "idProfsaude=" + idProfsaude + ", nome=" + nomePS + '}';
+        return "ProfissionalSaude{" + "idProfsaude=" + idProfsaude + ", nome=" + nomeProfsaude + '}';
     }
     
     
