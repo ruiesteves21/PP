@@ -39,7 +39,6 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         jLabel3 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,16 +100,12 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         jPanel1.add(jTextField1);
         jTextField1.setBounds(60, 80, 100, 20);
 
+        jButton3.setText("Excluir");
+        jPanel1.add(jButton3);
+        jButton3.setBounds(170, 80, 70, 23);
+
         getContentPane().add(jPanel1);
         jPanel1.setBounds(310, 40, 270, 120);
-
-        jButton3.setText("Excluir");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(410, 170, 70, 23);
-
-        jButton4.setText("Filtrar");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(500, 170, 70, 23);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -163,7 +158,6 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

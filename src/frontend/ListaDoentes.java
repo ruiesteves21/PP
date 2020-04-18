@@ -29,9 +29,8 @@ public class ListaDoentes extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton8 = new javax.swing.JButton();
-        jButton9 = new javax.swing.JButton();
+        table = new javax.swing.JTable();
+        btEditar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
@@ -42,16 +41,16 @@ public class ListaDoentes extends javax.swing.JFrame {
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jTextField13 = new javax.swing.JTextField();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        btExcluir = new javax.swing.JButton();
+        btLimpar = new javax.swing.JButton();
+        btInserir = new javax.swing.JButton();
+        txtEnfermaria = new javax.swing.JTextField();
+        txtMedico = new javax.swing.JTextField();
+        txtCama = new javax.swing.JTextField();
+        txtLocalidade = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
+        ComboGrav = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -64,7 +63,7 @@ public class ListaDoentes extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(290, 10, 150, 20);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -80,25 +79,20 @@ public class ListaDoentes extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable1);
+        jScrollPane3.setViewportView(table);
 
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(10, 50, 670, 160);
 
-        jButton8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton8.setText("Editar");
-        jButton8.addActionListener(new java.awt.event.ActionListener() {
+        btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btEditar.setText("Editar");
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton8ActionPerformed(evt);
+                btEditarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton8);
-        jButton8.setBounds(580, 410, 100, 30);
-
-        jButton9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton9.setText("Filtrar");
-        getContentPane().add(jButton9);
-        jButton9.setBounds(580, 460, 100, 30);
+        getContentPane().add(btEditar);
+        btEditar.setBounds(580, 380, 100, 30);
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel10.setText("Data de Saída :");
@@ -150,58 +144,73 @@ public class ListaDoentes extends javax.swing.JFrame {
         getContentPane().add(jLabel19);
         jLabel19.setBounds(20, 230, 60, 20);
 
-        jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton4.setText("Excluir");
-        jButton4.addActionListener(new java.awt.event.ActionListener() {
+        btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btExcluir.setText("Excluir");
+        btExcluir.setEnabled(false);
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton4ActionPerformed(evt);
+                btExcluirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton4);
-        jButton4.setBounds(580, 330, 100, 30);
+        getContentPane().add(btExcluir);
+        btExcluir.setBounds(580, 330, 100, 30);
 
-        jButton5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton5.setText("Limpar");
-        jButton5.addActionListener(new java.awt.event.ActionListener() {
+        btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btLimpar.setText("Limpar");
+        btLimpar.setEnabled(false);
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton5ActionPerformed(evt);
+                btLimparActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton5);
-        jButton5.setBounds(580, 280, 100, 30);
+        getContentPane().add(btLimpar);
+        btLimpar.setBounds(580, 280, 100, 30);
 
-        jButton6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton6.setText("Inserir");
-        getContentPane().add(jButton6);
-        jButton6.setBounds(580, 230, 100, 30);
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(380, 230, 110, 30);
-        getContentPane().add(jTextField9);
-        jTextField9.setBounds(110, 450, 100, 30);
+        btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btInserir.setText("Inserir");
+        btInserir.setEnabled(false);
+        getContentPane().add(btInserir);
+        btInserir.setBounds(580, 230, 100, 30);
 
-        jTextField10.addActionListener(new java.awt.event.ActionListener() {
+        txtEnfermaria.setEnabled(false);
+        getContentPane().add(txtEnfermaria);
+        txtEnfermaria.setBounds(380, 230, 110, 30);
+
+        txtMedico.setEnabled(false);
+        getContentPane().add(txtMedico);
+        txtMedico.setBounds(110, 450, 100, 30);
+
+        txtCama.setEnabled(false);
+        txtCama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField10ActionPerformed(evt);
+                txtCamaActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField10);
-        jTextField10.setBounds(110, 400, 100, 30);
-        getContentPane().add(jTextField11);
-        jTextField11.setBounds(110, 350, 100, 30);
-        getContentPane().add(jTextField12);
-        jTextField12.setBounds(110, 290, 100, 30);
-        getContentPane().add(jTextField13);
-        jTextField13.setBounds(110, 230, 100, 30);
+        getContentPane().add(txtCama);
+        txtCama.setBounds(110, 400, 100, 30);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Moderado", "Grave", "Muito Grave" }));
-        jComboBox1.setToolTipText("");
-        jComboBox1.addActionListener(new java.awt.event.ActionListener() {
+        txtLocalidade.setEnabled(false);
+        getContentPane().add(txtLocalidade);
+        txtLocalidade.setBounds(110, 350, 100, 30);
+
+        txtNome.setEnabled(false);
+        getContentPane().add(txtNome);
+        txtNome.setBounds(110, 290, 100, 30);
+
+        txtCodigo.setEnabled(false);
+        getContentPane().add(txtCodigo);
+        txtCodigo.setBounds(110, 230, 100, 30);
+
+        ComboGrav.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Moderado", "Grave", "Muito Grave" }));
+        ComboGrav.setToolTipText("");
+        ComboGrav.setEnabled(false);
+        ComboGrav.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jComboBox1ActionPerformed(evt);
+                ComboGravActionPerformed(evt);
             }
         });
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(380, 280, 110, 30);
+        getContentPane().add(ComboGrav);
+        ComboGrav.setBounds(380, 280, 110, 30);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         getContentPane().add(jLabel7);
@@ -218,25 +227,25 @@ public class ListaDoentes extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton8ActionPerformed
+    }//GEN-LAST:event_btEditarActionPerformed
 
-    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton5ActionPerformed
+    }//GEN-LAST:event_btLimparActionPerformed
 
-    private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton4ActionPerformed
+    }//GEN-LAST:event_btExcluirActionPerformed
 
-    private void jTextField10ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField10ActionPerformed
+    private void txtCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCamaActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField10ActionPerformed
+    }//GEN-LAST:event_txtCamaActionPerformed
 
-    private void jComboBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox1ActionPerformed
+    private void ComboGravActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboGravActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jComboBox1ActionPerformed
+    }//GEN-LAST:event_ComboGravActionPerformed
 
     /**
      * @param args the command line arguments
@@ -274,12 +283,11 @@ public class ListaDoentes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton8;
-    private javax.swing.JButton jButton9;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.JComboBox<String> ComboGrav;
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btExcluir;
+    private javax.swing.JButton btInserir;
+    private javax.swing.JButton btLimpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -295,12 +303,12 @@ public class ListaDoentes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField13;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable table;
+    private javax.swing.JTextField txtCama;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtEnfermaria;
+    private javax.swing.JTextField txtLocalidade;
+    private javax.swing.JTextField txtMedico;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

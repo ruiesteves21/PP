@@ -4,13 +4,15 @@
  * and open the template in the editor.
  */
 package frontend;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author pedro
  */
 public class ListaEnfermarias extends javax.swing.JFrame {
-
+     DefaultTableModel model; 
     /**
      * Creates new form ListaEnfermarias
      */
@@ -28,23 +30,22 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane3 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        jTextField8 = new javax.swing.JTextField();
-        jTextField9 = new javax.swing.JTextField();
-        jTextField10 = new javax.swing.JTextField();
-        jTextField11 = new javax.swing.JTextField();
-        jTextField12 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jButton8 = new javax.swing.JButton();
+        txtCodigo = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        txtTipo = new javax.swing.JTextField();
+        txtCamas = new javax.swing.JTextField();
+        txtDoentes = new javax.swing.JTextField();
+        btInserir = new javax.swing.JButton();
+        btLimpar = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -52,7 +53,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -68,7 +69,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(jTable1);
+        jScrollPane3.setViewportView(table);
 
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(250, 70, 360, 190);
@@ -102,46 +103,70 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         jLabel14.setText("Nº Doentes :");
         getContentPane().add(jLabel14);
         jLabel14.setBounds(20, 240, 90, 20);
-        getContentPane().add(jTextField8);
-        jTextField8.setBounds(110, 70, 120, 30);
-        getContentPane().add(jTextField9);
-        jTextField9.setBounds(110, 110, 120, 30);
-        getContentPane().add(jTextField10);
-        jTextField10.setBounds(110, 150, 120, 30);
-        getContentPane().add(jTextField11);
-        jTextField11.setBounds(110, 190, 120, 30);
-        getContentPane().add(jTextField12);
-        jTextField12.setBounds(110, 230, 120, 30);
 
-        jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton4.setText("Inserir");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(20, 270, 80, 29);
+        txtCodigo.setEnabled(false);
+        getContentPane().add(txtCodigo);
+        txtCodigo.setBounds(110, 70, 120, 30);
 
-        jButton5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton5.setText("Limpar");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(110, 270, 80, 29);
+        txtNome.setEnabled(false);
+        getContentPane().add(txtNome);
+        txtNome.setBounds(110, 110, 120, 30);
 
-        jButton6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton6.setText("Excluir");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
+        txtTipo.setEnabled(false);
+        getContentPane().add(txtTipo);
+        txtTipo.setBounds(110, 150, 120, 30);
+
+        txtCamas.setEnabled(false);
+        getContentPane().add(txtCamas);
+        txtCamas.setBounds(110, 190, 120, 30);
+
+        txtDoentes.setEnabled(false);
+        getContentPane().add(txtDoentes);
+        txtDoentes.setBounds(110, 230, 120, 30);
+
+        btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btInserir.setText("Inserir");
+        btInserir.setEnabled(false);
+        btInserir.setName(""); // NOI18N
+        btInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+                btInserirActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton6);
-        jButton6.setBounds(200, 270, 80, 29);
+        getContentPane().add(btInserir);
+        btInserir.setBounds(20, 270, 80, 29);
 
-        jButton7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton7.setText("Filtrar");
-        getContentPane().add(jButton7);
-        jButton7.setBounds(530, 270, 80, 29);
+        btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btLimpar.setText("Limpar");
+        btLimpar.setEnabled(false);
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btLimpar);
+        btLimpar.setBounds(110, 270, 80, 29);
 
-        jButton8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton8.setText("Editar");
-        getContentPane().add(jButton8);
-        jButton8.setBounds(440, 270, 80, 29);
+        btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btExcluir.setText("Excluir");
+        btExcluir.setEnabled(false);
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btExcluir);
+        btExcluir.setBounds(200, 270, 80, 29);
+
+        btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btEditar.setText("Editar");
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btEditar);
+        btEditar.setBounds(530, 270, 80, 29);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         getContentPane().add(jLabel7);
@@ -158,9 +183,37 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+         DefaultTableModel model = (DefaultTableModel)table.getModel();
+        int c = table.getSelectedRow();
+        if(c >= 0){
+            model.removeRow(c); //remove a linha selecionada
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Selecione uma nova enfermaria");
+        }
+    }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
+        // TODO add your handling code here:
+        model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),txtTipo.getText(),txtCamas.getText(),txtDoentes.getText()});
+    }//GEN-LAST:event_btInserirActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        // TODO add your handling code here:
+        txtCodigo.setText(null);
+        txtNome.setText(null);
+        txtTipo.setText(null);
+        txtCamas.setText(null);
+        txtDoentes.setText(null);
+    }//GEN-LAST:event_btLimparActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,11 +251,10 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
-    private javax.swing.JButton jButton8;
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btExcluir;
+    private javax.swing.JButton btInserir;
+    private javax.swing.JButton btLimpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -213,11 +265,11 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField10;
-    private javax.swing.JTextField jTextField11;
-    private javax.swing.JTextField jTextField12;
-    private javax.swing.JTextField jTextField8;
-    private javax.swing.JTextField jTextField9;
+    private javax.swing.JTable table;
+    private javax.swing.JTextField txtCamas;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtDoentes;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
 }
