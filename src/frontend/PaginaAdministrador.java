@@ -5,6 +5,8 @@
  */
 package frontend;
 
+import backend.Sistema;
+
 /**
  *
  * @author ssoar
@@ -14,8 +16,13 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     /**
      * Creates new form Adminpage
      */
-    public PaginaAdministrador() {
+    
+    private Sistema sis;
+    
+    public PaginaAdministrador(Sistema s) {
         initComponents();
+        this.sis = s;
+        sis.lerSistema();
     }
 
     /**
