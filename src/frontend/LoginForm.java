@@ -5,7 +5,10 @@
  */
 package frontend;
 
+import backend.Medico;
 import backend.Sistema;
+import javax.swing.ImageIcon;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -20,6 +23,12 @@ public class LoginForm extends javax.swing.JFrame {
      */
     public LoginForm(Sistema s) {
         initComponents();
+        
+        this.setTitle("Login");
+        this.setIconImage(new ImageIcon("./src/anexos/tasks-blue-icon-14527.png").getImage());
+        // FIXME Este icon vem daqui http://downloadicons.net/tasks-blue-icon-14527
+        
+        sis = s;
     }
 
     /**
@@ -31,12 +40,16 @@ public class LoginForm extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jPasswordField1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
+        btEntrar = new javax.swing.JButton();
+        txtSenha = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+
+        jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -50,15 +63,30 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2.setText("Senha:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(60, 230, 50, 20);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(140, 180, 120, 30);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(140, 230, 120, 30);
+        getContentPane().add(txtNome);
+        txtNome.setBounds(140, 180, 120, 30);
+
+        btEntrar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btEntrar.setText("Entrar");
+        btEntrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEntrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btEntrar);
+        btEntrar.setBounds(50, 290, 90, 30);
+        getContentPane().add(txtSenha);
+        txtSenha.setBounds(140, 230, 120, 30);
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setText("Entrar");
+        jButton1.setText("Sair");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
-        jButton1.setBounds(140, 280, 70, 29);
+        jButton1.setBounds(240, 290, 90, 30);
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundo_medico3.jpg"))); // NOI18N
@@ -67,6 +95,53 @@ public class LoginForm extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
+        // TODO add your handling code here:
+        
+         String utilizador = txtNome.getText();
+         String password = new String(txtSenha.getPassword());
+         
+         if (!(utilizador.length() <= 0 || password.length() <= 0)) {
+            Medico user = new Medico(utilizador, password);
+
+        // Verificar se o ultilizador existe
+        if (sis.getListaMedico().existe(user)) {
+            // Neste caso exite um utilizador com o mesmo nome
+            // Agora confirmar se a palavra passe é igual
+            int pos = sis.getListaMedico().posicao(user); // Se isto devolver -1 então
+            // não existe um utilizador com este nome
+
+            user = sis.getListaMedico().devolveUtilizador(pos);
+
+            if (user.getPassword().equals(password)) {
+                // Caso em que está tudo certo e o login é efetuado com sucesso
+
+                PaginaInicialUtilizador janelaPIU = new PaginaInicialUtilizador(sis);
+                janelaPIU.setVisible(true);
+                sis.setUtilizadorLogin(user);
+                this.dispose();
+
+            } else {
+                // Caso em que a palavra passe está errada
+                JOptionPane.showMessageDialog(null, "Dados incorretos", "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+            // Caso em que não existe o utilizador
+            JOptionPane.showMessageDialog(null, "Dados incorretos", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
+            
+        } else {
+            JOptionPane.showMessageDialog(null, "Preencha os campos corretamente", "ERRO", JOptionPane.ERROR_MESSAGE);
+
+        }
+
+    }//GEN-LAST:event_btEntrarActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+         System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -111,11 +186,13 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btEntrar;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    private javax.swing.JPasswordField jPasswordField1;
+    private javax.swing.JTextField txtNome;
+    private javax.swing.JPasswordField txtSenha;
     // End of variables declaration//GEN-END:variables
 }

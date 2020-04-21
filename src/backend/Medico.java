@@ -26,6 +26,12 @@ public class Medico extends ProfissionalSaude {
         this.password = password;
         this.email = email;
     }
+    
+    public Medico (String nome, String password)
+    {
+        this.nome = nome;
+        this.password = password;
+    }
 
     public String getNome() {
         return nome;

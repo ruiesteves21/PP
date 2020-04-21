@@ -22,7 +22,8 @@ public class Sistema implements Serializable
     private ListaMedico listaMedico;
     private ListaEnfermaria listaEnfermaria;
     private ListaEquipamento listaEquipamento;
-    private Admin utilizadorLogin;
+    private Medico utilizadorLogin;
+    private Admin administradorLogin;
     private final String nomeFichDados = "Sistema.dat";
     private int projetoSel;
 
@@ -30,9 +31,9 @@ public class Sistema implements Serializable
     {
         listaMedico = new ListaMedico();
         listaEnfermaria = new ListaEnfermaria();
-        utilizadorLogin = null;
+        administradorLogin = null;
         listaMedico.adicionar(new Admin("admin", "admin", "admin@admin.com"));
-
+        utilizadorLogin = null;
     }
 
     public ListaMedico getListaMedico()
@@ -45,6 +46,14 @@ public class Sistema implements Serializable
         this.listaMedico = listaMedico;
     }
 
+    public Medico getUtilizadorLogin() {
+        return utilizadorLogin;
+    }
+
+    public void setUtilizadorLogin(Medico utilizadorLogin) {
+        this.utilizadorLogin = utilizadorLogin;
+    }
+    
     public ListaEnfermaria getListaEnfermaria()
     {
         return listaEnfermaria;
@@ -63,14 +72,14 @@ public class Sistema implements Serializable
         this.listaEquipamento = listaEquipamento;
     }
     
-    public Admin getUtilizadorLogin()
+    public Admin getAdministradorLogin()
     {
-        return utilizadorLogin;
+        return administradorLogin;
     }
 
-    public void setUtilizadorLogin(Admin utilizadorLogin)
+    public void setAdministradorLogin(Admin administradorLogin)
     {
-        this.utilizadorLogin = utilizadorLogin;
+        this.administradorLogin = administradorLogin;
     }
     
     public int getProjetoSel()
