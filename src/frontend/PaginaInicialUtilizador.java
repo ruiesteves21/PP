@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package frontend;
+import backend.Sistema;
 
 /**
  *
@@ -14,8 +15,11 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     /**
      * Creates new form PaginaInicialUtilizador
      */
-    public PaginaInicialUtilizador() {
+    private Sistema sis;
+    public PaginaInicialUtilizador(Sistema s) {
         initComponents();
+        this.sis = s;
+        sis.lerSistema();
     }
 
     /**

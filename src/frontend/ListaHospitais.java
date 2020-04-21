@@ -19,11 +19,11 @@ public class ListaHospitais extends javax.swing.JFrame {
      */
     DefaultTableModel model; 
     private Sistema sis;
-    public ListaHospitais() {
+    public ListaHospitais(Sistema s) {
         initComponents();
         model = (DefaultTableModel) table.getModel();
         this.sis=s;
-        sis.lerDados();
+        sis.lerSistema();
     }
 
     /**
