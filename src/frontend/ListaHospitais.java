@@ -4,6 +4,9 @@
  * and open the template in the editor.
  */
 package frontend;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import backend.Sistema;
 
 /**
  *
@@ -14,8 +17,13 @@ public class ListaHospitais extends javax.swing.JFrame {
     /**
      * Creates new form Lista_Hospitais
      */
+    DefaultTableModel model; 
+    private Sistema sis;
     public ListaHospitais() {
         initComponents();
+        model = (DefaultTableModel) table.getModel();
+        this.sis=s;
+        sis.lerDados();
     }
 
     /**
@@ -27,37 +35,49 @@ public class ListaHospitais extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
+        btLimpar = new javax.swing.JButton();
+        btEditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        jButton4 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        txtNome = new javax.swing.JTextField();
+        btInserir = new javax.swing.JButton();
+        btExcluir = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
+        txtLocalidade = new javax.swing.JTextField();
+        btFiltrar1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setText("Filtrar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(110, 240, 80, 29);
+        btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btLimpar.setText("Limpar");
+        btLimpar.setEnabled(false);
+        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btLimpar);
+        btLimpar.setBounds(20, 230, 80, 29);
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton2.setText("Editar");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(20, 240, 80, 29);
+        btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btEditar.setText("Editar");
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btEditar);
+        btEditar.setBounds(20, 270, 80, 29);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -73,7 +93,7 @@ public class ListaHospitais extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(250, 50, 300, 300);
@@ -87,31 +107,52 @@ public class ListaHospitais extends javax.swing.JFrame {
         jLabel3.setText("Codigo :");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(20, 60, 60, 20);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(110, 60, 100, 30);
+
+        txtCodigo.setEnabled(false);
+        getContentPane().add(txtCodigo);
+        txtCodigo.setBounds(110, 60, 100, 30);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel4.setText("Nome :");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 100, 60, 20);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(110, 100, 100, 30);
 
-        jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton4.setText("Inserir");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(20, 190, 80, 29);
+        txtNome.setEnabled(false);
+        getContentPane().add(txtNome);
+        txtNome.setBounds(110, 100, 100, 30);
 
-        jButton6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton6.setText("Excluir");
-        getContentPane().add(jButton6);
-        jButton6.setBounds(110, 190, 80, 29);
+        btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btInserir.setText("Inserir");
+        btInserir.setEnabled(false);
+        btInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInserirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btInserir);
+        btInserir.setBounds(20, 190, 80, 29);
+
+        btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btExcluir.setText("Excluir");
+        btExcluir.setEnabled(false);
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btExcluir);
+        btExcluir.setBounds(110, 190, 80, 29);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         getContentPane().add(jLabel7);
         jLabel7.setBounds(480, 10, 24, 30);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel5MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel5);
         jLabel5.setBounds(520, 10, 30, 30);
 
@@ -119,8 +160,15 @@ public class ListaHospitais extends javax.swing.JFrame {
         jLabel6.setText("Localidade :");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(20, 140, 80, 20);
-        getContentPane().add(jTextField3);
-        jTextField3.setBounds(110, 140, 100, 30);
+
+        txtLocalidade.setEnabled(false);
+        getContentPane().add(txtLocalidade);
+        txtLocalidade.setBounds(110, 140, 100, 30);
+
+        btFiltrar1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btFiltrar1.setText("Filtrar");
+        getContentPane().add(btFiltrar1);
+        btFiltrar1.setBounds(110, 270, 80, 29);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_3.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -128,6 +176,49 @@ public class ListaHospitais extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
+        // TODO add your handling code here:
+        model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),txtLocalidade.getText()});
+    }//GEN-LAST:event_btInserirActionPerformed
+
+    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+        // TODO add your handling code here:
+        txtCodigo.setText(null);
+        txtNome.setText(null);
+        txtLocalidade.setText(null);
+    }//GEN-LAST:event_btLimparActionPerformed
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        // TODO add your handling code here:
+         DefaultTableModel model = (DefaultTableModel)table.getModel();
+        int c = table.getSelectedRow();
+        if(c >= 0){
+            model.removeRow(c); //remove a linha selecionada
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Selecione um hospital");
+        }
+    }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        // TODO add your handling code here:
+        btInserir.setEnabled(true);
+        btExcluir.setEnabled(true);
+        btLimpar.setEnabled(true);
+        txtCodigo.setEnabled(true);
+        txtNome.setEnabled(true);
+        txtLocalidade.setEnabled(true);
+        
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+        // TODO add your handling code here:
+        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sis);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_jLabel5MouseClicked
 
     /**
      * @param args the command line arguments
@@ -166,10 +257,11 @@ public class ListaHospitais extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton6;
+    private javax.swing.JButton btEditar;
+    private javax.swing.JButton btExcluir;
+    private javax.swing.JButton btFiltrar1;
+    private javax.swing.JButton btInserir;
+    private javax.swing.JButton btLimpar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -178,9 +270,9 @@ public class ListaHospitais extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
+    private javax.swing.JTable table;
+    private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtLocalidade;
+    private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }
