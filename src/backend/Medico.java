@@ -14,6 +14,7 @@ public class Medico extends ProfissionalSaude {
     private String nome;
     private String password;
     private String email;
+    private String username;
 
     public Medico()
     {
@@ -27,10 +28,11 @@ public class Medico extends ProfissionalSaude {
         this.email = email;
     }
     
-    public Medico (String nome, String password)
+    public Medico (String username, String password, String nome)
     {
-        this.nome = nome;
+        this.username = username;
         this.password = password;
+        this.nome = nome;
     }
 
     public String getNome() {
@@ -43,6 +45,10 @@ public class Medico extends ProfissionalSaude {
 
     public String getEmail() {
         return email;
+    }
+    
+    public String getUsername() {
+        return username;
     }
     
     public String getEspecialidade() {
@@ -66,6 +72,12 @@ public class Medico extends ProfissionalSaude {
         this.especialidade = especialidade;
     }
 
+    public void setUsername(String username) {
+        this.username = username;
+    }
+    
+    
+    
     @Override
     public String toString() {
         return "Medico{" + "especialidade=" + especialidade + ", nome=" + nome + ", password=" + password + ", email=" + email + '}';

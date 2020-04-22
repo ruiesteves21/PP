@@ -5,11 +5,13 @@
  */
 package backend;
 
+import java.io.Serializable;
+
 /**
  *
  * @author rodrm
  */
-public class Hospital {
+public class Hospital implements Serializable  {
     private String nome;
     private String localidade;
     private int idHospital;

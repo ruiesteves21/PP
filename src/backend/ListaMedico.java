@@ -5,120 +5,65 @@
  */
 package backend;
 
+import java.io.Serializable;
 import java.util.ArrayList;
+import java.util.TreeMap;
 
 /**
  *
  * @author rodrm
  */
-public class ListaMedico {
-    
-     private ArrayList<Medico> listaMedico;
-     
-     public ListaMedico()
-    {
-        this.listaMedico = new ArrayList<Medico>();
-    }
+public class ListaMedico implements Serializable {
+    private TreeMap<String, Medico> listaMedico;
 
-    public ArrayList<Medico> getListaMedico()
-    {
-        return listaMedico;
-    }
-
-    public void setListaMedico(ArrayList<Medico> listaMedico)
-    {
-        this.listaMedico = listaMedico;
-    }
-
-    public void adicionar(Medico medico)
-    {
-        listaMedico.add(medico);
+    public class UtilizadorNaoExistenteException extends Exception {
+        public UtilizadorNaoExistenteException() { }
+        public UtilizadorNaoExistenteException(String message) {
+            super(message);
+        }        
     }
     
-    public void remover(Medico medico)
-    {
-        listaMedico.remove(medico);
+    public class UtilizadorDuplicadoException extends Exception {
+        public UtilizadorDuplicadoException() { }
+        public UtilizadorDuplicadoException(String message) {
+            super(message);
+        }        
     }
     
-     public int tamanho()
-    {
+    public ListaMedico() {
+        listaMedico = new TreeMap<>(String.CASE_INSENSITIVE_ORDER);        
+    }
+    
+    public void adicionar(Medico medico) throws UtilizadorDuplicadoException {
+        if (medico == null) {
+            throw new NullPointerException("O parâmetro 'utilizador' não pode ser um valor nulo");
+        }        
+        
+        if (!listaMedico.containsKey(medico.getUsername())) {
+            listaMedico.put(medico.getUsername(), medico);
+        }else{
+            throw new UtilizadorDuplicadoException(String.format("O utilizador '%s' já existe na coleção", medico.getUsername()));
+        } 
+    }        
+    
+    public boolean existe(String username) {
+        return listaMedico.containsKey(username);
+    }
+    
+    public int size() {
         return listaMedico.size();
     }
-     
-    public boolean existe(Medico medico)
-    {
-        return listaMedico.contains(medico);
-    }
-
-    /**
-     * Este metodo serve para saber a posicao de um utilizador na lista
-     *
-     * @param medico
-     * @return index da listaU. Se dado um utilizador que não exite devolve -1
-     */
-    public int posicao(Medico medico)
-    {
-        if (medico == null || !this.existe(medico)) {
-            return -1; // Caso que o utlizador não é validos
+    
+    public Medico getMedico(String username) throws UtilizadorNaoExistenteException {
+        if (listaMedico.containsKey(username)){
+            return listaMedico.get(username);
+        }else{
+            throw new UtilizadorNaoExistenteException("O utilizador '%s' já existe na lista");
         }
-        return listaMedico.indexOf(medico);
-    }
-
-    /**
-     * Devolve o utilizador com um dado index
-     *
-     * @param i Index do utilizador na listaU
-     * @return Utilizador do index i
-     */
-    public Medico devolveUtilizador(int i)
-    {
-        if (i > listaMedico.size() || i < 0) {
-            return null;
-        }
-        return listaMedico.get(i);
-    }
-
-    public Medico devolveUtilizador(String nome)
-    {
-        if (nome == null || nome.equals("")) {
-            return null;
-        }
-
-        for (Medico medico : listaMedico) {
-            if (medico.getNome().equals(nome)) {
-                return medico;
-            }
-        }
-        // Caso em que não há utilizador com o mesmo nome
-        return null;
-    }
-
-    /**
-     * Este metodo server para verficar se existe um utilizador com o mesmo nome
-     *
-     * @param s
-     * @return true se exitir
-     */
-    public boolean verficarMesmoNome(String s)
-    {
-        for (Medico medico : listaMedico) {
-            if (medico.getNome().equals(s)) {
-                return true;
-            }
-        }
-        return false;
-    }
-
-    @Override
-    public String toString()
-    {
-        String s = "";
-
-        for (Medico medico : listaMedico) {
-            s += medico.toString() + "\n";
-        }
-
-        return s;
     }
     
+    public ArrayList<Medico> todos() {
+        return new ArrayList<>(listaMedico.values());
+    }
 }
+   

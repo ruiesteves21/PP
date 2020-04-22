@@ -5,11 +5,13 @@
  */
 package backend;
 
+import java.io.Serializable;
+
 /**
  *
  * @author rodrm
  */
-public class Enfermaria extends ProfissionalSaude {
+public class Enfermaria extends ProfissionalSaude implements Serializable {
     private int idEnfermaria;
     private String tipo; //normal, UCI
     private int nCamas;

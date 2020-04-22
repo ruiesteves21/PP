@@ -5,13 +5,10 @@
  */
 package backend;
 
-import frontend.Arranque;
 import java.io.Serializable;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
-import java.io.ObjectInputStream;
-import java.io.ObjectOutputStream;
-import javax.swing.JOptionPane;
+import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  *
@@ -19,39 +16,34 @@ import javax.swing.JOptionPane;
  */
 public class Sistema implements Serializable
 {
-    private ListaMedico listaMedico;
+    private final ListaMedico listaMedico;
     private ListaEnfermaria listaEnfermaria;
     private ListaEquipamento listaEquipamento;
-    private Medico utilizadorLogin;
-    private Admin administradorLogin;
-    private final String nomeFichDados = "Sistema.dat";
-    private int projetoSel;
+    private Medico utilizadorLigado;
+    private final List<RegistoAcesso> listaEntradas;
 
     public Sistema()
     {
         listaMedico = new ListaMedico();
         listaEnfermaria = new ListaEnfermaria();
-        administradorLogin = null;
-        listaMedico.adicionar(new Admin("admin", "admin", "admin@admin.com"));
-        utilizadorLogin = null;
+        listaEntradas = new ArrayList<>();
     }
 
     public ListaMedico getListaMedico()
     {
         return listaMedico;
     }
-
-    public void setListaMedico(ListaMedico listaMedico)
-    {
-        this.listaMedico = listaMedico;
+    
+     public List<RegistoAcesso> getListaEntradas() {
+        return listaEntradas;
     }
 
-    public Medico getUtilizadorLogin() {
-        return utilizadorLogin;
+    public Medico getUtilizadorLigado() {
+        return utilizadorLigado;
     }
 
-    public void setUtilizadorLogin(Medico utilizadorLogin) {
-        this.utilizadorLogin = utilizadorLogin;
+    public void setUtilizadorLigado(Medico utilizadorLigado) {
+        this.utilizadorLigado = utilizadorLigado;
     }
     
     public ListaEnfermaria getListaEnfermaria()
@@ -72,61 +64,28 @@ public class Sistema implements Serializable
         this.listaEquipamento = listaEquipamento;
     }
     
-    public Admin getAdministradorLogin()
-    {
-        return administradorLogin;
-    }
-
-    public void setAdministradorLogin(Admin administradorLogin)
-    {
-        this.administradorLogin = administradorLogin;
-    }
-    
-    public int getProjetoSel()
-    {
-        return projetoSel;
-    }
-
-    public void setProjetoSel(int projetoSel)
-    {
-        this.projetoSel = projetoSel;
-    }
-
-    public void gravaSistema()
-    {
-        if (!Arranque.getGravou()) {
-
-            try {
-                
-                ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream(this.nomeFichDados));
-                oos.writeObject(this);
-                oos.flush();
-                oos.close();
-                Arranque.setGravou(true);
-                JOptionPane.showMessageDialog(null, "Dados gravados com sucesso", "Sucesso", JOptionPane.PLAIN_MESSAGE);
-            } catch (Exception e) {
-                JOptionPane.showMessageDialog(null, "Dados não guardados\n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE);
-            }
-        }
-
+    public boolean autenticarUtilizador(String username, String password) {        
+        if (listaMedico.existe(username)) {
+            try{
+                Medico u = listaMedico.getMedico(username);                
+                if (u.getPassword().equals(password)){
+                    utilizadorLigado = u;
+                    listaEntradas.add(new RegistoAcesso(u, LocalDateTime.now()));
+                    return true;
+                }                
+            }catch (Exception e) {}                        
+        }        
+        return false;        
     }
     
-    public Sistema lerSistema(){
-        Sistema novoSistema = new Sistema();
-        ObjectInputStream ooin = null;
-        try{
-            ooin = new ObjectInputStream(new FileInputStream(this.nomeFichDados));
-            novoSistema = (Sistema) ooin.readObject();
-            ooin.close();
-            
-        } catch(Exception e){
-            JOptionPane.showMessageDialog(null, "ATENÇÂO:\n " + e.getMessage(), "ERRO", JOptionPane.ERROR_MESSAGE);
-            
-            if ( JOptionPane.showConfirmDialog(null, "Erro na leitura dos dados\nFicheiro: " + this.nomeFichDados + "\n" + e.getMessage(), "Erro", JOptionPane.ERROR_MESSAGE, JOptionPane.OK_CANCEL_OPTION) == 1){
-                System.exit(0);
-            }
-        }
-        
-        return novoSistema;
+     public void inicializar() throws ListaMedico.UtilizadorDuplicadoException {
+        listaMedico.adicionar(new Administrador("admin", "admin", "Administrador"));
+        listaMedico.adicionar(new Medico("user1", "1234", "Utilizador 1"));
+        listaMedico.adicionar(new Medico("user2", "1234", "Utilizador 2"));        
     }
+    
+    public void terminar() {
+        System.exit(0);
+    }
+    
 }

@@ -123,7 +123,7 @@ public class LoginForm extends javax.swing.JFrame {
                 PaginaInicialUtilizador janelaPIU = new PaginaInicialUtilizador(sis);
                 janelaPIU.setLocationRelativeTo(null); //centrar
                 janelaPIU.setVisible(true);
-                sis.setUtilizadorLogin(user);
+                sis.setUtilizadorLigado(user);
                 this.dispose();
 
                 } else {

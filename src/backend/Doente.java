@@ -4,13 +4,16 @@
  * and open the template in the editor.
  */
 package backend;
+import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Calendar;
 /**
  *
  * @author Rui Esteves
  */
-public class Doente {
+
+public class Doente implements Serializable
+{
     private int idDoente;
     private int nCama;
     private String nome;

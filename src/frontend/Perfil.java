@@ -113,9 +113,9 @@ public class Perfil extends javax.swing.JFrame {
        
      private void carregarUtilizador()
     {
-        jTextField2.setText(sis.getUtilizadorLogin().getNome());
-        jTextField1.setText(sis.getUtilizadorLogin().getEmail());
-        jTextField3.setText(sis.getUtilizadorLogin().getEspecialidade());      
+        jTextField2.setText(sis.getUtilizadorLigado().getNome());
+        jTextField1.setText(sis.getUtilizadorLigado().getEmail());
+        jTextField3.setText(sis.getUtilizadorLigado().getEspecialidade());      
     }
 
     /**

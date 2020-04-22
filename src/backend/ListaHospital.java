@@ -5,13 +5,14 @@
  */
 package backend;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
 /**
  *
  * @author rodrm
  */
-public class ListaHospital {
+public class ListaHospital implements Serializable {
      private ArrayList<Hospital> listaHospital;
      
      public ListaHospital()

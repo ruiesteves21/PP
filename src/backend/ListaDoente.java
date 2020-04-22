@@ -5,6 +5,7 @@
  */
 package backend;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Calendar;
 
@@ -13,7 +14,7 @@ import java.util.Calendar;
  *
  * @author Rui Esteves
  */
-public class ListaDoente implements java.io.Serializable  {
+public class ListaDoente implements Serializable  {
     
     private ArrayList<Doente> listaDoente;
     

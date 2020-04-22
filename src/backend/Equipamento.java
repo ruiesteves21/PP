@@ -5,13 +5,14 @@
  */
 package backend;
 
+import java.io.Serializable;
 import java.util.Calendar;
 
 /**
  *
  * @author Rui Esteves
  */
-public class Equipamento {
+public class Equipamento implements Serializable {
     
     private int idEquip;
     private String indicacao; //livre, ocupado
