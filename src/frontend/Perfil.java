@@ -5,7 +5,6 @@
  */
 package frontend;
 import backend.Sistema;
-import javax.swing.JOptionPane;
 
 /**
  *
@@ -17,7 +16,9 @@ public class Perfil extends javax.swing.JFrame {
      * Creates new form Perfil_novo
      */
     private Sistema sis;
+    
     public Perfil(Sistema s) {
+        
         initComponents();
         this.setTitle("Editar Perfil");
         this.sis=s;

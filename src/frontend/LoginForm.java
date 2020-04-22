@@ -102,81 +102,44 @@ public class LoginForm extends javax.swing.JFrame {
          String nome = txtNome.getText();
          String password = new String(txtSenha.getPassword());
          
-         if(nome.equals("admin") && password.equals("admin"))
-         {   
-            if (!(nome.length() <= 0 || password.length() <= 0)) {
-                Medico user = new Medico(nome, password);
+         if (!(nome.length() <= 0 || password.length() <= 0)) {
+              Medico user = new Medico(nome, password);
 
-           // Verificar se o nome existe
-                if (sis.getListaMedico().existe(user)) {
-                    // Neste caso existe um utilizador com o mesmo nome
-                    // Confirmar se a palavra passe é igual
-                    int pos = sis.getListaMedico().posicao(user); // Se isto devolver -1 então
-                    // não existe um utilizador com este nome
+              // Verificar se o nome existe
+              
+            if (sis.getListaMedico().existe(user)) {
+                  
+             // Neste caso existe um utilizador com o mesmo nome
+             // Confirmar se a palavra passe é igual
+              
+            int pos = sis.getListaMedico().posicao(user); // Se isto devolver -1 então
+            // não existe um utilizador com este nome
+            
+            user = sis.getListaMedico().devolveUtilizador(pos);
 
-                    user = sis.getListaMedico().devolveUtilizador(pos);
+                if (user.getPassword().equals(password)) {
+                // Caso em que está tudo certo e o login é efetuado com sucesso
 
-                    if (user.getPassword().equals(password)) {
-                        // Caso em que está tudo certo e o login é efetuado com sucesso
-
-                        PaginaAdministrador janelaPA = new PaginaAdministrador(sis);
-                        janelaPA.setLocationRelativeTo(null); //centrar
-                        janelaPA.setVisible(true);
-                        sis.setUtilizadorLogin(user);
-                        this.dispose();
-
-                    } else {
-                   // Caso em que a palavra passe está errada
-                   JOptionPane.showMessageDialog(null, "Dados incorretos", "ERRO", JOptionPane.ERROR_MESSAGE);
-                    }
-                } else {
-               // Caso em que não existe o nome
-               JOptionPane.showMessageDialog(null, "Dados incorretos", "ERRO", JOptionPane.ERROR_MESSAGE);
-           }
-
-           } else {
-               JOptionPane.showMessageDialog(null, "Preencha os campos corretamente", "ERRO", JOptionPane.ERROR_MESSAGE);
-           }
-       }
-            else 
-            {
-                 if (!(nome.length() <= 0 || password.length() <= 0)) {
-                    Medico user = new Medico(nome, password);
-
-                     // Verificar se o nome existe
-                     if (sis.getListaMedico().existe(user)) {
-                        // Neste caso existe um utilizador com o mesmo nome
-                        // Confirmar se a palavra passe é igual
-                        int pos = sis.getListaMedico().posicao(user); // Se isto devolver -1 então
-                        // não existe um utilizador com este nome
-
-                        user = sis.getListaMedico().devolveUtilizador(pos);
-
-                            if (user.getPassword().equals(password)) {
-                                // Caso em que está tudo certo e o login é efetuado com sucesso
-
-                                PaginaInicialUtilizador janelaPIU = new PaginaInicialUtilizador(sis);
-                                janelaPIU.setLocationRelativeTo(null); //centrar
-                                janelaPIU.setVisible(true);
-                                sis.setUtilizadorLogin(user);
-                                this.dispose();
-
-                            } else {
-                            // Caso em que a palavra passe está errada
-                            JOptionPane.showMessageDialog(null, "Dados incorretos", "ERRO", JOptionPane.ERROR_MESSAGE);
-                            }
-                    } else {
-                        // Caso em que não existe o nome
-                        JOptionPane.showMessageDialog(null, "Dados incorretos", "ERRO", JOptionPane.ERROR_MESSAGE);
-                    }
+                PaginaInicialUtilizador janelaPIU = new PaginaInicialUtilizador(sis);
+                janelaPIU.setLocationRelativeTo(null); //centrar
+                janelaPIU.setVisible(true);
+                sis.setUtilizadorLogin(user);
+                this.dispose();
 
                 } else {
-                    JOptionPane.showMessageDialog(null, "Preencha os campos corretamente", "ERRO", JOptionPane.ERROR_MESSAGE);
-
+                // Caso em que a palavra passe está errada
+                JOptionPane.showMessageDialog(null, "Dados incorretos", "ERRO", JOptionPane.ERROR_MESSAGE);
                 }
-       }  
+            } else {
+            // Caso em que não existe o nome
+            JOptionPane.showMessageDialog(null, "Dados incorretos", "ERRO", JOptionPane.ERROR_MESSAGE);
+            }
+        } else {
+        JOptionPane.showMessageDialog(null, "Preencha os campos corretamente", "ERRO", JOptionPane.ERROR_MESSAGE);
+        }
     }//GEN-LAST:event_btEntrarActionPerformed
 
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
          System.exit(0);
