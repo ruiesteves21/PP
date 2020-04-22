@@ -4,24 +4,18 @@
  * and open the template in the editor.
  */
 package frontend;
-import backend.Sistema;
-import javax.swing.JOptionPane;
 
 /**
  *
- * @author ssoar , Rui Esteves;
+ * @author ssoar
  */
 public class Perfil extends javax.swing.JFrame {
 
     /**
      * Creates new form Perfil_novo
      */
-    private Sistema sis;
-    public Perfil(Sistema s) {
+    public Perfil() {
         initComponents();
-        this.setTitle("Editar Perfil");
-        this.sis=s;
-        carregarUtilizador();
     }
 
     /**
@@ -99,23 +93,9 @@ public class Perfil extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabelActionPerformed(java.awt.event.ActionEvent evt){
-         this.dispose();
-    }
-            
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-            String nome = jTextField2.getText();
-            String email = jTextField1.getText();
-            String especialidade = jTextField3.getText();
     }//GEN-LAST:event_jButton1ActionPerformed
-       
-     private void carregarUtilizador()
-    {
-        jTextField2.setText(sis.getUtilizadorLogin().getNome());
-        jTextField1.setText(sis.getUtilizadorLogin().getEmail());
-        jTextField3.setText(sis.getUtilizadorLogin().getEspecialidade());      
-    }
 
     /**
      * @param args the command line arguments
@@ -167,4 +147,3 @@ public class Perfil extends javax.swing.JFrame {
     private javax.swing.JTextField jTextField3;
     // End of variables declaration//GEN-END:variables
 }
-
