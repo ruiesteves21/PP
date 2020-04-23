@@ -5,17 +5,31 @@
  */
 package frontend;
 
+import javax.swing.JOptionPane;
+import backend.Serializacao;
+import backend.Sistema;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author pedro
  */
 public class ListaDoentes extends javax.swing.JFrame {
-
+    
+    DefaultTableModel model; 
+    private Sistema sistema;
+    private Serializacao bd;
+    
     /**
      * Creates new form ListaDoentes
      */
-    public ListaDoentes() {
+    
+    public ListaDoentes(Sistema sistema, Serializacao bd) {
         initComponents();
+
+        model = (DefaultTableModel) tableDoentes.getModel();
+        this.sistema=sistema;
+        this.bd = bd;
     }
 
     /**
@@ -29,7 +43,7 @@ public class ListaDoentes extends javax.swing.JFrame {
 
         jLabel3 = new javax.swing.JLabel();
         jScrollPane3 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        tableDoentes = new javax.swing.JTable();
         btEditar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -53,6 +67,9 @@ public class ListaDoentes extends javax.swing.JFrame {
         ComboGrav = new javax.swing.JComboBox<>();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
+        DataNasc = new com.toedter.calendar.JDateChooser();
+        DataEntrada = new com.toedter.calendar.JDateChooser();
+        DataSaida = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -63,7 +80,7 @@ public class ListaDoentes extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(290, 10, 150, 20);
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tableDoentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -79,7 +96,7 @@ public class ListaDoentes extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane3.setViewportView(table);
+        jScrollPane3.setViewportView(tableDoentes);
 
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(10, 50, 670, 160);
@@ -169,12 +186,17 @@ public class ListaDoentes extends javax.swing.JFrame {
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
         btInserir.setEnabled(false);
+        btInserir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btInserirActionPerformed(evt);
+            }
+        });
         getContentPane().add(btInserir);
         btInserir.setBounds(580, 230, 100, 30);
 
         txtEnfermaria.setEnabled(false);
         getContentPane().add(txtEnfermaria);
-        txtEnfermaria.setBounds(380, 230, 110, 30);
+        txtEnfermaria.setBounds(390, 230, 110, 30);
 
         txtMedico.setEnabled(false);
         getContentPane().add(txtMedico);
@@ -210,33 +232,77 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboGrav);
-        ComboGrav.setBounds(380, 280, 110, 30);
+        ComboGrav.setBounds(390, 280, 110, 30);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         getContentPane().add(jLabel7);
         jLabel7.setBounds(600, 10, 24, 30);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel6);
         jLabel6.setBounds(640, 10, 30, 30);
+        getContentPane().add(DataNasc);
+        DataNasc.setBounds(390, 350, 110, 30);
+        getContentPane().add(DataEntrada);
+        DataEntrada.setBounds(390, 400, 110, 30);
+        getContentPane().add(DataSaida);
+        DataSaida.setBounds(390, 460, 110, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaDoentesFundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 850, 520);
 
-        pack();
+        setBounds(0, 0, 702, 541);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
+        btInserir.setEnabled(true);
+        btExcluir.setEnabled(true);
+        btLimpar.setEnabled(true);
+        txtCodigo.setEnabled(true);
+        txtNome.setEnabled(true);
+        DataNasc.setEnabled(true);
+        txtLocalidade.setEnabled(true);
+        txtCama.setEnabled(true);
+        txtMedico.setEnabled(true);
+        txtEnfermaria.setEnabled(true);
+        ComboGrav.setEnabled(true);
+        DataEntrada.setEnabled(true);
+        DataSaida.setEnabled(true);
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here:
+        txtCodigo.setText(null);
+        txtNome.setText(null);
+        DataNasc.setDate(null);
+        txtLocalidade.setText(null);
+        txtCama.setText(null);
+        txtMedico.setText(null);
+        txtEnfermaria.setText(null);
+        ComboGrav.setSelectedItem(null);
+        DataEntrada.setDate(null);
+        DataSaida.setDate(null);
+        
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
+         DefaultTableModel model = (DefaultTableModel)tableDoentes.getModel();
+        int c = tableDoentes.getSelectedRow();
+        if(c >= 0){
+            model.removeRow(c); //remove a linha selecionada
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Selecione um doente");
+        }
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void txtCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCamaActionPerformed
@@ -246,6 +312,18 @@ public class ListaDoentes extends javax.swing.JFrame {
     private void ComboGravActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboGravActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_ComboGravActionPerformed
+
+    private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
+        // TODO add your handling code here:
+        model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),DataNasc.getDate(), txtLocalidade.getText(), txtCama.getText(), txtMedico.getText(), txtEnfermaria.getText(), ComboGrav.getSelectedItem(), DataEntrada.getDate(), DataSaida.getDate()});
+    }//GEN-LAST:event_btInserirActionPerformed
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_jLabel6MouseClicked
 
     /**
      * @param args the command line arguments
@@ -284,6 +362,9 @@ public class ListaDoentes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboGrav;
+    private com.toedter.calendar.JDateChooser DataEntrada;
+    private com.toedter.calendar.JDateChooser DataNasc;
+    private com.toedter.calendar.JDateChooser DataSaida;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btInserir;
@@ -303,7 +384,7 @@ public class ListaDoentes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable table;
+    private javax.swing.JTable tableDoentes;
     private javax.swing.JTextField txtCama;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtEnfermaria;
