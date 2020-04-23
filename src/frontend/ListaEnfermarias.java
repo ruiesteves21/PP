@@ -21,12 +21,12 @@ public class ListaEnfermarias extends javax.swing.JFrame {
      /**
      * Creates new form ListaEnfermarias
      */
-    public ListaEnfermarias() {
+    public ListaEnfermarias(Sistema sistema,Serializacao bd) {
         initComponents();
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
-        Serializacao bd;
+       
     }
 
     /**
@@ -114,22 +114,47 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         jLabel14.setBounds(20, 240, 90, 20);
 
         txtCodigo.setEnabled(false);
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtCodigo);
         txtCodigo.setBounds(110, 70, 120, 30);
 
         txtNome.setEnabled(false);
+        txtNome.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtNome);
         txtNome.setBounds(110, 110, 120, 30);
 
         txtTipo.setEnabled(false);
+        txtTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtTipoActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtTipo);
         txtTipo.setBounds(110, 150, 120, 30);
 
         txtCamas.setEnabled(false);
+        txtCamas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCamasActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtCamas);
         txtCamas.setBounds(110, 190, 120, 30);
 
         txtDoentes.setEnabled(false);
+        txtDoentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtDoentesActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtDoentes);
         txtDoentes.setBounds(110, 230, 120, 30);
 
@@ -230,7 +255,35 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         txtCamas.setText(null);
         txtDoentes.setText(null);
     }//GEN-LAST:event_btLimparActionPerformed
+
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
+
+    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeActionPerformed
+
+    private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtTipoActionPerformed
+
+    private void txtCamasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCamasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCamasActionPerformed
+
+    private void txtDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDoentesActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtDoentesActionPerformed
     
+     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {                                      
+        // TODO add your handling code here:
+        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    } 
+     
+
     /**
      * @param args the command line arguments
      */
