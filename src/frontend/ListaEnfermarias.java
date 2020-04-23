@@ -4,20 +4,29 @@
  * and open the template in the editor.
  */
 package frontend;
-import javax.swing.table.DefaultTableModel;
 import javax.swing.JOptionPane;
-
+import javax.swing.table.DefaultTableModel;
+import backend.Sistema;
+import backend.Serializacao;
 /**
  *
- * @author pedro
+ * @author pedro,ruiesteves
  */
 public class ListaEnfermarias extends javax.swing.JFrame {
-     DefaultTableModel model; 
-    /**
+    DefaultTableModel model; 
+    private Sistema sistema;
+    private Serializacao bd;
+    
+     
+     /**
      * Creates new form ListaEnfermarias
      */
     public ListaEnfermarias() {
         initComponents();
+        model = (DefaultTableModel) table.getModel();
+        this.sistema=sistema;
+        this.bd = bd;
+        Serializacao bd;
     }
 
     /**
@@ -203,7 +212,14 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
-        
+        btInserir.setEnabled(true);
+        btExcluir.setEnabled(true);
+        btLimpar.setEnabled(true);
+        txtCodigo.setEnabled(true);
+        txtNome.setEnabled(true);
+        txtTipo.setEnabled(true);
+        txtCamas.setEnabled(true);
+        txtDoentes.setEnabled(true);
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
@@ -214,7 +230,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         txtCamas.setText(null);
         txtDoentes.setText(null);
     }//GEN-LAST:event_btLimparActionPerformed
-
+    
     /**
      * @param args the command line arguments
      */
