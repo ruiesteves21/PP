@@ -46,6 +46,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
         jButton7 = new javax.swing.JButton();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,6 +95,10 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         jButton7.setText("Lista de Profissionais");
         getContentPane().add(jButton7);
         jButton7.setBounds(10, 210, 180, 30);
+
+        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(100, 10, 30, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_1.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -153,6 +158,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }
