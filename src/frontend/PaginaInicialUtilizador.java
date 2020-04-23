@@ -4,7 +4,12 @@
  * and open the template in the editor.
  */
 package frontend;
+
 import backend.Sistema;
+import javax.swing.JOptionPane;
+import backend.Serializacao;
+import backend.Administrador;
+import backend.RegistoAcesso;
 
 /**
  *
@@ -15,11 +20,14 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     /**
      * Creates new form PaginaInicialUtilizador
      */
-    private Sistema sis;
-    public PaginaInicialUtilizador(Sistema s) {
+    private Sistema sistema;
+    private Serializacao bd;
+    
+    public PaginaInicialUtilizador(Sistema sistema, Serializacao bd) {
         initComponents();
-        this.sis = s;
-        sis.lerSistema();
+        
+        this.sistema = sistema;
+        this.bd = bd;
     }
 
     /**

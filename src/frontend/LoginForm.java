@@ -43,7 +43,7 @@ public class LoginForm extends javax.swing.JFrame {
         jPasswordField1 = new javax.swing.JPasswordField();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        txtNome = new javax.swing.JTextField();
+        txtUsername = new javax.swing.JTextField();
         btEntrar = new javax.swing.JButton();
         txtSenha = new javax.swing.JPasswordField();
         jButton1 = new javax.swing.JButton();
@@ -55,16 +55,16 @@ public class LoginForm extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel1.setText("Nome:");
+        jLabel1.setText("Username:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(60, 180, 50, 20);
+        jLabel1.setBounds(50, 180, 70, 20);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("Senha:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(60, 230, 50, 20);
-        getContentPane().add(txtNome);
-        txtNome.setBounds(140, 180, 120, 30);
+        jLabel2.setBounds(50, 230, 50, 20);
+        getContentPane().add(txtUsername);
+        txtUsername.setBounds(140, 180, 120, 30);
 
         btEntrar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEntrar.setText("Entrar");
@@ -99,44 +99,7 @@ public class LoginForm extends javax.swing.JFrame {
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         // TODO add your handling code here:
         
-         String nome = txtNome.getText();
-         String password = new String(txtSenha.getPassword());
          
-         if (!(nome.length() <= 0 || password.length() <= 0)) {
-              Medico user = new Medico(nome, password);
-
-              // Verificar se o nome existe
-              
-            if (sis.getListaMedico().existe(user)) {
-                  
-             // Neste caso existe um utilizador com o mesmo nome
-             // Confirmar se a palavra passe é igual
-              
-            int pos = sis.getListaMedico().posicao(user); // Se isto devolver -1 então
-            // não existe um utilizador com este nome
-            
-            user = sis.getListaMedico().devolveUtilizador(pos);
-
-                if (user.getPassword().equals(password)) {
-                // Caso em que está tudo certo e o login é efetuado com sucesso
-
-                PaginaInicialUtilizador janelaPIU = new PaginaInicialUtilizador(sis);
-                janelaPIU.setLocationRelativeTo(null); //centrar
-                janelaPIU.setVisible(true);
-                sis.setUtilizadorLigado(user);
-                this.dispose();
-
-                } else {
-                // Caso em que a palavra passe está errada
-                JOptionPane.showMessageDialog(null, "Dados incorretos", "ERRO", JOptionPane.ERROR_MESSAGE);
-                }
-            } else {
-            // Caso em que não existe o nome
-            JOptionPane.showMessageDialog(null, "Dados incorretos", "ERRO", JOptionPane.ERROR_MESSAGE);
-            }
-        } else {
-        JOptionPane.showMessageDialog(null, "Preencha os campos corretamente", "ERRO", JOptionPane.ERROR_MESSAGE);
-        }
     }//GEN-LAST:event_btEntrarActionPerformed
 
     
@@ -194,7 +157,7 @@ public class LoginForm extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField txtNome;
     private javax.swing.JPasswordField txtSenha;
+    private javax.swing.JTextField txtUsername;
     // End of variables declaration//GEN-END:variables
 }

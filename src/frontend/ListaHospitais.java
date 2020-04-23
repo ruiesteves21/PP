@@ -18,12 +18,15 @@ public class ListaHospitais extends javax.swing.JFrame {
      * Creates new form Lista_Hospitais
      */
     DefaultTableModel model; 
-    private Sistema sis;
-    public ListaHospitais(Sistema s) {
+    private Sistema sistema;
+    
+    
+    public ListaHospitais(Sistema sistema) {
         initComponents();
+        
         model = (DefaultTableModel) table.getModel();
-        this.sis=s;
-        sis.lerSistema();
+        this.sistema=sistema;
+        
     }
 
     /**
@@ -215,7 +218,7 @@ public class ListaHospitais extends javax.swing.JFrame {
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sis);
+        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked

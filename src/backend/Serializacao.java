@@ -26,7 +26,7 @@ public class Serializacao {
     }          
     
     //Carrega/lê o sistema de ficheiro
-    public Sistema carregar() {
+    public Sistema lerSistema() {
         try (FileInputStream fileIn = new FileInputStream(ficheiro); 
         ObjectInputStream in = new ObjectInputStream(fileIn)) {
             Sistema sistema = (Sistema) in.readObject();
@@ -39,7 +39,7 @@ public class Serializacao {
     }
     
     //Guarda o sistema em ficheiro
-    public void guardar(Sistema sistema) {
+    public void gravaSistema(Sistema sistema) {
         try (FileOutputStream fileOut = new FileOutputStream(ficheiro); 
              ObjectOutputStream out = new ObjectOutputStream(fileOut)) {
             try {
