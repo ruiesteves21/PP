@@ -22,8 +22,6 @@ public class ListaHospitais extends javax.swing.JFrame {
     private Sistema sistema;
     private Serializacao bd;
     
-    
-    
     public ListaHospitais(Sistema sistema, Serializacao bd) {
         initComponents();
         

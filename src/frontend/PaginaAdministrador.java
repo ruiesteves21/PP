@@ -20,13 +20,13 @@ import backend.Medico;
 public class PaginaAdministrador extends javax.swing.JFrame {
     
     private Sistema sistema;
-    private AbstractTableModel modeloTabela;
+    private AbstractTableModel modeloTabelaAdmin;
     
     public PaginaAdministrador (Sistema sistema) {
         initComponents();
         this.sistema = sistema;
-        this.modeloTabela = criarModeloTabela();
-        tabelUtilizadores.setModel(modeloTabela);
+        this.modeloTabelaAdmin = criarModeloTabela();
+        tabelUtilizadores.setModel(modeloTabelaAdmin);
     }
     
     private AbstractTableModel criarModeloTabela() {   
@@ -80,7 +80,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         //Se nenhum registo selecionado, nao é possivel editar
         if (rowIndex == -1) return;
         
-        String username = (String) modeloTabela.getValueAt(rowIndex, 0);
+        String username = (String) modeloTabelaAdmin.getValueAt(rowIndex, 0);
         
         try {
             Medico medico = sistema.getListaMedico().getMedico(username);
@@ -94,7 +94,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     
     public void atualizar() {    
         //Informa o modelo que foram efetuadas alteracoes, o modelo informa a tabela e os dados são redesenhados
-        modeloTabela.fireTableDataChanged();
+        modeloTabelaAdmin.fireTableDataChanged();
     }        
 
     /**
@@ -108,13 +108,6 @@ public class PaginaAdministrador extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelUtilizadores = new javax.swing.JTable();
-        jPanel1 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jTextField2 = new javax.swing.JTextField();
-        btNome = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        btEditarSenha = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         btAdicionar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
@@ -141,39 +134,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabelUtilizadores);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 10, 290, 280);
-
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Adicionar/Alterar"));
-        jPanel1.setLayout(null);
-
-        jLabel1.setText("Nome :");
-        jPanel1.add(jLabel1);
-        jLabel1.setBounds(10, 30, 40, 14);
-        jPanel1.add(jTextField2);
-        jTextField2.setBounds(70, 30, 100, 20);
-
-        btNome.setText("Inserir");
-        jPanel1.add(btNome);
-        btNome.setBounds(190, 30, 70, 23);
-
-        jLabel2.setText("Senha :");
-        jPanel1.add(jLabel2);
-        jLabel2.setBounds(10, 80, 40, 14);
-
-        jTextField3.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jTextField3ActionPerformed(evt);
-            }
-        });
-        jPanel1.add(jTextField3);
-        jTextField3.setBounds(70, 80, 100, 20);
-
-        btEditarSenha.setText("Editar");
-        jPanel1.add(btEditarSenha);
-        btEditarSenha.setBounds(190, 80, 70, 23);
-
-        getContentPane().add(jPanel1);
-        jPanel1.setBounds(310, 40, 270, 120);
+        jScrollPane1.setBounds(10, 40, 570, 150);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
         jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -191,7 +152,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btAdicionar);
-        btAdicionar.setBounds(320, 220, 90, 30);
+        btAdicionar.setBounds(80, 230, 90, 30);
 
         btEditar.setText("Editar");
         btEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -200,14 +161,10 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(470, 220, 90, 30);
+        btEditar.setBounds(440, 230, 90, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-    private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jTextField3ActionPerformed
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
         // TODO add your handling code here:
@@ -262,15 +219,8 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionar;
     private javax.swing.JButton btEditar;
-    private javax.swing.JButton btEditarSenha;
-    private javax.swing.JButton btNome;
-    private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField2;
-    private javax.swing.JTextField jTextField3;
     private javax.swing.JTable tabelUtilizadores;
     // End of variables declaration//GEN-END:variables
 }

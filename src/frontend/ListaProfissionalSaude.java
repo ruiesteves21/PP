@@ -5,17 +5,27 @@
  */
 package frontend;
 
+import backend.Serializacao;
+import backend.Sistema;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author pedro
  */
 public class ListaProfissionalSaude extends javax.swing.JFrame {
-
-    /**
-     * Creates new form ListaProfissionais
-     */
-    public ListaProfissionalSaude() {
+    
+    DefaultTableModel model; 
+    private Sistema sistema;
+    private Serializacao bd;
+    
+    public ListaProfissionalSaude(Sistema sistema, Serializacao bd) {
         initComponents();
+        
+        model = (DefaultTableModel) table.getModel();
+        this.sistema=sistema;
+        this.bd = bd;
+ 
     }
 
     /**
@@ -200,6 +210,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
+        
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void ComboBoxFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxFuncaoActionPerformed
