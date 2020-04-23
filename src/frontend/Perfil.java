@@ -18,11 +18,11 @@ public class Perfil extends javax.swing.JFrame {
     //Referencia ao Sistema, a lista de utilizadores esta no sistema
     private Sistema sistema;    
     //Referencia a ListagemUtilizadores. Se for indicado, depois de alterarmos um registo podemos solicitar que a tabela seja redesenhada
-    private AdicionarUtilizadores listagem;
+    private PaginaAdministrador listagem;
     //Referencia ao Utilizador que queremos visualizar/editar
     private Medico utilizador;   
     
-    public Perfil(Sistema sistema, Medico utilizador, AdicionarUtilizadores listagem) {
+    public Perfil(Sistema sistema, Medico utilizador, PaginaAdministrador listagem) {
         
         initComponents();          
         
@@ -62,6 +62,7 @@ public class Perfil extends javax.swing.JFrame {
         //Se utililizador == null consideramos que é um novo registo
         return utilizador == null;
     }    
+    
     private void guardar() {
          if (registoNovo() && txtUsername.getText().isEmpty()) {
             JOptionPane.showMessageDialog(this, "Introduza o username pretendido!");            
