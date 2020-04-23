@@ -4,6 +4,10 @@
  * and open the template in the editor.
  */
 package frontend;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import backend.Sistema;
+import backend.Serializacao;
 
 /**
  *
@@ -11,11 +15,18 @@ package frontend;
  */
 public class ListaEquipamentos extends javax.swing.JFrame {
 
+     DefaultTableModel model; 
+    private Sistema sistema;
+    private Serializacao bd;
+    
     /**
      * Creates new form ListaEquipamentos
      */
-    public ListaEquipamentos() {
+    public ListaEquipamentos(Sistema sistema, Serializacao bd) {
         initComponents();
+         model = (DefaultTableModel) table.getModel();
+        this.sistema=sistema;
+        this.bd = bd;
     }
 
     /**
@@ -148,11 +159,21 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
         btExcluir.setEnabled(false);
+        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirActionPerformed(evt);
+            }
+        });
         getContentPane().add(btExcluir);
         btExcluir.setBounds(200, 290, 80, 29);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
+        btEditar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarActionPerformed(evt);
+            }
+        });
         getContentPane().add(btEditar);
         btEditar.setBounds(510, 290, 80, 29);
 
@@ -183,6 +204,11 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         jLabel10.setBounds(520, 10, 24, 30);
 
         jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        jLabel11.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel11MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel11);
         jLabel11.setBounds(560, 10, 30, 30);
 
@@ -199,11 +225,49 @@ public class ListaEquipamentos extends javax.swing.JFrame {
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here:
+        txtCodigo.setText(null);
+        txtNome.setText(null);
+        txtEnfermaria.setText(null);
+        txtDoente.setText(null);
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
+        model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(), txtNome.getText(), ComboTipo.getSelectedItem(), ComboDisp.getSelectedItem(), txtEnfermaria.getText(), txtDoente.getText()});
     }//GEN-LAST:event_btInserirActionPerformed
+
+    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
+        // TODO add your handling code here:
+         btInserir.setEnabled(true);
+         btExcluir.setEnabled(true);
+         btLimpar.setEnabled(true);
+         txtCodigo.setEnabled(true);
+         txtNome.setEnabled(true);
+         ComboTipo.setEnabled(true);
+         ComboDisp.setEnabled(true);
+         txtEnfermaria.setEnabled(true);
+         txtDoente.setEnabled(true);
+    }//GEN-LAST:event_btEditarActionPerformed
+
+    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+        // TODO add your handling code here:
+         DefaultTableModel model = (DefaultTableModel)table.getModel();
+        int c = table.getSelectedRow();
+        if(c >= 0){
+            model.removeRow(c); //remove a linha selecionada
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(null,"Selecione um Equipamento");
+        }
+    }//GEN-LAST:event_btExcluirActionPerformed
+
+    private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel11MouseClicked
+        // TODO add your handling code here:
+        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_jLabel11MouseClicked
 
     /**
      * @param args the command line arguments

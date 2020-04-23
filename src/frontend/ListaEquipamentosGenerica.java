@@ -4,18 +4,28 @@
  * and open the template in the editor.
  */
 package frontend;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import backend.Sistema;
+import backend.Serializacao;
 
 /**
  *
  * @author ssoar
  */
 public class ListaEquipamentosGenerica extends javax.swing.JFrame {
+     DefaultTableModel model; 
+    private Sistema sistema;
+    private Serializacao bd;
 
     /**
      * Creates new form ListaEquipamentosGenerica
      */
-    public ListaEquipamentosGenerica() {
+    public ListaEquipamentosGenerica(Sistema sistema, Serializacao bd) {
         initComponents();
+        model = (DefaultTableModel) table.getModel();
+        this.sistema=sistema;
+        this.bd = bd;
     }
 
     /**
@@ -28,7 +38,7 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
@@ -37,7 +47,7 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -53,7 +63,7 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(70, 40, 690, 250);
@@ -85,7 +95,7 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sis);
+        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked
@@ -131,6 +141,6 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

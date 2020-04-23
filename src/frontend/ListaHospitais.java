@@ -24,7 +24,7 @@ public class ListaHospitais extends javax.swing.JFrame {
     
     
     
-    public ListaHospitais(Sistema sistema) {
+    public ListaHospitais(Sistema sistema, Serializacao bd) {
         initComponents();
         
         model = (DefaultTableModel) table.getModel();
