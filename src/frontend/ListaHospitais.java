@@ -7,6 +7,7 @@ package frontend;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
+import backend.Serializacao;
 
 /**
  *
@@ -19,6 +20,8 @@ public class ListaHospitais extends javax.swing.JFrame {
      */
     DefaultTableModel model; 
     private Sistema sistema;
+    private Serializacao bd;
+    
     
     
     public ListaHospitais(Sistema sistema) {
@@ -26,6 +29,7 @@ public class ListaHospitais extends javax.swing.JFrame {
         
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
+        this.bd = bd;
         
     }
 
@@ -218,7 +222,7 @@ public class ListaHospitais extends javax.swing.JFrame {
 
     private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
         // TODO add your handling code here:
-        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema);
+        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_jLabel5MouseClicked
