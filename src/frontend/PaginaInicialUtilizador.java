@@ -29,7 +29,26 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         this.sistema = sistema;
         this.bd = bd;
     }
-
+    
+    private void guardarAlteracoes() {
+        bd.gravaSistema(sistema);
+    }
+    
+    private void alterarPassword() {        
+        Perfil perfil = new Perfil(sistema, sistema.getUtilizadorLigado(), null);
+        perfil.setVisible(true);
+    }
+    
+    private void terminar() {        
+        if (JOptionPane.showConfirmDialog(null, 
+                "Deseja realmente terminar o programa?", 
+                "Terminar", 
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            guardarAlteracoes();
+            sistema.terminar();
+        }
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -39,66 +58,81 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jButton1 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jButton5 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
-        jLabel3 = new javax.swing.JLabel();
+        btListaHospital = new javax.swing.JButton();
+        btListaEnfermarias = new javax.swing.JButton();
+        imgPerfil = new javax.swing.JLabel();
+        imgSair = new javax.swing.JLabel();
+        btListaDoentes = new javax.swing.JButton();
+        btListaEquipamentos = new javax.swing.JButton();
+        btListaProfissionais = new javax.swing.JButton();
+        imgGuardar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jButton1.setBackground(new java.awt.Color(255, 255, 255));
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setText("Lista de Hospitais");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btListaHospital.setBackground(new java.awt.Color(255, 255, 255));
+        btListaHospital.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btListaHospital.setText("Lista de Hospitais");
+        btListaHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btListaHospitalActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(10, 60, 180, 29);
+        getContentPane().add(btListaHospital);
+        btListaHospital.setBounds(10, 60, 180, 29);
 
-        jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton4.setText("Lista de Enfermarias");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(10, 260, 180, 30);
+        btListaEnfermarias.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btListaEnfermarias.setText("Lista de Enfermarias");
+        getContentPane().add(btListaEnfermarias);
+        btListaEnfermarias.setBounds(10, 260, 180, 30);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/perfilIcon.png"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 10, 30, 30);
-
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(60, 10, 24, 30);
-
-        jButton5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton5.setText("Lista de Doentes");
-        getContentPane().add(jButton5);
-        jButton5.setBounds(10, 110, 180, 30);
-
-        jButton6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton6.setText("Lista de Equipamentos");
-        jButton6.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton6ActionPerformed(evt);
+        imgPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/perfilIcon.png"))); // NOI18N
+        imgPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgPerfilMouseClicked(evt);
             }
         });
-        getContentPane().add(jButton6);
-        jButton6.setBounds(10, 160, 180, 30);
+        getContentPane().add(imgPerfil);
+        imgPerfil.setBounds(20, 10, 30, 30);
 
-        jButton7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton7.setText("Lista de Profissionais");
-        getContentPane().add(jButton7);
-        jButton7.setBounds(10, 210, 180, 30);
+        imgSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
+        imgSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgSairMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgSair);
+        imgSair.setBounds(60, 10, 24, 30);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(100, 10, 30, 30);
+        btListaDoentes.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btListaDoentes.setText("Lista de Doentes");
+        getContentPane().add(btListaDoentes);
+        btListaDoentes.setBounds(10, 110, 180, 30);
+
+        btListaEquipamentos.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btListaEquipamentos.setText("Lista de Equipamentos");
+        btListaEquipamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btListaEquipamentosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btListaEquipamentos);
+        btListaEquipamentos.setBounds(10, 160, 180, 30);
+
+        btListaProfissionais.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btListaProfissionais.setText("Lista de Profissionais");
+        getContentPane().add(btListaProfissionais);
+        btListaProfissionais.setBounds(10, 210, 180, 30);
+
+        imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
+        imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgGuardarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgGuardar);
+        imgGuardar.setBounds(100, 10, 30, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_1.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -107,13 +141,30 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btListaHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaHospitalActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btListaHospitalActionPerformed
 
-    private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
+    private void btListaEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaEquipamentosActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton6ActionPerformed
+    }//GEN-LAST:event_btListaEquipamentosActionPerformed
+
+    private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
+        // TODO add your handling code here:
+        guardarAlteracoes();
+        JOptionPane.showMessageDialog(this, "Alterações guardadas.");
+    }//GEN-LAST:event_imgGuardarMouseClicked
+
+    private void imgPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgPerfilMouseClicked
+        // TODO add your handling code here:
+        
+        alterarPassword();
+    }//GEN-LAST:event_imgPerfilMouseClicked
+
+    private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
+        // TODO add your handling code here:
+        terminar();
+    }//GEN-LAST:event_imgSairMouseClicked
 
     /**
      * @param args the command line arguments
@@ -151,14 +202,14 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
+    private javax.swing.JButton btListaDoentes;
+    private javax.swing.JButton btListaEnfermarias;
+    private javax.swing.JButton btListaEquipamentos;
+    private javax.swing.JButton btListaHospital;
+    private javax.swing.JButton btListaProfissionais;
+    private javax.swing.JLabel imgGuardar;
+    private javax.swing.JLabel imgPerfil;
+    private javax.swing.JLabel imgSair;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel4;
     // End of variables declaration//GEN-END:variables
 }

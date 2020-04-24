@@ -10,6 +10,7 @@ import javax.swing.table.AbstractTableModel;
 import backend.ListaMedico;
 import backend.Sistema;
 import backend.Medico;
+import backend.Serializacao;
 
 /**
  *
@@ -20,11 +21,14 @@ import backend.Medico;
 public class PaginaAdministrador extends javax.swing.JFrame {
     
     private Sistema sistema;
+    private Serializacao bd;
     private AbstractTableModel modeloTabelaAdmin;
     
-    public PaginaAdministrador (Sistema sistema) {
+    public PaginaAdministrador (Sistema sistema, Serializacao bd) {
         initComponents();
+        
         this.sistema = sistema;
+        this.bd = bd;
         this.modeloTabelaAdmin = criarModeloTabela();
         tabelUtilizadores.setModel(modeloTabelaAdmin);
     }
@@ -92,6 +96,20 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         
     }
     
+    private void guardarAlteracoes() {
+        bd.gravaSistema(sistema);
+    }
+    
+    private void terminar() {        
+        if (JOptionPane.showConfirmDialog(null, 
+                "Deseja realmente terminar o programa?", 
+                "Terminar", 
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            guardarAlteracoes();
+            sistema.terminar();
+        }
+    }
+    
     public void atualizar() {    
         //Informa o modelo que foram efetuadas alteracoes, o modelo informa a tabela e os dados são redesenhados
         modeloTabelaAdmin.fireTableDataChanged();
@@ -108,7 +126,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tabelUtilizadores = new javax.swing.JTable();
-        jLabel4 = new javax.swing.JLabel();
+        imgSair = new javax.swing.JLabel();
         btAdicionar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
 
@@ -136,14 +154,14 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(10, 40, 570, 150);
 
-        jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
-        jLabel4.addMouseListener(new java.awt.event.MouseAdapter() {
+        imgSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
+        imgSair.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel4MouseClicked(evt);
+                imgSairMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel4);
-        jLabel4.setBounds(550, 0, 24, 30);
+        getContentPane().add(imgSair);
+        imgSair.setBounds(550, 0, 24, 30);
 
         btAdicionar.setText("Adicionar");
         btAdicionar.addActionListener(new java.awt.event.ActionListener() {
@@ -152,7 +170,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btAdicionar);
-        btAdicionar.setBounds(80, 230, 90, 30);
+        btAdicionar.setBounds(60, 230, 90, 30);
 
         btEditar.setText("Editar");
         btEditar.addActionListener(new java.awt.event.ActionListener() {
@@ -161,7 +179,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(440, 230, 90, 30);
+        btEditar.setBounds(220, 230, 90, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -176,9 +194,10 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         editar();
     }//GEN-LAST:event_btEditarActionPerformed
 
-    private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
+    private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_jLabel4MouseClicked
+        terminar();
+    }//GEN-LAST:event_imgSairMouseClicked
 
     /**
      * @param args the command line arguments
@@ -219,7 +238,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionar;
     private javax.swing.JButton btEditar;
-    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel imgSair;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelUtilizadores;
     // End of variables declaration//GEN-END:variables

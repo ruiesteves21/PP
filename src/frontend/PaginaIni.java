@@ -5,17 +5,36 @@
  */
 package frontend;
 
+import backend.Serializacao;
+import backend.Sistema;
+import backend.Administrador;
 /**
  *
  * @author ssoar
  */
 public class PaginaIni extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PaginaIni
-     */
-    public PaginaIni() {
+    private Sistema sistema;
+    private Serializacao bd;
+    
+    public PaginaIni(Sistema sistema, Serializacao bd) 
+    {
         initComponents();
+        
+        this.sistema = sistema;
+        this.bd = bd;
+        
+        //Força a maximização da janela
+        this.setExtendedState(PaginaIni.MAXIMIZED_BOTH);    
+        
+        //O processo de fecho da janela será controlado pelo programa
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        
+        //Apenas mostra o menu de administração se o utilizador for um administrador
+        imgAdmin.setVisible(sistema.getUtilizadorLigado() instanceof Administrador);
+        
+        //Apenas mostra o menu de utilizador se o de administração estiver oculto
+        imgMedico.setVisible(!imgAdmin.isVisible());    
     }
 
     /**
@@ -27,8 +46,8 @@ public class PaginaIni extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        imgMedico = new javax.swing.JLabel();
+        imgAdmin = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -36,13 +55,13 @@ public class PaginaIni extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/doctor (1).png"))); // NOI18N
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(210, 10, 120, 130);
+        imgMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/doctor (1).png"))); // NOI18N
+        getContentPane().add(imgMedico);
+        imgMedico.setBounds(210, 10, 120, 130);
 
-        jLabel3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/support (1).png"))); // NOI18N
-        getContentPane().add(jLabel3);
-        jLabel3.setBounds(210, 200, 128, 130);
+        imgAdmin.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/support (1).png"))); // NOI18N
+        getContentPane().add(imgAdmin);
+        imgAdmin.setBounds(210, 200, 128, 130);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel4.setText("Utilizador");
@@ -64,7 +83,7 @@ public class PaginaIni extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
+    public static void main1(String args[]) {
         /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
@@ -91,15 +110,15 @@ public class PaginaIni extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new PaginaIni().setVisible(true);
+                //new PaginaIni().setVisible(true);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imgAdmin;
+    private javax.swing.JLabel imgMedico;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     // End of variables declaration//GEN-END:variables
