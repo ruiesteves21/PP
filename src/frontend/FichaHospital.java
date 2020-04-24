@@ -4,18 +4,25 @@
  * and open the template in the editor.
  */
 package frontend;
+import backend.Sistema;
+import backend.Serializacao;
 
 /**
  *
  * @author ssoar
  */
 public class FichaHospital extends javax.swing.JFrame {
+     private Sistema sistema;
+    private Serializacao bd;
 
     /**
      * Creates new form Ficha_Hospital_G
      */
-    public FichaHospital() {
+    public FichaHospital(Sistema sistema, Serializacao bd) {
         initComponents();
+         this.sistema=sistema;
+        this.bd = bd;
+        
     }
 
     /**
@@ -30,10 +37,10 @@ public class FichaHospital extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton4 = new javax.swing.JButton();
+        btEnfermaria = new javax.swing.JButton();
+        btDoentes = new javax.swing.JButton();
+        btProfissionais = new javax.swing.JButton();
+        btEquipamentos = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
@@ -61,35 +68,69 @@ public class FichaHospital extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(120, 0, 120, 20);
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setText("Lista Enfermarias");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(20, 160, 180, 29);
+        btEnfermaria.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btEnfermaria.setText("Lista Enfermarias");
+        btEnfermaria.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEnfermariaActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btEnfermaria);
+        btEnfermaria.setBounds(20, 160, 180, 29);
 
-        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton2.setText("Lista de Doentes");
-        getContentPane().add(jButton2);
-        jButton2.setBounds(20, 200, 180, 29);
+        btDoentes.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btDoentes.setText("Lista de Doentes");
+        btDoentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btDoentesActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btDoentes);
+        btDoentes.setBounds(20, 200, 180, 29);
 
-        jButton3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton3.setText("Lista de Profissionais");
-        getContentPane().add(jButton3);
-        jButton3.setBounds(20, 240, 180, 29);
+        btProfissionais.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btProfissionais.setText("Lista de Profissionais");
+        btProfissionais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btProfissionaisActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btProfissionais);
+        btProfissionais.setBounds(20, 240, 180, 29);
 
-        jButton4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton4.setText("Lista de Equipamentos");
-        getContentPane().add(jButton4);
-        jButton4.setBounds(20, 280, 180, 29);
+        btEquipamentos.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btEquipamentos.setText("Lista de Equipamentos");
+        btEquipamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEquipamentosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btEquipamentos);
+        btEquipamentos.setBounds(20, 280, 180, 29);
+
+        jTextField1.setEnabled(false);
         getContentPane().add(jTextField1);
         jTextField1.setBounds(110, 90, 130, 30);
+
+        jTextField2.setEnabled(false);
         getContentPane().add(jTextField2);
         jTextField2.setBounds(110, 40, 130, 30);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel7MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel7);
         jLabel7.setBounds(290, 0, 24, 30);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel6MouseClicked(evt);
+            }
+        });
         getContentPane().add(jLabel6);
         jLabel6.setBounds(330, 0, 30, 30);
 
@@ -99,6 +140,48 @@ public class FichaHospital extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void btEnfermariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnfermariaActionPerformed
+        // TODO add your handling code here:
+        ListaEnfermarias p = new ListaEnfermarias(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_btEnfermariaActionPerformed
+
+    private void btDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDoentesActionPerformed
+        // TODO add your handling code here:
+        ListaDoentes p = new ListaDoentes(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_btDoentesActionPerformed
+
+    private void btProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProfissionaisActionPerformed
+        // TODO add your handling code here:
+        ListaProfissionalSaude p = new ListaProfissionalSaude(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_btProfissionaisActionPerformed
+
+    private void btEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipamentosActionPerformed
+        // TODO add your handling code here:
+        ListaEquipamentos p = new ListaEquipamentos(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_btEquipamentosActionPerformed
+
+    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+        // TODO add your handling code here:
+        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_jLabel6MouseClicked
+
+    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+        // TODO add your handling code here:
+        ListaHospitais p = new ListaHospitais(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_jLabel7MouseClicked
 
     /**
      * @param args the command line arguments
@@ -137,10 +220,10 @@ public class FichaHospital extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
+    private javax.swing.JButton btDoentes;
+    private javax.swing.JButton btEnfermaria;
+    private javax.swing.JButton btEquipamentos;
+    private javax.swing.JButton btProfissionais;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
