@@ -11,7 +11,7 @@ import backend.Serializacao;
 
 /**
  *
- * @author ssoar
+ * @author ssoar,ruiesteves
  */
 public class ListaEnfermariasGenerica extends javax.swing.JFrame {
      DefaultTableModel model; 
@@ -36,6 +36,7 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDesktopPane1 = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
@@ -44,7 +45,6 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(496, 364));
         setMinimumSize(new java.awt.Dimension(496, 364));
         setSize(new java.awt.Dimension(496, 364));
         getContentPane().setLayout(null);
@@ -72,6 +72,11 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setText("Filtrar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButton1);
         jButton1.setBounds(20, 310, 80, 29);
 
@@ -101,6 +106,10 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -141,6 +150,7 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JButton jButton1;
+    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;

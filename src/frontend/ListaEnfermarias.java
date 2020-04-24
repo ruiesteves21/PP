@@ -58,9 +58,9 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(614, 317));
         setMinimumSize(new java.awt.Dimension(614, 317));
         setSize(new java.awt.Dimension(614, 317));
         getContentPane().setLayout(null);
@@ -222,6 +222,10 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 640, 390);
 
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        getContentPane().add(jComboBox1);
+        jComboBox1.setBounds(130, 160, 55, 19);
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
@@ -342,6 +346,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private javax.swing.JButton btLimpar;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
+    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
