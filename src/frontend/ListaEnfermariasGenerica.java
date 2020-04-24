@@ -90,6 +90,11 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
         imgHome.setBounds(430, 0, 30, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgRetrocederMouseClicked(evt);
+            }
+        });
         getContentPane().add(imgRetroceder);
         imgRetroceder.setBounds(390, 0, 24, 30);
 
@@ -102,14 +107,23 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
-        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
-        paginaInicialUtilizador.setLocationRelativeTo(null);
-        paginaInicialUtilizador.setVisible(true);
+        PaginaInicial paginaInicial = new PaginaInicial(sistema,bd);
+        paginaInicial.setLocationRelativeTo(null);
+        paginaInicial.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
 
+                                
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
+        // TODO add your handling code here:
+    PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
+    paginaInicialUtilizador.setLocationRelativeTo(null);
+    paginaInicialUtilizador.setVisible(true);
+    }//GEN-LAST:event_imgRetrocederMouseClicked
 
     /**
      * @param args the command line arguments

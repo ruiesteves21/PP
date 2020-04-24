@@ -291,9 +291,9 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
-        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
-        paginaInicialUtilizador.setLocationRelativeTo(null);
-        paginaInicialUtilizador.setVisible(true);
+        PaginaInicial paginaInicial = new PaginaInicial(sistema,bd);
+        paginaInicial.setLocationRelativeTo(null);
+        paginaInicial.setVisible(true);
         
     }//GEN-LAST:event_imgHomeMouseClicked
 
@@ -304,6 +304,9 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
+        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
+        paginaInicialUtilizador.setLocationRelativeTo(null);
+        paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
     
      
