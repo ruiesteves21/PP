@@ -5,9 +5,8 @@
  */
 package frontend;
 
-import backend.Medico;
+import backend.Serializacao;
 import backend.Sistema;
-import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 
 /**
@@ -16,20 +15,55 @@ import javax.swing.JOptionPane;
  */
 public class LoginForm extends javax.swing.JFrame {
 
-    private Sistema sis;
-    /**
-     * Creates new form NewJFrame
-     * @param s
-     */
-    public LoginForm(Sistema s) {
+    private Sistema sistema;
+    private Serializacao bd;
+   
+    
+    public LoginForm(Sistema sistema, Serializacao bd) {
         initComponents();
         
-        this.setTitle("Login");
-        this.setIconImage(new ImageIcon("./src/anexos/tasks-blue-icon-14527.png").getImage());
-        // FIXME Este icon vem daqui http://downloadicons.net/tasks-blue-icon-14527
+         //Não permite o redimensionamento da janela
+        //this.setResizable(false);
         
-        sis = s;
+        //Mostra a centralização da janela
+        this.setLocationRelativeTo(null);
+        
+        //O processo de fecho da janela será controlado pelo programa
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);                                
+        
+        this.sistema = sistema;
+        this.bd = bd;
+      
+        txtUsername.requestFocus();
+        
+        this.setTitle("Login");
+        
     }
+    
+    
+    private void autenticar() {                
+        if (txtUsername.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Introduza o nome de utilizador!");            
+             txtUsername.requestFocus();
+            return;
+        }
+        
+        if (txtSenha.getPassword().length == 0) {
+            JOptionPane.showMessageDialog(this, "Introduza a password!");
+            txtSenha.requestFocus();
+            return;
+        }                              
+        
+        if (!sistema.autenticarUtilizador(txtUsername.getText(), new String(txtSenha.getPassword()))){
+            JOptionPane.showMessageDialog(this, "As credenciais introduzidas não correspondem a um utilizador válido.",
+                     "Autenticação", JOptionPane.WARNING_MESSAGE);
+            txtUsername.requestFocus();            
+        }else{
+            //Devolve o controlo da aplicação para o método main
+            dispose();            
+        }               
+    }     
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -46,7 +80,7 @@ public class LoginForm extends javax.swing.JFrame {
         txtUsername = new javax.swing.JTextField();
         btEntrar = new javax.swing.JButton();
         txtSenha = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        btSair = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         jPasswordField1.setText("jPasswordField1");
@@ -63,6 +97,12 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel2.setText("Senha:");
         getContentPane().add(jLabel2);
         jLabel2.setBounds(50, 230, 50, 20);
+
+        txtUsername.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtUsernameActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtUsername);
         txtUsername.setBounds(140, 180, 120, 30);
 
@@ -78,15 +118,15 @@ public class LoginForm extends javax.swing.JFrame {
         getContentPane().add(txtSenha);
         txtSenha.setBounds(140, 230, 120, 30);
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setText("Sair");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btSair.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btSair.setText("Sair");
+        btSair.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btSairActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(240, 290, 90, 30);
+        getContentPane().add(btSair);
+        btSair.setBounds(240, 290, 90, 30);
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundo_medico3.jpg"))); // NOI18N
@@ -98,15 +138,22 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         // TODO add your handling code here:
+        autenticar();
         
-         
+        PaginaInicial paginaInicial = new PaginaInicial(sistema, bd);
+        paginaInicial.setVisible(true);  
+        
     }//GEN-LAST:event_btEntrarActionPerformed
 
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btSairActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btSairActionPerformed
         // TODO add your handling code here:
-         System.exit(0);
-    }//GEN-LAST:event_jButton1ActionPerformed
+          sistema.terminar();
+    }//GEN-LAST:event_btSairActionPerformed
+
+    private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtUsernameActionPerformed
 
     /**
      * @param args the command line arguments
@@ -152,7 +199,7 @@ public class LoginForm extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEntrar;
-    private javax.swing.JButton jButton1;
+    private javax.swing.JButton btSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

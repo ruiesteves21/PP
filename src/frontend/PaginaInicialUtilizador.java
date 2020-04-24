@@ -28,6 +28,13 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         
         this.sistema = sistema;
         this.bd = bd;
+        
+        //Força a maximização da janela
+        //this.setExtendedState(PaginaIni.MAXIMIZED_BOTH);    
+        
+        //O processo de fecho da janela será controlado pelo programa
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        
     }
     
     private void guardarAlteracoes() {

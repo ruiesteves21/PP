@@ -129,6 +129,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         imgSair = new javax.swing.JLabel();
         btAdicionar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -163,6 +164,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         getContentPane().add(imgSair);
         imgSair.setBounds(550, 0, 24, 30);
 
+        btAdicionar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btAdicionar.setText("Adicionar");
         btAdicionar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -172,6 +174,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         getContentPane().add(btAdicionar);
         btAdicionar.setBounds(60, 230, 90, 30);
 
+        btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
         btEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -180,6 +183,16 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         });
         getContentPane().add(btEditar);
         btEditar.setBounds(220, 230, 90, 30);
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jButton1.setText("Página Utilizador");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(410, 230, 160, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -198,6 +211,13 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         // TODO add your handling code here:
         terminar();
     }//GEN-LAST:event_imgSairMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema, bd);
+        paginaInicialUtilizador.setVisible(true);
+        
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -239,6 +259,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton btAdicionar;
     private javax.swing.JButton btEditar;
     private javax.swing.JLabel imgSair;
+    private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelUtilizadores;
     // End of variables declaration//GEN-END:variables

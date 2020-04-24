@@ -25,9 +25,7 @@ public class Perfil extends javax.swing.JFrame {
     public Perfil(Sistema sistema, Medico utilizador, PaginaAdministrador listagem) {
         
         initComponents();          
-        
-        //Não permite o redimensionamento da janela
-        this.setResizable(false);                        
+                               
         
         //Mostra a centralização da janela
         this.setLocationRelativeTo(null);
