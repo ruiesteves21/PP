@@ -4,18 +4,28 @@
  * and open the template in the editor.
  */
 package frontend;
+import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
+import backend.Sistema;
+import backend.Serializacao;
 
 /**
  *
  * @author ssoar
  */
 public class ListaProfissionaisGenerica extends javax.swing.JFrame {
-
+    DefaultTableModel model; 
+    private Sistema sistema;
+    private Serializacao bd;
     /**
      * Creates new form ListaProfissionaisGenerica
      */
-    public ListaProfissionaisGenerica() {
+    public ListaProfissionaisGenerica(Sistema sistema,Serializacao bd) {
         initComponents();
+        initComponents();
+        model = (DefaultTableModel) table.getModel();
+        this.sistema=sistema;
+        this.bd = bd;
     }
 
     /**
@@ -28,7 +38,7 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        table = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -40,7 +50,7 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(689, 393));
         getContentPane().setLayout(null);
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -56,7 +66,7 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(jTable1);
+        jScrollPane1.setViewportView(table);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(30, 50, 490, 230);
@@ -122,6 +132,6 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable jTable1;
+    private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables
 }

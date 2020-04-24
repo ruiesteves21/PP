@@ -94,6 +94,11 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
         btListaEnfermarias.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btListaEnfermarias.setText("Lista de Enfermarias");
+        btListaEnfermarias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btListaEnfermariasActionPerformed(evt);
+            }
+        });
         getContentPane().add(btListaEnfermarias);
         btListaEnfermarias.setBounds(10, 260, 180, 30);
 
@@ -117,6 +122,11 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
         btListaDoentes.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btListaDoentes.setText("Lista de Doentes");
+        btListaDoentes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btListaDoentesActionPerformed(evt);
+            }
+        });
         getContentPane().add(btListaDoentes);
         btListaDoentes.setBounds(10, 110, 180, 30);
 
@@ -132,6 +142,11 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
         btListaProfissionais.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btListaProfissionais.setText("Lista de Profissionais");
+        btListaProfissionais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btListaProfissionaisActionPerformed(evt);
+            }
+        });
         getContentPane().add(btListaProfissionais);
         btListaProfissionais.setBounds(10, 210, 180, 30);
 
@@ -153,10 +168,16 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void btListaHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaHospitalActionPerformed
         // TODO add your handling code here:
+        ListaHospitais p = new ListaHospitais(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
     }//GEN-LAST:event_btListaHospitalActionPerformed
 
     private void btListaEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaEquipamentosActionPerformed
         // TODO add your handling code here:
+        ListaEquipamentosGenerica p = new ListaEquipamentosGenerica(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
     }//GEN-LAST:event_btListaEquipamentosActionPerformed
 
     private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
@@ -175,6 +196,27 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         // TODO add your handling code here:
         terminar();
     }//GEN-LAST:event_imgSairMouseClicked
+
+    private void btListaDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaDoentesActionPerformed
+        // TODO add your handling code here:
+        ListaDoentesGenerica p = new ListaDoentesGenerica(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_btListaDoentesActionPerformed
+
+    private void btListaProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaProfissionaisActionPerformed
+        // TODO add your handling code here:
+        ListaProfissionaisGenerica p = new ListaProfissionaisGenerica(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_btListaProfissionaisActionPerformed
+
+    private void btListaEnfermariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaEnfermariasActionPerformed
+        // TODO add your handling code here:
+         ListaEnfermariasGenerica p = new ListaEnfermariasGenerica(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_btListaEnfermariasActionPerformed
 
     /**
      * @param args the command line arguments
