@@ -10,7 +10,7 @@ import backend.Sistema;
 import backend.Serializacao;
 /**
  *
- * @author pedro,ruiesteves
+ * @author ruiesteves
  */
 public class ListaEnfermarias extends javax.swing.JFrame {
     DefaultTableModel model; 
@@ -206,6 +206,11 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         btEditar.setBounds(530, 270, 80, 29);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgRetrocederMouseClicked(evt);
+            }
+        });
         getContentPane().add(imgRetroceder);
         imgRetroceder.setBounds(530, 30, 24, 30);
 
@@ -276,10 +281,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeActionPerformed
 
-    private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoActionPerformed
-
     private void txtCamasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCamasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCamasActionPerformed
@@ -295,13 +296,17 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         paginaInicialUtilizador.setVisible(true);
         
     }//GEN-LAST:event_imgHomeMouseClicked
+
     
-     private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {                                      
+    private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
         // TODO add your handling code here:
-        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
-    } 
+    }//GEN-LAST:event_txtTipoActionPerformed
+
+    private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_imgRetrocederMouseClicked
+    
+     
      
 
     /**
