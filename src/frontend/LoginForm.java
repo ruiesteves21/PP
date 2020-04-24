@@ -86,6 +86,9 @@ public class LoginForm extends javax.swing.JFrame {
         jPasswordField1.setText("jPasswordField1");
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(390, 383));
+        setMinimumSize(new java.awt.Dimension(390, 383));
+        setSize(new java.awt.Dimension(390, 383));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N

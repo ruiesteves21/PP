@@ -150,6 +150,9 @@ public class Perfil extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(363, 343));
+        setMinimumSize(new java.awt.Dimension(363, 343));
+        setSize(new java.awt.Dimension(363, 343));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -210,7 +213,7 @@ public class Perfil extends javax.swing.JFrame {
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundo_perfil.jpg"))); // NOI18N
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 0, 570, 410);
+        jLabel5.setBounds(0, 0, 610, 410);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents

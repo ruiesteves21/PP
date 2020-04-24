@@ -61,6 +61,9 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(617, 351));
+        setMinimumSize(new java.awt.Dimension(617, 351));
+        setSize(new java.awt.Dimension(617, 351));
         getContentPane().setLayout(null);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N

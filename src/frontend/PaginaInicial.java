@@ -72,6 +72,9 @@ public class PaginaInicial extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(348, 375));
+        setMinimumSize(new java.awt.Dimension(348, 375));
+        setSize(new java.awt.Dimension(348, 375));
         getContentPane().setLayout(null);
 
         imgMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/doctor (1).png"))); // NOI18N
@@ -109,7 +112,7 @@ public class PaginaInicial extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgSair);
-        imgSair.setBounds(20, 340, 40, 40);
+        imgSair.setBounds(20, 320, 40, 40);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pagini.jpg"))); // NOI18N
         getContentPane().add(jLabel1);

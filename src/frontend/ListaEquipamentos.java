@@ -62,6 +62,9 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(604, 333));
+        setMinimumSize(new java.awt.Dimension(604, 333));
+        setSize(new java.awt.Dimension(604, 333));
         getContentPane().setLayout(null);
 
         table.setModel(new javax.swing.table.DefaultTableModel(

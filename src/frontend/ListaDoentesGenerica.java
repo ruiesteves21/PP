@@ -35,6 +35,9 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(804, 363));
+        setMinimumSize(new java.awt.Dimension(804, 363));
+        setSize(new java.awt.Dimension(804, 363));
         getContentPane().setLayout(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

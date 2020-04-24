@@ -41,6 +41,9 @@ public class FichaHospital extends javax.swing.JFrame {
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(374, 348));
+        setMinimumSize(new java.awt.Dimension(374, 348));
+        setSize(new java.awt.Dimension(374, 348));
         getContentPane().setLayout(null);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N

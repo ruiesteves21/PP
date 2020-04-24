@@ -35,6 +35,9 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(689, 393));
+        setMinimumSize(new java.awt.Dimension(689, 393));
+        setSize(new java.awt.Dimension(689, 393));
         getContentPane().setLayout(null);
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(

@@ -76,6 +76,9 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(444, 320));
+        setMinimumSize(new java.awt.Dimension(444, 320));
+        setSize(new java.awt.Dimension(444, 320));
         getContentPane().setLayout(null);
 
         btListaHospital.setBackground(new java.awt.Color(255, 255, 255));

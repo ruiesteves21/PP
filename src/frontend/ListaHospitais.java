@@ -59,6 +59,9 @@ public class ListaHospitais extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(565, 362));
+        setMinimumSize(new java.awt.Dimension(565, 362));
+        setSize(new java.awt.Dimension(565, 362));
         getContentPane().setLayout(null);
 
         btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N

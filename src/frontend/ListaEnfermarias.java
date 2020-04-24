@@ -60,6 +60,9 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(614, 317));
+        setMinimumSize(new java.awt.Dimension(614, 317));
+        setSize(new java.awt.Dimension(614, 317));
         getContentPane().setLayout(null);
 
         table.setModel(new javax.swing.table.DefaultTableModel(
