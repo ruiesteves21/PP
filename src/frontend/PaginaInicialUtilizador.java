@@ -41,10 +41,6 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         bd.gravaSistema(sistema);
     }
     
-    private void alterarPassword() {        
-        Perfil perfil = new Perfil(sistema, sistema.getUtilizadorLigado(), null);
-        perfil.setVisible(true);
-    }
     
     private void terminar() {        
         if (JOptionPane.showConfirmDialog(null, 
@@ -188,8 +184,9 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void imgPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgPerfilMouseClicked
         // TODO add your handling code here:
+        Perfil perfil = new Perfil(sistema, sistema.getUtilizadorLigado(), null);
+        perfil.setVisible(true);
         
-        alterarPassword();
     }//GEN-LAST:event_imgPerfilMouseClicked
 
     private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked

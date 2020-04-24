@@ -40,8 +40,8 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        imgRetroceder = new javax.swing.JLabel();
+        imgHome = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -76,18 +76,18 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(680, 310, 80, 29);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(20, 10, 24, 30);
+        imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        getContentPane().add(imgRetroceder);
+        imgRetroceder.setBounds(20, 10, 24, 30);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                imgHomeMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(60, 10, 30, 30);
+        getContentPane().add(imgHome);
+        imgHome.setBounds(60, 10, 30, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G4.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -96,12 +96,12 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
-        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
-    }//GEN-LAST:event_jLabel5MouseClicked
+        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
+        paginaInicialUtilizador.setLocationRelativeTo(null);
+        paginaInicialUtilizador.setVisible(true);
+    }//GEN-LAST:event_imgHomeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -139,10 +139,10 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imgHome;
+    private javax.swing.JLabel imgRetroceder;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables

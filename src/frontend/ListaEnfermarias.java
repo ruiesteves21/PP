@@ -55,8 +55,8 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         btLimpar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        imgRetroceder = new javax.swing.JLabel();
+        imgHome = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -205,13 +205,18 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         getContentPane().add(btEditar);
         btEditar.setBounds(530, 270, 80, 29);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(530, 30, 24, 30);
+        imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        getContentPane().add(imgRetroceder);
+        imgRetroceder.setBounds(530, 30, 24, 30);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(570, 30, 30, 30);
+        imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgHomeMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgHome);
+        imgHome.setBounds(570, 30, 30, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaEnfermariasfundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -278,6 +283,14 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private void txtDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDoentesActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtDoentesActionPerformed
+
+    private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
+        // TODO add your handling code here:
+        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
+        paginaInicialUtilizador.setLocationRelativeTo(null);
+        paginaInicialUtilizador.setVisible(true);
+        
+    }//GEN-LAST:event_imgHomeMouseClicked
     
      private void jLabel11MouseClicked(java.awt.event.MouseEvent evt) {                                      
         // TODO add your handling code here:
@@ -327,6 +340,8 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JLabel imgHome;
+    private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -334,8 +349,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable table;
     private javax.swing.JTextField txtCamas;

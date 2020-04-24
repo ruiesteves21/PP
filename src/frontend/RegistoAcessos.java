@@ -6,6 +6,7 @@ import java.util.Comparator;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import backend.RegistoAcesso;
+import backend.Serializacao;
 import backend.Sistema;
 
 /**
@@ -15,10 +16,12 @@ import backend.Sistema;
  */
 public class RegistoAcessos extends javax.swing.JFrame {
     private final Sistema sistema;
+    private Serializacao bd;
 
-    public RegistoAcessos(Sistema sistema) {
+    public RegistoAcessos(Sistema sistema, Serializacao bd) {
         initComponents();
-        this.sistema = sistema;        
+        this.sistema = sistema;   
+        this.bd = bd;
         tabAcessos.setModel(criarModeloTabela());
     }  
     

@@ -39,8 +39,8 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        imgRetroceder = new javax.swing.JLabel();
+        imgHome = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -75,13 +75,18 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(720, 330, 73, 23);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(710, 10, 24, 30);
+        imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        getContentPane().add(imgRetroceder);
+        imgRetroceder.setBounds(710, 10, 24, 30);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(750, 10, 30, 30);
+        imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgHomeMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgHome);
+        imgHome.setBounds(750, 10, 30, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G2.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -89,6 +94,14 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
+        // TODO add your handling code here:
+        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
+        paginaInicialUtilizador.setLocationRelativeTo(null);
+        paginaInicialUtilizador.setVisible(true);
+        
+    }//GEN-LAST:event_imgHomeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -126,10 +139,10 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imgHome;
+    private javax.swing.JLabel imgRetroceder;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
     // End of variables declaration//GEN-END:variables

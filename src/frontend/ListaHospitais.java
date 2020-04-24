@@ -25,8 +25,8 @@ public class ListaHospitais extends javax.swing.JFrame {
     public ListaHospitais(Sistema sistema, Serializacao bd) {
         initComponents();
         
-        model = (DefaultTableModel) table.getModel();
-        this.sistema=sistema;
+        model = (DefaultTableModel) tableHospitais.getModel();
+        this.sistema = sistema;
         this.bd = bd;
         
     }
@@ -43,7 +43,7 @@ public class ListaHospitais extends javax.swing.JFrame {
         btLimpar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        tableHospitais = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         txtCodigo = new javax.swing.JTextField();
@@ -51,15 +51,14 @@ public class ListaHospitais extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         btInserir = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
+        imgRetroceder = new javax.swing.JLabel();
+        imgHome = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtLocalidade = new javax.swing.JTextField();
         btFiltrar1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(565, 362));
         setMinimumSize(new java.awt.Dimension(565, 362));
         setSize(new java.awt.Dimension(565, 362));
         getContentPane().setLayout(null);
@@ -85,7 +84,7 @@ public class ListaHospitais extends javax.swing.JFrame {
         getContentPane().add(btEditar);
         btEditar.setBounds(20, 270, 80, 29);
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tableHospitais.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -101,7 +100,7 @@ public class ListaHospitais extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(table);
+        jScrollPane1.setViewportView(tableHospitais);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(250, 50, 300, 300);
@@ -151,18 +150,18 @@ public class ListaHospitais extends javax.swing.JFrame {
         getContentPane().add(btExcluir);
         btExcluir.setBounds(110, 190, 80, 29);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(480, 10, 24, 30);
+        imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        getContentPane().add(imgRetroceder);
+        imgRetroceder.setBounds(480, 10, 24, 30);
 
-        jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
-        jLabel5.addMouseListener(new java.awt.event.MouseAdapter() {
+        imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel5MouseClicked(evt);
+                imgHomeMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel5);
-        jLabel5.setBounds(520, 10, 30, 30);
+        getContentPane().add(imgHome);
+        imgHome.setBounds(520, 10, 30, 30);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setText("Localidade :");
@@ -199,8 +198,8 @@ public class ListaHospitais extends javax.swing.JFrame {
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
-         DefaultTableModel model = (DefaultTableModel)table.getModel();
-        int c = table.getSelectedRow();
+         DefaultTableModel model = (DefaultTableModel)tableHospitais.getModel();
+        int c = tableHospitais.getSelectedRow();
         if(c >= 0){
             model.removeRow(c); //remove a linha selecionada
         }
@@ -221,12 +220,12 @@ public class ListaHospitais extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btEditarActionPerformed
 
-    private void jLabel5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel5MouseClicked
+    private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
-        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
-    }//GEN-LAST:event_jLabel5MouseClicked
+        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
+        paginaInicialUtilizador.setLocationRelativeTo(null);
+        paginaInicialUtilizador.setVisible(true);
+    }//GEN-LAST:event_imgHomeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -270,15 +269,15 @@ public class ListaHospitais extends javax.swing.JFrame {
     private javax.swing.JButton btFiltrar1;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JLabel imgHome;
+    private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable table;
+    private javax.swing.JTable tableHospitais;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtLocalidade;
     private javax.swing.JTextField txtNome;

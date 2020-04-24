@@ -130,6 +130,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         btAdicionar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btRegistoAcesso = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         getContentPane().setLayout(null);
@@ -153,7 +154,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabelUtilizadores);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 40, 570, 150);
+        jScrollPane1.setBounds(10, 60, 570, 150);
 
         imgSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
         imgSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -162,7 +163,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgSair);
-        imgSair.setBounds(550, 0, 24, 30);
+        imgSair.setBounds(10, 260, 24, 30);
 
         btAdicionar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btAdicionar.setText("Adicionar");
@@ -172,7 +173,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btAdicionar);
-        btAdicionar.setBounds(60, 230, 90, 30);
+        btAdicionar.setBounds(480, 20, 90, 30);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -182,7 +183,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(220, 230, 90, 30);
+        btEditar.setBounds(340, 20, 90, 30);
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setText("Página Utilizador");
@@ -192,7 +193,17 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(410, 230, 160, 30);
+        jButton1.setBounds(70, 240, 160, 30);
+
+        btRegistoAcesso.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btRegistoAcesso.setText("Registo de acesso");
+        btRegistoAcesso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btRegistoAcessoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btRegistoAcesso);
+        btRegistoAcesso.setBounds(350, 240, 160, 30);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -218,6 +229,12 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         paginaInicialUtilizador.setVisible(true);
         
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void btRegistoAcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistoAcessoActionPerformed
+        // TODO add your handling code here:
+        RegistoAcessos registoAcessos = new RegistoAcessos(sistema, bd);
+        registoAcessos.setVisible(true);
+    }//GEN-LAST:event_btRegistoAcessoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -258,6 +275,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btAdicionar;
     private javax.swing.JButton btEditar;
+    private javax.swing.JButton btRegistoAcesso;
     private javax.swing.JLabel imgSair;
     private javax.swing.JButton jButton1;
     private javax.swing.JScrollPane jScrollPane1;

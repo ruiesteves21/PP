@@ -17,10 +17,12 @@ public class FichaHospital extends javax.swing.JFrame {
 
     /**
      * Creates new form Ficha_Hospital_G
+     * @param sistema
+     * @param bd
      */
     public FichaHospital(Sistema sistema, Serializacao bd) {
         initComponents();
-         this.sistema=sistema;
+        this.sistema=sistema;
         this.bd = bd;
         
     }
@@ -43,8 +45,8 @@ public class FichaHospital extends javax.swing.JFrame {
         btEquipamentos = new javax.swing.JButton();
         jTextField1 = new javax.swing.JTextField();
         jTextField2 = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
+        imgRetroceder = new javax.swing.JLabel();
+        imgHome = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -56,17 +58,17 @@ public class FichaHospital extends javax.swing.JFrame {
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel1.setText("Nome :");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(21, 43, 50, 20);
+        jLabel1.setBounds(30, 50, 50, 20);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("Localidade :");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 90, 90, 20);
+        jLabel2.setBounds(20, 110, 90, 20);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel3.setText("Ficha Hospital");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(120, 0, 120, 20);
+        jLabel3.setBounds(120, 10, 120, 20);
 
         btEnfermaria.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEnfermaria.setText("Lista Enfermarias");
@@ -110,29 +112,29 @@ public class FichaHospital extends javax.swing.JFrame {
 
         jTextField1.setEnabled(false);
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(110, 90, 130, 30);
+        jTextField1.setBounds(120, 110, 130, 30);
 
         jTextField2.setEnabled(false);
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(110, 40, 130, 30);
+        jTextField2.setBounds(120, 50, 130, 30);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
-        jLabel7.addMouseListener(new java.awt.event.MouseAdapter() {
+        imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel7MouseClicked(evt);
+                imgRetrocederMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(290, 0, 24, 30);
+        getContentPane().add(imgRetroceder);
+        imgRetroceder.setBounds(290, 10, 24, 30);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                imgHomeMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(330, 0, 30, 30);
+        getContentPane().add(imgHome);
+        imgHome.setBounds(330, 10, 30, 30);
 
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_3.jpg"))); // NOI18N
         getContentPane().add(jLabel4);
@@ -143,45 +145,45 @@ public class FichaHospital extends javax.swing.JFrame {
 
     private void btEnfermariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnfermariaActionPerformed
         // TODO add your handling code here:
-        ListaEnfermarias p = new ListaEnfermarias(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
+        ListaEnfermarias listaEnfermarias = new ListaEnfermarias(sistema,bd);
+        listaEnfermarias.setLocationRelativeTo(null);
+        listaEnfermarias.setVisible(true);
     }//GEN-LAST:event_btEnfermariaActionPerformed
 
     private void btDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDoentesActionPerformed
         // TODO add your handling code here:
-        ListaDoentes p = new ListaDoentes(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
+        ListaDoentes listaDoentes = new ListaDoentes(sistema,bd);
+        listaDoentes.setLocationRelativeTo(null);
+        listaDoentes.setVisible(true);
     }//GEN-LAST:event_btDoentesActionPerformed
 
     private void btProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProfissionaisActionPerformed
         // TODO add your handling code here:
-        ListaProfissionalSaude p = new ListaProfissionalSaude(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
+        ListaProfissionalSaude listaProfissionalSaude = new ListaProfissionalSaude(sistema,bd);
+        listaProfissionalSaude.setLocationRelativeTo(null);
+        listaProfissionalSaude.setVisible(true);
     }//GEN-LAST:event_btProfissionaisActionPerformed
 
     private void btEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipamentosActionPerformed
         // TODO add your handling code here:
-        ListaEquipamentos p = new ListaEquipamentos(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
+        ListaEquipamentos listaEquipamentos = new ListaEquipamentos(sistema,bd);
+        listaEquipamentos.setLocationRelativeTo(null);
+        listaEquipamentos.setVisible(true);
     }//GEN-LAST:event_btEquipamentosActionPerformed
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+    private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
-        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
-    }//GEN-LAST:event_jLabel6MouseClicked
+        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
+        paginaInicialUtilizador.setLocationRelativeTo(null);
+        paginaInicialUtilizador.setVisible(true);
+    }//GEN-LAST:event_imgHomeMouseClicked
 
-    private void jLabel7MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel7MouseClicked
+    private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
-        ListaHospitais p = new ListaHospitais(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
-    }//GEN-LAST:event_jLabel7MouseClicked
+        ListaHospitais listaHospitais = new ListaHospitais(sistema,bd);
+        listaHospitais.setLocationRelativeTo(null);
+        listaHospitais.setVisible(true);
+    }//GEN-LAST:event_imgRetrocederMouseClicked
 
     /**
      * @param args the command line arguments
@@ -224,12 +226,12 @@ public class FichaHospital extends javax.swing.JFrame {
     private javax.swing.JButton btEnfermaria;
     private javax.swing.JButton btEquipamentos;
     private javax.swing.JButton btProfissionais;
+    private javax.swing.JLabel imgHome;
+    private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JTextField jTextField1;
     private javax.swing.JTextField jTextField2;
     // End of variables declaration//GEN-END:variables

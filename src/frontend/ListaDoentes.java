@@ -65,11 +65,11 @@ public class ListaDoentes extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
         ComboGrav = new javax.swing.JComboBox<>();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        DataNasc = new com.toedter.calendar.JDateChooser();
-        DataEntrada = new com.toedter.calendar.JDateChooser();
-        DataSaida = new com.toedter.calendar.JDateChooser();
+        imgRetroceder = new javax.swing.JLabel();
+        imgHome = new javax.swing.JLabel();
+        ComboBoxDataNasc = new com.toedter.calendar.JDateChooser();
+        ComboBoxDataEntrada = new com.toedter.calendar.JDateChooser();
+        ComboBoxDataSaida = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -234,24 +234,24 @@ public class ListaDoentes extends javax.swing.JFrame {
         getContentPane().add(ComboGrav);
         ComboGrav.setBounds(390, 280, 110, 30);
 
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(600, 10, 24, 30);
+        imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        getContentPane().add(imgRetroceder);
+        imgRetroceder.setBounds(600, 10, 24, 30);
 
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
-        jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
+        imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel6MouseClicked(evt);
+                imgHomeMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(640, 10, 30, 30);
-        getContentPane().add(DataNasc);
-        DataNasc.setBounds(390, 350, 110, 30);
-        getContentPane().add(DataEntrada);
-        DataEntrada.setBounds(390, 400, 110, 30);
-        getContentPane().add(DataSaida);
-        DataSaida.setBounds(390, 460, 110, 30);
+        getContentPane().add(imgHome);
+        imgHome.setBounds(640, 10, 30, 30);
+        getContentPane().add(ComboBoxDataNasc);
+        ComboBoxDataNasc.setBounds(390, 350, 110, 30);
+        getContentPane().add(ComboBoxDataEntrada);
+        ComboBoxDataEntrada.setBounds(390, 400, 110, 30);
+        getContentPane().add(ComboBoxDataSaida);
+        ComboBoxDataSaida.setBounds(390, 460, 110, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaDoentesFundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -267,34 +267,34 @@ public class ListaDoentes extends javax.swing.JFrame {
         btLimpar.setEnabled(true);
         txtCodigo.setEnabled(true);
         txtNome.setEnabled(true);
-        DataNasc.setEnabled(true);
+        ComboBoxDataNasc.setEnabled(true);
         txtLocalidade.setEnabled(true);
         txtCama.setEnabled(true);
         txtMedico.setEnabled(true);
         txtEnfermaria.setEnabled(true);
         ComboGrav.setEnabled(true);
-        DataEntrada.setEnabled(true);
-        DataSaida.setEnabled(true);
+        ComboBoxDataEntrada.setEnabled(true);
+        ComboBoxDataSaida.setEnabled(true);
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here:
         txtCodigo.setText(null);
         txtNome.setText(null);
-        DataNasc.setDate(null);
+        ComboBoxDataNasc.setDate(null);
         txtLocalidade.setText(null);
         txtCama.setText(null);
         txtMedico.setText(null);
         txtEnfermaria.setText(null);
         ComboGrav.setSelectedItem(null);
-        DataEntrada.setDate(null);
-        DataSaida.setDate(null);
+        ComboBoxDataEntrada.setDate(null);
+        ComboBoxDataSaida.setDate(null);
         
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
-         DefaultTableModel model = (DefaultTableModel)tableDoentes.getModel();
+        DefaultTableModel model = (DefaultTableModel)tableDoentes.getModel();
         int c = tableDoentes.getSelectedRow();
         if(c >= 0){
             model.removeRow(c); //remove a linha selecionada
@@ -315,15 +315,15 @@ public class ListaDoentes extends javax.swing.JFrame {
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
-        model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),DataNasc.getDate(), txtLocalidade.getText(), txtCama.getText(), txtMedico.getText(), txtEnfermaria.getText(), ComboGrav.getSelectedItem(), DataEntrada.getDate(), DataSaida.getDate()});
+        model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),ComboBoxDataNasc.getDate(), txtLocalidade.getText(), txtCama.getText(), txtMedico.getText(), txtEnfermaria.getText(), ComboGrav.getSelectedItem(), ComboBoxDataEntrada.getDate(), ComboBoxDataSaida.getDate()});
     }//GEN-LAST:event_btInserirActionPerformed
 
-    private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked
+    private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
-        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
-    }//GEN-LAST:event_jLabel6MouseClicked
+        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
+        paginaInicialUtilizador.setLocationRelativeTo(null);
+        paginaInicialUtilizador.setVisible(true);
+    }//GEN-LAST:event_imgHomeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -361,14 +361,16 @@ public class ListaDoentes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private com.toedter.calendar.JDateChooser ComboBoxDataEntrada;
+    private com.toedter.calendar.JDateChooser ComboBoxDataNasc;
+    private com.toedter.calendar.JDateChooser ComboBoxDataSaida;
     private javax.swing.JComboBox<String> ComboGrav;
-    private com.toedter.calendar.JDateChooser DataEntrada;
-    private com.toedter.calendar.JDateChooser DataNasc;
-    private com.toedter.calendar.JDateChooser DataSaida;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JLabel imgHome;
+    private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -381,8 +383,6 @@ public class ListaDoentes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tableDoentes;
     private javax.swing.JTextField txtCama;
