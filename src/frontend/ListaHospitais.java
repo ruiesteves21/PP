@@ -30,7 +30,21 @@ public class ListaHospitais extends javax.swing.JFrame {
         this.bd = bd;
         
     }
-
+    
+     private void guardarAlteracoes() {
+        bd.gravaSistema(sistema);
+    }
+     
+     private void terminar() {        
+       if (JOptionPane.showConfirmDialog(null, 
+               "Deseja realmente terminar o programa?", 
+               "Terminar", 
+               JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+           guardarAlteracoes();
+           sistema.terminar();
+       }
+   }
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,6 +70,9 @@ public class ListaHospitais extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtLocalidade = new javax.swing.JTextField();
         btFiltrar1 = new javax.swing.JButton();
+        imgGuardar = new javax.swing.JLabel();
+        imgSair = new javax.swing.JLabel();
+        jButton1 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -177,6 +194,33 @@ public class ListaHospitais extends javax.swing.JFrame {
         getContentPane().add(btFiltrar1);
         btFiltrar1.setBounds(110, 270, 80, 29);
 
+        imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
+        imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgGuardarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgGuardar);
+        imgGuardar.setBounds(440, 10, 30, 30);
+
+        imgSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
+        imgSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgSairMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgSair);
+        imgSair.setBounds(10, 320, 40, 40);
+
+        jButton1.setText("jButton1");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(90, 310, 73, 23);
+
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_3.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
         jLabel2.setBounds(0, -30, 640, 440);
@@ -227,6 +271,21 @@ public class ListaHospitais extends javax.swing.JFrame {
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
 
+    private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
+        // TODO add your handling code here:
+        guardarAlteracoes();
+        JOptionPane.showMessageDialog(this, "Alterações guardadas.");
+    }//GEN-LAST:event_imgGuardarMouseClicked
+
+    private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
+        // TODO add your handling code here:
+        terminar();
+    }//GEN-LAST:event_imgSairMouseClicked
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -269,8 +328,11 @@ public class ListaHospitais extends javax.swing.JFrame {
     private javax.swing.JButton btFiltrar1;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
+    private javax.swing.JLabel imgSair;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

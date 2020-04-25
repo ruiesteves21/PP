@@ -21,6 +21,7 @@ public class Sistema implements Serializable
     private ListaEquipamento listaEquipamento;
     private Medico utilizadorLigado;
     private final List<RegistoAcesso> listaEntradas;
+    
 
     public Sistema()
     {
@@ -28,7 +29,7 @@ public class Sistema implements Serializable
         listaEnfermaria = new ListaEnfermaria();
         listaEntradas = new ArrayList<>();
     }
-
+    
     public ListaMedico getListaMedico()
     {
         return listaMedico;
@@ -87,5 +88,6 @@ public class Sistema implements Serializable
     public void terminar() {
         System.exit(0);
     }
+    
     
 }
