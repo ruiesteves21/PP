@@ -67,9 +67,9 @@ public class ListaDoentes extends javax.swing.JFrame {
         ComboGrav = new javax.swing.JComboBox<>();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
-        ComboBoxDataNasc = new com.toedter.calendar.JDateChooser();
-        ComboBoxDataEntrada = new com.toedter.calendar.JDateChooser();
-        ComboBoxDataSaida = new com.toedter.calendar.JDateChooser();
+        DataSaida = new com.toedter.calendar.JDateChooser();
+        DataNasc = new com.toedter.calendar.JDateChooser();
+        DataEntrada = new com.toedter.calendar.JDateChooser();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -235,6 +235,11 @@ public class ListaDoentes extends javax.swing.JFrame {
         ComboGrav.setBounds(390, 280, 110, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgRetrocederMouseClicked(evt);
+            }
+        });
         getContentPane().add(imgRetroceder);
         imgRetroceder.setBounds(600, 10, 24, 30);
 
@@ -246,12 +251,12 @@ public class ListaDoentes extends javax.swing.JFrame {
         });
         getContentPane().add(imgHome);
         imgHome.setBounds(640, 10, 30, 30);
-        getContentPane().add(ComboBoxDataNasc);
-        ComboBoxDataNasc.setBounds(390, 350, 110, 30);
-        getContentPane().add(ComboBoxDataEntrada);
-        ComboBoxDataEntrada.setBounds(390, 400, 110, 30);
-        getContentPane().add(ComboBoxDataSaida);
-        ComboBoxDataSaida.setBounds(390, 460, 110, 30);
+        getContentPane().add(DataSaida);
+        DataSaida.setBounds(390, 450, 110, 30);
+        getContentPane().add(DataNasc);
+        DataNasc.setBounds(390, 340, 110, 30);
+        getContentPane().add(DataEntrada);
+        DataEntrada.setBounds(390, 400, 110, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaDoentesFundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -267,28 +272,28 @@ public class ListaDoentes extends javax.swing.JFrame {
         btLimpar.setEnabled(true);
         txtCodigo.setEnabled(true);
         txtNome.setEnabled(true);
-        ComboBoxDataNasc.setEnabled(true);
+        DataNasc.setEnabled(true);
         txtLocalidade.setEnabled(true);
         txtCama.setEnabled(true);
         txtMedico.setEnabled(true);
         txtEnfermaria.setEnabled(true);
         ComboGrav.setEnabled(true);
-        ComboBoxDataEntrada.setEnabled(true);
-        ComboBoxDataSaida.setEnabled(true);
+        DataEntrada.setEnabled(true);
+        DataSaida.setEnabled(true);
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here:
         txtCodigo.setText(null);
         txtNome.setText(null);
-        ComboBoxDataNasc.setDate(null);
+        DataNasc.setDate(null);
         txtLocalidade.setText(null);
         txtCama.setText(null);
         txtMedico.setText(null);
         txtEnfermaria.setText(null);
         ComboGrav.setSelectedItem(null);
-        ComboBoxDataEntrada.setDate(null);
-        ComboBoxDataSaida.setDate(null);
+        DataEntrada.setDate(null);
+        DataSaida.setDate(null);
         
     }//GEN-LAST:event_btLimparActionPerformed
 
@@ -315,7 +320,7 @@ public class ListaDoentes extends javax.swing.JFrame {
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
-        model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),ComboBoxDataNasc.getDate(), txtLocalidade.getText(), txtCama.getText(), txtMedico.getText(), txtEnfermaria.getText(), ComboGrav.getSelectedItem(), ComboBoxDataEntrada.getDate(), ComboBoxDataSaida.getDate()});
+        model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),DataNasc.getDate(), txtLocalidade.getText(), txtCama.getText(), txtMedico.getText(), txtEnfermaria.getText(), ComboGrav.getSelectedItem(), DataEntrada.getDate(), DataSaida.getDate()});
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
@@ -324,6 +329,14 @@ public class ListaDoentes extends javax.swing.JFrame {
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
+
+    private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
+        // TODO add your handling code here:
+        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
+        paginaInicialUtilizador.setLocationRelativeTo(null);
+        paginaInicialUtilizador.setVisible(true);
+        this.close();
+    }//GEN-LAST:event_imgRetrocederMouseClicked
 
     /**
      * @param args the command line arguments
@@ -361,10 +374,10 @@ public class ListaDoentes extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private com.toedter.calendar.JDateChooser ComboBoxDataEntrada;
-    private com.toedter.calendar.JDateChooser ComboBoxDataNasc;
-    private com.toedter.calendar.JDateChooser ComboBoxDataSaida;
     private javax.swing.JComboBox<String> ComboGrav;
+    private com.toedter.calendar.JDateChooser DataEntrada;
+    private com.toedter.calendar.JDateChooser DataNasc;
+    private com.toedter.calendar.JDateChooser DataSaida;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btInserir;
@@ -392,4 +405,8 @@ public class ListaDoentes extends javax.swing.JFrame {
     private javax.swing.JTextField txtMedico;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
+
+    private void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
