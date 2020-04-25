@@ -46,6 +46,7 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(804, 363));
         setMinimumSize(new java.awt.Dimension(804, 363));
+        setUndecorated(true);
         setSize(new java.awt.Dimension(804, 363));
         getContentPane().setLayout(null);
 
@@ -93,6 +94,7 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         jLabel1.setBounds(-590, -410, 1700, 1100);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked

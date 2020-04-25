@@ -47,6 +47,7 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(689, 393));
         setMinimumSize(new java.awt.Dimension(689, 393));
+        setUndecorated(true);
         setSize(new java.awt.Dimension(689, 393));
         getContentPane().setLayout(null);
 
@@ -94,6 +95,7 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
         jLabel1.setBounds(-150, 0, 1010, 420);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void jLabel6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel6MouseClicked

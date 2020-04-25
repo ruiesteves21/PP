@@ -43,8 +43,8 @@ public class FichaHospital extends javax.swing.JFrame {
         btDoentes = new javax.swing.JButton();
         btProfissionais = new javax.swing.JButton();
         btEquipamentos = new javax.swing.JButton();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        txtLocalidade = new javax.swing.JTextField();
+        txtNome = new javax.swing.JTextField();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -52,6 +52,7 @@ public class FichaHospital extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(374, 348));
         setMinimumSize(new java.awt.Dimension(374, 348));
+        setUndecorated(true);
         setSize(new java.awt.Dimension(374, 348));
         getContentPane().setLayout(null);
 
@@ -110,13 +111,13 @@ public class FichaHospital extends javax.swing.JFrame {
         getContentPane().add(btEquipamentos);
         btEquipamentos.setBounds(20, 280, 180, 29);
 
-        jTextField1.setEnabled(false);
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(120, 110, 130, 30);
+        txtLocalidade.setEnabled(false);
+        getContentPane().add(txtLocalidade);
+        txtLocalidade.setBounds(120, 100, 130, 30);
 
-        jTextField2.setEnabled(false);
-        getContentPane().add(jTextField2);
-        jTextField2.setBounds(120, 50, 130, 30);
+        txtNome.setEnabled(false);
+        getContentPane().add(txtNome);
+        txtNome.setBounds(120, 50, 130, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -141,6 +142,7 @@ public class FichaHospital extends javax.swing.JFrame {
         jLabel4.setBounds(-4, 0, 640, 390);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEnfermariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnfermariaActionPerformed
@@ -232,7 +234,7 @@ public class FichaHospital extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
+    public javax.swing.JTextField txtLocalidade;
+    public javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

@@ -46,6 +46,7 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(496, 364));
+        setUndecorated(true);
         setSize(new java.awt.Dimension(496, 364));
         getContentPane().setLayout(null);
 
@@ -103,6 +104,7 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
         jLabel1.setBounds(0, -950, 750, 1370);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked

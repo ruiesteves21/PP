@@ -74,10 +74,10 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(444, 320));
         setMinimumSize(new java.awt.Dimension(444, 320));
+        setUndecorated(true);
         setSize(new java.awt.Dimension(444, 320));
         getContentPane().setLayout(null);
 
-        btListaHospital.setBackground(new java.awt.Color(255, 255, 255));
         btListaHospital.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btListaHospital.setText("Lista de Hospitais");
         btListaHospital.addActionListener(new java.awt.event.ActionListener() {
@@ -160,6 +160,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         jLabel1.setBounds(-100, 0, 620, 390);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btListaHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaHospitalActionPerformed

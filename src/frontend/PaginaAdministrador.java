@@ -140,6 +140,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(852, 480));
+        setUndecorated(true);
         getContentPane().setLayout(null);
 
         tabelUtilizadores.setModel(new javax.swing.table.DefaultTableModel(
@@ -213,6 +214,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         btRegistoAcesso.setBounds(350, 240, 160, 30);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btAdicionarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btAdicionarActionPerformed
