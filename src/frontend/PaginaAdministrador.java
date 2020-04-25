@@ -27,6 +27,12 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     public PaginaAdministrador (Sistema sistema, Serializacao bd) {
         initComponents();
         
+        //Mostra a centralização da janela
+        this.setLocationRelativeTo(null);
+        
+        //O processo de fecho da janela será controlado pelo programa
+        this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+        
         this.sistema = sistema;
         this.bd = bd;
         this.modeloTabelaAdmin = criarModeloTabela();
@@ -133,6 +139,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         btRegistoAcesso = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(852, 480));
         getContentPane().setLayout(null);
 
         tabelUtilizadores.setModel(new javax.swing.table.DefaultTableModel(

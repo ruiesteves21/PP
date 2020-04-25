@@ -60,7 +60,10 @@ public class LoginForm extends javax.swing.JFrame {
             txtUsername.requestFocus();            
         }else{
             //Devolve o controlo da aplicação para o método main
-            dispose();            
+            dispose();
+            
+            PaginaInicial paginaInicial = new PaginaInicial(sistema, bd);
+            paginaInicial.setVisible(true);  
         }               
     }     
     
@@ -142,9 +145,6 @@ public class LoginForm extends javax.swing.JFrame {
     private void btEntrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEntrarActionPerformed
         // TODO add your handling code here:
         autenticar();
-        
-        PaginaInicial paginaInicial = new PaginaInicial(sistema, bd);
-        paginaInicial.setVisible(true);  
         
     }//GEN-LAST:event_btEntrarActionPerformed
 

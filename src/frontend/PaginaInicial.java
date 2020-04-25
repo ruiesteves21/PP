@@ -26,7 +26,10 @@ public class PaginaInicial extends javax.swing.JFrame {
         this.bd = bd;
         
         //Força a maximização da janela
-        this.setExtendedState(PaginaInicial.MAXIMIZED_BOTH);    
+        //this.setExtendedState(PaginaInicial.MAXIMIZED_BOTH);    
+        
+        //Mostra a centralização da janela
+        this.setLocationRelativeTo(null);
         
         //O processo de fecho da janela será controlado pelo programa
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);

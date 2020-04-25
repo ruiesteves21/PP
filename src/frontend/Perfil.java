@@ -43,14 +43,14 @@ public class Perfil extends javax.swing.JFrame {
             //Altera o titulo da janela
             //Como construimos sempre uma nova janela, as caixas de texto já estão limpas
             setTitle("Criação de novo utilizador");
-            txtUsername.requestFocus();                      
+            txtNome.requestFocus();                      
         }else{
             //No caso de um registo existente
             //Altera o titulo da janela
             setTitle("Alteração de dados de utilizador");
             //Preenche as caixas de texto com os dados do utilizador
-            txtUsername.setText(utilizador.getUsername());
-            txtNome.setText(utilizador.getNome());            
+            txtNome.setText(utilizador.getNome());
+            txtUsername.setText(utilizador.getUsername());            
             txtSenha.requestFocus();
         }               
     }
