@@ -59,6 +59,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         txtEnfermaria = new javax.swing.JTextField();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
+        imgGuardar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -220,6 +221,15 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(570, 30, 30, 30);
 
+        imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
+        imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgGuardarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgGuardar);
+        imgGuardar.setBounds(490, 30, 30, 30);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/listaProfissionaisfundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 620, 410);
@@ -290,6 +300,12 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         
     }//GEN-LAST:event_imgHomeMouseClicked
 
+    private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
+        // TODO add your handling code here:
+        guardarAlteracoes();
+        JOptionPane.showMessageDialog(this, "Alterações guardadas.");
+    }//GEN-LAST:event_imgGuardarMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -331,6 +347,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;

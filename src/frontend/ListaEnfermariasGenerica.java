@@ -109,9 +109,10 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
-        PaginaInicial paginaInicial = new PaginaInicial(sistema,bd);
-        paginaInicial.setLocationRelativeTo(null);
-        paginaInicial.setVisible(true);
+        dispose();
+        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
+        paginaInicialUtilizador.setLocationRelativeTo(null);
+        paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
 
                                 

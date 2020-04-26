@@ -137,6 +137,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         btEditar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btRegistoAcesso = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(852, 480));
@@ -162,7 +163,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tabelUtilizadores);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 60, 570, 150);
+        jScrollPane1.setBounds(40, 50, 290, 210);
 
         imgSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
         imgSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -171,7 +172,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgSair);
-        imgSair.setBounds(10, 260, 24, 30);
+        imgSair.setBounds(310, 10, 24, 30);
 
         btAdicionar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btAdicionar.setText("Adicionar");
@@ -181,7 +182,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btAdicionar);
-        btAdicionar.setBounds(480, 20, 90, 30);
+        btAdicionar.setBounds(230, 320, 100, 30);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -191,7 +192,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(340, 20, 90, 30);
+        btEditar.setBounds(230, 270, 100, 30);
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setText("Página Utilizador");
@@ -201,7 +202,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(70, 240, 160, 30);
+        jButton1.setBounds(40, 270, 160, 30);
 
         btRegistoAcesso.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btRegistoAcesso.setText("Registo de acesso");
@@ -211,7 +212,11 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btRegistoAcesso);
-        btRegistoAcesso.setBounds(350, 240, 160, 30);
+        btRegistoAcesso.setBounds(40, 320, 160, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/wp2.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(-370, 0, 1120, 430);
 
         pack();
         setLocationRelativeTo(null);
@@ -289,6 +294,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton btRegistoAcesso;
     private javax.swing.JLabel imgSair;
     private javax.swing.JButton jButton1;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelUtilizadores;
     // End of variables declaration//GEN-END:variables

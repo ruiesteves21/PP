@@ -57,8 +57,9 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         btEditar = new javax.swing.JButton();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
-        jLabel1 = new javax.swing.JLabel();
         jComboBox1 = new javax.swing.JComboBox<>();
+        imgGuardar = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(614, 317));
@@ -224,13 +225,22 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(570, 30, 30, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaEnfermariasfundo.png"))); // NOI18N
-        getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 640, 390);
-
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
         jComboBox1.setBounds(130, 160, 56, 20);
+
+        imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
+        imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgGuardarMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgGuardar);
+        imgGuardar.setBounds(490, 30, 30, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaEnfermariasfundo.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(0, 0, 640, 390);
 
         pack();
         setLocationRelativeTo(null);
@@ -310,6 +320,12 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
+
+    private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
+        // TODO add your handling code here:
+        guardarAlteracoes();
+        JOptionPane.showMessageDialog(this, "Alterações guardadas.");
+    }//GEN-LAST:event_imgGuardarMouseClicked
     
      
      
@@ -354,6 +370,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JComboBox<String> jComboBox1;

@@ -140,7 +140,6 @@ public class Perfil extends javax.swing.JFrame {
         txtUsername = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         btEditar = new javax.swing.JButton();
-        jLabel7 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btFechar = new javax.swing.JButton();
@@ -182,11 +181,7 @@ public class Perfil extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(100, 300, 80, 29);
-
-        jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(280, 10, 24, 30);
+        btEditar.setBounds(160, 300, 80, 29);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         getContentPane().add(jLabel6);
@@ -276,7 +271,6 @@ public class Perfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPasswordField txtConfirmacao;
     private javax.swing.JTextField txtNome;
