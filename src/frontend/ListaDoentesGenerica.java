@@ -39,8 +39,8 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
+        txtFiltrar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -61,11 +61,20 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
+        table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        table.setEnabled(false);
         jScrollPane1.setViewportView(table);
 
         getContentPane().add(jScrollPane1);
@@ -74,11 +83,7 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setText("Filtrar");
         getContentPane().add(jButton1);
-        jButton1.setBounds(720, 330, 73, 23);
-
-        imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
-        getContentPane().add(imgRetroceder);
-        imgRetroceder.setBounds(710, 10, 24, 30);
+        jButton1.setBounds(550, 330, 73, 23);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -88,6 +93,14 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         });
         getContentPane().add(imgHome);
         imgHome.setBounds(750, 10, 30, 30);
+
+        txtFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFiltrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtFiltrar);
+        txtFiltrar.setBounds(650, 330, 140, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G2.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -102,8 +115,12 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
-        
+        this.close();
     }//GEN-LAST:event_imgHomeMouseClicked
+
+    private void txtFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFiltrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,10 +159,14 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imgHome;
-    private javax.swing.JLabel imgRetroceder;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
+    private javax.swing.JTextField txtFiltrar;
     // End of variables declaration//GEN-END:variables
+
+    private void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }
