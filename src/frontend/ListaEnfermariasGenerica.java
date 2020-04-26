@@ -41,7 +41,6 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
         table = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         imgHome = new javax.swing.JLabel();
-        imgRetroceder = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -90,15 +89,6 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(430, 0, 30, 30);
 
-        imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
-        imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgRetrocederMouseClicked(evt);
-            }
-        });
-        getContentPane().add(imgRetroceder);
-        imgRetroceder.setBounds(390, 0, 24, 30);
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, -950, 750, 1370);
@@ -120,13 +110,6 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
-        // TODO add your handling code here:
-    PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
-    paginaInicialUtilizador.setLocationRelativeTo(null);
-    paginaInicialUtilizador.setVisible(true);
-    }//GEN-LAST:event_imgRetrocederMouseClicked
 
     /**
      * @param args the command line arguments
@@ -165,7 +148,6 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imgHome;
-    private javax.swing.JLabel imgRetroceder;
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;

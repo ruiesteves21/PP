@@ -47,11 +47,9 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
         txtDoente = new javax.swing.JTextField();
         txtEnfermaria = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
-        txtCodigo = new javax.swing.JTextField();
         btInserir = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
@@ -77,21 +75,25 @@ public class ListaEquipamentos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Tipo", "Disponibilidade", "Enfermaria", "Doente"
+                "Nome", "Tipo", "Disponibilidade", "Enfermaria", "Doente"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Double.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane3.setViewportView(table);
-        if (table.getColumnModel().getColumnCount() > 0) {
-            table.getColumnModel().getColumn(0).setResizable(false);
-        }
 
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(240, 50, 350, 230);
@@ -116,11 +118,6 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(10, 260, 60, 20);
 
-        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel6.setText("Codigo :");
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(10, 60, 60, 20);
-
         txtDoente.setEnabled(false);
         getContentPane().add(txtDoente);
         txtDoente.setBounds(120, 250, 110, 30);
@@ -137,10 +134,6 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         });
         getContentPane().add(txtNome);
         txtNome.setBounds(120, 90, 110, 30);
-
-        txtCodigo.setEnabled(false);
-        getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(120, 50, 110, 30);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
@@ -208,6 +201,11 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         ComboTipo.setBounds(120, 130, 110, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgRetrocederMouseClicked(evt);
+            }
+        });
         getContentPane().add(imgRetroceder);
         imgRetroceder.setBounds(520, 10, 24, 30);
 
@@ -243,7 +241,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here:
-        txtCodigo.setText(null);
+       
         txtNome.setText(null);
         txtEnfermaria.setText(null);
         txtDoente.setText(null);
@@ -251,7 +249,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
-        model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(), txtNome.getText(), ComboTipo.getSelectedItem(), ComboDisp.getSelectedItem(), txtEnfermaria.getText(), txtDoente.getText()});
+        model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(),ComboTipo.getSelectedItem(),ComboDisp.getSelectedItem(), txtEnfermaria.getText(),txtDoente.getText()});
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
@@ -259,7 +257,6 @@ public class ListaEquipamentos extends javax.swing.JFrame {
          btInserir.setEnabled(true);
          btExcluir.setEnabled(true);
          btLimpar.setEnabled(true);
-         txtCodigo.setEnabled(true);
          txtNome.setEnabled(true);
          ComboTipo.setEnabled(true);
          ComboDisp.setEnabled(true);
@@ -282,6 +279,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
+        dispose();
         PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
@@ -292,6 +290,14 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         guardarAlteracoes();
         JOptionPane.showMessageDialog(this, "Alterações guardadas.");
     }//GEN-LAST:event_imgGuardarMouseClicked
+
+    private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
+        // TODO add your handling code here:
+        dispose();
+        FichaHospital p = new FichaHospital(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_imgRetrocederMouseClicked
 
     /**
      * @param args the command line arguments
@@ -342,13 +348,11 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable table;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDoente;
     private javax.swing.JTextField txtEnfermaria;
     private javax.swing.JTextField txtNome;

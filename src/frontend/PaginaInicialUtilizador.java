@@ -208,10 +208,11 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void btListaProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaProfissionaisActionPerformed
         // TODO add your handling code here:
-        dispose();
+        
         ListaProfissionaisGenerica p = new ListaProfissionaisGenerica(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
+        this.close();
     }//GEN-LAST:event_btListaProfissionaisActionPerformed
 
     private void btListaEnfermariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaEnfermariasActionPerformed
@@ -268,4 +269,8 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private javax.swing.JLabel imgSair;
     private javax.swing.JLabel jLabel1;
     // End of variables declaration//GEN-END:variables
+
+    private void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

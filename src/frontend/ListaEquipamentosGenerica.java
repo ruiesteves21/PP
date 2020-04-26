@@ -40,7 +40,6 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
-        imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -77,15 +76,6 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         getContentPane().add(jButton1);
         jButton1.setBounds(680, 310, 80, 29);
 
-        imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
-        imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgRetrocederMouseClicked(evt);
-            }
-        });
-        getContentPane().add(imgRetroceder);
-        imgRetroceder.setBounds(20, 10, 24, 30);
-
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -110,14 +100,6 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
-
-    private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
-        // TODO add your handling code here:
-        dispose();
-        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
-        paginaInicialUtilizador.setLocationRelativeTo(null);
-        paginaInicialUtilizador.setVisible(true);
-    }//GEN-LAST:event_imgRetrocederMouseClicked
 
     /**
      * @param args the command line arguments
@@ -156,7 +138,6 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imgHome;
-    private javax.swing.JLabel imgRetroceder;
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
