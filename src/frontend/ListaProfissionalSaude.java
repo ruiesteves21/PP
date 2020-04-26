@@ -28,6 +28,9 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         this.bd = bd;
  
     }
+    private void guardarAlteracoes() {
+        bd.gravaSistema(sistema);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.

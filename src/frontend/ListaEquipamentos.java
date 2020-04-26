@@ -28,6 +28,9 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         this.sistema=sistema;
         this.bd = bd;
     }
+    private void guardarAlteracoes() {
+        bd.gravaSistema(sistema);
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
