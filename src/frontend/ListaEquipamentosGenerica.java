@@ -41,6 +41,7 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         table = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         imgHome = new javax.swing.JLabel();
+        txtFiltrar = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -83,7 +84,15 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(60, 10, 30, 30);
+        imgHome.setBounds(10, 10, 30, 30);
+
+        txtFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFiltrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtFiltrar);
+        txtFiltrar.setBounds(500, 310, 160, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G4.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -100,6 +109,10 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
+
+    private void txtFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFiltrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -142,5 +155,6 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
+    private javax.swing.JTextField txtFiltrar;
     // End of variables declaration//GEN-END:variables
 }

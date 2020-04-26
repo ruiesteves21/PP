@@ -83,7 +83,7 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setText("Filtrar");
         getContentPane().add(jButton1);
-        jButton1.setBounds(550, 330, 73, 23);
+        jButton1.setBounds(710, 320, 80, 30);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,7 +92,7 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(750, 10, 30, 30);
+        imgHome.setBounds(10, 10, 30, 30);
 
         txtFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -100,7 +100,7 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFiltrar);
-        txtFiltrar.setBounds(650, 330, 140, 20);
+        txtFiltrar.setBounds(520, 320, 170, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G2.jpg"))); // NOI18N
         getContentPane().add(jLabel1);

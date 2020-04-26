@@ -169,9 +169,9 @@ public class Perfil extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(130, 220, 100, 20);
         getContentPane().add(txtUsername);
-        txtUsername.setBounds(230, 180, 120, 20);
+        txtUsername.setBounds(230, 180, 120, 19);
         getContentPane().add(txtNome);
-        txtNome.setBounds(230, 140, 120, 20);
+        txtNome.setBounds(230, 140, 120, 19);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -202,9 +202,9 @@ public class Perfil extends javax.swing.JFrame {
         getContentPane().add(btFechar);
         btFechar.setBounds(260, 300, 80, 30);
         getContentPane().add(txtSenha);
-        txtSenha.setBounds(230, 220, 120, 20);
+        txtSenha.setBounds(230, 220, 120, 19);
         getContentPane().add(txtConfirmacao);
-        txtConfirmacao.setBounds(230, 260, 120, 20);
+        txtConfirmacao.setBounds(230, 260, 120, 19);
 
         jLabel5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundo_perfil.jpg"))); // NOI18N
         getContentPane().add(jLabel5);
