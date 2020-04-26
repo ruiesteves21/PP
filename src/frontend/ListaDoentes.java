@@ -32,6 +32,10 @@ public class ListaDoentes extends javax.swing.JFrame {
         this.bd = bd;
     }
 
+    private void guardarAlteracoes() {
+    bd.gravaSistema(sistema);
+    }
+         
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,9 +97,16 @@ public class ListaDoentes extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Double.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane3.setViewportView(tableDoentes);
@@ -337,9 +348,10 @@ public class ListaDoentes extends javax.swing.JFrame {
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
-        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
-        paginaInicialUtilizador.setLocationRelativeTo(null);
-        paginaInicialUtilizador.setVisible(true);
+        ListaHospitais listaHospitais = new ListaHospitais(sistema,bd);
+        listaHospitais.setLocationRelativeTo(null);
+        listaHospitais.setVisible(true);
+        this.close();
     }//GEN-LAST:event_imgHomeMouseClicked
 
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
