@@ -47,6 +47,7 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(807, 358));
         setMinimumSize(new java.awt.Dimension(807, 358));
+        setUndecorated(true);
         setSize(new java.awt.Dimension(807, 358));
         getContentPane().setLayout(null);
 
@@ -94,6 +95,7 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         jLabel1.setBounds(-180, -150, 1550, 830);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked

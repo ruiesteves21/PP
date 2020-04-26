@@ -64,6 +64,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(604, 333));
         setMinimumSize(new java.awt.Dimension(604, 333));
+        setUndecorated(true);
         setSize(new java.awt.Dimension(604, 333));
         getContentPane().setLayout(null);
 
@@ -220,6 +221,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         jLabel1.setBounds(0, 0, 620, 380);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed

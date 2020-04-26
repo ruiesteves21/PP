@@ -77,6 +77,7 @@ public class PaginaInicial extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(348, 375));
         setMinimumSize(new java.awt.Dimension(348, 375));
+        setUndecorated(true);
         setSize(new java.awt.Dimension(348, 375));
         getContentPane().setLayout(null);
 
@@ -119,9 +120,10 @@ public class PaginaInicial extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pagini.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-50, -10, 630, 410);
+        jLabel1.setBounds(-30, 0, 630, 410);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void imgAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgAdminMouseClicked

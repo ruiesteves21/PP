@@ -63,6 +63,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(617, 351));
+        setUndecorated(true);
         setSize(new java.awt.Dimension(617, 351));
         getContentPane().setLayout(null);
 
@@ -224,6 +225,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         jLabel1.setBounds(0, 0, 620, 410);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed

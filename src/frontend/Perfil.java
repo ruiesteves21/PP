@@ -151,6 +151,7 @@ public class Perfil extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(363, 343));
         setMinimumSize(new java.awt.Dimension(363, 343));
+        setUndecorated(true);
         setSize(new java.awt.Dimension(363, 343));
         getContentPane().setLayout(null);
 
@@ -181,7 +182,7 @@ public class Perfil extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(100, 300, 70, 29);
+        btEditar.setBounds(100, 300, 80, 29);
 
         jLabel7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         getContentPane().add(jLabel7);
@@ -215,6 +216,7 @@ public class Perfil extends javax.swing.JFrame {
         jLabel5.setBounds(0, 0, 610, 410);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
             

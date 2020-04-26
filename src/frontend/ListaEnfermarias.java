@@ -62,6 +62,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(614, 317));
+        setUndecorated(true);
         setSize(new java.awt.Dimension(614, 317));
         getContentPane().setLayout(null);
 
@@ -229,9 +230,10 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(130, 160, 55, 19);
+        jComboBox1.setBounds(130, 160, 56, 20);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
