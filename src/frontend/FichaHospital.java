@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package frontend;
+import backend.Hospital;
 import backend.Sistema;
 import backend.Serializacao;
 
@@ -12,8 +13,9 @@ import backend.Serializacao;
  * @author ssoar
  */
 public class FichaHospital extends javax.swing.JFrame {
-     private Sistema sistema;
+    private Sistema sistema;
     private Serializacao bd;
+    /* int varHosp; */
 
     /**
      * Creates new form Ficha_Hospital_G
@@ -24,8 +26,11 @@ public class FichaHospital extends javax.swing.JFrame {
         initComponents();
         this.sistema=sistema;
         this.bd = bd;
+        /*this.varHosp = varHosp;
+        Hospital hosp = sistema.getListaHospital().getListaHospital().get(varHosp);*/
         
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -147,6 +152,7 @@ public class FichaHospital extends javax.swing.JFrame {
 
     private void btEnfermariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnfermariaActionPerformed
         // TODO add your handling code here:
+        hide();
         ListaEnfermarias listaEnfermarias = new ListaEnfermarias(sistema,bd);
         listaEnfermarias.setLocationRelativeTo(null);
         listaEnfermarias.setVisible(true);
@@ -154,6 +160,7 @@ public class FichaHospital extends javax.swing.JFrame {
 
     private void btDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDoentesActionPerformed
         // TODO add your handling code here:
+        hide();
         ListaDoentes listaDoentes = new ListaDoentes(sistema,bd);
         listaDoentes.setLocationRelativeTo(null);
         listaDoentes.setVisible(true);
@@ -161,6 +168,7 @@ public class FichaHospital extends javax.swing.JFrame {
 
     private void btProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProfissionaisActionPerformed
         // TODO add your handling code here:
+        hide();
         ListaProfissionalSaude listaProfissionalSaude = new ListaProfissionalSaude(sistema,bd);
         listaProfissionalSaude.setLocationRelativeTo(null);
         listaProfissionalSaude.setVisible(true);
@@ -168,6 +176,7 @@ public class FichaHospital extends javax.swing.JFrame {
 
     private void btEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipamentosActionPerformed
         // TODO add your handling code here:
+        hide();
         ListaEquipamentos listaEquipamentos = new ListaEquipamentos(sistema,bd);
         listaEquipamentos.setLocationRelativeTo(null);
         listaEquipamentos.setVisible(true);
@@ -175,6 +184,7 @@ public class FichaHospital extends javax.swing.JFrame {
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
+        dispose();
         PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
@@ -182,6 +192,7 @@ public class FichaHospital extends javax.swing.JFrame {
 
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
+        dispose();
         ListaHospitais listaHospitais = new ListaHospitais(sistema,bd);
         listaHospitais.setLocationRelativeTo(null);
         listaHospitais.setVisible(true);

@@ -4,10 +4,12 @@
  * and open the template in the editor.
  */
 package frontend;
+import backend.Hospital;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import static frontend.ListaHospitais.table;
 /**
  *
  * @author ruiesteves
@@ -27,6 +29,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         this.sistema=sistema;
         this.bd = bd;
        
+       
     }
     private void guardarAlteracoes() {
         bd.gravaSistema(sistema);
@@ -44,12 +47,10 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         txtTipo = new javax.swing.JTextField();
         txtCamas = new javax.swing.JTextField();
@@ -75,14 +76,14 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Tipo", "Nº camas", "Nº Doentes"
+                "Nome", "Tipo", "Nº camas", "Nº Doentes"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Double.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -103,11 +104,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(230, 10, 180, 20);
 
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel10.setText("Codigo :");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(20, 80, 60, 20);
-
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel11.setText("Nome :");
         getContentPane().add(jLabel11);
@@ -127,15 +123,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         jLabel14.setText("Nº Doentes :");
         getContentPane().add(jLabel14);
         jLabel14.setBounds(20, 240, 90, 20);
-
-        txtCodigo.setEnabled(false);
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(110, 70, 120, 30);
 
         txtNome.setEnabled(false);
         txtNome.addActionListener(new java.awt.event.ActionListener() {
@@ -271,7 +258,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
-        model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),txtTipo.getText(),txtCamas.getText(),txtDoentes.getText()});
+       model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(),txtTipo.getText(),txtCamas.getText(),txtDoentes.getText()});
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
@@ -279,7 +266,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         btInserir.setEnabled(true);
         btExcluir.setEnabled(true);
         btLimpar.setEnabled(true);
-        txtCodigo.setEnabled(true);
         txtNome.setEnabled(true);
         txtTipo.setEnabled(true);
         txtCamas.setEnabled(true);
@@ -288,16 +274,12 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here:
-        txtCodigo.setText(null);
+        
         txtNome.setText(null);
         txtTipo.setText(null);
         txtCamas.setText(null);
         txtDoentes.setText(null);
     }//GEN-LAST:event_btLimparActionPerformed
-
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
         // TODO add your handling code here:
@@ -313,9 +295,10 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
-        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
-        paginaInicialUtilizador.setLocationRelativeTo(null);
-        paginaInicialUtilizador.setVisible(true);
+        dispose();
+        PaginaInicialUtilizador p = new PaginaInicialUtilizador(sistema,bd);
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
         
     }//GEN-LAST:event_imgHomeMouseClicked
 
@@ -326,9 +309,11 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
-        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
-        paginaInicialUtilizador.setLocationRelativeTo(null);
-        paginaInicialUtilizador.setVisible(true);
+        dispose();
+        FichaHospital p = new FichaHospital(sistema,bd);
+        /* FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
     private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
@@ -385,7 +370,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
@@ -394,7 +378,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable table;
     private javax.swing.JTextField txtCamas;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtDoentes;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtTipo;

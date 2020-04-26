@@ -4,11 +4,13 @@
  * and open the template in the editor.
  */
 package frontend;
+import backend.Hospital;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
 import javax.swing.table.TableModel;
+
 
 /**
  *
@@ -274,6 +276,7 @@ public class ListaHospitais extends javax.swing.JFrame {
 
     private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
         // TODO add your handling code here:
+        sistema.getListaHospital().adicionar(new Hospital(txtNome.getText(), txtLocalidade.getText(), Integer.parseInt(txtCodigo.getText())));
         guardarAlteracoes();
         JOptionPane.showMessageDialog(this, "Alterações guardadas.");
     }//GEN-LAST:event_imgGuardarMouseClicked
@@ -281,6 +284,7 @@ public class ListaHospitais extends javax.swing.JFrame {
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         // TODO add your handling code here:
         FichaHospital p = new FichaHospital(sistema,bd);
+        /* FichaHospital p = new FichaHospital(sistema,bd, table.getSelectedRow()); */
         int index = table.getSelectedRow();
         
         TableModel model = table.getModel();
@@ -288,6 +292,7 @@ public class ListaHospitais extends javax.swing.JFrame {
         String Nome = model.getValueAt(index, 1).toString();
         String Localidade = model.getValueAt(index, 2).toString();
         FichaHospital jtRowData = new FichaHospital(sistema, bd);
+        /* FichaHospital jtRowData = new FichaHospital(sistema, bd, table.getSelectedRow());*/
         p.txtNome.setText(Nome);
         p.txtLocalidade.setText(Localidade);
         

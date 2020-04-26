@@ -7,6 +7,7 @@ package frontend;
 
 import backend.Serializacao;
 import backend.Sistema;
+import static frontend.ListaHospitais.table;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -48,7 +49,6 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jLabel10 = new javax.swing.JLabel();
         btInserir = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
@@ -56,7 +56,6 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         txtEspecialidade = new javax.swing.JTextField();
         txtHospital = new javax.swing.JTextField();
-        txtCodigo = new javax.swing.JTextField();
         ComboBoxFuncao = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         txtEnfermaria = new javax.swing.JTextField();
@@ -81,15 +80,22 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Função", "Especialidade", "Enfermaria"
+                "Nome", "Função", "Especialidade", "Enfermaria"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Double.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         jScrollPane3.setViewportView(tableProfissionaisSaude);
@@ -116,11 +122,6 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         jLabel9.setText("Hospital :");
         getContentPane().add(jLabel9);
         jLabel9.setBounds(10, 280, 70, 20);
-
-        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel10.setText("Codigo :");
-        getContentPane().add(jLabel10);
-        jLabel10.setBounds(10, 80, 60, 20);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
@@ -182,10 +183,6 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         getContentPane().add(txtHospital);
         txtHospital.setBounds(120, 270, 120, 30);
 
-        txtCodigo.setEnabled(false);
-        getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(120, 70, 120, 30);
-
         ComboBoxFuncao.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         ComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Médico", "Enfermeiro" }));
         ComboBoxFuncao.setEnabled(false);
@@ -212,6 +209,11 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         txtEnfermaria.setBounds(120, 230, 120, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgRetrocederMouseClicked(evt);
+            }
+        });
         getContentPane().add(imgRetroceder);
         imgRetroceder.setBounds(530, 30, 24, 30);
 
@@ -246,7 +248,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         btInserir.setEnabled(true);
         btExcluir.setEnabled(true);
         btLimpar.setEnabled(true);
-        txtCodigo.setEnabled(true);
+        
         txtNome.setEnabled(true);
         txtEspecialidade.setEnabled(true);
         txtEnfermaria.setEnabled(true);
@@ -282,7 +284,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here:
-        txtCodigo.setText(null);
+        
         txtNome.setText(null);
         txtEspecialidade.setText(null);
         txtEnfermaria.setText(null);
@@ -292,11 +294,12 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
-         model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(), ComboBoxFuncao.getSelectedItem(),  txtEspecialidade.getText(), txtEnfermaria.getText(), txtHospital.getText()});
+         model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(),ComboBoxFuncao.getSelectedItem(),txtEspecialidade.getText(),txtEnfermaria.getText(),txtHospital.getText()});
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
+        dispose();
         PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
@@ -308,6 +311,15 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         guardarAlteracoes();
         JOptionPane.showMessageDialog(this, "Alterações guardadas.");
     }//GEN-LAST:event_imgGuardarMouseClicked
+
+    private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
+        // TODO add your handling code here:
+         dispose();
+        FichaHospital p = new FichaHospital(sistema,bd);
+        /* FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+    }//GEN-LAST:event_imgRetrocederMouseClicked
 
     /**
      * @param args the command line arguments
@@ -354,7 +366,6 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
@@ -363,7 +374,6 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tableProfissionaisSaude;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtEnfermaria;
     private javax.swing.JTextField txtEspecialidade;
     private javax.swing.JTextField txtHospital;
