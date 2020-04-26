@@ -128,6 +128,7 @@ public class PaginaInicial extends javax.swing.JFrame {
 
     private void imgAdminMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgAdminMouseClicked
         // TODO add your handling code here:
+        dispose();
         PaginaAdministrador paginaAdministrador = new PaginaAdministrador(sistema, bd);
         paginaAdministrador.setVisible(true);  
         
@@ -135,6 +136,7 @@ public class PaginaInicial extends javax.swing.JFrame {
 
     private void imgMedicoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgMedicoMouseClicked
         // TODO add your handling code here:
+        dispose();
         PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema, bd);
         paginaInicialUtilizador.setVisible(true);
         

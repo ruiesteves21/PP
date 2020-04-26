@@ -165,6 +165,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void btListaHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaHospitalActionPerformed
         // TODO add your handling code here:
+        dispose();
         ListaHospitais p = new ListaHospitais(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
@@ -172,6 +173,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void btListaEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaEquipamentosActionPerformed
         // TODO add your handling code here:
+        dispose();
         ListaEquipamentosGenerica p = new ListaEquipamentosGenerica(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
@@ -185,6 +187,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void imgPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgPerfilMouseClicked
         // TODO add your handling code here:
+        dispose();
         Perfil perfil = new Perfil(sistema, sistema.getUtilizadorLigado(), null);
         perfil.setVisible(true);
         
@@ -197,6 +200,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void btListaDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaDoentesActionPerformed
         // TODO add your handling code here:
+        dispose();
         ListaDoentesGenerica p = new ListaDoentesGenerica(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
@@ -204,6 +208,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void btListaProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaProfissionaisActionPerformed
         // TODO add your handling code here:
+        dispose();
         ListaProfissionaisGenerica p = new ListaProfissionaisGenerica(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
@@ -211,7 +216,8 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void btListaEnfermariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaEnfermariasActionPerformed
         // TODO add your handling code here:
-         ListaEnfermariasGenerica p = new ListaEnfermariasGenerica(sistema,bd);
+        dispose();
+        ListaEnfermariasGenerica p = new ListaEnfermariasGenerica(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_btListaEnfermariasActionPerformed

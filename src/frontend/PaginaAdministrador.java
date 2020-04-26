@@ -234,6 +234,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
+        dispose();
         PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema, bd);
         paginaInicialUtilizador.setVisible(true);
         
@@ -241,6 +242,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
 
     private void btRegistoAcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistoAcessoActionPerformed
         // TODO add your handling code here:
+        dispose();
         RegistoAcessos registoAcessos = new RegistoAcessos(sistema, bd);
         registoAcessos.setVisible(true);
     }//GEN-LAST:event_btRegistoAcessoActionPerformed
