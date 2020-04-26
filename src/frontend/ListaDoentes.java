@@ -348,6 +348,7 @@ public class ListaDoentes extends javax.swing.JFrame {
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
+        dispose();
         ListaHospitais listaHospitais = new ListaHospitais(sistema,bd);
         listaHospitais.setLocationRelativeTo(null);
         listaHospitais.setVisible(true);
@@ -356,10 +357,10 @@ public class ListaDoentes extends javax.swing.JFrame {
 
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
+        dispose();
         PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
-        this.close();
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
     private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked

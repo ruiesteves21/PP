@@ -46,26 +46,26 @@ public class RegistoForm extends javax.swing.JFrame {
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("Nome:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(30, 140, 50, 20);
+        jLabel2.setBounds(70, 150, 50, 20);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel3.setText("Email:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(30, 180, 50, 20);
+        jLabel3.setBounds(80, 190, 50, 20);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel4.setText("Senha:");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(30, 220, 50, 20);
+        jLabel4.setBounds(80, 230, 50, 20);
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel5.setText("Confirma Senha:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(30, 260, 110, 20);
+        jLabel5.setBounds(20, 270, 110, 20);
         getContentPane().add(jTextField1);
-        jTextField1.setBounds(90, 140, 140, 30);
+        jTextField1.setBounds(130, 140, 140, 30);
         getContentPane().add(jTextField2);
-        jTextField2.setBounds(90, 180, 140, 30);
+        jTextField2.setBounds(130, 180, 140, 30);
 
         jTextField3.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,9 +73,9 @@ public class RegistoForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jTextField3);
-        jTextField3.setBounds(90, 220, 140, 30);
+        jTextField3.setBounds(130, 220, 140, 30);
         getContentPane().add(jTextField4);
-        jTextField4.setBounds(150, 260, 140, 30);
+        jTextField4.setBounds(130, 260, 140, 30);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setText("Se já estiver inscrito clique em voltar...");
