@@ -8,6 +8,7 @@ import javax.swing.table.AbstractTableModel;
 import backend.RegistoAcesso;
 import backend.Serializacao;
 import backend.Sistema;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -24,6 +25,20 @@ public class RegistoAcessos extends javax.swing.JFrame {
         this.bd = bd;
         tabAcessos.setModel(criarModeloTabela());
     }  
+    
+     private void guardarAlteracoes() {
+        bd.gravaSistema(sistema);
+    }
+    
+    private void terminar() {        
+        if (JOptionPane.showConfirmDialog(null, 
+                "Deseja realmente terminar o programa?", 
+                "Terminar", 
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            guardarAlteracoes();
+            sistema.terminar();
+        }
+    }
     
     private AbstractTableModel criarModeloTabela() {   
         String[] nomeColunas = {"Username", "Data/Hora"};
@@ -90,40 +105,63 @@ public class RegistoAcessos extends javax.swing.JFrame {
 
         jScrollPane2 = new javax.swing.JScrollPane();
         tabAcessos = new javax.swing.JTable();
+        imgSair = new javax.swing.JLabel();
+        jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registo de Acessos");
+        setMaximumSize(new java.awt.Dimension(350, 315));
+        setMinimumSize(new java.awt.Dimension(345, 313));
+        setUndecorated(true);
+        setSize(new java.awt.Dimension(345, 313));
+        getContentPane().setLayout(null);
 
         tabAcessos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null},
-                {null, null},
-                {null, null},
-                {null, null}
+
             },
             new String [] {
                 "Username", "Data/Hora"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tabAcessos);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 615, Short.MAX_VALUE)
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 322, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
-        );
+        getContentPane().add(jScrollPane2);
+        jScrollPane2.setBounds(40, 60, 271, 234);
+
+        imgSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
+        imgSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgSairMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgSair);
+        imgSair.setBounds(310, 10, 24, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/wp2.png"))); // NOI18N
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(-210, 0, 650, 320);
 
         pack();
+        setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
+
+    private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
+        // TODO add your handling code here:
+        terminar();
+    }//GEN-LAST:event_imgSairMouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imgSair;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabAcessos;
     // End of variables declaration//GEN-END:variables

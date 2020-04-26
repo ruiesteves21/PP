@@ -140,8 +140,10 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(852, 480));
+        setMaximumSize(new java.awt.Dimension(370, 370));
+        setMinimumSize(new java.awt.Dimension(366, 368));
         setUndecorated(true);
+        setSize(new java.awt.Dimension(366, 368));
         getContentPane().setLayout(null);
 
         tabelUtilizadores.setModel(new javax.swing.table.DefaultTableModel(
