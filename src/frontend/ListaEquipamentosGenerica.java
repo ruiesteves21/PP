@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -39,13 +41,11 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         imgHome = new javax.swing.JLabel();
-        txtFiltrar = new javax.swing.JTextField();
+        filtrar = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(807, 358));
         setMinimumSize(new java.awt.Dimension(807, 358));
         setUndecorated(true);
         setSize(new java.awt.Dimension(807, 358));
@@ -70,12 +70,7 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         jScrollPane1.setViewportView(table);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(70, 40, 690, 250);
-
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setText("Filtrar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(680, 310, 80, 29);
+        jScrollPane1.setBounds(70, 60, 690, 250);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -86,13 +81,19 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(10, 10, 30, 30);
 
-        txtFiltrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFiltrarActionPerformed(evt);
+        filtrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nenhum", "Ventilador", "Desfibrilhador" }));
+        filtrar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                filtrarItemStateChanged(evt);
             }
         });
-        getContentPane().add(txtFiltrar);
-        txtFiltrar.setBounds(500, 310, 160, 30);
+        filtrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(filtrar);
+        filtrar.setBounds(660, 20, 90, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G4.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -110,9 +111,30 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
 
-    private void txtFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltrarActionPerformed
+    private void filtrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFiltrarActionPerformed
+    }//GEN-LAST:event_filtrarActionPerformed
+
+     //Filter data
+    private void filter(String query){
+        TableRowSorter<DefaultTableModel> tr=new TableRowSorter<DefaultTableModel>(model);
+        table.setRowSorter(tr);
+        
+        //Check filter query
+        if (query != "Nenhum"){
+            tr.setRowFilter(RowFilter.regexFilter(query));
+        }else{
+            table.setRowSorter(tr);
+        }
+        
+    }
+    
+    private void filtrarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filtrarItemStateChanged
+        // TODO add your handling code here:
+        String query = filtrar.getSelectedItem().toString();
+        
+        filter (query);
+    }//GEN-LAST:event_filtrarItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -150,11 +172,10 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> filtrar;
     private javax.swing.JLabel imgHome;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
-    private javax.swing.JTextField txtFiltrar;
     // End of variables declaration//GEN-END:variables
 }

@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -38,13 +40,11 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
-        txtFiltrar = new javax.swing.JTextField();
+        filtrar = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(689, 393));
         setMinimumSize(new java.awt.Dimension(689, 393));
         setUndecorated(true);
         setSize(new java.awt.Dimension(689, 393));
@@ -69,17 +69,7 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
         jScrollPane1.setViewportView(table);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 50, 490, 230);
-
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setText("Filtrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(450, 300, 70, 29);
+        jScrollPane1.setBounds(30, 100, 490, 230);
 
         jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         jLabel6.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -89,8 +79,20 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel6);
         jLabel6.setBounds(10, 10, 30, 30);
-        getContentPane().add(txtFiltrar);
-        txtFiltrar.setBounds(300, 300, 140, 30);
+
+        filtrar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nenhum", "Médico", "Profissional de Saúde" }));
+        filtrar.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                filtrarItemStateChanged(evt);
+            }
+        });
+        filtrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                filtrarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(filtrar);
+        filtrar.setBounds(423, 60, 80, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G6.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -109,9 +111,30 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jLabel6MouseClicked
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void filtrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_filtrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_filtrarActionPerformed
+
+     //Filter data
+    private void filter(String query){
+        TableRowSorter<DefaultTableModel> tr=new TableRowSorter<DefaultTableModel>(model);
+        table.setRowSorter(tr);
+        
+        //Check filter query
+        if (query != "Nenhum"){
+            tr.setRowFilter(RowFilter.regexFilter(query));
+        }else{
+            table.setRowSorter(tr);
+        }
+        
+    }
+    
+    private void filtrarItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_filtrarItemStateChanged
+        // TODO add your handling code here:
+        String query = filtrar.getSelectedItem().toString();
+        
+        filter(query);
+    }//GEN-LAST:event_filtrarItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -149,12 +172,11 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
+    private javax.swing.JComboBox<String> filtrar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
-    private javax.swing.JTextField txtFiltrar;
     // End of variables declaration//GEN-END:variables
 
     private void close() {
