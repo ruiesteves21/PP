@@ -8,6 +8,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -44,7 +46,6 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(804, 363));
         setMinimumSize(new java.awt.Dimension(804, 363));
         setUndecorated(true);
         setSize(new java.awt.Dimension(804, 363));
@@ -99,6 +100,11 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
                 txtFiltrarActionPerformed(evt);
             }
         });
+        txtFiltrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFiltrarKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtFiltrar);
         txtFiltrar.setBounds(520, 320, 170, 30);
 
@@ -122,6 +128,21 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFiltrarActionPerformed
 
+    private void txtFiltrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltrarKeyReleased
+        // TODO add your handling code here:
+        String query = txtFiltrar.getText().toLowerCase();
+        filter (query);
+        
+    }//GEN-LAST:event_txtFiltrarKeyReleased
+    //filter data
+    private void filter(String query){
+        TableRowSorter<DefaultTableModel> tr=new TableRowSorter<DefaultTableModel>(model);
+        table.setRowSorter(tr);
+        
+        tr.setRowFilter(RowFilter.regexFilter(query)); 
+    }
+    
+    
     /**
      * @param args the command line arguments
      */
