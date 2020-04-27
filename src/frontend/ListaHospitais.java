@@ -9,7 +9,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 
 
 /**
@@ -75,12 +77,11 @@ public class ListaHospitais extends javax.swing.JFrame {
         imgHome = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtLocalidade = new javax.swing.JTextField();
-        btFiltrar1 = new javax.swing.JButton();
         imgGuardar = new javax.swing.JLabel();
+        txtFiltrar = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(590, 390));
         setMinimumSize(new java.awt.Dimension(570, 370));
         setUndecorated(true);
         setSize(new java.awt.Dimension(570, 370));
@@ -151,6 +152,11 @@ public class ListaHospitais extends javax.swing.JFrame {
         jLabel3.setBounds(20, 60, 60, 20);
 
         txtCodigo.setEnabled(false);
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCodigoActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtCodigo);
         txtCodigo.setBounds(110, 60, 100, 30);
 
@@ -207,11 +213,6 @@ public class ListaHospitais extends javax.swing.JFrame {
         getContentPane().add(txtLocalidade);
         txtLocalidade.setBounds(110, 140, 100, 30);
 
-        btFiltrar1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        btFiltrar1.setText("Filtrar");
-        getContentPane().add(btFiltrar1);
-        btFiltrar1.setBounds(110, 270, 80, 29);
-
         imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
         imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -220,6 +221,20 @@ public class ListaHospitais extends javax.swing.JFrame {
         });
         getContentPane().add(imgGuardar);
         imgGuardar.setBounds(440, 10, 30, 30);
+
+        txtFiltrar.setBackground(new java.awt.Color(240, 240, 240));
+        txtFiltrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtFiltrarActionPerformed(evt);
+            }
+        });
+        txtFiltrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFiltrarKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtFiltrar);
+        txtFiltrar.setBounds(110, 230, 80, 30);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_3.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -309,7 +324,27 @@ public class ListaHospitais extends javax.swing.JFrame {
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
-    
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtCodigoActionPerformed
+
+    private void txtFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltrarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtFiltrarActionPerformed
+
+    private void txtFiltrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltrarKeyReleased
+        // TODO add your handling code here:
+         String query=txtFiltrar.getText().toLowerCase();
+        filter(query);
+    }//GEN-LAST:event_txtFiltrarKeyReleased
+
+    //Filter
+     private void filter(String query){
+        TableRowSorter<DefaultTableModel> tr=new TableRowSorter<DefaultTableModel>(model);
+        table.setRowSorter(tr);
+        
+        tr.setRowFilter(RowFilter.regexFilter(query));
+    }
     
     /**
      * @param args the command line arguments
@@ -350,7 +385,6 @@ public class ListaHospitais extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
-    private javax.swing.JButton btFiltrar1;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
     private javax.swing.JLabel imgGuardar;
@@ -364,6 +398,7 @@ public class ListaHospitais extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     public static javax.swing.JTable table;
     private javax.swing.JTextField txtCodigo;
+    private javax.swing.JTextField txtFiltrar;
     private javax.swing.JTextField txtLocalidade;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
