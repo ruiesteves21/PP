@@ -15,7 +15,7 @@ import backend.Serializacao;
 public class FichaHospital extends javax.swing.JFrame {
     private Sistema sistema;
     private Serializacao bd;
-    /* int varHosp; */
+    //int varHosp; 
 
     /**
      * Creates new form Ficha_Hospital_G
@@ -28,10 +28,16 @@ public class FichaHospital extends javax.swing.JFrame {
         this.bd = bd;
         /*this.varHosp = varHosp;
         Hospital hosp = sistema.getListaHospital().getListaHospital().get(varHosp);*/
-        
+        carregarHospital();
     }
     
-
+     private void carregarHospital()
+    {
+        int pos = sistema.getHospitalSelecionado();
+        txtNome.setText(sistema.getListaHospital().getListaHospital().get(pos).getNome());
+        txtLocalidade.setText(sistema.getListaHospital().getListaHospital().get(pos).getLocalidade());
+    }
+     
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
