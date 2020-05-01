@@ -31,9 +31,19 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         this.sistema=sistema;
         this.bd = bd;
         listaEnfermaria = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado()).getListaEnfermaria();
-       
-       
+      
     }
+    
+    public void carregarTabela()
+    {
+        model.setRowCount(0);
+        for (int i = 0; i < sistema.getListaEnfermaria().getListaEnfermaria().size(); i++) {
+            Enfermaria e = sistema.getListaEnfermaria().getListaEnfermaria().get(i);
+            model.addRow(new Object[]{e.getNome(), e.getTipo(), e.getNcamas(), e.getIdEnfermaria()});
+
+        }
+    }
+    
     private void guardarAlteracoes() {
         bd.gravaSistema(sistema);
     }
@@ -57,7 +67,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         txtTipo = new javax.swing.JTextField();
         txtCamas = new javax.swing.JTextField();
-        txtDoentes = new javax.swing.JTextField();
+        txtCodigo = new javax.swing.JTextField();
         btInserir = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
@@ -79,7 +89,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Tipo", "Nº camas", "Nº Doentes"
+                "Nome", "Tipo", "Nº camas", "Codigo Enfermaria"
             }
         ) {
             Class[] types = new Class [] {
@@ -123,7 +133,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         jLabel13.setBounds(20, 200, 80, 20);
 
         jLabel14.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel14.setText("Nº Doentes :");
+        jLabel14.setText("Código :");
         getContentPane().add(jLabel14);
         jLabel14.setBounds(20, 240, 90, 20);
 
@@ -154,14 +164,14 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         getContentPane().add(txtCamas);
         txtCamas.setBounds(110, 190, 120, 30);
 
-        txtDoentes.setEnabled(false);
-        txtDoentes.addActionListener(new java.awt.event.ActionListener() {
+        txtCodigo.setEnabled(false);
+        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtDoentesActionPerformed(evt);
+                txtCodigoActionPerformed(evt);
             }
         });
-        getContentPane().add(txtDoentes);
-        txtDoentes.setBounds(110, 230, 120, 30);
+        getContentPane().add(txtCodigo);
+        txtCodigo.setBounds(110, 230, 120, 30);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
@@ -227,7 +237,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
         jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(130, 160, 56, 20);
+        jComboBox1.setBounds(130, 160, 57, 20);
 
         imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
         imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -261,8 +271,8 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
-       model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(),txtTipo.getText(),txtCamas.getText(),txtDoentes.getText()});
-       Enfermaria enf = new Enfermaria(1,Integer.parseInt(txtCamas.getText()));
+       model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(),txtTipo.getText(),txtCamas.getText(),txtCodigo.getText()});
+       Enfermaria enf = new Enfermaria(txtNome.getText(), Integer.parseInt(txtCodigo.getText()), Integer.parseInt(txtCamas.getText()));
        listaEnfermaria.adicionar(enf);
     }//GEN-LAST:event_btInserirActionPerformed
 
@@ -274,7 +284,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         txtNome.setEnabled(true);
         txtTipo.setEnabled(true);
         txtCamas.setEnabled(true);
-        txtDoentes.setEnabled(true);
+        txtCodigo.setEnabled(true);
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
@@ -283,7 +293,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         txtNome.setText(null);
         txtTipo.setText(null);
         txtCamas.setText(null);
-        txtDoentes.setText(null);
+        txtCodigo.setText(null);
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -294,9 +304,9 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCamasActionPerformed
 
-    private void txtDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtDoentesActionPerformed
+    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtDoentesActionPerformed
+    }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
@@ -383,7 +393,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable table;
     private javax.swing.JTextField txtCamas;
-    private javax.swing.JTextField txtDoentes;
+    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNome;
     private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables

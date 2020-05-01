@@ -12,6 +12,7 @@ import java.io.Serializable;
  * @author rodrm
  */
 public class Enfermaria extends ProfissionalSaude implements Serializable {
+    private String nome;
     private int idEnfermaria;
     private String tipo; //normal, UCI
     private int nCamas;
@@ -23,7 +24,8 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
     
     }
 
-    public Enfermaria(int idEnfermaria, int nCamas) {
+    public Enfermaria(String nome, int idEnfermaria, int nCamas) {
+        this.nome = nome;
         this.idEnfermaria = idEnfermaria;
         this.tipo = "Não iniciada";
         this.nCamas = nCamas;
@@ -35,6 +37,10 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
         return idEnfermaria;
     }
 
+    public String getNome() {
+        return nome;
+    }
+        
     public String getTipo() {
         return tipo;
     }
@@ -58,10 +64,15 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }
-
+    
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+    
     public void setNCamas(int nCamas) {
         this.nCamas = nCamas;
     }
+     
     
     // Metodos para alterar o tipo de enfermaria
     public void setTipoNaoIniciada()
