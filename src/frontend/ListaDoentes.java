@@ -5,6 +5,9 @@
  */
 package frontend;
 
+import backend.ListaDoente;
+import backend.Doente;
+import backend.Hospital;
 import javax.swing.JOptionPane;
 import backend.Serializacao;
 import backend.Sistema;
@@ -19,6 +22,7 @@ public class ListaDoentes extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
+    private ListaDoente listaDoente;
     
     /**
      * Creates new form ListaDoentes
@@ -30,12 +34,26 @@ public class ListaDoentes extends javax.swing.JFrame {
         model = (DefaultTableModel) tableDoentes.getModel();
         this.sistema=sistema;
         this.bd = bd;
+        carregarTabela();
+        listaDoente = sistema.getListaDoente().getListaDoente().get(sistema.getHospitalSelecionado()).getListaDoente();
+    }
+    
+    public void carregarTabela()
+    {
+        model.setRowCount(0);
+        for (int i = 0; i < sistema.getListaDoente().getListaDoente().size(); i++) {
+            Doente d = sistema.getListaDoente().getListaDoente().get(i);
+            model.addRow(new Object[]{d.getIdDoente(), d.getNome(), d.getDataNasc(), d.getLocalidade(), d.getNCama(), d.getMedico(), d.getEnfermaria(), d.getGravidade(), d.getDataEntrada(), d.getDataSaida()});
+
+        }
     }
 
     private void guardarAlteracoes() {
     bd.gravaSistema(sistema);
     }
          
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -344,6 +362,9 @@ public class ListaDoentes extends javax.swing.JFrame {
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
         model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),DataNasc.getDate(), txtLocalidade.getText(), txtCama.getText(), txtMedico.getText(), txtEnfermaria.getText(), ComboGrav.getSelectedItem(), DataEntrada.getDate(), DataSaida.getDate()});
+        guardarAlteracoes();
+       // Doente d = new Doente (Integer.parseInt(txtCodigo.getText()),txtNome.getText(), txtLocalidade.getText(), ComboGrav.getSelectedItem(),/*DataNasc.getDate(), DataEntrada.getLocalDate()), DataSaida.getLocalDate()*/, Integer.parseInt(txtCama.getText()), txtEnfermaria.getText(), txtMedico.getText());
+      //  sistema.getListaDoente().adicionar(d);
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
@@ -365,6 +386,7 @@ public class ListaDoentes extends javax.swing.JFrame {
 
     private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
         // TODO add your handling code here:
+        //sistema.getListaDoente().adicionar(new Doente (Integer.parseInt(txtCodigo.getText()),txtNome.getText(), txtLocalidade.getText(), ComboGrav.getSelectedItem(),/*DataNasc.getDate(), DataEntrada.getLocalDate()), DataSaida.getLocalDate()*/, Integer.parseInt(txtCama.getText()), txtEnfermaria.getText(), txtMedico.getText()));
         guardarAlteracoes();
         JOptionPane.showMessageDialog(this, "Alterações guardadas.");
     }//GEN-LAST:event_imgGuardarMouseClicked

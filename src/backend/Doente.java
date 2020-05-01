@@ -19,25 +19,29 @@ public class Doente implements Serializable
     private String nome;
     private String localidade;
     private String gravidade;
+    private LocalDate dataNasc;
     private String enfermaria;
     private LocalDate dataEntrada;
     private LocalDate dataSaida;
+    private String medico;
 
     
     public Doente(){   
     }
 
-    public Doente(int idDoente, String nome, String localidade, String gravidade, LocalDate dataEntrada, LocalDate dataSaida,int nCama, String enfermaria) {
+    public Doente(int idDoente, String nome, String localidade, String gravidade, LocalDate dataNasc, LocalDate dataEntrada, LocalDate dataSaida,int nCama, String enfermaria, String medico) {
         this.idDoente = idDoente;
         this.nome = nome;
         this.localidade = localidade;
         this.gravidade = gravidade;
+        this.dataNasc = dataNasc;
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
         this.nCama = nCama;
         this.enfermaria = enfermaria;
         this.dataEntrada = LocalDate.now();
-        this.dataSaida = LocalDate.now(); 
+        this.dataSaida = LocalDate.now();
+        this.medico = medico;
     }
     
     //getters
@@ -57,6 +61,14 @@ public class Doente implements Serializable
         return gravidade;
     }
 
+    public LocalDate getDataNasc() {
+        return dataNasc;
+    }
+
+    public int getnCama() {
+        return nCama;
+    }
+
     public LocalDate getDataEntrada() {
         return dataEntrada;
     }
@@ -72,6 +84,11 @@ public class Doente implements Serializable
     public int getNCama(){
         return this.nCama;
     }
+
+    public String getMedico() {
+        return medico;
+    }
+    
     
     //setters
     public void setIdDoente(int idDoente) {
@@ -84,6 +101,18 @@ public class Doente implements Serializable
 
     public void setLocalidade(String localidade) {
         this.localidade = localidade;
+    }
+
+    public void setnCama(int nCama) {
+        this.nCama = nCama;
+    }
+
+    public void setGravidade(String gravidade) {
+        this.gravidade = gravidade;
+    }
+
+    public void setDataNasc(LocalDate dataNasc) {
+        this.dataNasc = dataNasc;
     }
    
     public void setDataEntrada(LocalDate dataEntrada){
@@ -120,6 +149,10 @@ public class Doente implements Serializable
     {
         this.gravidade = "Moderada";
     }
+
+    public void setMedico(String medico) {
+        this.medico = medico;
+    }
     
     
     // Metodos para alterar o estado do Doente
@@ -149,6 +182,10 @@ public class Doente implements Serializable
     @Override
     public String toString() {
         return "Doente{" + "idDoente=" + idDoente + ", nome=" + nome + ", localidade=" + localidade + ", gravidade=" + gravidade + ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida + ", enfermaria=" + enfermaria + ", nCama =" + nCama + '}';
+    }
+
+    public ListaDoente getListaDoente() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
