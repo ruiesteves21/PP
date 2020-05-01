@@ -5,7 +5,8 @@
  */
 package frontend;
 import backend.Hospital;
-import backend.Enfermaria;
+import backend.Equipamento;
+import backend.ListaEquipamento;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
@@ -21,7 +22,8 @@ public class ListaEquipamentos extends javax.swing.JFrame {
      DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-      int varHosp; 
+    int varHosp; 
+    private ListaEquipamento listaEquipamento;
     
     /**
      * Creates new form ListaEquipamentos
@@ -32,6 +34,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         this.sistema=sistema;
         this.bd = bd;
         carregarTabela();
+        listaEquipamento = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado()).getListaEquipamento();
     }
     private void guardarAlteracoes() {
         bd.gravaSistema(sistema);
@@ -39,9 +42,9 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     public void carregarTabela()
     {
         model.setRowCount(0);
-        for (int i = 0; i < sistema.getListaHospital().getListaHospital().size(); i++) {
-            Hospital h = sistema.getListaHospital().getListaHospital().get(i);
-            model.addRow(new Object[]{h.getIdHospital(), h.getNome(),h.getLocalidade()});
+        for (int i = 0; i < sistema.getListaEquipamento().getListaEquipamento().size(); i++) {
+            Equipamento e = sistema.getListaEquipamento().getListaEquipamento().get(i);
+            model.addRow(new Object[]{e.getIdEquip(),e.getTipoEquipamento(),e.getIndicacao(),e.getDataOcupado(),});
 
         }
     }

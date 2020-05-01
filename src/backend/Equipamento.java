@@ -19,6 +19,15 @@ public class Equipamento implements Serializable {
     private Calendar  dataOcupado;
     private boolean disponivel;
     private boolean indisponivel;
+    private String tipoEquipamento;
+
+    public String getTipoEquipamento() {
+        return tipoEquipamento;
+    }
+
+    public void setTipoEquipamento(String tipo) {
+        this.tipoEquipamento = tipo;
+    }
     
     public Equipamento() 
     {
@@ -38,7 +47,7 @@ public class Equipamento implements Serializable {
         return indicacao;
     }
 
-    public Calendar getData_ocupado() {
+    public Calendar getDataOcupado() {
         return dataOcupado;
     }
     
