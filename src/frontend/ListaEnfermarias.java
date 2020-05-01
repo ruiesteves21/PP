@@ -31,7 +31,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         this.sistema=sistema;
         this.bd = bd;
         listaEnfermaria = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado()).getListaEnfermaria();
-      
+        carregarTabela();
     }
     
     public void carregarTabela()

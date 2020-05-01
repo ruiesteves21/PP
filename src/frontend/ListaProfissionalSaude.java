@@ -34,7 +34,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         this.sistema = sistema;
         this.bd = bd;
         listaMedico = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado()).getListaMedico();
- 
+        carregarTabela();
     }
     
     public void carregarTabela()
