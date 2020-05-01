@@ -4,7 +4,9 @@
  * and open the template in the editor.
  */
 package frontend;
+import backend.Enfermaria;
 import backend.Hospital;
+import backend.ListaEnfermaria;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
@@ -18,8 +20,8 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    
-     
+    int varHosp; 
+    private ListaEnfermaria listaEnfermaria;
      /**
      * Creates new form ListaEnfermarias
      */
@@ -28,6 +30,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
+        listaEnfermaria = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado()).getListaEnfermaria();
        
        
     }
@@ -259,6 +262,8 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
        model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(),txtTipo.getText(),txtCamas.getText(),txtDoentes.getText()});
+       Enfermaria enf = new Enfermaria(1,Integer.parseInt(txtCamas.getText()));
+       listaEnfermaria.adicionar(enf);
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
@@ -310,7 +315,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
         dispose();
-        FichaHospital p = new FichaHospital(sistema,bd);
+        FichaHospital p = new FichaHospital(sistema,bd,varHosp);
         /* FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
         p.setLocationRelativeTo(null);
         p.setVisible(true);

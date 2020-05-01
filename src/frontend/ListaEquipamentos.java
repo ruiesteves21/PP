@@ -19,6 +19,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
      DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
+      int varHosp; 
     
     /**
      * Creates new form ListaEquipamentos
@@ -295,7 +296,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
          dispose();
-        FichaHospital p = new FichaHospital(sistema,bd);
+        FichaHospital p = new FichaHospital(sistema,bd, varHosp);
         /* FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
         p.setLocationRelativeTo(null);
         p.setVisible(true);

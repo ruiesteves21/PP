@@ -15,19 +15,19 @@ import backend.Serializacao;
 public class FichaHospital extends javax.swing.JFrame {
     private Sistema sistema;
     private Serializacao bd;
-    /* int varHosp; */
+    int varHosp; 
 
     /**
      * Creates new form Ficha_Hospital_G
      * @param sistema
      * @param bd
      */
-    public FichaHospital(Sistema sistema, Serializacao bd) {
+    public FichaHospital(Sistema sistema, Serializacao bd, int varHosp) {
         initComponents();
         this.sistema=sistema;
         this.bd = bd;
-        /*this.varHosp = varHosp;
-        Hospital hosp = sistema.getListaHospital().getListaHospital().get(varHosp);*/
+        this.varHosp = varHosp;
+        Hospital hosp = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado());
         
     }
     
@@ -156,6 +156,7 @@ public class FichaHospital extends javax.swing.JFrame {
         ListaEnfermarias listaEnfermarias = new ListaEnfermarias(sistema,bd);
         listaEnfermarias.setLocationRelativeTo(null);
         listaEnfermarias.setVisible(true);
+        
     }//GEN-LAST:event_btEnfermariaActionPerformed
 
     private void btDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDoentesActionPerformed

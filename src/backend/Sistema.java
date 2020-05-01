@@ -21,7 +21,8 @@ public class Sistema implements Serializable
     private ListaEquipamento listaEquipamento;
     private Medico utilizadorLigado;
     private final List<RegistoAcesso> listaEntradas;
-    //private ListaHospital listaHospital;
+    private ListaHospital listaHospital;
+    private int hospitalSelecionado;
     
 
     public Sistema()
@@ -29,16 +30,26 @@ public class Sistema implements Serializable
         listaMedico = new ListaMedico();
         listaEnfermaria = new ListaEnfermaria();
         listaEntradas = new ArrayList<>();
-        //listaHospital = new ListaHospital();
+        listaHospital = new ListaHospital();
     }
 
-    /* public ListaHospital getListaHospital() {
+     public ListaHospital getListaHospital() {
         return listaHospital;
     }
 
     public void setListaHospital(ListaHospital listaHospital) {
         this.listaHospital = listaHospital;
-    }*/
+    }
+
+    public int getHospitalSelecionado() {
+        return hospitalSelecionado;
+    }
+
+    public void setHospitalSelecionado(int hospitalSelecionado) {
+        this.hospitalSelecionado = hospitalSelecionado;
+    }
+    
+    
     
     
     

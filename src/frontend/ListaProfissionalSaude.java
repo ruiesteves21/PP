@@ -20,6 +20,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
+    int varHosp; 
     
     public ListaProfissionalSaude(Sistema sistema, Serializacao bd) {
         initComponents();
@@ -315,7 +316,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
          dispose();
-        FichaHospital p = new FichaHospital(sistema,bd);
+        FichaHospital p = new FichaHospital(sistema,bd,varHosp);
         /* FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
         p.setLocationRelativeTo(null);
         p.setVisible(true);

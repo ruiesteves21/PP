@@ -77,6 +77,7 @@ public class ListaHospitais extends javax.swing.JFrame {
         txtLocalidade = new javax.swing.JTextField();
         btFiltrar1 = new javax.swing.JButton();
         imgGuardar = new javax.swing.JLabel();
+        btFiltrar2 = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -208,9 +209,14 @@ public class ListaHospitais extends javax.swing.JFrame {
         txtLocalidade.setBounds(110, 140, 100, 30);
 
         btFiltrar1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        btFiltrar1.setText("Filtrar");
+        btFiltrar1.setText("Ficha Hospital");
+        btFiltrar1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFiltrar1ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btFiltrar1);
-        btFiltrar1.setBounds(110, 270, 80, 29);
+        btFiltrar1.setBounds(20, 310, 170, 29);
 
         imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
         imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -220,6 +226,11 @@ public class ListaHospitais extends javax.swing.JFrame {
         });
         getContentPane().add(imgGuardar);
         imgGuardar.setBounds(440, 10, 30, 30);
+
+        btFiltrar2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btFiltrar2.setText("Filtrar");
+        getContentPane().add(btFiltrar2);
+        btFiltrar2.setBounds(110, 270, 80, 29);
 
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_3.jpg"))); // NOI18N
         getContentPane().add(jLabel2);
@@ -233,8 +244,8 @@ public class ListaHospitais extends javax.swing.JFrame {
         // TODO add your handling code here:
         model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),txtLocalidade.getText()});
         guardarAlteracoes();
-        //Hospital h = new Hospital(txtNome.getText(), txtLocalidade.getText(), Integer.parseInt(txtCodigo.getText()));
-        //sistema.getListaHospital().adicionar(h);
+        Hospital h = new Hospital(txtNome.getText(), txtLocalidade.getText(), Integer.parseInt(txtCodigo.getText()));
+        sistema.getListaHospital().adicionar(h);
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
@@ -278,29 +289,13 @@ public class ListaHospitais extends javax.swing.JFrame {
 
     private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
         // TODO add your handling code here:
-        //sistema.getListaHospital().adicionar(new Hospital (txtNome.getText(), txtLocalidade.getText(), Integer.parseInt(txtCodigo.getText())));
+        sistema.getListaHospital().adicionar(new Hospital (txtNome.getText(), txtLocalidade.getText(), Integer.parseInt(txtCodigo.getText())));
         guardarAlteracoes();
         JOptionPane.showMessageDialog(this, "Alterações guardadas.");
     }//GEN-LAST:event_imgGuardarMouseClicked
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-        // TODO add your handling code here:
-        FichaHospital p = new FichaHospital(sistema,bd);
-        /* FichaHospital p = new FichaHospital(sistema,bd, table.getSelectedRow()); */
-        int index = table.getSelectedRow();
-        
-        TableModel model = table.getModel();
-        
-        String Nome = model.getValueAt(index, 1).toString();
-        String Localidade = model.getValueAt(index, 2).toString();
-        FichaHospital jtRowData = new FichaHospital(sistema, bd);
-        /* FichaHospital jtRowData = new FichaHospital(sistema, bd, table.getSelectedRow());*/
-        p.txtNome.setText(Nome);
-        p.txtLocalidade.setText(Localidade);
-        
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
-        hide();
+      
     }//GEN-LAST:event_tableMouseClicked
 
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
@@ -310,6 +305,27 @@ public class ListaHospitais extends javax.swing.JFrame {
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
+
+    private void btFiltrar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFiltrar1ActionPerformed
+        // TODO add your handling code here:
+         // TODO add your handling code here:
+        //FichaHospital p = new FichaHospital(sistema,bd);
+        FichaHospital p = new FichaHospital(sistema,bd, table.getSelectedRow());
+        int index = table.getSelectedRow();
+        sistema.setHospitalSelecionado(index);
+        TableModel model = table.getModel();
+        
+        //String Nome = model.getValueAt(index, 1).toString();
+        //String Localidade = model.getValueAt(index, 2).toString();
+        //FichaHospital jtRowData = new FichaHospital(sistema, bd);
+        FichaHospital jtRowData = new FichaHospital(sistema, bd, table.getSelectedRow());
+        //p.txtNome.setText(Nome);
+        //p.txtLocalidade.setText(Localidade);
+        
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
+        hide();
+    }//GEN-LAST:event_btFiltrar1ActionPerformed
 
     
     
@@ -353,6 +369,7 @@ public class ListaHospitais extends javax.swing.JFrame {
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btFiltrar1;
+    private javax.swing.JButton btFiltrar2;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
     private javax.swing.JLabel imgGuardar;

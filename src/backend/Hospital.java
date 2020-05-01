@@ -29,6 +29,7 @@ public class Hospital implements Serializable  {
         this.nome = nome;
         this.localidade = localidade;
         this.idHospital = idHospital;
+       
     }
     
     //Getters
