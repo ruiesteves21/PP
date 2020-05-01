@@ -5,6 +5,10 @@
  */
 package frontend;
 
+import backend.Hospital;
+import backend.ListaMedico;
+import backend.Medico;
+import backend.ProfissionalSaude;
 import backend.Serializacao;
 import backend.Sistema;
 import static frontend.ListaHospitais.table;
@@ -21,15 +25,28 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
     private Sistema sistema;
     private Serializacao bd;
     int varHosp; 
+    private ListaMedico listaMedico;
+    
     
     public ListaProfissionalSaude(Sistema sistema, Serializacao bd) {
         initComponents();
-        
         model = (DefaultTableModel) tableProfissionaisSaude.getModel();
         this.sistema = sistema;
         this.bd = bd;
+        listaMedico = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado()).getListaMedico();
  
     }
+    
+    public void carregarTabela()
+    {
+        model.setRowCount(0);
+        for (int i = 0; i < sistema.getListaProfissionalSaude().getListaProfissionalSaude().size(); i++) {
+            ProfissionalSaude P = sistema.getListaProfissionalSaude().getListaProfissionalSaude().get(i);
+            model.addRow(new Object[]{P.getIdProfSaude(), P.getNomePS()});
+
+        }
+    }
+    
     private void guardarAlteracoes() {
         bd.gravaSistema(sistema);
     }
@@ -268,6 +285,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         int c = tableProfissionaisSaude.getSelectedRow();
         if(c >= 0){
             model.removeRow(c); //remove a linha selecionada
+            sistema.getListaProfissionalSaude().getListaProfissionalSaude().remove(c);
         }
         else
         {
@@ -295,7 +313,9 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
-         model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(),ComboBoxFuncao.getSelectedItem(),txtEspecialidade.getText(),txtEnfermaria.getText(),txtHospital.getText()});
+        model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(),ComboBoxFuncao.getSelectedItem(),txtEspecialidade.getText(),txtEnfermaria.getText(),txtHospital.getText()});
+        ProfissionalSaude P = new ProfissionalSaude(1, txtNome.getText());
+        sistema.getListaProfissionalSaude().adicionar(P);
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
@@ -317,7 +337,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         // TODO add your handling code here:
          dispose();
         FichaHospital p = new FichaHospital(sistema,bd,varHosp);
-        /* FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
+        //FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow());
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
