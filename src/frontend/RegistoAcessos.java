@@ -106,6 +106,7 @@ public class RegistoAcessos extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabAcessos = new javax.swing.JTable();
         imgSair = new javax.swing.JLabel();
+        imgRetroceder = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
@@ -146,6 +147,15 @@ public class RegistoAcessos extends javax.swing.JFrame {
         getContentPane().add(imgSair);
         imgSair.setBounds(310, 10, 24, 30);
 
+        imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgRetrocederMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgRetroceder);
+        imgRetroceder.setBounds(270, 10, 24, 30);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/wp2.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(-210, 0, 650, 320);
@@ -158,8 +168,18 @@ public class RegistoAcessos extends javax.swing.JFrame {
         // TODO add your handling code here:
         terminar();
     }//GEN-LAST:event_imgSairMouseClicked
+
+    private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
+        // TODO add your handling code here:
+        dispose();
+        PaginaAdministrador paginaAdministrador = new PaginaAdministrador(sistema,bd);
+        paginaAdministrador.setLocationRelativeTo(null);
+        paginaAdministrador.setVisible(true);
+
+    }//GEN-LAST:event_imgRetrocederMouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel imgSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
