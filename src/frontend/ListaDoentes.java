@@ -95,7 +95,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Double.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
                 false, false, false, false, false, false, false, false, false, false
@@ -349,18 +349,19 @@ public class ListaDoentes extends javax.swing.JFrame {
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
         dispose();
-        ListaHospitais listaHospitais = new ListaHospitais(sistema,bd);
-        listaHospitais.setLocationRelativeTo(null);
-        listaHospitais.setVisible(true);
-        this.close();
+        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
+        paginaInicialUtilizador.setLocationRelativeTo(null);
+        paginaInicialUtilizador.setVisible(true);
+        
     }//GEN-LAST:event_imgHomeMouseClicked
 
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
         dispose();
-        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
-        paginaInicialUtilizador.setLocationRelativeTo(null);
-        paginaInicialUtilizador.setVisible(true);
+        ListaHospitais listaHospitais = new ListaHospitais(sistema,bd);
+        listaHospitais.setLocationRelativeTo(null);
+        listaHospitais.setVisible(true);
+        
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
     private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
