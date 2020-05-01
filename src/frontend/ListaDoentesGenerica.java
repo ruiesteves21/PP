@@ -8,8 +8,6 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
-import javax.swing.RowFilter;
-import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -46,6 +44,7 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMaximumSize(new java.awt.Dimension(804, 363));
         setMinimumSize(new java.awt.Dimension(804, 363));
         setUndecorated(true);
         setSize(new java.awt.Dimension(804, 363));
@@ -95,19 +94,9 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(10, 10, 30, 30);
 
-        txtFiltrar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseReleased(java.awt.event.MouseEvent evt) {
-                txtFiltrarMouseReleased(evt);
-            }
-        });
         txtFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFiltrarActionPerformed(evt);
-            }
-        });
-        txtFiltrar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtFiltrarKeyReleased(evt);
             }
         });
         getContentPane().add(txtFiltrar);
@@ -131,27 +120,8 @@ public class ListaDoentesGenerica extends javax.swing.JFrame {
 
     private void txtFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltrarActionPerformed
         // TODO add your handling code here:
-        String query=txtFiltrar.getText().toLowerCase();
-        filter(query);
     }//GEN-LAST:event_txtFiltrarActionPerformed
 
-    private void txtFiltrarMouseReleased(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_txtFiltrarMouseReleased
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFiltrarMouseReleased
-
-    private void txtFiltrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltrarKeyReleased
-        // TODO add your handling code here:
-         String query=txtFiltrar.getText().toLowerCase();
-         filter(query);
-    }//GEN-LAST:event_txtFiltrarKeyReleased
-
-    //filter data 
-    private void filter(String query){
-        TableRowSorter<DefaultTableModel> tr=new TableRowSorter<DefaultTableModel>(model);
-        table.setRowSorter(tr);
-        
-        tr.setRowFilter(RowFilter.regexFilter(query));
-    }
     /**
      * @param args the command line arguments
      */
