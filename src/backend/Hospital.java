@@ -18,6 +18,7 @@ public class Hospital implements Serializable  {
     private ListaDoente listaDoente; 
     private ListaEnfermaria listaEnfermaria;
     private ListaEquipamento listaEquipamento;
+    private ListaMedico listaMedico;
     
     
     public Hospital() 
@@ -69,6 +70,12 @@ public class Hospital implements Serializable  {
     public ListaEquipamento getListaEquipamento() {
         return listaEquipamento;
     }
+
+    public ListaMedico getListaMedico() {
+        return listaMedico;
+    }
+    
+    
 
     @Override
     public String toString() {

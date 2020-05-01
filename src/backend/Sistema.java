@@ -23,6 +23,7 @@ public class Sistema implements Serializable
     private final List<RegistoAcesso> listaEntradas;
     private ListaHospital listaHospital;
     private int hospitalSelecionado;
+    private ListaProfissionalSaude listaProfissionalSaude;
     
 
     public Sistema()
@@ -32,6 +33,16 @@ public class Sistema implements Serializable
         listaEntradas = new ArrayList<>();
         listaHospital = new ListaHospital();
     }
+
+    public ListaProfissionalSaude getListaProfissionalSaude() {
+        return listaProfissionalSaude;
+    }
+
+    public void setListaProfissionalSaude(ListaProfissionalSaude listaProfissionalSaude) {
+        this.listaProfissionalSaude = listaProfissionalSaude;
+    }
+    
+    
 
      public ListaHospital getListaHospital() {
         return listaHospital;
