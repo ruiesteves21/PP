@@ -65,7 +65,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
-        txtTipo = new javax.swing.JTextField();
         txtCamas = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
         btInserir = new javax.swing.JButton();
@@ -74,7 +73,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         btEditar = new javax.swing.JButton();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        ComboTip = new javax.swing.JComboBox<>();
         imgGuardar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -145,15 +144,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         });
         getContentPane().add(txtNome);
         txtNome.setBounds(110, 110, 120, 30);
-
-        txtTipo.setEnabled(false);
-        txtTipo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtTipoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtTipo);
-        txtTipo.setBounds(110, 150, 120, 30);
 
         txtCamas.setEnabled(false);
         txtCamas.addActionListener(new java.awt.event.ActionListener() {
@@ -235,9 +225,9 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(570, 30, 30, 30);
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        getContentPane().add(jComboBox1);
-        jComboBox1.setBounds(130, 160, 57, 20);
+        ComboTip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Normal", "UCI", " ", " ", " " }));
+        getContentPane().add(ComboTip);
+        ComboTip.setBounds(110, 150, 120, 30);
 
         imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
         imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -271,7 +261,8 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
-       model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(),txtTipo.getText(),txtCamas.getText(),txtCodigo.getText()});
+       model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(), ComboTip.getSelectedItem(),txtCamas.getText(),txtCodigo.getText()});
+       guardarAlteracoes();
        Enfermaria enf = new Enfermaria(txtNome.getText(), Integer.parseInt(txtCodigo.getText()), Integer.parseInt(txtCamas.getText()));
        listaEnfermaria.adicionar(enf);
     }//GEN-LAST:event_btInserirActionPerformed
@@ -282,7 +273,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         btExcluir.setEnabled(true);
         btLimpar.setEnabled(true);
         txtNome.setEnabled(true);
-        txtTipo.setEnabled(true);
+        ComboTip.setEnabled(true);
         txtCamas.setEnabled(true);
         txtCodigo.setEnabled(true);
     }//GEN-LAST:event_btEditarActionPerformed
@@ -291,7 +282,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         txtNome.setText(null);
-        txtTipo.setText(null);
         txtCamas.setText(null);
         txtCodigo.setText(null);
     }//GEN-LAST:event_btLimparActionPerformed
@@ -318,10 +308,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     }//GEN-LAST:event_imgHomeMouseClicked
 
     
-    private void txtTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtTipoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtTipoActionPerformed
-
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
         dispose();
@@ -376,6 +362,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboTip;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btInserir;
@@ -383,7 +370,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
@@ -395,6 +381,5 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private javax.swing.JTextField txtCamas;
     private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtTipo;
     // End of variables declaration//GEN-END:variables
 }
