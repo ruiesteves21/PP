@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package frontend;
+import backend.Hospital;
+import backend.Enfermaria;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
@@ -29,10 +31,22 @@ public class ListaEquipamentos extends javax.swing.JFrame {
          model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
+        carregarTabela();
     }
     private void guardarAlteracoes() {
         bd.gravaSistema(sistema);
     }
+    public void carregarTabela()
+    {
+        model.setRowCount(0);
+        for (int i = 0; i < sistema.getListaHospital().getListaHospital().size(); i++) {
+            Hospital h = sistema.getListaHospital().getListaHospital().get(i);
+            model.addRow(new Object[]{h.getIdHospital(), h.getNome(),h.getLocalidade()});
+
+        }
+    }
+        
+    
 
     /**
      * This method is called from within the constructor to initialize the form.

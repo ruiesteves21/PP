@@ -26,15 +26,27 @@ public class ListaHospitais extends javax.swing.JFrame {
     private Serializacao bd;
     
     
+    
     public ListaHospitais(Sistema sistema, Serializacao bd) {
         initComponents();
         
         model = (DefaultTableModel) table.getModel();
         this.sistema = sistema;
         this.bd = bd;
+        carregarTabela();
         
     }
     
+     public void carregarTabela()
+    {
+        model.setRowCount(0);
+        for (int i = 0; i < sistema.getListaHospital().getListaHospital().size(); i++) {
+            Hospital h = sistema.getListaHospital().getListaHospital().get(i);
+            model.addRow(new Object[]{h.getIdHospital(), h.getNome(),h.getLocalidade()});
+
+        }
+    }
+        
     
     
      private void guardarAlteracoes() {
@@ -260,7 +272,9 @@ public class ListaHospitais extends javax.swing.JFrame {
          DefaultTableModel model = (DefaultTableModel)table.getModel();
         int c = table.getSelectedRow();
         if(c >= 0){
-            model.removeRow(c); //remove a linha selecionada
+            model.removeRow(c);
+            //remove a linha selecionada
+            sistema.getListaHospital().getListaHospital().remove(c);
         }
         else
         {
