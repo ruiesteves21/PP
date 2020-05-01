@@ -9,9 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
-import javax.swing.JLabel;
 import javax.swing.RowFilter;
-import javax.swing.table.DefaultTableCellRenderer;
 import javax.swing.table.TableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -28,7 +26,6 @@ public class ListaHospitais extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    //Hospital h;
     
     
     public ListaHospitais(Sistema sistema, Serializacao bd) {
@@ -37,30 +34,10 @@ public class ListaHospitais extends javax.swing.JFrame {
         model = (DefaultTableModel) table.getModel();
         this.sistema = sistema;
         this.bd = bd;
-        //carregarListaHospital();
+        
     }
     
-    /*public void carregarListaHospital()
-    {
-        h = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado());
-        model = (DefaultTableModel) table.getModel();
-        carregarTabela();
-    }
     
-    public void carregarTabela()
-    {
-        model.setRowCount(0);
-        //Visto que os projetos podem ter ter varias listas de tarefas temos de fazer 2 ciclos. Um ciclo para as listas de tarefas e outro para cada tarefa em cada lista de tarefas
-            Hospital hosp = hosp.getListaHospital();
-            model.addRow(new Object[]{hosp.getIdHospital(), hosp.getNome(), hosp.getLocalidade()});
-
-        // Serve para centar o texto nas celulas
-        DefaultTableCellRenderer centro = new DefaultTableCellRenderer();
-        centro.setHorizontalAlignment(JLabel.CENTER);
-        table.setDefaultRenderer(String.class, centro);
-
-        table.setModel(model);
-    } */ 
     
      private void guardarAlteracoes() {
         bd.gravaSistema(sistema);

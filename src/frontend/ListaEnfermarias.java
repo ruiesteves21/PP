@@ -4,15 +4,12 @@
  * and open the template in the editor.
  */
 package frontend;
-import backend.Enfermaria;
 import backend.Hospital;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
 import static frontend.ListaHospitais.table;
-import javax.swing.JLabel;
-import javax.swing.table.DefaultTableCellRenderer;
 /**
  *
  * @author ruiesteves
@@ -21,7 +18,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    
     
      
      /**
@@ -32,10 +28,9 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
-      
+       
+       
     }
-    
-    
     private void guardarAlteracoes() {
         bd.gravaSistema(sistema);
     }
