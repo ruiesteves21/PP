@@ -47,7 +47,7 @@ public class ListaEnfermaria implements Serializable {
      * Este metodo serve para saber todos as enfermarias em que o doente está internado
      * @param doente
      * @return Lista de Enfermarias em que o doente se encontra
-     */
+     
     
     public ArrayList<Enfermaria> listaEnfermariaDoente(Doente doente)
     {
@@ -62,11 +62,11 @@ public class ListaEnfermaria implements Serializable {
         return nEnfermaria;
     }
     
-    /**
+    
      * Este metodo serve para saber todos as enfermarias onde o equipamento está colocado
      * @param equipamento
      * @return Lista de Enfermarias em que o equipamento se encontra
-     */
+     
     
     public ArrayList<Enfermaria> listaEnfermariaEquipamento (Equipamento equipamento)
     {
@@ -79,6 +79,6 @@ public class ListaEnfermaria implements Serializable {
         }
 
         return nEquipamento;
-    }
+    }*/
     
 }

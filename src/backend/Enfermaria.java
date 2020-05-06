@@ -15,24 +15,26 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
     private String nome;
     private int idEnfermaria;
     private String tipo; //normal, UCI
+    private Hospital hospitalSelecionado;
     private int nCamas;
-    private ListaDoente listaDoente;
-    private ListaEquipamento listaEquipamento;
     
     public Enfermaria () 
     {
     
     }
 
-    public Enfermaria(String nome, int idEnfermaria, int nCamas) {
+    public Enfermaria(Hospital hospitalSelecionado, String nome, int idEnfermaria, int nCamas, String tipo) {
+        this.hospitalSelecionado = hospitalSelecionado;
         this.nome = nome;
         this.idEnfermaria = idEnfermaria;
-        this.tipo = "Não iniciada";
+        this.tipo = tipo;
         this.nCamas = nCamas;
-        this.listaDoente = new ListaDoente();
-        this.listaEquipamento = new ListaEquipamento();
     }
-
+    
+    public Hospital getHospitalSelecionado() {
+        return hospitalSelecionado;
+    }
+    
     public int getIdEnfermaria() {
         return idEnfermaria;
     }
@@ -48,19 +50,15 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
     public int getNcamas() {
         return nCamas;
     }
-
-    public ListaDoente getDoentes() {
-        return listaDoente;
-    }
-    
-    public ListaEquipamento getEquipamento() {
-        return listaEquipamento;
-    }
     
     public void setIdEnfermaria(int idEnfermaria) {
         this.idEnfermaria = idEnfermaria;
     }
-
+    
+     public void setHospitalSelecionado(Hospital hospitalSelecionado) {
+        this.hospitalSelecionado = hospitalSelecionado;
+    }
+     
     public void setTipo(String tipo) {
         this.tipo = tipo;
     }

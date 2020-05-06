@@ -14,31 +14,40 @@ import java.util.Calendar;
  */
 public class Equipamento implements Serializable {
     
+    private Enfermaria enfermariaSelecionada;
     private int idEquip;
     private String indicacao; //livre, ocupado
     private Calendar  dataOcupado;
+    private String tipoEquipamento;
     private boolean disponivel;
     private boolean indisponivel;
-    private String tipoEquipamento;
+    private String doente;
 
-    public String getTipoEquipamento() {
-        return tipoEquipamento;
-    }
-
-    public void setTipoEquipamento(String tipo) {
-        this.tipoEquipamento = tipo;
-    }
-    
     public Equipamento() 
     {
         
     }
 
-    public Equipamento(int idEquip) {
+    public Equipamento(Enfermaria enfermariaSelecionada, int idEquip, String indicacao, String tipoEquipamento, String doente) {
+        this.enfermariaSelecionada = enfermariaSelecionada;
         this.idEquip = idEquip;
-        this.indicacao = "Não iniciado";
+        this.tipoEquipamento = tipoEquipamento;
+        this.indicacao = indicacao;
+        this.doente = doente;
     }
 
+    public Enfermaria getEnfermariaSelecionada() {
+        return enfermariaSelecionada;
+    }
+    
+    public String getDoente() {
+        return doente;
+    }
+    
+    public String getTipoEquipamento() {
+        return tipoEquipamento;
+    }
+    
     public int getIdEquip() {
         return idEquip;
     }
@@ -51,19 +60,38 @@ public class Equipamento implements Serializable {
         return dataOcupado;
     }
     
+    public boolean isDisponivel(){
+        return disponivel ;
+    }
+    
+    public boolean isIndisponivel(){
+        return indisponivel ;
+    }
 
     public void setIdEquip(int idEquip) {
         this.idEquip = idEquip;
     }
-
+    
+    public void setTipoEquipamento(String tipo) {
+        this.tipoEquipamento = tipo;
+    }
+    
+    
     public void setIndicacao(String indicacao) {
         this.indicacao = indicacao;
     }
-
+    
+    public void setEnfermariaSelecionada(Enfermaria enfermariaSelecionada) {
+        this.enfermariaSelecionada = enfermariaSelecionada;
+    }
+    
     public void setDataOcupado(Calendar dataOcupado) {
         this.dataOcupado = dataOcupado;
     }
     
+    public void setDoente(String doente) {
+        this.doente = doente;
+    }
     
     // Metodos para alterar o estado da tarefa
     public void setIndicacaoNaoIniciada()
@@ -75,22 +103,13 @@ public class Equipamento implements Serializable {
     {
         indicacao = "Livre";
     }
-    
-    public boolean isDisponivel(){
-        return disponivel ;
-    }
-
+   
     public void setIndicacaoOcupada(Calendar dt)
     {
        indicacao = "Ocupada";
         dataOcupado = dt;
     }
     
-    public boolean isIndisponivel(){
-        return indisponivel ;
-    }
-
-
     @Override
     public String toString() {
         return "Equipamento{" + "idEquip=" + idEquip + ", indicacao=" + indicacao + ", dataOcupado=" + dataOcupado + '}';

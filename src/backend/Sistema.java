@@ -22,7 +22,8 @@ public class Sistema implements Serializable
     private Medico utilizadorLigado;
     private final List<RegistoAcesso> listaEntradas;
     private ListaHospital listaHospital;
-    private int hospitalSelecionado;
+    private Hospital hospitalSelecionado;
+    private Enfermaria enfermariaSelecionada;
     private ListaProfissionalSaude listaProfissionalSaude;
     private ListaDoente listaDoente;
     
@@ -34,6 +35,8 @@ public class Sistema implements Serializable
         listaEntradas = new ArrayList<>();
         listaHospital = new ListaHospital();
         listaDoente = new ListaDoente();
+        listaProfissionalSaude = new ListaProfissionalSaude();
+        listaEquipamento = new ListaEquipamento();
     }
 
     public ListaProfissionalSaude getListaProfissionalSaude() {
@@ -62,16 +65,21 @@ public class Sistema implements Serializable
         this.listaHospital = listaHospital;
     }
 
-    public int getHospitalSelecionado() {
+    public Hospital getHospitalSelecionado() {
         return hospitalSelecionado;
     }
 
-    public void setHospitalSelecionado(int hospitalSelecionado) {
+    public void setHospitalSelecionado(Hospital hospitalSelecionado) {
         this.hospitalSelecionado = hospitalSelecionado;
     }
-    
-    
-    
+
+    public Enfermaria getEnfermariaSelecionada() {
+        return enfermariaSelecionada;
+    }
+
+    public void setEnfermariaSelecionada(Enfermaria enfermariaSelecionada) {
+        this.enfermariaSelecionada = enfermariaSelecionada;
+    }
     
     
     public ListaMedico getListaMedico()

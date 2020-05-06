@@ -35,7 +35,7 @@ public class ListaDoentes extends javax.swing.JFrame {
         this.sistema=sistema;
         this.bd = bd;
         carregarTabela();
-        listaDoente = sistema.getListaDoente().getListaDoente().get(sistema.getHospitalSelecionado()).getListaDoente();
+        //listaDoente = sistema.getListaDoente().getListaDoente().get(sistema.getHospitalSelecionado()).getListaDoente();
     }
     
     public void carregarTabela()

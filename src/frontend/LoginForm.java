@@ -7,6 +7,7 @@ package frontend;
 
 import backend.Serializacao;
 import backend.Sistema;
+import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
 /**
@@ -78,15 +79,25 @@ public class LoginForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jPasswordField1 = new javax.swing.JPasswordField();
+        jCheckBox1 = new javax.swing.JCheckBox();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         txtUsername = new javax.swing.JTextField();
         btEntrar = new javax.swing.JButton();
         txtSenha = new javax.swing.JPasswordField();
         btSair = new javax.swing.JButton();
+        checkVerPass = new javax.swing.JCheckBox();
         jLabel4 = new javax.swing.JLabel();
 
         jPasswordField1.setText("jPasswordField1");
+
+        jCheckBox1.setBackground(new java.awt.Color(255, 255, 255));
+        jCheckBox1.setText("Ver Pass");
+        jCheckBox1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCheckBox1ActionPerformed(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(390, 383));
@@ -121,7 +132,13 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEntrar);
-        btEntrar.setBounds(50, 290, 90, 30);
+        btEntrar.setBounds(50, 300, 90, 30);
+
+        txtSenha.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                txtSenhaKeyPressed(evt);
+            }
+        });
         getContentPane().add(txtSenha);
         txtSenha.setBounds(140, 230, 120, 30);
 
@@ -133,7 +150,17 @@ public class LoginForm extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btSair);
-        btSair.setBounds(240, 290, 90, 30);
+        btSair.setBounds(250, 300, 90, 30);
+
+        checkVerPass.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        checkVerPass.setText("Ver Pass");
+        checkVerPass.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                checkVerPassActionPerformed(evt);
+            }
+        });
+        getContentPane().add(checkVerPass);
+        checkVerPass.setBounds(280, 230, 81, 20);
 
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/fundo_medico3.jpg"))); // NOI18N
@@ -158,6 +185,52 @@ public class LoginForm extends javax.swing.JFrame {
     private void txtUsernameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtUsernameActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtUsernameActionPerformed
+
+    private void jCheckBox1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBox1ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCheckBox1ActionPerformed
+
+    private void checkVerPassActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_checkVerPassActionPerformed
+        // TODO add your handling code here:
+        if(checkVerPass.isSelected())
+        {
+            txtSenha.setEchoChar((char)0);        
+        }
+        else
+        {
+            txtSenha.setEchoChar('•');
+        }
+    }//GEN-LAST:event_checkVerPassActionPerformed
+
+    private void txtSenhaKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSenhaKeyPressed
+        // TODO add your handling code here:
+        if(evt.getKeyCode()==KeyEvent.VK_ENTER){
+            
+            if (txtUsername.getText().isEmpty()) {
+            JOptionPane.showMessageDialog(this, "Introduza o nome de utilizador!");            
+             txtUsername.requestFocus();
+            return;
+        }
+        
+        if (txtSenha.getPassword().length == 0) {
+            JOptionPane.showMessageDialog(this, "Introduza a password!");
+            txtSenha.requestFocus();
+            return;
+        }                              
+        
+        if (!sistema.autenticarUtilizador(txtUsername.getText(), new String(txtSenha.getPassword()))){
+            JOptionPane.showMessageDialog(this, "As credenciais introduzidas não correspondem a um utilizador válido.",
+                     "Autenticação", JOptionPane.WARNING_MESSAGE);
+            txtUsername.requestFocus();            
+        }else{
+            //Devolve o controlo da aplicação para o método main
+            dispose();
+            
+            PaginaInicial paginaInicial = new PaginaInicial(sistema, bd);
+            paginaInicial.setVisible(true);  
+        }               
+        }
+    }//GEN-LAST:event_txtSenhaKeyPressed
 
     /**
      * @param args the command line arguments
@@ -204,6 +277,8 @@ public class LoginForm extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEntrar;
     private javax.swing.JButton btSair;
+    private javax.swing.JCheckBox checkVerPass;
+    private javax.swing.JCheckBox jCheckBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;

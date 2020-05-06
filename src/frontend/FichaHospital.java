@@ -27,7 +27,7 @@ public class FichaHospital extends javax.swing.JFrame {
         this.sistema=sistema;
         this.bd = bd;
         this.varHosp = varHosp;
-        Hospital hosp = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado());
+        //Hospital hosp = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado());
         
     }
     

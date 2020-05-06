@@ -5,10 +5,12 @@
  */
 package frontend;
 import backend.Hospital;
+import backend.Medico;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import java.util.ArrayList;
 import javax.swing.table.TableModel;
 
 
@@ -42,9 +44,12 @@ public class ListaHospitais extends javax.swing.JFrame {
         model.setRowCount(0);
         for (int i = 0; i < sistema.getListaHospital().getListaHospital().size(); i++) {
             Hospital h = sistema.getListaHospital().getListaHospital().get(i);
+            
+            if (h.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
             model.addRow(new Object[]{h.getIdHospital(), h.getNome(),h.getLocalidade()});
 
-        }
+            }
+         }
     }
         
     
@@ -255,9 +260,60 @@ public class ListaHospitais extends javax.swing.JFrame {
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
         model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),txtLocalidade.getText()});
-        guardarAlteracoes();
-        Hospital h = new Hospital(txtNome.getText(), txtLocalidade.getText(), Integer.parseInt(txtCodigo.getText()));
+        
+        /*
+        Stream() - Suporta vários metodos, entre quais está o filter
+        filter() - Seleciona elementos de acordo com o Predicado passado como argumento.
+        forEach() - Itera todos os elementos do fluxo.
+        
+        Estamos a selecionar todos os hospitais registados(nome, localidade e id do mesmo).
+        Comparamos o nome dos hospitais todos com o que está na textbox.
+        Se esse nome já estiver registado, não deixa registar outra vez.
+        */
+        
+        var result = new ArrayList<Hospital>();
+         sistema.getListaHospital().getListaHospital().stream().filter((hospital) -> (hospital.getNome().equals(txtNome.getText()))).forEachOrdered((hospital) -> {
+         result.add(hospital);
+         });
+          
+        if (txtNome.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Introduza o nome do hospital","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNome.requestFocus();
+             return;
+        } else {
+             if(!result.isEmpty()){
+                JOptionPane.showMessageDialog(null,"Esse hospital já existe","Erro",JOptionPane.ERROR_MESSAGE);
+                txtNome.requestFocus();
+                return;
+        }     
+        } 
+        
+        if (txtLocalidade.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Introduza a localidade que o hospital se encontra","Erro",JOptionPane.ERROR_MESSAGE);
+             txtLocalidade.requestFocus();
+             return;
+        }
+        
+        //Impede que existam localidades com digitos e caracteres no nome. Exemplo: 123fg4 
+        if (txtLocalidade.getText().matches(".*\\d.*")){
+             JOptionPane.showMessageDialog(null," Nome da localidade inválido","Erro",JOptionPane.ERROR_MESSAGE);
+             txtLocalidade.requestFocus();
+             return;
+        }
+        
+        
+        Hospital h = new Hospital(sistema.getUtilizadorLigado(),txtNome.getText(), txtLocalidade.getText(), Integer.parseInt(txtCodigo.getText()));
+        
+        try {
         sistema.getListaHospital().adicionar(h);
+        JOptionPane.showMessageDialog(null, "Hospital registado!");
+        txtNome.setText("");
+        txtLocalidade.setText("");
+        txtCodigo.setText(""); 
+        }catch(RuntimeException e) {
+            JOptionPane.showMessageDialog(null,"Este hospital já se encontra registado!","Erro",JOptionPane.ERROR_MESSAGE);
+        }
+        guardarAlteracoes();
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
@@ -275,6 +331,8 @@ public class ListaHospitais extends javax.swing.JFrame {
             model.removeRow(c);
             //remove a linha selecionada
             sistema.getListaHospital().getListaHospital().remove(c);
+            guardarAlteracoes();
+            JOptionPane.showMessageDialog(this, "Removido!");
         }
         else
         {
@@ -303,7 +361,7 @@ public class ListaHospitais extends javax.swing.JFrame {
 
     private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
         // TODO add your handling code here:
-        sistema.getListaHospital().adicionar(new Hospital (txtNome.getText(), txtLocalidade.getText(), Integer.parseInt(txtCodigo.getText())));
+        sistema.getListaHospital().adicionar(new Hospital (sistema.getUtilizadorLigado(), txtNome.getText(), txtLocalidade.getText(), Integer.parseInt(txtCodigo.getText())));
         guardarAlteracoes();
         JOptionPane.showMessageDialog(this, "Alterações guardadas.");
     }//GEN-LAST:event_imgGuardarMouseClicked
@@ -326,7 +384,7 @@ public class ListaHospitais extends javax.swing.JFrame {
         //FichaHospital p = new FichaHospital(sistema,bd);
         FichaHospital p = new FichaHospital(sistema,bd, table.getSelectedRow());
         int index = table.getSelectedRow();
-        sistema.setHospitalSelecionado(index);
+        //sistema.setHospitalSelecionado(index);
         TableModel model = table.getModel();
         
         //String Nome = model.getValueAt(index, 1).toString();

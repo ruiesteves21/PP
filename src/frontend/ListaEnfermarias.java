@@ -30,7 +30,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
-        listaEnfermaria = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado()).getListaEnfermaria();
+        //listaEnfermaria = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado()).getListaEnfermaria();
         carregarTabela();
     }
     
@@ -39,8 +39,11 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         model.setRowCount(0);
         for (int i = 0; i < sistema.getListaEnfermaria().getListaEnfermaria().size(); i++) {
             Enfermaria e = sistema.getListaEnfermaria().getListaEnfermaria().get(i);
+            
+            if (e.getHospitalSelecionado().equals(sistema.getHospitalSelecionado())) {
             model.addRow(new Object[]{e.getNome(), e.getTipo(), e.getNcamas(), e.getIdEnfermaria()});
 
+            }
         }
     }
     
@@ -88,7 +91,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Tipo", "Nº camas", "Codigo Enfermaria"
+                "Nome", "Tipo", "Nº camas", "Codigo "
             }
         ) {
             Class[] types = new Class [] {
@@ -262,9 +265,38 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
        model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(), ComboTip.getSelectedItem(),txtCamas.getText(),txtCodigo.getText()});
-       guardarAlteracoes();
-       Enfermaria enf = new Enfermaria(txtNome.getText(), Integer.parseInt(txtCodigo.getText()), Integer.parseInt(txtCamas.getText()));
-       listaEnfermaria.adicionar(enf);
+       
+       if (txtCamas.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Insira o número de camas que a enfermaria contem!","Erro",JOptionPane.ERROR_MESSAGE);
+             txtCamas.requestFocus();
+             return;
+        }
+        
+        if (!txtCamas.getText().matches("[0-9]+")) {
+             JOptionPane.showMessageDialog(null,"Número de camas inválido","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNome.requestFocus();
+             return;
+        }
+        
+        if (txtNome.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Introduza o nome da enfermaria","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNome.requestFocus();
+             return;
+        }
+        
+       
+       Enfermaria enf = new Enfermaria(sistema.getHospitalSelecionado(), txtNome.getText(), Integer.parseInt(txtCodigo.getText()), Integer.parseInt(txtCamas.getText()), ComboTip.getSelectedItem().toString());
+       
+       try {
+       sistema.getListaEnfermaria().adicionar(enf);
+       JOptionPane.showMessageDialog(null, "Enfermaria registada!");
+        txtNome.setText("");
+        txtCamas.setText("");
+        txtCodigo.setText(""); 
+       } catch(RuntimeException e) {
+            JOptionPane.showMessageDialog(null,"Esta enfermaria já se encontra registada!","Erro",JOptionPane.ERROR_MESSAGE);
+        }
+        guardarAlteracoes();
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
