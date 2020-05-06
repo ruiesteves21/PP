@@ -310,6 +310,7 @@ public class ListaHospitais extends javax.swing.JFrame {
         txtNome.setText("");
         txtLocalidade.setText("");
         txtCodigo.setText(""); 
+        carregarTabela();
         }catch(RuntimeException e) {
             JOptionPane.showMessageDialog(null,"Este hospital já se encontra registado!","Erro",JOptionPane.ERROR_MESSAGE);
         }
