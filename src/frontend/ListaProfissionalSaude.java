@@ -12,6 +12,7 @@ import backend.ProfissionalSaude;
 import backend.Serializacao;
 import backend.Sistema;
 import static frontend.ListaHospitais.table;
+import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -74,7 +75,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         txtEspecialidade = new javax.swing.JTextField();
         txtHospital = new javax.swing.JTextField();
-        ComboBoxFuncao = new javax.swing.JComboBox<>();
+        ComboFuncao = new javax.swing.JComboBox<>();
         jLabel11 = new javax.swing.JLabel();
         txtEnfermaria = new javax.swing.JTextField();
         imgRetroceder = new javax.swing.JLabel();
@@ -201,16 +202,16 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         getContentPane().add(txtHospital);
         txtHospital.setBounds(120, 270, 120, 30);
 
-        ComboBoxFuncao.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        ComboBoxFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Médico", "Enfermeiro" }));
-        ComboBoxFuncao.setEnabled(false);
-        ComboBoxFuncao.addActionListener(new java.awt.event.ActionListener() {
+        ComboFuncao.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        ComboFuncao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Médico", "Enfermeiro" }));
+        ComboFuncao.setEnabled(false);
+        ComboFuncao.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboBoxFuncaoActionPerformed(evt);
+                ComboFuncaoActionPerformed(evt);
             }
         });
-        getContentPane().add(ComboBoxFuncao);
-        ComboBoxFuncao.setBounds(120, 150, 120, 30);
+        getContentPane().add(ComboFuncao);
+        ComboFuncao.setBounds(120, 150, 120, 30);
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel11.setText("Enfermaria :");
@@ -271,13 +272,13 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         txtEspecialidade.setEnabled(true);
         txtEnfermaria.setEnabled(true);
         txtHospital.setEnabled(true);
-        ComboBoxFuncao.setEnabled(true);
+        ComboFuncao.setEnabled(true);
         
     }//GEN-LAST:event_btEditarActionPerformed
 
-    private void ComboBoxFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboBoxFuncaoActionPerformed
+    private void ComboFuncaoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboFuncaoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboBoxFuncaoActionPerformed
+    }//GEN-LAST:event_ComboFuncaoActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
@@ -308,14 +309,61 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
         txtEspecialidade.setText(null);
         txtEnfermaria.setText(null);
         txtHospital.setText(null);
-        ComboBoxFuncao.setSelectedItem(null);
+        ComboFuncao.setSelectedItem(null);
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
-        model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(),ComboBoxFuncao.getSelectedItem(),txtEspecialidade.getText(),txtEnfermaria.getText(),txtHospital.getText()});
-        ProfissionalSaude P = new ProfissionalSaude(1, txtNome.getText());
-        sistema.getListaProfissionalSaude().adicionar(P);
+        model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(),ComboFuncao.getSelectedItem(),txtEspecialidade.getText(),txtEnfermaria.getText(),txtHospital.getText()});
+        var result = new ArrayList<ProfissionalSaude>();
+         sistema.getListaProfissionalSaude().getListaProfissionalSaude().stream().filter((ProfissionalSaude) -> (ProfissionalSaude.getNomePS().equals(txtNome.getText()))).forEachOrdered((ProfissionalSaude) -> {
+         result.add(ProfissionalSaude);
+         });
+         
+         if (txtNome.getText().isEmpty()){
+             JOptionPane.showMessageDialog(null, "Introduza o nome do Profissional de Saude","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNome.requestFocus();
+             return;
+         }else{
+             if(!result.isEmpty()){
+                 JOptionPane.showMessageDialog(null,"Esse Profissional de Saude já está registado","Erro",JOptionPane.ERROR_MESSAGE);
+                 txtNome.requestFocus();;
+                 return;
+             }
+         }
+        
+        if (txtEspecialidade.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Introduza a especialidade do Medico","Erro",JOptionPane.ERROR_MESSAGE);
+            txtEspecialidade.requestFocus();
+            return;
+        }
+        
+         if (txtEnfermaria.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Introduza a enfermaria","Erro",JOptionPane.ERROR_MESSAGE);
+            txtEnfermaria.requestFocus();
+            return;
+        }
+         if (txtHospital.getText().isEmpty()){
+            JOptionPane.showMessageDialog(null,"Introduza o Hospital","Erro",JOptionPane.ERROR_MESSAGE);
+            txtHospital.requestFocus();
+            return;
+        }
+         
+        ProfissionalSaude p = new ProfissionalSaude(txtNome.getText(),Integer.parseInt(txtHospital.getText()),Integer.parseInt(txtEnfermaria.getText()),txtEspecialidade.getText(), (String) ComboFuncao.getSelectedItem());
+        try {
+        sistema.getListaProfissionalSaude().adicionar(p);
+        JOptionPane.showMessageDialog(null, "Profissional de Saude registado!");
+        txtNome.setText("");
+        txtEspecialidade.setText("");
+        txtEnfermaria.setText("");
+        txtHospital.setText("");
+        ComboFuncao.setSelectedItem("");
+        carregarTabela();
+        }catch(RuntimeException e) {
+            JOptionPane.showMessageDialog(null,"Este profissional de Saude já se encontra registado!","Erro",JOptionPane.ERROR_MESSAGE);
+        }
+        guardarAlteracoes();
+        
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
@@ -329,6 +377,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
 
     private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
         // TODO add your handling code here:
+        sistema.getListaProfissionalSaude().adicionar(new ProfissionalSaude (txtNome.getText(),Integer.parseInt(txtHospital.getText()),Integer.parseInt(txtEnfermaria.getText()),txtEspecialidade.getText(), (String) ComboFuncao.getSelectedItem()) );
         guardarAlteracoes();
         JOptionPane.showMessageDialog(this, "Alterações guardadas.");
     }//GEN-LAST:event_imgGuardarMouseClicked
@@ -378,7 +427,7 @@ public class ListaProfissionalSaude extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboBoxFuncao;
+    private javax.swing.JComboBox<String> ComboFuncao;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btInserir;
