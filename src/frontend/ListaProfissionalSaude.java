@@ -11,7 +11,11 @@ import backend.Medico;
 import backend.ProfissionalSaude;
 import backend.Serializacao;
 import backend.Sistema;
+<<<<<<< HEAD
 //import static frontend.ListaHospitais.table;
+=======
+import static frontend.ListaHospitais.table;
+>>>>>>> parent of 8914ac4... profsaude
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
