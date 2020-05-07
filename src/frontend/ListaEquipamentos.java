@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
-import static frontend.ListaHospitais.table;
+//import static frontend.ListaHospitais.table;
 
 /**
  *

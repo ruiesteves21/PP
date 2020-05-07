@@ -11,7 +11,7 @@ import backend.Medico;
 import backend.ProfissionalSaude;
 import backend.Serializacao;
 import backend.Sistema;
-import static frontend.ListaHospitais.table;
+//import static frontend.ListaHospitais.table;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 

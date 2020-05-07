@@ -11,7 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
-import static frontend.ListaHospitais.table;
+//import static frontend.ListaHospitais.table;
 /**
  *
  * @author ruiesteves
@@ -255,19 +255,21 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         int c = table.getSelectedRow();
         if(c >= 0){
             model.removeRow(c); //remove a linha selecionada
+            guardarAlteracoes();
+            JOptionPane.showMessageDialog(this, "Removido!");
         }
         else
         {
-            JOptionPane.showMessageDialog(null,"Selecione uma nova enfermaria");
+            JOptionPane.showMessageDialog(null,"Selecione uma enfermaria");
         }
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
-       model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(), ComboTip.getSelectedItem(),txtCamas.getText(),txtCodigo.getText()});
+      
        
        if (txtCamas.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null,"Insira o número de camas que a enfermaria contem!","Erro",JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(null,"Introduza o número de camas que constituem a enfermaria","Erro",JOptionPane.ERROR_MESSAGE);
              txtCamas.requestFocus();
              return;
         }
@@ -284,7 +286,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
              return;
         }
         
-       
+       model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(), ComboTip.getSelectedItem(),txtCamas.getText(),txtCodigo.getText()});
        Enfermaria enf = new Enfermaria(sistema.getHospitalSelecionado(), txtNome.getText(), Integer.parseInt(txtCodigo.getText()), Integer.parseInt(txtCamas.getText()), ComboTip.getSelectedItem().toString());
        
        try {
