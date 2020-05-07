@@ -15,6 +15,9 @@ import backend.Sistema;
 //import static frontend.ListaHospitais.table;
 =======
 import static frontend.ListaHospitais.table;
+<<<<<<< HEAD
+>>>>>>> parent of 8914ac4... profsaude
+=======
 >>>>>>> parent of 8914ac4... profsaude
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
