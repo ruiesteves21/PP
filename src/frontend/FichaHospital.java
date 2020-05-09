@@ -170,7 +170,7 @@ public class FichaHospital extends javax.swing.JFrame {
     private void btProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProfissionaisActionPerformed
         // TODO add your handling code here:
         hide();
-        ListaProfissionalSaude listaProfissionalSaude = new ListaProfissionalSaude(sistema,bd);
+        ListaProfissionaisSaude listaProfissionalSaude = new ListaProfissionaisSaude(sistema,bd);
         listaProfissionalSaude.setLocationRelativeTo(null);
         listaProfissionalSaude.setVisible(true);
     }//GEN-LAST:event_btProfissionaisActionPerformed
