@@ -4,7 +4,6 @@
  * and open the template in the editor.
  */
 package backend;
-
 import java.io.Serializable;
 import java.util.ArrayList;
 
@@ -81,6 +80,14 @@ public class ListaEquipamento implements Serializable {
     }
     }
     
+    public Equipamento getEquipamento(String id) {
+            if (listaEquipamento.contains(id)){
+                return listaEquipamento.get(Integer.parseInt(id));
+                //convertemos id em int porque definimos assim quando definimos a arraylist
+        } else{
+            throw new RuntimeException("O hospital já existe na lista");
+        }
+    }
     @Override
     public String toString()
     {

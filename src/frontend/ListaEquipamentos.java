@@ -11,6 +11,9 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import java.util.ArrayList;
+import java.util.concurrent.atomic.AtomicInteger;
+import javax.swing.table.TableModel;
 //import static frontend.ListaHospitais.table;
 
 /**
@@ -19,22 +22,22 @@ import backend.Serializacao;
  */
 public class ListaEquipamentos extends javax.swing.JFrame {
 
-     DefaultTableModel model; 
+    DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
     int varHosp; 
     private ListaEquipamento listaEquipamento;
-    
+    private AtomicInteger id1 = new AtomicInteger(0);
     /**
      * Creates new form ListaEquipamentos
      */
     public ListaEquipamentos(Sistema sistema, Serializacao bd) {
         initComponents();
-         model = (DefaultTableModel) table.getModel();
+        model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
         carregarTabela();
-        //listaEquipamento = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado()).getListaEquipamento();
+        //listaEquipamento = sistema.getListaHospital().getListaHospital().get(Integer.parseInt(sistema.getHospitalSelecionado)).getListaEquipamento();
     }
     private void guardarAlteracoes() {
         bd.gravaSistema(sistema);
@@ -110,6 +113,11 @@ public class ListaEquipamentos extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
             }
         });
         jScrollPane3.setViewportView(table);
@@ -251,7 +259,8 @@ public class ListaEquipamentos extends javax.swing.JFrame {
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here:
-       
+        ComboTipo.setSelectedItem(null);
+        ComboDisp.setSelectedItem(null);
         txtCodigo.setText(null);
         txtDoente.setText(null);
     }//GEN-LAST:event_btLimparActionPerformed
@@ -259,13 +268,29 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
         model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),ComboTipo.getSelectedItem(), ComboDisp.getSelectedItem(), txtDoente.getText()});
+        Equipamento ultimoId = sistema.getListaEquipamento().getListaEquipamento().get(sistema.getListaEquipamento().getListaEquipamento().size()-1);
+        int preId = ultimoId.getIdEquip();
+        int idFinal = id1.incrementAndGet();
         
+         var result = new ArrayList<Equipamento>();
+         sistema.getListaEquipamento().getListaEquipamento().stream().filter((equipamento) -> (equipamento.getDoente().equals(txtDoente.getText()))).forEachOrdered((Equipamento) -> {
+         result.add(Equipamento);
+         }); 
+  
+       
         if (txtCodigo.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null,"Introduza o nome do hospital","Erro",JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(null,"Introduza o codigo do Equipamento","Erro",JOptionPane.ERROR_MESSAGE);
              txtCodigo.requestFocus();
              return; 
+        }else {
+            if(!result.isEmpty()){
+                JOptionPane.showMessageDialog(null, "Esse equipamento já está criado","Erro",JOptionPane.ERROR_MESSAGE);
+                txtCodigo.requestFocus();
+                return;
+            }
         }
         
+        model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),ComboTipo.getSelectedItem(), ComboDisp.getSelectedItem(), txtDoente.getText()});
         Equipamento eq = new Equipamento(sistema.getEnfermariaSelecionada(),  Integer.parseInt(txtCodigo.getText()), ComboTipo.getSelectedItem().toString(), ComboDisp.getSelectedItem().toString(), txtDoente.getText());
         
         try {
@@ -273,6 +298,10 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Equipamento registado!");
         txtCodigo.setText("");
         txtDoente.setText("");
+        ComboTipo.setSelectedItem("");
+        ComboDisp.setSelectedItem("");
+        carregarTabela();
+        
         } catch(RuntimeException e) {
             JOptionPane.showMessageDialog(null,"Este equipamento já se encontra registado!","Erro",JOptionPane.ERROR_MESSAGE);
         }
@@ -298,6 +327,9 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         int c = table.getSelectedRow();
         if(c >= 0){
             model.removeRow(c); //remove a linha selecionada
+            sistema.getListaEquipamento().getListaEquipamento().remove(c);
+            guardarAlteracoes();
+            JOptionPane.showMessageDialog(this, "Removido!");
         }
         else
         {
@@ -327,6 +359,10 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+       
+    }//GEN-LAST:event_tableMouseClicked
 
     /**
      * @param args the command line arguments
