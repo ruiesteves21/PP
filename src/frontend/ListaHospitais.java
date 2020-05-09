@@ -11,6 +11,7 @@ import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
 import java.util.ArrayList;
+import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.table.TableModel;
 
@@ -39,6 +40,8 @@ public class ListaHospitais extends javax.swing.JFrame {
         this.sistema = sistema;
         this.bd = bd;
         carregarTabela();
+        labelCodigo.setVisible(false);
+        txtCodigo.setVisible(false); 
         
     }
     
@@ -248,8 +251,8 @@ public class ListaHospitais extends javax.swing.JFrame {
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
         
-      
         //Hospital ultimoId = sistema.getListaHospital().getListaHospital().get(sistema.getListaHospital().getListaHospital().size()-1);
+        String id = UUID.randomUUID().toString();
         //int preId = ultimoId.getIdHospital();
         //int idFinal = id.incrementAndGet();
         
@@ -296,7 +299,7 @@ public class ListaHospitais extends javax.swing.JFrame {
         
         //int id = preId + 1;
         model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),txtLocalidade.getText()});
-        Hospital h = new Hospital(sistema.getUtilizadorLigado(),txtNome.getText(), txtLocalidade.getText(), /*id*/ Integer.parseInt(txtCodigo.getText()));
+        Hospital h = new Hospital(sistema.getUtilizadorLigado(),txtNome.getText(), txtLocalidade.getText(), id /*Integer.parseInt(txtCodigo.getText())*/);
         
         try {
         sistema.getListaHospital().adicionar(h);

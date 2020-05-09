@@ -6,6 +6,7 @@
 package backend;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  *
@@ -14,7 +15,7 @@ import java.io.Serializable;
 public class Hospital implements Serializable  {
     private String nome;
     private String localidade;
-    private int idHospital;
+    private String idHospital;
     private Medico utiLigado;
     /*private ListaDoente listaDoente; 
     private ListaEnfermaria listaEnfermaria;
@@ -27,7 +28,7 @@ public class Hospital implements Serializable  {
     
     }
 
-    public Hospital(Medico utiLigado, String nome, String localidade, int idHospital) {
+    public Hospital(Medico utiLigado, String nome, String localidade, String idHospital) {
         this.utiLigado = utiLigado;
         this.nome = nome;
         this.localidade = localidade;
@@ -35,6 +36,11 @@ public class Hospital implements Serializable  {
        
     }
     
+    public static UUID randomUUID(){
+        UUID uuid = UUID.randomUUID();
+        return uuid;
+        }
+            
     //Getters
     
      public Medico getUtiLigado() {
@@ -49,7 +55,7 @@ public class Hospital implements Serializable  {
         return localidade;
     }
 
-    public int getIdHospital() {
+    public String getIdHospital() {
         return idHospital;
     }
     
@@ -66,7 +72,7 @@ public class Hospital implements Serializable  {
         this.localidade = localidade;
     }
 
-    public void setId_Hospital(int idHospital) {
+    public void setId_Hospital(String idHospital) {
         this.idHospital = idHospital;
     }
 

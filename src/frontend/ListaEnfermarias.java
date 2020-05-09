@@ -345,10 +345,11 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
         dispose();
-        FichaHospital p = new FichaHospital(sistema,bd,varHosp);
-        /* FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
+        ListaHospitais lh = new ListaHospitais(sistema, bd);
+        /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
+         FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
+       lh.setLocationRelativeTo(null);
+       lh.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
     private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
