@@ -23,17 +23,19 @@ public class ListaDoentes extends javax.swing.JFrame {
     private Sistema sistema;
     private Serializacao bd;
     private ListaDoente listaDoente;
+    private int indice;
     
     /**
      * Creates new form ListaDoentes
      */
     
-    public ListaDoentes(Sistema sistema, Serializacao bd) {
+    public ListaDoentes(Sistema sistema, Serializacao bd, int indice) {
         initComponents();
 
         model = (DefaultTableModel) tableDoentes.getModel();
         this.sistema=sistema;
         this.bd = bd;
+        this.indice=indice;
         carregarTabela();
         //listaDoente = sistema.getListaDoente().getListaDoente().get(sistema.getHospitalSelecionado()).getListaDoente();
     }
@@ -379,9 +381,10 @@ public class ListaDoentes extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
         dispose();
-        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
-        paginaInicialUtilizador.setLocationRelativeTo(null);
-        paginaInicialUtilizador.setVisible(true);
+       ListaProfissionaisSaude p = new ListaProfissionaisSaude(sistema,bd,indice);
+        //FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow());
+        p.setLocationRelativeTo(null);
+        p.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
     private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked

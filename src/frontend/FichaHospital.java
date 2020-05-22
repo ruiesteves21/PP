@@ -162,25 +162,25 @@ public class FichaHospital extends javax.swing.JFrame {
     private void btDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btDoentesActionPerformed
         // TODO add your handling code here:
         hide();
-        ListaDoentes listaDoentes = new ListaDoentes(sistema,bd);
+        /*ListaDoentes listaDoentes = new ListaDoentes(sistema,bd);
         listaDoentes.setLocationRelativeTo(null);
-        listaDoentes.setVisible(true);
+        listaDoentes.setVisible(true);*/
     }//GEN-LAST:event_btDoentesActionPerformed
 
     private void btProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProfissionaisActionPerformed
         // TODO add your handling code here:
         hide();
-        ListaProfissionaisSaude listaProfissionalSaude = new ListaProfissionaisSaude(sistema,bd);
+        /*ListaProfissionaisSaude listaProfissionalSaude = new ListaProfissionaisSaude(sistema,bd, indice);
         listaProfissionalSaude.setLocationRelativeTo(null);
-        listaProfissionalSaude.setVisible(true);
+        listaProfissionalSaude.setVisible(true);*/
     }//GEN-LAST:event_btProfissionaisActionPerformed
 
     private void btEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipamentosActionPerformed
         // TODO add your handling code here:
         hide();
-        ListaEquipamentos listaEquipamentos = new ListaEquipamentos(sistema,bd);
+        /*ListaEquipamentos listaEquipamentos = new ListaEquipamentos(sistema,bd);
         listaEquipamentos.setLocationRelativeTo(null);
-        listaEquipamentos.setVisible(true);
+        listaEquipamentos.setVisible(true);*/
     }//GEN-LAST:event_btEquipamentosActionPerformed
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked

@@ -28,14 +28,16 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     int varHosp; 
     private ListaEquipamento listaEquipamento;
     private AtomicInteger id1 = new AtomicInteger(0);
+    private int indice;
     /**
      * Creates new form ListaEquipamentos
      */
-    public ListaEquipamentos(Sistema sistema, Serializacao bd) {
+    public ListaEquipamentos(Sistema sistema, Serializacao bd, int indice) {
         initComponents();
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
+        this.indice = indice;
         carregarTabela();
         //listaEquipamento = sistema.getListaHospital().getListaHospital().get(Integer.parseInt(sistema.getHospitalSelecionado)).getListaEquipamento();
     }
@@ -354,10 +356,10 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
          dispose();
-        FichaHospital p = new FichaHospital(sistema,bd, varHosp);
-        /* FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
+       ListaEnfermarias l = new ListaEnfermarias(sistema,bd,indice);
+        //FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow());
+        l.setLocationRelativeTo(null);
+        l.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked

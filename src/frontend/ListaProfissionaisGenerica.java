@@ -44,7 +44,6 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(689, 393));
         setMinimumSize(new java.awt.Dimension(689, 393));
         setUndecorated(true);
         setSize(new java.awt.Dimension(689, 393));
@@ -55,11 +54,11 @@ public class ListaProfissionaisGenerica extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Nome", "Função", "Especialidade", "Enfermaria", "Hospital"
+                "Codigo", "Nome", "Função", "Especialidade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {

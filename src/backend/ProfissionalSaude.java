@@ -14,6 +14,7 @@ import java.io.Serializable;
 public class ProfissionalSaude implements Serializable {
     private int idProfSaude;
     private String nomeProfSaude;
+    
 
     public ProfissionalSaude() 
     {
@@ -23,7 +24,11 @@ public class ProfissionalSaude implements Serializable {
     public ProfissionalSaude(int idProfSaude, String nomeProfsaude) {
         this.idProfSaude = idProfSaude;
         this.nomeProfSaude = nomeProfsaude;
+        
     }
+
+    
+    
 
     public int getIdProfSaude() {
         return idProfSaude;

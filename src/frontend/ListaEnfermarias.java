@@ -82,6 +82,8 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
         ComboTip = new javax.swing.JComboBox<>();
+        btEquipamentos = new javax.swing.JButton();
+        btProfissionais = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -126,22 +128,22 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel11.setText("Nome :");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(20, 120, 60, 20);
+        jLabel11.setBounds(20, 70, 60, 20);
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel12.setText("Tipo :");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(20, 160, 60, 20);
+        jLabel12.setBounds(20, 110, 60, 20);
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel13.setText("Nº Camas :");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(20, 200, 80, 20);
+        jLabel13.setBounds(20, 150, 80, 20);
 
         labelCodigo.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         labelCodigo.setText("Código :");
         getContentPane().add(labelCodigo);
-        labelCodigo.setBounds(20, 240, 90, 20);
+        labelCodigo.setBounds(20, 190, 90, 20);
 
         txtNome.setEnabled(false);
         txtNome.addActionListener(new java.awt.event.ActionListener() {
@@ -150,7 +152,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNome);
-        txtNome.setBounds(110, 110, 120, 30);
+        txtNome.setBounds(120, 70, 120, 30);
 
         txtCamas.setEnabled(false);
         txtCamas.addActionListener(new java.awt.event.ActionListener() {
@@ -159,7 +161,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtCamas);
-        txtCamas.setBounds(110, 190, 120, 30);
+        txtCamas.setBounds(120, 150, 120, 30);
 
         txtCodigo.setEnabled(false);
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
@@ -168,7 +170,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(110, 230, 120, 30);
+        txtCodigo.setBounds(120, 190, 120, 30);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
@@ -180,7 +182,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btInserir);
-        btInserir.setBounds(20, 270, 80, 29);
+        btInserir.setBounds(10, 230, 80, 29);
 
         btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimpar.setText("Limpar");
@@ -191,7 +193,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(110, 270, 80, 29);
+        btLimpar.setBounds(100, 230, 80, 29);
 
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
@@ -202,7 +204,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(200, 270, 80, 29);
+        btExcluir.setBounds(10, 270, 80, 29);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -212,7 +214,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(530, 270, 80, 29);
+        btEditar.setBounds(100, 270, 80, 29);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -234,7 +236,27 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
         ComboTip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Normal", "UCI", " ", " ", " " }));
         getContentPane().add(ComboTip);
-        ComboTip.setBounds(110, 150, 120, 30);
+        ComboTip.setBounds(120, 110, 120, 30);
+
+        btEquipamentos.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btEquipamentos.setText("Lista Equipamentos");
+        btEquipamentos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEquipamentosActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btEquipamentos);
+        btEquipamentos.setBounds(420, 270, 160, 29);
+
+        btProfissionais.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btProfissionais.setText("Lista Profissionais");
+        btProfissionais.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btProfissionaisActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btProfissionais);
+        btProfissionais.setBounds(250, 270, 150, 29);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaEnfermariasfundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -346,6 +368,26 @@ public class ListaEnfermarias extends javax.swing.JFrame {
        lh.setLocationRelativeTo(null);
        lh.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
+
+    private void btEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipamentosActionPerformed
+        // TODO add your handling code here:
+        int indice = table.getSelectedRow();    
+        ListaEquipamentos e = new ListaEquipamentos(sistema, bd, indice);
+        guardarAlteracoes();
+        dispose();
+        e.setVisible(true);
+        e.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btEquipamentosActionPerformed
+
+    private void btProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProfissionaisActionPerformed
+        // TODO add your handling code here:
+        int indice = table.getSelectedRow();    
+        ListaProfissionaisSaude p = new ListaProfissionaisSaude(sistema, bd, indice);
+        guardarAlteracoes();
+        dispose();
+        p.setVisible(true);
+        p.setLocationRelativeTo(null);
+    }//GEN-LAST:event_btProfissionaisActionPerformed
     
      
      
@@ -388,9 +430,11 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JComboBox<String> ComboTip;
     private javax.swing.JButton btEditar;
+    private javax.swing.JButton btEquipamentos;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btProfissionais;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;
