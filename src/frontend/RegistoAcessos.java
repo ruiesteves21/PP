@@ -103,10 +103,30 @@ public class RegistoAcessos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        imgRetroceder2 = new javax.swing.JLabel();
+        imgRetroceder3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabAcessos = new javax.swing.JTable();
         imgSair = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
+        imgRetroceder = new javax.swing.JLabel();
+        imgRetroceder1 = new javax.swing.JLabel();
+        imgRetroceder4 = new javax.swing.JLabel();
+        imgRetroceder5 = new javax.swing.JLabel();
+
+        imgRetroceder2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgRetroceder2MouseClicked(evt);
+            }
+        });
+
+        imgRetroceder3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgRetroceder3MouseClicked(evt);
+            }
+        });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registo de Acessos");
@@ -135,7 +155,7 @@ public class RegistoAcessos extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tabAcessos);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(40, 60, 271, 234);
+        jScrollPane2.setBounds(40, 50, 271, 234);
 
         imgSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
         imgSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -150,6 +170,37 @@ public class RegistoAcessos extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(-210, 0, 650, 320);
 
+        imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        getContentPane().add(imgRetroceder);
+        imgRetroceder.setBounds(480, 10, 24, 30);
+
+        imgRetroceder1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgRetroceder1MouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgRetroceder1);
+        imgRetroceder1.setBounds(530, 30, 24, 30);
+
+        imgRetroceder4.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder4.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgRetroceder4MouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgRetroceder4);
+        imgRetroceder4.setBounds(64, 30, 490, 310);
+
+        imgRetroceder5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder5.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgRetroceder5MouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgRetroceder5);
+        imgRetroceder5.setBounds(530, 30, 24, 70);
+
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
@@ -158,8 +209,64 @@ public class RegistoAcessos extends javax.swing.JFrame {
         // TODO add your handling code here:
         terminar();
     }//GEN-LAST:event_imgSairMouseClicked
+
+    private void imgRetroceder1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder1MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        ListaHospitais lh = new ListaHospitais(sistema, bd);
+        /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
+        FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
+        lh.setLocationRelativeTo(null);
+        lh.setVisible(true);
+    }//GEN-LAST:event_imgRetroceder1MouseClicked
+
+    private void imgRetroceder2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder2MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        ListaHospitais lh = new ListaHospitais(sistema, bd);
+        /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
+        FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
+        lh.setLocationRelativeTo(null);
+        lh.setVisible(true);
+    }//GEN-LAST:event_imgRetroceder2MouseClicked
+
+    private void imgRetroceder3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder3MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        ListaHospitais lh = new ListaHospitais(sistema, bd);
+        /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
+        FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
+        lh.setLocationRelativeTo(null);
+        lh.setVisible(true);
+    }//GEN-LAST:event_imgRetroceder3MouseClicked
+
+    private void imgRetroceder4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder4MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        ListaHospitais lh = new ListaHospitais(sistema, bd);
+        /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
+        FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
+        lh.setLocationRelativeTo(null);
+        lh.setVisible(true);
+    }//GEN-LAST:event_imgRetroceder4MouseClicked
+
+    private void imgRetroceder5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder5MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        ListaHospitais lh = new ListaHospitais(sistema, bd);
+        /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
+        FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
+        lh.setLocationRelativeTo(null);
+        lh.setVisible(true);
+    }//GEN-LAST:event_imgRetroceder5MouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imgRetroceder;
+    private javax.swing.JLabel imgRetroceder1;
+    private javax.swing.JLabel imgRetroceder2;
+    private javax.swing.JLabel imgRetroceder3;
+    private javax.swing.JLabel imgRetroceder4;
+    private javax.swing.JLabel imgRetroceder5;
     private javax.swing.JLabel imgSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;

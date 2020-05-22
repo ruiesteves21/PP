@@ -6,6 +6,7 @@
 package backend;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  *
@@ -13,7 +14,7 @@ import java.io.Serializable;
  */
 public class Enfermaria extends ProfissionalSaude implements Serializable {
     private String nome;
-    private int idEnfermaria;
+    private String idEnfermaria;
     private String tipo; //normal, UCI
     private Hospital hospitalSelecionado;
     private int nCamas;
@@ -23,19 +24,23 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
     
     }
 
-    public Enfermaria(Hospital hospitalSelecionado, String nome, int idEnfermaria, int nCamas, String tipo) {
-        this.hospitalSelecionado = hospitalSelecionado;
+    public Enfermaria(String nome, String idEnfermaria, int nCamas, String tipo) {
         this.nome = nome;
         this.idEnfermaria = idEnfermaria;
         this.tipo = tipo;
         this.nCamas = nCamas;
     }
     
+    public static UUID randomUUID(){
+        UUID uuid = UUID.randomUUID();
+        return uuid;
+        }
+    
     public Hospital getHospitalSelecionado() {
         return hospitalSelecionado;
     }
     
-    public int getIdEnfermaria() {
+    public String getIdEnfermaria() {
         return idEnfermaria;
     }
 
@@ -51,7 +56,7 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
         return nCamas;
     }
     
-    public void setIdEnfermaria(int idEnfermaria) {
+    public void setIdEnfermaria(String idEnfermaria) {
         this.idEnfermaria = idEnfermaria;
     }
     

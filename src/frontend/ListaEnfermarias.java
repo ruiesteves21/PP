@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import java.util.UUID;
 //import static frontend.ListaHospitais.table;
 /**
  *
@@ -20,31 +21,35 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    int varHosp; 
-    private ListaEnfermaria listaEnfermaria;
+    private int indice;
      /**
      * Creates new form ListaEnfermarias
      */
-    public ListaEnfermarias(Sistema sistema,Serializacao bd) {
+    public ListaEnfermarias(Sistema sistema, Serializacao bd, int indice) {
         initComponents();
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
-        //listaEnfermaria = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado()).getListaEnfermaria();
+        this.indice=indice;
+   
         carregarTabela();
+        labelCodigo.setVisible(false);
+        txtCodigo.setVisible(false); 
     }
     
     public void carregarTabela()
     {
-        model.setRowCount(0);
-        for (int i = 0; i < sistema.getListaEnfermaria().getListaEnfermaria().size(); i++) {
-            Enfermaria e = sistema.getListaEnfermaria().getListaEnfermaria().get(i);
-            
-            if (e.getHospitalSelecionado().equals(sistema.getHospitalSelecionado())) {
-            model.addRow(new Object[]{e.getNome(), e.getTipo(), e.getNcamas(), e.getIdEnfermaria()});
-
-            }
-        }
+        //model.setRowCount(0);
+         DefaultTableModel tm = new DefaultTableModel(new Object[] {"Nome", "Tipo", "Nº Camas", "Codigo"}, 0);
+         for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().size(); i++) {
+             
+             Hospital h = sistema.getListaHospital().getListaHospital().get(indice);
+             
+            tm.addRow(new Object[] {h.getListaEnfermaria().getListaEnfermaria().get(i).getNome(), h.getListaEnfermaria().getListaEnfermaria().get(i).getTipo(), h.getListaEnfermaria().getListaEnfermaria().get(i).getNcamas(), h.getListaEnfermaria().getListaEnfermaria().get(i).getIdEnfermaria() });
+         }
+         
+          table.setModel(tm);
+          
     }
     
     private void guardarAlteracoes() {
@@ -66,7 +71,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
+        labelCodigo = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtCamas = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
@@ -77,7 +82,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
         ComboTip = new javax.swing.JComboBox<>();
-        imgGuardar = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,10 +138,10 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         getContentPane().add(jLabel13);
         jLabel13.setBounds(20, 200, 80, 20);
 
-        jLabel14.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel14.setText("Código :");
-        getContentPane().add(jLabel14);
-        jLabel14.setBounds(20, 240, 90, 20);
+        labelCodigo.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        labelCodigo.setText("Código :");
+        getContentPane().add(labelCodigo);
+        labelCodigo.setBounds(20, 240, 90, 20);
 
         txtNome.setEnabled(false);
         txtNome.addActionListener(new java.awt.event.ActionListener() {
@@ -232,15 +236,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         getContentPane().add(ComboTip);
         ComboTip.setBounds(110, 150, 120, 30);
 
-        imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
-        imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgGuardarMouseClicked(evt);
-            }
-        });
-        getContentPane().add(imgGuardar);
-        imgGuardar.setBounds(490, 30, 30, 30);
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaEnfermariasfundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 640, 390);
@@ -267,6 +262,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
       
+       String id = UUID.randomUUID().toString();
        
        if (txtCamas.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o número de camas que constituem a enfermaria","Erro",JOptionPane.ERROR_MESSAGE);
@@ -287,14 +283,15 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         }
         
        model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(), ComboTip.getSelectedItem(),txtCamas.getText(),txtCodigo.getText()});
-       Enfermaria enf = new Enfermaria(sistema.getHospitalSelecionado(), txtNome.getText(), Integer.parseInt(txtCodigo.getText()), Integer.parseInt(txtCamas.getText()), ComboTip.getSelectedItem().toString());
+       Enfermaria enf = new Enfermaria(txtNome.getText(), id, Integer.parseInt(txtCamas.getText()), ComboTip.getSelectedItem().toString());
        
        try {
-       sistema.getListaEnfermaria().adicionar(enf);
+       sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().adicionar(enf);
        JOptionPane.showMessageDialog(null, "Enfermaria registada!");
-        txtNome.setText("");
-        txtCamas.setText("");
-        txtCodigo.setText(""); 
+       txtNome.setText("");
+       txtCamas.setText("");
+       txtCodigo.setText(""); 
+       carregarTabela();
        } catch(RuntimeException e) {
             JOptionPane.showMessageDialog(null,"Esta enfermaria já se encontra registada!","Erro",JOptionPane.ERROR_MESSAGE);
         }
@@ -344,19 +341,11 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
-        dispose();
-        ListaHospitais lh = new ListaHospitais(sistema, bd);
-        /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
-         FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
+       dispose();
+       ListaHospitais lh = new ListaHospitais(sistema, bd);
        lh.setLocationRelativeTo(null);
        lh.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
-
-    private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
-        // TODO add your handling code here:
-        guardarAlteracoes();
-        JOptionPane.showMessageDialog(this, "Alterações guardadas.");
-    }//GEN-LAST:event_imgGuardarMouseClicked
     
      
      
@@ -402,16 +391,15 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
-    private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JLabel labelCodigo;
     private javax.swing.JTable table;
     private javax.swing.JTextField txtCamas;
     private javax.swing.JTextField txtCodigo;

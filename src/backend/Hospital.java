@@ -17,8 +17,8 @@ public class Hospital implements Serializable  {
     private String localidade;
     private String idHospital;
     private Medico utiLigado;
-    /*private ListaDoente listaDoente; 
     private ListaEnfermaria listaEnfermaria;
+    /*private ListaDoente listaDoente; 
     private ListaEquipamento listaEquipamento;
     private ListaMedico listaMedico;*/
     
@@ -33,6 +33,7 @@ public class Hospital implements Serializable  {
         this.nome = nome;
         this.localidade = localidade;
         this.idHospital = idHospital;
+        listaEnfermaria = new ListaEnfermaria();
        
     }
     
@@ -59,6 +60,10 @@ public class Hospital implements Serializable  {
         return idHospital;
     }
     
+    public ListaEnfermaria getListaEnfermaria() {
+        return listaEnfermaria;
+    }
+    
     //Setters
     public void setUtiLigado(Medico utiLigado) {
         this.utiLigado = utiLigado;
@@ -78,10 +83,6 @@ public class Hospital implements Serializable  {
 
     /*public ListaDoente getListaDoente() {
         return listaDoente;
-    }
-
-    public ListaEnfermaria getListaEnfermaria() {
-        return listaEnfermaria;
     }
 
     public ListaEquipamento getListaEquipamento() {

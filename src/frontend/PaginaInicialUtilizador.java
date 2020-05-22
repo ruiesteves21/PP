@@ -187,7 +187,6 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void imgPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgPerfilMouseClicked
         // TODO add your handling code here:
-        dispose();
         Perfil perfil = new Perfil(sistema, sistema.getUtilizadorLigado(), null);
         perfil.setVisible(true);
         

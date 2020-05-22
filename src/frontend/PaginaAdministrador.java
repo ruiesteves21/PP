@@ -90,6 +90,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         //Se nenhum registo selecionado, nao é possivel editar
         if (rowIndex == -1) return;
         
+        
         String username = (String) modeloTabelaAdmin.getValueAt(rowIndex, 0);
         
         try {

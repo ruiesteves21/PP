@@ -152,10 +152,10 @@ public class FichaHospital extends javax.swing.JFrame {
 
     private void btEnfermariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnfermariaActionPerformed
         // TODO add your handling code here:
-        hide();
+        /*hide();
         ListaEnfermarias listaEnfermarias = new ListaEnfermarias(sistema,bd);
         listaEnfermarias.setLocationRelativeTo(null);
-        listaEnfermarias.setVisible(true);
+        listaEnfermarias.setVisible(true);*/
         
     }//GEN-LAST:event_btEnfermariaActionPerformed
 

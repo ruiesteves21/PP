@@ -11,7 +11,6 @@ import backend.Medico;
 
 /**
  *
- * @author ssoar , Rui Esteves;
  */
 public class Perfil extends javax.swing.JFrame {
 
@@ -80,7 +79,7 @@ public class Perfil extends javax.swing.JFrame {
         }       
         
         if (txtConfirmacao.getPassword().length == 0) {
-            JOptionPane.showMessageDialog(this, "Introduza p.f. a password de confirmação!");
+            JOptionPane.showMessageDialog(this, "Introduza a password de confirmação!");
             txtConfirmacao.requestFocus();
             return;
         }  

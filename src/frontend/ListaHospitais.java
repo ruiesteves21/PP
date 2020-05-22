@@ -12,7 +12,6 @@ import backend.Sistema;
 import backend.Serializacao;
 import java.util.ArrayList;
 import java.util.UUID;
-import java.util.concurrent.atomic.AtomicInteger;
 import javax.swing.table.TableModel;
 
 
@@ -28,7 +27,8 @@ public class ListaHospitais extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    private AtomicInteger id1 = new AtomicInteger(0);
+    private int index;
+    
  
     
     
@@ -39,6 +39,7 @@ public class ListaHospitais extends javax.swing.JFrame {
         model = (DefaultTableModel) table.getModel();
         this.sistema = sistema;
         this.bd = bd;
+        index=0;
         carregarTabela();
         labelCodigo.setVisible(false);
         txtCodigo.setVisible(false); 
@@ -57,9 +58,7 @@ public class ListaHospitais extends javax.swing.JFrame {
             }
          }
     }
-        
-    
-    
+       
      private void guardarAlteracoes() {
         bd.gravaSistema(sistema);
     }
@@ -92,11 +91,10 @@ public class ListaHospitais extends javax.swing.JFrame {
         txtNome = new javax.swing.JTextField();
         btInserir = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
-        imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtLocalidade = new javax.swing.JTextField();
-        btFichaHosp = new javax.swing.JButton();
+        btEnfermaria = new javax.swing.JButton();
         btFiltrar2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
@@ -174,10 +172,6 @@ public class ListaHospitais extends javax.swing.JFrame {
         getContentPane().add(btExcluir);
         btExcluir.setBounds(110, 190, 80, 29);
 
-        imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
-        getContentPane().add(imgRetroceder);
-        imgRetroceder.setBounds(480, 10, 24, 30);
-
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -196,18 +190,23 @@ public class ListaHospitais extends javax.swing.JFrame {
         getContentPane().add(txtLocalidade);
         txtLocalidade.setBounds(110, 140, 100, 30);
 
-        btFichaHosp.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        btFichaHosp.setText("Ficha Hospital");
-        btFichaHosp.addActionListener(new java.awt.event.ActionListener() {
+        btEnfermaria.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btEnfermaria.setText("Ir para Enfermaria");
+        btEnfermaria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btFichaHospActionPerformed(evt);
+                btEnfermariaActionPerformed(evt);
             }
         });
-        getContentPane().add(btFichaHosp);
-        btFichaHosp.setBounds(20, 310, 170, 29);
+        getContentPane().add(btEnfermaria);
+        btEnfermaria.setBounds(20, 310, 170, 29);
 
         btFiltrar2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btFiltrar2.setText("Filtrar");
+        btFiltrar2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btFiltrar2ActionPerformed(evt);
+            }
+        });
         getContentPane().add(btFiltrar2);
         btFiltrar2.setBounds(110, 270, 80, 29);
 
@@ -251,12 +250,8 @@ public class ListaHospitais extends javax.swing.JFrame {
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
         
-        //Hospital ultimoId = sistema.getListaHospital().getListaHospital().get(sistema.getListaHospital().getListaHospital().size()-1);
         String id = UUID.randomUUID().toString();
-        //int preId = ultimoId.getIdHospital();
-        //int idFinal = id.incrementAndGet();
-        
- 
+    
         /*
         Stream() - Suporta vários metodos, entre quais está o filter
         filter() - Seleciona elementos de acordo com o Predicado passado como argumento.
@@ -297,9 +292,8 @@ public class ListaHospitais extends javax.swing.JFrame {
              return;
         }
         
-        //int id = preId + 1;
-        model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),txtLocalidade.getText()});
-        Hospital h = new Hospital(sistema.getUtilizadorLigado(),txtNome.getText(), txtLocalidade.getText(), id /*Integer.parseInt(txtCodigo.getText())*/);
+        
+        Hospital h = new Hospital(sistema.getUtilizadorLigado(),txtNome.getText(), txtLocalidade.getText(), id);
         
         try {
         sistema.getListaHospital().adicionar(h);
@@ -367,31 +361,54 @@ public class ListaHospitais extends javax.swing.JFrame {
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
-    private void btFichaHospActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFichaHospActionPerformed
+    private void btEnfermariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnfermariaActionPerformed
         // TODO add your handling code here:
-         // TODO add your handling code here:
-        //FichaHospital p = new FichaHospital(sistema,bd);
-        FichaHospital p = new FichaHospital(sistema,bd, table.getSelectedRow());
-        //int index = table.getSelectedRow();
         
-        //sistema.setHospitalSelecionado(index);
-        TableModel model = table.getModel();
         
-        //String Nome = model.getValueAt(index, 1).toString();
-        //String Localidade = model.getValueAt(index, 2).toString();
-        //FichaHospital jtRowData = new FichaHospital(sistema, bd);
-        FichaHospital jtRowData = new FichaHospital(sistema, bd, table.getSelectedRow());
-        //p.txtNome.setText(Nome);
-        //p.txtLocalidade.setText(Localidade);
+        int indice = table.getSelectedRow();    //abre a janela que cria as tarefas de um projeto
+                                                    //selecionado da tabela
+        ListaEnfermarias enf = new ListaEnfermarias(sistema, bd, indice);
+        guardarAlteracoes();
+        dispose();
+        enf.setVisible(true);
+        enf.setLocationRelativeTo(null);
         
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
-        hide();
-    }//GEN-LAST:event_btFichaHospActionPerformed
+       /* int rowIndex = table.getSelectedRow();
+        String ID = (String) table.getValueAt(rowIndex, 0);
+        //Caso o ID não seja nulo
+        if(!ID.equals("")){
+            Hospital hospital = new Hospital();
+            hospital.setUtiLigado(sistema.getUtilizadorLigado());
+            hospital.setNome(table.getValueAt(rowIndex, 1).toString());
+            hospital.setLocalidade(table.getValueAt(rowIndex, 2).toString());
+            hospital.setId_Hospital(table.getValueAt(rowIndex, 0).toString());
+        //A linha que está selecionada vai definir o hospital com esse ID, o hospital selecionado
+        //Assim a enfermaria que criar vai estar associada ao hospital seguinte
+        //sistema.setHospitalSelecionado(sistema.getListaHospital().getHospital(ID));
+        sistema.setHospitalSelecionado(hospital);
+        guardarAlteracoes();
+        dispose();
+        ListaEnfermarias en = new ListaEnfermarias(sistema, bd);
+        en.setVisible(true);  
+        } else {
+        JOptionPane.showMessageDialog(null,"Hospital não encontrado!","Erro",JOptionPane.ERROR_MESSAGE);    
+        }*/  
+    }//GEN-LAST:event_btEnfermariaActionPerformed
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         // TODO add your handling code here:
-        if (evt.getClickCount() == 2){
+         int indice = table.getSelectedRow();  //quando o utilizador seleciona um hospital clicando
+                                                  //na tabela
+
+        if(indice>=0 && indice < sistema.getListaHospital().getListaHospital().size()) {
+            Hospital h = (Hospital)sistema.getListaHospital().getListaHospital().get(indice);
+            txtNome.setText(h.getNome());
+            txtLocalidade.setText(h.getLocalidade());
+            txtNome.setEnabled(true);
+            txtLocalidade.setEnabled(true);
+        }
+            
+       /* if (evt.getClickCount() == 2){
         int rowIndex = table.getSelectedRow();
         String ID = (String) table.getValueAt(rowIndex, 0);
         if(!ID.equals("")){
@@ -410,8 +427,18 @@ public class ListaHospitais extends javax.swing.JFrame {
         txtNome.setText(table.getValueAt(rowIndex, 1).toString());
         txtLocalidade.setText(table.getValueAt(rowIndex, 2).toString());
         //txtCodigo.setEnabled(false);
-        }
+        }*/
     }//GEN-LAST:event_tableMouseClicked
+
+    private void btFiltrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFiltrar2ActionPerformed
+        // TODO add your handling code here:
+         int indice = table.getSelectedRow();
+         
+        sistema.getListaHospital().getListaHospital().get(indice).setNome(txtNome.getText());
+        sistema.getListaHospital().getListaHospital().get(indice).setLocalidade(txtLocalidade.getText());
+        carregarTabela();
+        guardarAlteracoes();
+    }//GEN-LAST:event_btFiltrar2ActionPerformed
 
     
     
@@ -453,13 +480,12 @@ public class ListaHospitais extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEditar;
+    private javax.swing.JButton btEnfermaria;
     private javax.swing.JButton btExcluir;
-    private javax.swing.JButton btFichaHosp;
     private javax.swing.JButton btFiltrar2;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
     private javax.swing.JLabel imgHome;
-    private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
