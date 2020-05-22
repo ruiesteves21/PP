@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package frontend;
+import backend.Enfermaria;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
@@ -17,6 +18,7 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
      DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
+    private int index;
     /**
      * Creates new form ListaEnfermariasGenerica
      */
@@ -25,6 +27,21 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
+        index=0;
+        carregarTabela();
+    }
+    
+    public void carregarTabela()
+    {
+        model.setRowCount(0);
+        for (int i = 0; i < sistema.getListaEnfermaria().getListaEnfermaria().size(); i++) {
+            Enfermaria e = sistema.getListaEnfermaria().getListaEnfermaria().get(i);
+            
+            if (e.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+            model.addRow(new Object[]{e.getIdEnfermaria(), e.getNome(),e.getTipo(), e.getnCamas()});
+
+            }
+         }
     }
 
     /**
@@ -55,11 +72,11 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Nome", "Tipo", "Nº Camas", "Nº Doentes"
+                "Codigo", "Nome", "Tipo", "Nº Camas"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {

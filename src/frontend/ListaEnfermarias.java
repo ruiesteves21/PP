@@ -45,7 +45,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
              
              Hospital h = sistema.getListaHospital().getListaHospital().get(indice);
              
-            tm.addRow(new Object[] {h.getListaEnfermaria().getListaEnfermaria().get(i).getNome(), h.getListaEnfermaria().getListaEnfermaria().get(i).getTipo(), h.getListaEnfermaria().getListaEnfermaria().get(i).getNcamas(), h.getListaEnfermaria().getListaEnfermaria().get(i).getIdEnfermaria() });
+            tm.addRow(new Object[] {h.getListaEnfermaria().getListaEnfermaria().get(i).getNome(), h.getListaEnfermaria().getListaEnfermaria().get(i).getTipo(), h.getListaEnfermaria().getListaEnfermaria().get(i).getnCamas(), h.getListaEnfermaria().getListaEnfermaria().get(i).getIdEnfermaria() });
          }
          
           table.setModel(tm);

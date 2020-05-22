@@ -52,7 +52,7 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
         return tipo;
     }
 
-    public int getNcamas() {
+    public int getnCamas() {
         return nCamas;
     }
     
@@ -72,10 +72,11 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
         this.nome = nome;
     }
     
-    public void setNCamas(int nCamas) {
+    public void setnCamas(int nCamas) {
         this.nCamas = nCamas;
     }
-     
+
+   
     
     // Metodos para alterar o tipo de enfermaria
     public void setTipoNaoIniciada()
@@ -97,6 +98,10 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
     @Override
     public String toString() {
         return "Enfermaria{" + "idEnfermaria=" + idEnfermaria + ", tipo=" + tipo + ", nCamas=" + nCamas + '}';
+    }
+
+    public Object getUtiLigado() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     

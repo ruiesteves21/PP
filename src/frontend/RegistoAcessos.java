@@ -107,6 +107,7 @@ public class RegistoAcessos extends javax.swing.JFrame {
         imgRetroceder3 = new javax.swing.JLabel();
         jScrollPane2 = new javax.swing.JScrollPane();
         tabAcessos = new javax.swing.JTable();
+        imgRetroceder6 = new javax.swing.JLabel();
         imgSair = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         imgRetroceder = new javax.swing.JLabel();
@@ -156,6 +157,15 @@ public class RegistoAcessos extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(40, 50, 271, 234);
+
+        imgRetroceder6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder6.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgRetroceder6MouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgRetroceder6);
+        imgRetroceder6.setBounds(270, 10, 24, 30);
 
         imgSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
         imgSair.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -259,6 +269,14 @@ public class RegistoAcessos extends javax.swing.JFrame {
         lh.setLocationRelativeTo(null);
         lh.setVisible(true);
     }//GEN-LAST:event_imgRetroceder5MouseClicked
+
+    private void imgRetroceder6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder6MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        PaginaAdministrador paginaAdministrador = new PaginaAdministrador(sistema,bd);
+        paginaAdministrador.setLocationRelativeTo(null);
+        paginaAdministrador.setVisible(true);
+    }//GEN-LAST:event_imgRetroceder6MouseClicked
     
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imgRetroceder;
@@ -267,6 +285,7 @@ public class RegistoAcessos extends javax.swing.JFrame {
     private javax.swing.JLabel imgRetroceder3;
     private javax.swing.JLabel imgRetroceder4;
     private javax.swing.JLabel imgRetroceder5;
+    private javax.swing.JLabel imgRetroceder6;
     private javax.swing.JLabel imgSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
