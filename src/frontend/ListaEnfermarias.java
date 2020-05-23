@@ -12,7 +12,7 @@ import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
 import java.util.UUID;
-//import static frontend.ListaHospitais.table;
+
 /**
  *
  * @author ruiesteves
@@ -39,16 +39,16 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     
     public void carregarTabela()
     {
-        //model.setRowCount(0);
-         DefaultTableModel tm = new DefaultTableModel(new Object[] {"Nome", "Tipo", "Nº Camas", "Codigo"}, 0);
+        model.setRowCount(0);
+         
          for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().size(); i++) {
              
-             Hospital h = sistema.getListaHospital().getListaHospital().get(indice);
+             Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().get(i);
              
-            tm.addRow(new Object[] {h.getListaEnfermaria().getListaEnfermaria().get(i).getNome(), h.getListaEnfermaria().getListaEnfermaria().get(i).getTipo(), h.getListaEnfermaria().getListaEnfermaria().get(i).getnCamas(), h.getListaEnfermaria().getListaEnfermaria().get(i).getIdEnfermaria() });
+            model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getnCamas(), enf.getIdEnfermaria() });
          }
          
-          table.setModel(tm);
+          table.setModel(model);
           
     }
     
@@ -371,7 +371,8 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
     private void btEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipamentosActionPerformed
         // TODO add your handling code here:
-        int indice = table.getSelectedRow();    
+        int indice = table.getSelectedRow();   
+        
         ListaEquipamentos e = new ListaEquipamentos(sistema, bd, indice);
         guardarAlteracoes();
         dispose();

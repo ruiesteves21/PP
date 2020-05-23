@@ -19,17 +19,17 @@ public class Doente implements Serializable
     private String nome;
     private String localidade;
     private String gravidade;
-    private LocalDate dataNasc;
+    private Calendar dataNasc;
     private String enfermaria;
-    private LocalDate dataEntrada;
-    private LocalDate dataSaida;
+    private Calendar dataEntrada;
+    private Calendar dataSaida;
     private String medico;
 
     
     public Doente(){   
     }
 
-    public Doente(int idDoente, String nome, String localidade, String gravidade, LocalDate dataNasc, LocalDate dataEntrada, LocalDate dataSaida,int nCama, String enfermaria, String medico) {
+    public Doente(int idDoente, String nome, String localidade, String gravidade, Calendar dataNasc, Calendar dataEntrada, Calendar dataSaida,int nCama, String enfermaria, String medico) {
         this.idDoente = idDoente;
         this.nome = nome;
         this.localidade = localidade;
@@ -39,8 +39,8 @@ public class Doente implements Serializable
         this.dataSaida = dataSaida;
         this.nCama = nCama;
         this.enfermaria = enfermaria;
-        this.dataEntrada = LocalDate.now();
-        this.dataSaida = LocalDate.now();
+        this.dataEntrada = dataEntrada;
+        this.dataSaida = dataSaida;
         this.medico = medico;
     }
     
@@ -61,7 +61,7 @@ public class Doente implements Serializable
         return gravidade;
     }
 
-    public LocalDate getDataNasc() {
+    public Calendar getDataNasc() {
         return dataNasc;
     }
 
@@ -69,11 +69,11 @@ public class Doente implements Serializable
         return nCama;
     }
 
-    public LocalDate getDataEntrada() {
+    public Calendar getDataEntrada() {
         return dataEntrada;
     }
 
-    public LocalDate getDataSaida() {
+    public Calendar getDataSaida() {
         return dataSaida;
     }
     
@@ -111,15 +111,15 @@ public class Doente implements Serializable
         this.gravidade = gravidade;
     }
 
-    public void setDataNasc(LocalDate dataNasc) {
+    public void setDataNasc(Calendar dataNasc) {
         this.dataNasc = dataNasc;
     }
    
-    public void setDataEntrada(LocalDate dataEntrada){
+    public void setDataEntrada(Calendar dataEntrada){
         this.dataEntrada = dataEntrada;
     }
 
-    public void setDataSaida(LocalDate dataSaida){
+    public void setDataSaida(Calendar dataSaida){
         this.dataSaida = dataSaida;
     }
     
@@ -176,18 +176,13 @@ public class Doente implements Serializable
     
     public void setTeveAlta(Calendar dt){
         this.gravidade = "Teve Alta";
-        this.dataSaida = LocalDate.now();
+        this.dataSaida = Calendar.getInstance();;
     }
     
     @Override
     public String toString() {
         return "Doente{" + "idDoente=" + idDoente + ", nome=" + nome + ", localidade=" + localidade + ", gravidade=" + gravidade + ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida + ", enfermaria=" + enfermaria + ", nCama =" + nCama + '}';
     }
-
-    public ListaDoente getListaDoente() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
     
     
 }

@@ -18,6 +18,7 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
     private String tipo; //normal, UCI
     private Hospital hospitalSelecionado;
     private int nCamas;
+    private ListaEquipamento listaEquipamento;
     
     public Enfermaria () 
     {
@@ -29,12 +30,17 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
         this.idEnfermaria = idEnfermaria;
         this.tipo = tipo;
         this.nCamas = nCamas;
+        listaEquipamento = new ListaEquipamento();
     }
     
     public static UUID randomUUID(){
         UUID uuid = UUID.randomUUID();
         return uuid;
         }
+
+    public ListaEquipamento getListaEquipamento() {
+        return listaEquipamento;
+    }
     
     public Hospital getHospitalSelecionado() {
         return hospitalSelecionado;

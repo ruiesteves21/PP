@@ -48,37 +48,107 @@ public class ListaEquipamento implements Serializable {
         return listaEquipamento.contains(equipamento);
     }
     
-    public double perDisponivel()
-    {
-    int contador = 0;
-    for (Equipamento equipamento: listaEquipamento){
-        if (equipamento.isDisponivel()){
-           contador ++;
+     public double numVentiladorOcupados(){
+       int totalVentOcupados = 0;
+       
+       for (Equipamento e: listaEquipamento){
+           
+           if (e.getTipoEquipamento().equals("Ventilador") && e.getIndicacao().equals("Ocupado")){
+               totalVentOcupados ++;
+                    }
         }
-    }
-    if (listaEquipamento.isEmpty())
-    {
-        return 0;
-    }else{
-        return (contador/ listaEquipamento.size())*100;
-    }
+       
+            return totalVentOcupados;
     }
     
-    public double perIndisponivel()
-    {
-    int contador = 0;
-    for (Equipamento equipamento: listaEquipamento){
-        if (equipamento.isIndisponivel()){
-           contador ++;
+    public double perVentiladorOcupados(){
+       int totalVentOcupados = 0;
+       
+       for (Equipamento e: listaEquipamento){
+           
+           if (e.getTipoEquipamento().equals("Ventilador") && e.getIndicacao().equals("Ocupado")){
+               totalVentOcupados ++;
+                    }
         }
+            
+       if (listaEquipamento.isEmpty()){
+           return 0;
+           
+       } else{
+           
+          double percentagem = (totalVentOcupados / listaEquipamento.size()) * 100;
+          
+          return percentagem;
+       }
+   } 
+     
+    public double numDesfibrilhadorOcupados(){
+       int totalDesfOcupados = 0;
+       
+       for (Equipamento e: listaEquipamento){
+           
+           if (e.getTipoEquipamento().equals("Desfibrilhador") && e.getIndicacao().equals("Ocupado")){
+               totalDesfOcupados ++;
+                    }
+       }
+       
+            return totalDesfOcupados;
     }
-    if (listaEquipamento.isEmpty())
-    {
-        return 0;
-    }else{
-        return (contador/ listaEquipamento.size())*100;
+    
+    public double perDesfibrilhadorOcupados(){
+        int totalDesfOcupados = 0;
+        
+       for (Equipamento e: listaEquipamento){
+           
+           if (e.getTipoEquipamento().equals("Desfibrilhador") && e.getIndicacao().equals("Ocupado")){
+               totalDesfOcupados ++;
+                    }
+       }
+            
+       if (listaEquipamento.isEmpty()){
+           return 0;
+           
+       } else{
+           
+          double percentagem = (totalDesfOcupados / listaEquipamento.size()) * 100;
+          
+          return percentagem;
+       }
+   } 
+    
+    public double numOutroOcupados(){
+       int totalOutOcupados = 0;
+       
+       for (Equipamento e: listaEquipamento){
+           
+           if (e.getTipoEquipamento().equals("Outro") && e.getIndicacao().equals("Ocupado")){
+               totalOutOcupados ++;
+                    }
+       }
+       
+            return totalOutOcupados;
     }
-    }
+    
+     public double perOutroOcupados(){
+        int totalOutOcupados = 0;
+       
+       for (Equipamento e: listaEquipamento){
+           
+           if (e.getTipoEquipamento().equals("Outro") && e.getIndicacao().equals("Ocupado")){
+               totalOutOcupados ++;
+                    }
+       }
+            
+       if (listaEquipamento.isEmpty()){
+           return 0;
+           
+       } else{
+           
+          double percentagem = (totalOutOcupados / listaEquipamento.size()) * 100;
+          
+          return percentagem;
+       }
+   }
     
     public Equipamento getEquipamento(String id) {
             if (listaEquipamento.contains(id)){

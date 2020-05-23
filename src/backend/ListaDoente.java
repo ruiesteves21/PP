@@ -53,6 +53,97 @@ public class ListaDoente implements Serializable  {
         return listaDoente.contains(doente);
     }
     
+    public double numDoenteModerada(){
+       int totalModerado = 0;
+       for (Doente d: listaDoente){
+           if (d.getGravidade().equals("Moderado")){
+               totalModerado ++;
+           }
+       }
+            return totalModerado;
+    }
+    
+    public double perDoenteModerada(){
+       int totalModerado = 0;
+       for (Doente d: listaDoente){
+           if (d.getGravidade().equals("Moderado")){
+               totalModerado ++;
+           }
+       }
+            
+       if (listaDoente.isEmpty()){
+           return 0;
+           
+       } else{
+           
+          double percentagem = (totalModerado / listaDoente.size()) * 100;
+          
+          return percentagem;
+       }
+   }
+    
+    public double numDoenteGrave(){
+       int totalGrave = 0;
+       for (Doente d: listaDoente){
+           if (d.getGravidade().equals("Grave")){
+               totalGrave ++;
+           }
+       }
+            return totalGrave;
+    }
+    
+    public double perDoenteGrave(){
+       int totalGrave = 0;
+       for (Doente d: listaDoente){
+           
+           if (d.getGravidade().equals("Grave")){
+               totalGrave++;
+           }
+       }
+            
+       if (listaDoente.isEmpty()){
+           return 0;
+           
+       } else{
+           
+          double percentagem = (totalGrave / listaDoente.size()) * 100;
+          
+          return percentagem;
+       }
+   }
+    
+    
+    public double numDoenteMuitoGrave(){
+       int totalMuitoGrave = 0;
+       for (Doente d: listaDoente){
+           if (d.getGravidade().equals("Muito Grave")){
+               totalMuitoGrave ++;
+           }
+       }
+            return totalMuitoGrave;
+    }
+    
+     public double perDoenteMuitoGrave(){
+       int totalMuitoGrave = 0;
+       for (Doente d: listaDoente){
+           
+           if (d.getGravidade().equals("Grave")){
+               totalMuitoGrave++;
+           }
+       }
+            
+       if (listaDoente.isEmpty()){
+           return 0;
+           
+       } else{
+           
+          double percentagem = (totalMuitoGrave / listaDoente.size()) * 100;
+          
+          return percentagem;
+       }
+   }
+     
+    
     @Override
     public String toString()
     {

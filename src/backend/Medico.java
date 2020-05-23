@@ -15,6 +15,7 @@ public class Medico extends ProfissionalSaude {
     private String password;
     private String email;
     private String username;
+    private ListaDoente listaDoente; 
 
     public Medico()
     {
@@ -26,6 +27,7 @@ public class Medico extends ProfissionalSaude {
         this.nome = nome;
         this.password = password;
         this.email = email;
+        listaDoente = new ListaDoente();
     }
     
     public Medico (String username, String password, String nome)
@@ -35,6 +37,11 @@ public class Medico extends ProfissionalSaude {
         this.nome = nome;
     }
 
+    public ListaDoente getListaDoente() {
+        return listaDoente;
+    }
+    
+    
     public String getNome() {
         return nome;
     }

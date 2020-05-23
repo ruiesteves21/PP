@@ -7,6 +7,7 @@ package backend;
 
 import java.io.Serializable;
 import java.util.Calendar;
+import java.util.UUID;
 
 /**
  *
@@ -15,7 +16,7 @@ import java.util.Calendar;
 public class Equipamento implements Serializable {
     
     private Enfermaria enfermariaSelecionada;
-    private int idEquip;
+    private String idEquip;
     private String indicacao; //livre, ocupado
     private Calendar  dataOcupado;
     private String tipoEquipamento;
@@ -28,14 +29,18 @@ public class Equipamento implements Serializable {
         
     }
 
-    public Equipamento(Enfermaria enfermariaSelecionada, int idEquip, String indicacao, String tipoEquipamento, String doente) {
-        this.enfermariaSelecionada = enfermariaSelecionada;
+    public Equipamento(String idEquip, String indicacao, String tipoEquipamento, String doente) {
         this.idEquip = idEquip;
         this.tipoEquipamento = tipoEquipamento;
         this.indicacao = indicacao;
         this.doente = doente;
     }
-
+    
+    public static UUID randomUUID(){
+        UUID uuid = UUID.randomUUID();
+        return uuid;
+        }
+     
     public Enfermaria getEnfermariaSelecionada() {
         return enfermariaSelecionada;
     }
@@ -48,7 +53,7 @@ public class Equipamento implements Serializable {
         return tipoEquipamento;
     }
     
-    public int getIdEquip() {
+    public String getIdEquip() {
         return idEquip;
     }
 
@@ -68,7 +73,7 @@ public class Equipamento implements Serializable {
         return indisponivel ;
     }
 
-    public void setIdEquip(int idEquip) {
+    public void setIdEquip(String idEquip) {
         this.idEquip = idEquip;
     }
     

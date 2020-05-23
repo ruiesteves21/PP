@@ -18,8 +18,8 @@ public class Hospital implements Serializable  {
     private String idHospital;
     private Medico utiLigado;
     private ListaEnfermaria listaEnfermaria;
-    /*private ListaDoente listaDoente; 
-    private ListaEquipamento listaEquipamento;
+    /*
+   
     private ListaMedico listaMedico;*/
     
     
