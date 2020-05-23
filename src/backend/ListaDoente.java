@@ -53,7 +53,7 @@ public class ListaDoente implements Serializable  {
         return listaDoente.contains(doente);
     }
     
-    public double numDoenteModerada(){
+    public double numDoenteModerado(){
        int totalModerado = 0;
        for (Doente d: listaDoente){
            if (d.getGravidade().equals("Moderado")){
@@ -63,7 +63,7 @@ public class ListaDoente implements Serializable  {
             return totalModerado;
     }
     
-    public double perDoenteModerada(){
+    public double perDoenteModerado(){
        int totalModerado = 0;
        for (Doente d: listaDoente){
            if (d.getGravidade().equals("Moderado")){
