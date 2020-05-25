@@ -83,11 +83,12 @@ public class Medico extends ProfissionalSaude {
         this.username = username;
     }
     
-    
+    public ListaDoente getListaDoentes() {
+        return listaDoente;
+    }
     
     @Override
     public String toString() {
         return "Medico{" + "especialidade=" + especialidade + ", nome=" + nome + ", password=" + password + ", email=" + email + '}';
-    }
-    
+    }  
 }

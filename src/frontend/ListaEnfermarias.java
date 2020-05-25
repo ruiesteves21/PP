@@ -36,6 +36,10 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         labelCodigo.setVisible(false);
         txtCodigo.setVisible(false); 
     }
+
+    ListaEnfermarias() {
+        carregarTabela();
+    }
     
     public void carregarTabela()
     {
@@ -43,7 +47,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
          
          for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().size(); i++) {
              
-             Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().get(i);
+            Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().get(i);
              
             model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getnCamas(), enf.getIdEnfermaria() });
          }

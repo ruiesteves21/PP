@@ -5,6 +5,7 @@
  */
 package frontend;
 import backend.Enfermaria;
+import backend.ListaEnfermaria;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
@@ -18,7 +19,7 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
      DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    private int index;
+    private int indice;
     /**
      * Creates new form ListaEnfermariasGenerica
      */
@@ -27,23 +28,25 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
-        index=0;
-        carregarTabela();
+        indice=0;
+        
     }
     
-    public void carregarTabela()
+     public void carregarTabelaGenerica()
     {
         model.setRowCount(0);
-        for (int i = 0; i < sistema.getListaEnfermaria().getListaEnfermaria().size(); i++) {
-            Enfermaria e = sistema.getListaEnfermaria().getListaEnfermaria().get(i);
-            
-            if (e.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-            model.addRow(new Object[]{e.getIdEnfermaria(), e.getNome(),e.getTipo(), e.getnCamas()});
-
-            }
+         
+         for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().size(); i++) {
+             
+            Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().get(i);
+             
+            model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getnCamas(), enf.getIdEnfermaria() });
          }
+         
+          table.setModel(model);
+          
     }
-
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -59,6 +62,7 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         imgHome = new javax.swing.JLabel();
         txtFiltrar = new javax.swing.JTextField();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -72,15 +76,20 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Nome", "Tipo", "Nº Camas"
+                "Nome", "Tipo", "Nº Camas", "Codigo"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Integer.class
+                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+        });
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(table);
@@ -109,6 +118,15 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
         getContentPane().add(txtFiltrar);
         txtFiltrar.setBounds(230, 310, 140, 30);
 
+        jButton2.setText("jButton2");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(90, 310, 71, 21);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, -950, 750, 1370);
@@ -130,6 +148,18 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tableMouseClicked
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        ListaEnfermarias varEnf = new ListaEnfermarias();
+        varEnf.carregarTabela();
+        
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -169,6 +199,7 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imgHome;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;

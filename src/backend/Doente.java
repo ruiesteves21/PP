@@ -7,6 +7,7 @@ package backend;
 import java.io.Serializable;
 import java.time.LocalDate;
 import java.util.Calendar;
+import java.util.Date;
 /**
  *
  * @author Rui Esteves
@@ -43,6 +44,8 @@ public class Doente implements Serializable
         this.dataSaida = dataSaida;
         this.medico = medico;
     }
+
+
     
     //getters
     public int getIdDoente() {

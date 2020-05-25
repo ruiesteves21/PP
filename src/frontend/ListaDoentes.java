@@ -11,8 +11,11 @@ import backend.Doente;
 import backend.Hospital;
 import javax.swing.JOptionPane;
 import backend.Serializacao;
+import java.util.ArrayList;
 import backend.Sistema;
 import java.util.Calendar;
+import java.util.UUID;
+import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -51,12 +54,22 @@ public class ListaDoentes extends javax.swing.JFrame {
             model.addRow(new Object[]{d.getIdDoente(), d.getNome(), d.getDataNasc(), d.getLocalidade(), d.getNCama(), d.getMedico(), d.getEnfermaria(), d.getGravidade(), d.getDataEntrada(), d.getDataSaida()});
 
         }
+        tableDoentes.setModel(model);
     }
 
     private void guardarAlteracoes() {
     bd.gravaSistema(sistema);
     }
-         
+     
+    private void terminar() {        
+       if (JOptionPane.showConfirmDialog(null, 
+               "Deseja realmente terminar o programa?", 
+               "Terminar", 
+               JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+           guardarAlteracoes();
+           sistema.terminar();
+    }
+    }
     
     
     /**
@@ -373,6 +386,9 @@ public class ListaDoentes extends javax.swing.JFrame {
         int c = tableDoentes.getSelectedRow();
         if(c >= 0){
             model.removeRow(c); //remove a linha selecionada
+            sistema.getListaDoente().getListaDoente().remove(c);
+            guardarAlteracoes();
+            JOptionPane.showMessageDialog(this, "Removido!");
         }
         else
         {
@@ -385,27 +401,50 @@ public class ListaDoentes extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCamaActionPerformed
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
-        // TODO add your handling code here:
-        int index = tableDoentes.getSelectedRow();
+       // TODO add your handling code here:
+        String id = UUID.randomUUID().toString();
         
-        Doente doente = sistema.getListaMedico().todos().get(indice).getListaDoente().getListaDoente().get(index);
+       /* int index = tableDoentes.getSelectedRow();
+        
                 
+        var result = new ArrayList<Doente>();
+         sistema.getListaDoente().getListaDoente().stream().filter((doente) -> (doente.getNome().equals(txtNome.getText()))).forEachOrdered((doente) -> {
+         result.add(doente);
+         });
+        
+        if (txtCama.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Introduza o nome do doente","Erro",JOptionPane.ERROR_MESSAGE);
+             txtCama.requestFocus();
+             return;
+        } else {
+             if(!result.isEmpty()){
+                JOptionPane.showMessageDialog(null,"Essa cama já está ocupada","Erro",JOptionPane.ERROR_MESSAGE);
+                txtCama.requestFocus();
+                return;
+        }     
+        }
+        
+        Doente doente = sistema.getListaMedico().todos().get(index).getListaDoente().getListaDoente().get(index);
+        sistema.getListaDoente().adicionar(doente);
+        */
+        Doente tipoDoente = sistema.getListaMedico().todos().get(indice).getListaDoente().getListaDoente().get(indice);
+
         if(!btModerado.isSelected() && !btGrave.isSelected() && !btMuitoGrave.isSelected()) {
             JOptionPane.showMessageDialog(null, "Selecione gravidade do estado em que se encontra o doente!!");
         }else {
         
         if(btModerado.isSelected()) {
-            doente.setGravidade("Moderado");          
+            tipoDoente.setGravidade("Moderado");          
             carregarTabela();
          }
              
         if(btGrave.isSelected()) {
-           doente.setGravidade("Grave");     
+           tipoDoente.setGravidade("Grave");     
             carregarTabela();
         }
         
         if(btMuitoGrave.isSelected()) {
-            doente.setGravidade("Muito Grave");           
+            tipoDoente.setGravidade("Muito Grave");           
             carregarTabela();
 
                 }        
@@ -425,11 +464,48 @@ public class ListaDoentes extends javax.swing.JFrame {
                 }
             }
         
+        if(DataEntrada.getDate().getTime() >= DataSaida.getDate().getTime()){
+            JOptionPane.showMessageDialog(null, "A data de entrada não pode ser superior à data de saída!!!");
+            DataEntrada.requestFocus();
+            return;
+        }
+        if(DataNasc.getDate().getTime() > 24/05/2020){
+            JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data atual!!!");
+            DataNasc.requestFocus();
+            return;
+        }
+        if(DataNasc.getDate().getTime() > DataEntrada.getDate().getTime() || DataNasc.getDate().getTime() > DataSaida.getDate().getTime()){
+            JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data de entrada ou saída!!!");
+            DataNasc.requestFocus();
+            return;
+        }
+
+        model.insertRow(model.getRowCount(),new Object[] {id, txtNome.getText(), DataNasc.getDate(), txtLocalidade.getText(), txtCama.getText(), txtMedico.getText(), txtEnfermaria.getText(), Tipo, DataEntrada.getDate(), DataSaida.getDate()});
+        Doente doente = new Doente(Integer.parseInt(id), txtNome.getText(), txtLocalidade.getText(), Tipo, DataNasc.getCalendar(), DataEntrada.getCalendar(), DataSaida.getCalendar(), Integer.parseInt(txtCama.getText()), txtEnfermaria.getText(), txtMedico.getText());
+       
+        try {
+        sistema.getListaMedico().todos().get(indice).getListaDoentes().adicionar(doente);
+        JOptionPane.showMessageDialog(null, "Doente adicionado!");
+        txtNome.setText("");
+        txtLocalidade.setText("");
+        txtCodigo.setText("");
+        txtCama.setText("");
+        txtMedico.setText("");
+        txtEnfermaria.setText("");
+        //btModerado.clearSelection();
+        DataNasc.setDate(null);
+        DataSaida.setDate(null);
+        DataEntrada.setDate(null);
+        carregarTabela();
+        }catch(RuntimeException e) {
+            //Todas as labels estão preenchidas, no entanto com o tipo de dados errado
+            JOptionPane.showMessageDialog(null,"Este doente já se encontre registado!!!","Erro",JOptionPane.ERROR_MESSAGE);
+        }
+        
             
-        //model.insertRow(model.getRowCount(),new Object[] {txtCodigo.getText(),txtNome.getText(),DataNasc.getDate(), txtLocalidade.getText(), txtCama.getText(), txtMedico.getText(), txtEnfermaria.getText(), ComboGrav.getSelectedItem(), DataEntrada.getDate(), DataSaida.getDate()});
         guardarAlteracoes();
        // Doente d = new Doente (Integer.parseInt(txtCodigo.getText()),txtNome.getText(), txtLocalidade.getText(), ComboGrav.getSelectedItem(),/*DataNasc.getDate(), DataEntrada.getLocalDate()), DataSaida.getLocalDate()*/, Integer.parseInt(txtCama.getText()), txtEnfermaria.getText(), txtMedico.getText());
-      //  sistema.getListaDoente().adicionar(d);
+      //  
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
