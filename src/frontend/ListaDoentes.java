@@ -469,7 +469,7 @@ public class ListaDoentes extends javax.swing.JFrame {
         Doente doente = new Doente(id, txtNome.getText(), txtLocalidade.getText(), Tipo, DataNasc.getCalendar(), DataEntrada.getCalendar(), DataSaida.getCalendar(), Integer.parseInt(txtCama.getText()));
        
         try {
-       // sistema.getListaMedico().todos().get(indice).getListaDoentes().adicionar(doente);
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().todos().get(indiceMedico).getListaDoente().adicionar(doente);
         JOptionPane.showMessageDialog(null, "Doente adicionado!");
         txtNome.setText("");
         txtLocalidade.setText("");
