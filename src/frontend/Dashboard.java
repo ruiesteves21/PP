@@ -7,6 +7,7 @@ package frontend;
 
 import backend.Serializacao;
 import backend.Sistema;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -39,6 +40,20 @@ public class Dashboard extends javax.swing.JFrame {
         txtVentiladorPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perVentiladorOcupados()));
         txtOutroPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perOutroOcupados()));
         
+    }
+    
+     private void guardarAlteracoes() {
+        bd.gravaSistema(sistema);
+    }
+     
+     private void terminar() {        
+        if (JOptionPane.showConfirmDialog(null, 
+                "Deseja realmente terminar o programa?", 
+                "Terminar", 
+                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+            guardarAlteracoes();
+            sistema.terminar();
+        }
     }
 
     /**
