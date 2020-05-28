@@ -426,16 +426,16 @@ public class ListaEquipamentos extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
-         btInserir.setEnabled(true);
-         btExcluir.setEnabled(true);
-         btLimpar.setEnabled(true);
-         txtCodigo.setEnabled(true);
-         btVentilador.setEnabled(true);
-         btDesfibrilhador.setEnabled(true);
-         btOutro.setEnabled(true);
-         btLivre.setEnabled(true);
-         btOcupado.setEnabled(true);
-         txtDoente.setEnabled(true);
+        int indiceEquipamento = table.getSelectedRow();
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setDoente(txtDoente.getText());
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setDoente(btVentilador.getText());
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setDoente(btDesfibrilhador.getText());
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setDoente(btOutro.getText());
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setDoente(btLivre.getText());
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setDoente(btOcupado.getText());
+        carregarTabela();
+        guardarAlteracoes();
+        
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
