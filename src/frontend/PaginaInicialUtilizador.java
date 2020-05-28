@@ -69,10 +69,10 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         btListaEquipamentos = new javax.swing.JButton();
         btListaProfissionais = new javax.swing.JButton();
         imgGuardar = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(444, 320));
         setMinimumSize(new java.awt.Dimension(444, 320));
         setUndecorated(true);
         setSize(new java.awt.Dimension(444, 320));
@@ -155,6 +155,15 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         getContentPane().add(imgGuardar);
         imgGuardar.setBounds(100, 10, 30, 30);
 
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dashboard (1).png"))); // NOI18N
+        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jLabel2MouseClicked(evt);
+            }
+        });
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(140, 10, 40, 30);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_1.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(-100, 0, 620, 390);
@@ -222,6 +231,14 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         p.setVisible(true);
     }//GEN-LAST:event_btListaEnfermariasActionPerformed
 
+    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+        // TODO add your handling code here:
+        dispose();
+        Dashboard d = new Dashboard(sistema,bd);
+        d.setLocationRelativeTo(null);
+        d.setVisible(true);
+    }//GEN-LAST:event_jLabel2MouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -267,6 +284,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private javax.swing.JLabel imgPerfil;
     private javax.swing.JLabel imgSair;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     // End of variables declaration//GEN-END:variables
 
     private void close() {
