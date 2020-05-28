@@ -281,6 +281,12 @@ public class ListaEnfermarias extends javax.swing.JFrame {
       
        String id = UUID.randomUUID().toString();
        
+         if (txtNome.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Introduza o nome da enfermaria","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNome.requestFocus();
+             return;
+        }
+           
        if (txtCamas.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o número de camas que constituem a enfermaria","Erro",JOptionPane.ERROR_MESSAGE);
              txtCamas.requestFocus();
@@ -292,12 +298,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
              txtNome.requestFocus();
              return;
         }
-        
-        if (txtNome.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null,"Introduza o nome da enfermaria","Erro",JOptionPane.ERROR_MESSAGE);
-             txtNome.requestFocus();
-             return;
-        }
+              
         
         if (txtNome.getText().matches(".*\\d.*")){
              JOptionPane.showMessageDialog(null," Nome inválido","Erro",JOptionPane.ERROR_MESSAGE);
@@ -312,12 +313,12 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         }
          
         // Verificar se todos os campos estao preenchidos
-         if(txtNome.getText().equals("")) {
+        /* if(txtNome.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo 'Nome' deve ser preenchido");
         }
          if(txtCamas.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "O campo 'Confirmar Password' deve ser preenchido");
-        }
+        }*/
         
         
        model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(), ComboTip.getSelectedItem(),txtCamas.getText(),txtCodigo.getText()});

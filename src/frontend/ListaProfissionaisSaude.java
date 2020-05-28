@@ -467,6 +467,8 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         if(c >= 0){
             model.removeRow(c); //remove a linha selecionada
             sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().getListaProfissionalSaude().remove(c);
+            JOptionPane.showMessageDialog(this, "Removido!");
+            guardarAlteracoes();   
         }
         else
         {
@@ -551,6 +553,8 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         if(c >= 0){
             model.removeRow(c); //remove a linha selecionada
             sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().todos().remove(c);
+            JOptionPane.showMessageDialog(this, "Removido!");
+            guardarAlteracoes();   
         }
         else
         {

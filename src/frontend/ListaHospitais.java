@@ -27,7 +27,7 @@ public class ListaHospitais extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    private int index;
+    
     
  
     
@@ -39,7 +39,7 @@ public class ListaHospitais extends javax.swing.JFrame {
         model = (DefaultTableModel) table.getModel();
         this.sistema = sistema;
         this.bd = bd;
-        index=0;
+        
         carregarTabela();
         labelCodigo.setVisible(false);
         txtCodigo.setVisible(false); 
@@ -355,14 +355,14 @@ public class ListaHospitais extends javax.swing.JFrame {
     private void btEnfermariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnfermariaActionPerformed
         // TODO add your handling code here:
               
-        int indice = table.getSelectedRow();    //abre a janela que cria as tarefas de um projeto
+        int indiceHospital = table.getSelectedRow();    //abre a janela que cria as tarefas de um projeto
                                                     //selecionado da tabela
-        if (indice == -1){
+        if (indiceHospital == -1){
             
               JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE); 
         }  else {             
         
-        ListaEnfermarias enf = new ListaEnfermarias(sistema, bd, indice);
+        ListaEnfermarias enf = new ListaEnfermarias(sistema, bd, indiceHospital);
         guardarAlteracoes();
         dispose();
         enf.setVisible(true);
