@@ -319,50 +319,12 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         
          String id = UUID.randomUUID().toString();
         
-        /*int index = table.getSelectedRow();
+        int index = table.getSelectedRow();
         
         Equipamento tipoEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
         Equipamento disponibilidadeEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
         
-        if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Selecione o tipo de equipamento!!");
-        }else {
-        
-        if(btVentilador.isSelected()) {
-           tipoEquipamento.setTipoEquipamento("Ventilador");          
-            carregarTabela();
-         }
-             
-        if(btDesfibrilhador.isSelected()) {
-            tipoEquipamento.setTipoEquipamento("Desfibrilhador");        
-            carregarTabela();
-        }
-        
-        if(btOutro.isSelected()) {
-            tipoEquipamento.setTipoEquipamento("Outro");              
-            carregarTabela();
-
-                }        
-        }        
-        
-        
-        if(!btLivre.isSelected() && !btOcupado.isSelected() ) {
-            JOptionPane.showMessageDialog(null, "Selecione a disponibilidade do equipamento!!");
-        }else {
-        
-        if(btLivre.isSelected()) {
-           disponibilidadeEquipamento.setIndicacao("Livre");          
-            carregarTabela();
-         }
-             
-        if(btOcupado.isSelected()) {
-            disponibilidadeEquipamento.setIndicacao("Ocupado");        
-            carregarTabela();
-            }
-                  
-        }        
-        
-         var result = new ArrayList<Equipamento>();
+       /*  var result = new ArrayList<Equipamento>();
          sistema.getListaEquipamento().getListaEquipamento().stream().filter((equipamento) -> (equipamento.getDoente().equals(txtDoente.getText()))).forEachOrdered((Equipamento) -> {
          result.add(Equipamento);
          }); 
@@ -378,8 +340,8 @@ public class ListaEquipamentos extends javax.swing.JFrame {
                 txtCodigo.requestFocus();
                 return;
             }
-        }*/
-        
+        }
+       */ 
         String Tipo="";
             if(btVentilador.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
                 Tipo = "Ventilador";
@@ -416,6 +378,44 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         btLivre.setSelected(false);
         btOcupado.setSelected(false);
         carregarTabela();
+       
+        if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Selecione o tipo de equipamento!!");
+        
+        
+        if(btVentilador.isSelected()) {
+           tipoEquipamento.setTipoEquipamento("Ventilador");          
+            carregarTabela();
+         }
+             
+        if(btDesfibrilhador.isSelected()) {
+            tipoEquipamento.setTipoEquipamento("Desfibrilhador");        
+            carregarTabela();
+        }
+        
+        if(btOutro.isSelected()) {
+            tipoEquipamento.setTipoEquipamento("Outro");              
+            carregarTabela();
+
+                }        
+        }        
+        
+        
+        if(!btLivre.isSelected() && !btOcupado.isSelected() ) {
+            JOptionPane.showMessageDialog(null, "Selecione a disponibilidade do equipamento!!");
+        
+        
+        if(btLivre.isSelected()) {
+           disponibilidadeEquipamento.setIndicacao("Livre");          
+            carregarTabela();
+         }
+             
+        if(btOcupado.isSelected()) {
+            disponibilidadeEquipamento.setIndicacao("Ocupado");        
+            carregarTabela();
+            }
+                  
+        }        
         
         } catch(RuntimeException e) {
             JOptionPane.showMessageDialog(null,"Este equipamento já se encontra registado!","Erro",JOptionPane.ERROR_MESSAGE);

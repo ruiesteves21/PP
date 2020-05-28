@@ -305,6 +305,27 @@ public class ListaEnfermarias extends javax.swing.JFrame {
              return;
         }
         
+        if (txtNome.getText().matches(".*\\d.*")){
+             JOptionPane.showMessageDialog(null," Nome inválido","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNome.requestFocus();
+             return;
+        }
+        
+         if (txtCamas.getText().matches("[a-zA-Z\\s]+")){
+             JOptionPane.showMessageDialog(null," Número de camas inválido","Erro",JOptionPane.ERROR_MESSAGE);
+             txtCamas.requestFocus();
+             return;
+        }
+         
+        // Verificar se todos os campos estao preenchidos
+         if(txtNome.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo 'Nome' deve ser preenchido");
+        }
+         if(txtCamas.getText().equals("")) {
+            JOptionPane.showMessageDialog(null, "O campo 'Confirmar Password' deve ser preenchido");
+        }
+        
+        
        model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(), ComboTip.getSelectedItem(),txtCamas.getText(),txtCodigo.getText()});
        Enfermaria enf = new Enfermaria(txtNome.getText(), id, Integer.parseInt(txtCamas.getText()), ComboTip.getSelectedItem().toString());
        

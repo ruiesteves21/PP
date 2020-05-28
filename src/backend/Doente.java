@@ -21,16 +21,15 @@ public class Doente implements Serializable
     private String localidade;
     private String gravidade;
     private Calendar dataNasc;
-    private String enfermaria;
     private Calendar dataEntrada;
     private Calendar dataSaida;
-    private String medico;
+
 
     
     public Doente(){   
     }
 
-    public Doente(String idDoente, String nome, String localidade, String gravidade, Calendar dataNasc, Calendar dataEntrada, Calendar dataSaida,int nCama, String enfermaria, String medico) {
+    public Doente(String idDoente, String nome, String localidade, String gravidade, Calendar dataNasc, Calendar dataEntrada, Calendar dataSaida,int nCama) {
         this.idDoente = idDoente;
         this.nome = nome;
         this.localidade = localidade;
@@ -39,10 +38,8 @@ public class Doente implements Serializable
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
         this.nCama = nCama;
-        this.enfermaria = enfermaria;
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
-        this.medico = medico;
     }
 
 
@@ -80,18 +77,10 @@ public class Doente implements Serializable
         return dataSaida;
     }
     
-    public String getEnfermaria(){
-        return this.enfermaria;
-    }
-    
     public int getNCama(){
         return this.nCama;
     }
 
-    public String getMedico() {
-        return medico;
-    }
-    
     
     //setters
     public void setIdDoente(String idDoente) {
@@ -126,9 +115,6 @@ public class Doente implements Serializable
         this.dataSaida = dataSaida;
     }
     
-    public void setEnfermaria(String enf){
-        this.enfermaria = enf;
-    }
     
     public void setCama(int nova){
         if(nova>= 1)
@@ -153,10 +139,6 @@ public class Doente implements Serializable
         this.gravidade = "Moderada";
     }
 
-    public void setMedico(String medico) {
-        this.medico = medico;
-    }
-    
     
     // Metodos para alterar o estado do Doente
     public void setGravidadeNaoRegistada()
@@ -184,7 +166,7 @@ public class Doente implements Serializable
     
     @Override
     public String toString() {
-        return "Doente{" + "idDoente=" + idDoente + ", nome=" + nome + ", localidade=" + localidade + ", gravidade=" + gravidade + ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida + ", enfermaria=" + enfermaria + ", nCama =" + nCama + '}';
+        return "Doente{" + "idDoente=" + idDoente + ", nome=" + nome + ", localidade=" + localidade + ", data de nascimento=" + dataNasc + ", gravidade=" + gravidade + ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida + ", nCama =" + nCama + '}';
     }
     
     
