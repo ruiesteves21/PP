@@ -12,6 +12,7 @@ import backend.ProfissionalSaude;
 import backend.Serializacao;
 import backend.Sistema;
 import java.util.ArrayList;
+import java.util.UUID;
 //import backend.ListaProfissionaisSaude;
 
 //import static frontend.ListaHospitais.table;
@@ -29,33 +30,55 @@ import javax.swing.table.DefaultTableModel;
 public class ListaProfissionaisSaude extends javax.swing.JFrame {
     
     DefaultTableModel model; 
+    DefaultTableModel modelM; 
     private Sistema sistema;
     private Serializacao bd;
     int varHosp; 
     private ListaMedico listaMedico;
-    private int indice;
+    private int indiceHospital;
+    private int indiceEnfermaria;
     
-    
-    public ListaProfissionaisSaude(Sistema sistema, Serializacao bd, int indice) {
+    public ListaProfissionaisSaude(Sistema sistema, Serializacao bd, int indiceHospital, int indiceEnfermaria) {
         initComponents();
         model = (DefaultTableModel) tableEnfermeiros.getModel();
+        modelM = (DefaultTableModel) tableMedicos.getModel();
         this.sistema = sistema;
-        this.indice=indice;
+        this.indiceHospital = indiceHospital;
+        this.indiceEnfermaria = indiceEnfermaria;
         this.bd = bd;
         //listaMedico = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado()).getListaMedico();
-        carregarTabela();
+        carregarTabelaEnfermeiro();
     }
     
-    public void carregarTabela()
+    public void carregarTabelaEnfermeiro()
     {
         model.setRowCount(0);
-        for (int i = 0; i < sistema.getListaProfissionalSaude().getListaProfissionalSaude().size(); i++) {
-            ProfissionalSaude P = sistema.getListaProfissionalSaude().getListaProfissionalSaude().get(i);
-            model.addRow(new Object[]{P.getIdProfSaude(), P.getNomePS()});
-
+        
+        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().getListaProfissionalSaude().size(); i++) {
+            
+            ProfissionalSaude profSaude = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().getListaProfissionalSaude().get(i);
+            
+            model.addRow(new Object[]{profSaude.getIdProfSaude(), profSaude.getNomePS()});
+   
         }
+            tableEnfermeiros.setModel(model);
     }
     
+     public void carregarTabelaMedico()
+    {
+        model.setRowCount(0);
+        
+        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().todos().size(); i++) {
+            
+            Medico medico = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().todos().get(i);
+            
+            model.addRow(new Object[]{medico.getNome(), medico.getEspecialidade(), medico.getEmail()});
+
+        }
+            tableMedicos.setModel(model);
+    }
+    
+     
     private void guardarAlteracoes() {
         bd.gravaSistema(sistema);
     }
@@ -74,11 +97,11 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         tableEnfermeiros = new javax.swing.JTable();
         jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
-        btInserir = new javax.swing.JButton();
+        btInserirMedico = new javax.swing.JButton();
         btLDoentes = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
-        txtNome = new javax.swing.JTextField();
+        txtNomeEnfermeiro = new javax.swing.JTextField();
         txtEspecialidade = new javax.swing.JTextField();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
@@ -86,9 +109,13 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         btExcluir1 = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableMedicos = new javax.swing.JTable();
-        btInserirE = new javax.swing.JButton();
+        btInserirEnfermeiro = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtNomeMedico = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtEmail = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -131,25 +158,25 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         jScrollPane3.setBounds(260, 110, 210, 230);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel6.setText("Nome :");
+        jLabel6.setText("Nome Enfermeiro:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(10, 120, 50, 20);
+        jLabel6.setBounds(10, 110, 120, 20);
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel8.setText("Especialidade :");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(10, 170, 100, 20);
+        jLabel8.setBounds(10, 220, 100, 20);
 
-        btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        btInserir.setText("Inserir");
-        btInserir.setEnabled(false);
-        btInserir.addActionListener(new java.awt.event.ActionListener() {
+        btInserirMedico.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btInserirMedico.setText("Inserir");
+        btInserirMedico.setEnabled(false);
+        btInserirMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btInserirActionPerformed(evt);
+                btInserirMedicoActionPerformed(evt);
             }
         });
-        getContentPane().add(btInserir);
-        btInserir.setBounds(500, 360, 80, 29);
+        getContentPane().add(btInserirMedico);
+        btInserirMedico.setBounds(500, 360, 80, 29);
 
         btLDoentes.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLDoentes.setText("Lista Doentes");
@@ -170,7 +197,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(10, 220, 80, 30);
+        btLimpar.setBounds(10, 320, 80, 30);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -180,20 +207,20 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(10, 340, 80, 29);
+        btEditar.setBounds(80, 360, 80, 29);
 
-        txtNome.setEnabled(false);
-        txtNome.addActionListener(new java.awt.event.ActionListener() {
+        txtNomeEnfermeiro.setEnabled(false);
+        txtNomeEnfermeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtNomeActionPerformed(evt);
+                txtNomeEnfermeiroActionPerformed(evt);
             }
         });
-        getContentPane().add(txtNome);
-        txtNome.setBounds(120, 110, 120, 30);
+        getContentPane().add(txtNomeEnfermeiro);
+        txtNomeEnfermeiro.setBounds(130, 110, 120, 30);
 
         txtEspecialidade.setEnabled(false);
         getContentPane().add(txtEspecialidade);
-        txtEspecialidade.setBounds(120, 160, 120, 30);
+        txtEspecialidade.setBounds(130, 220, 120, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -231,21 +258,21 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir1);
-        btExcluir1.setBounds(10, 280, 80, 29);
+        btExcluir1.setBounds(160, 320, 80, 29);
 
         tableMedicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Código", "Nome", "Especialidade"
+                "Código", "Nome", "Especialidade", "Email"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -261,16 +288,16 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(500, 110, 290, 230);
 
-        btInserirE.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        btInserirE.setText("Inserir");
-        btInserirE.setEnabled(false);
-        btInserirE.addActionListener(new java.awt.event.ActionListener() {
+        btInserirEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btInserirEnfermeiro.setText("Inserir");
+        btInserirEnfermeiro.setEnabled(false);
+        btInserirEnfermeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btInserirEActionPerformed(evt);
+                btInserirEnfermeiroActionPerformed(evt);
             }
         });
-        getContentPane().add(btInserirE);
-        btInserirE.setBounds(260, 360, 80, 29);
+        getContentPane().add(btInserirEnfermeiro);
+        btInserirEnfermeiro.setBounds(260, 360, 80, 29);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel2.setText("Medicos");
@@ -282,9 +309,29 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         getContentPane().add(jLabel4);
         jLabel4.setBounds(260, 80, 80, 20);
 
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jLabel5.setText("Nome Medico:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(10, 160, 100, 20);
+        getContentPane().add(txtNomeMedico);
+        txtNomeMedico.setBounds(130, 160, 120, 30);
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jLabel7.setText("Email:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(10, 270, 50, 20);
+
+        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEmailActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(130, 270, 120, 30);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-20, -390, 1050, 950);
+        jLabel1.setBounds(-10, -390, 1050, 950);
 
         pack();
         setLocationRelativeTo(null);
@@ -292,58 +339,60 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
-        btInserir.setEnabled(true);
+        btInserirMedico.setEnabled(true);
         btLDoentes.setEnabled(true);
         btLimpar.setEnabled(true);
-        btInserirE.setEnabled(true);
-        txtNome.setEnabled(true);
+        btInserirEnfermeiro.setEnabled(true);
+        txtNomeEnfermeiro.setEnabled(true);
         txtEspecialidade.setEnabled(true);
+        txtNomeMedico.setEnabled(true);
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btLDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLDoentesActionPerformed
        //int c = tableProfissionaisSaude.getSelectedRow();
-       int indice = tableMedicos.getSelectedRow();    
-        ListaDoentes doentes = new ListaDoentes(sistema, bd, indice);
+       int indiceMedico = tableMedicos.getSelectedRow();    
+       
+        ListaDoentes doentes = new ListaDoentes(sistema, bd, indiceHospital, indiceEnfermaria, indiceMedico);
+        
         guardarAlteracoes();
         dispose();
         doentes.setVisible(true);
         doentes.setLocationRelativeTo(null);
        
-       
-;
-       
         
     }//GEN-LAST:event_btLDoentesActionPerformed
 
-    private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
+    private void txtNomeEnfermeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeEnfermeiroActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtNomeActionPerformed
+    }//GEN-LAST:event_txtNomeEnfermeiroActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here:
         
-        txtNome.setText(null);
+        txtNomeEnfermeiro.setText(null);
+        txtNomeMedico.setText(null);
         txtEspecialidade.setText(null);
         
     }//GEN-LAST:event_btLimparActionPerformed
 
-    private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
+    private void btInserirMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirMedicoActionPerformed
         // TODO add your handling code here:
         
-        
-     var result = new ArrayList<ProfissionalSaude>();
-         sistema.getListaProfissionalSaude().getListaProfissionalSaude().stream().filter((profissionalsaude) -> (profissionalsaude.getNomePS().equals(txtNome.getText()))).forEachOrdered((profissionalSaude) -> {
+       String id = UUID.randomUUID().toString();
+       
+     /*var result = new ArrayList<ProfissionalSaude>();
+         sistema.getListaProfissionalSaude().getListaProfissionalSaude().stream().filter((profissionalsaude) -> (profissionalsaude.getNomePS().equals(txtNomeEnfermeiro.getText()))).forEachOrdered((profissionalSaude) -> {
          result.add(profissionalSaude);
          });
          
-     if (txtNome.getText().isEmpty()) {
+     if (txtNomeEnfermeiro.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o nome do profissional de saude","Erro",JOptionPane.ERROR_MESSAGE);
-             txtNome.requestFocus();
+             txtNomeEnfermeiro.requestFocus();
              return;
         } else {
              if(!result.isEmpty()){
                 JOptionPane.showMessageDialog(null,"Esse profissional de saude já existe","Erro",JOptionPane.ERROR_MESSAGE);
-                txtNome.requestFocus();
+                txtNomeEnfermeiro.requestFocus();
                 return;
         }     
         } 
@@ -358,27 +407,25 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null," Especialidade inválida","Erro",JOptionPane.ERROR_MESSAGE);
              txtEspecialidade.requestFocus();
              return;
-        }
+        }*/
         
-        model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(),txtEspecialidade.getText()});
-        ProfissionalSaude P = new ProfissionalSaude(1, txtNome.getText());
-        sistema.getListaProfissionalSaude().adicionar(P);
+        Medico medico = new Medico(txtEspecialidade.getText(), txtNomeMedico.getText(), id, txtEmail.getText());     
         
         //txtNome.setText(txtNome.getText());
         
         try {
-        sistema.getListaProfissionalSaude().adicionar(P);
-        JOptionPane.showMessageDialog(null, "Hospital registado!");
-        txtNome.setText("");
-        
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().adicionarMedico(medico);
+        JOptionPane.showMessageDialog(null, "Medico registado!");
+        txtNomeEnfermeiro.setText("");
+        txtEmail.setText("");
         txtEspecialidade.setText("");
-        carregarTabela();
+        carregarTabelaMedico();
         }catch(RuntimeException e) {
             //Todas as labels estão preenchidas, no entanto com o tipo de dados errado
             JOptionPane.showMessageDialog(null,"Nome da especialidade inválido","Erro",JOptionPane.ERROR_MESSAGE);
         }
         guardarAlteracoes();
-    }//GEN-LAST:event_btInserirActionPerformed
+    }//GEN-LAST:event_btInserirMedicoActionPerformed
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
@@ -398,7 +445,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
          dispose();
-        ListaEnfermarias l = new ListaEnfermarias(sistema,bd,indice);
+        ListaEnfermarias l = new ListaEnfermarias(sistema,bd,indiceHospital);
         //FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow());
         l.setLocationRelativeTo(null);
         l.setVisible(true);
@@ -418,56 +465,49 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btExcluir1ActionPerformed
 
-    private void btInserirEActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirEActionPerformed
+    private void btInserirEnfermeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirEnfermeiroActionPerformed
         // TODO add your handling code here:
-        var result = new ArrayList<ProfissionalSaude>();
-         sistema.getListaProfissionalSaude().getListaProfissionalSaude().stream().filter((profissionalsaude) -> (profissionalsaude.getNomePS().equals(txtNome.getText()))).forEachOrdered((profissionalSaude) -> {
+        
+         String id = UUID.randomUUID().toString();
+          
+       /* var result = new ArrayList<ProfissionalSaude>();
+         sistema.getListaProfissionalSaude().getListaProfissionalSaude().stream().filter((profissionalsaude) -> (profissionalsaude.getNomePS().equals(txtNomeEnfermeiro.getText()))).forEachOrdered((profissionalSaude) -> {
          result.add(profissionalSaude);
          });
          
-     if (txtNome.getText().isEmpty()) {
+     if (txtNomeEnfermeiro.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o nome do profissional de saude","Erro",JOptionPane.ERROR_MESSAGE);
-             txtNome.requestFocus();
+             txtNomeEnfermeiro.requestFocus();
              return;
+             
         } else {
+         
              if(!result.isEmpty()){
                 JOptionPane.showMessageDialog(null,"Esse profissional de saude já existe","Erro",JOptionPane.ERROR_MESSAGE);
-                txtNome.requestFocus();
+                txtNomeEnfermeiro.requestFocus();
                 return;
-        }     
-        } 
-     if (txtEspecialidade.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null,"Introduza a especialidade","Erro",JOptionPane.ERROR_MESSAGE);
-             txtEspecialidade.requestFocus();
-             return;
-        }
+            }     
+        }*/
         
-        //Impede que existam localidades com digitos e caracteres no nome. Exemplo: 123fg4 
-        if (txtEspecialidade.getText().matches(".*\\d.*")){
-             JOptionPane.showMessageDialog(null," Especialidade inválida","Erro",JOptionPane.ERROR_MESSAGE);
-             txtEspecialidade.requestFocus();
-             return;
-        }
-        
-        model.insertRow(model.getRowCount(),new Object[] {txtNome.getText()});
-        ProfissionalSaude P = new ProfissionalSaude(1, txtNome.getText());
-        sistema.getListaProfissionalSaude().adicionar(P);
-        
-        //txtNome.setText(txtNome.getText());
+        ProfissionalSaude profSaude = new ProfissionalSaude(id, txtNomeEnfermeiro.getText());             
         
         try {
-        sistema.getListaProfissionalSaude().adicionar(P);
-        JOptionPane.showMessageDialog(null, "Hospital registado!");
-        txtNome.setText("");
-        
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().adicionar(profSaude);
+        JOptionPane.showMessageDialog(null, "Enfermeiro registado!");
+        txtNomeEnfermeiro.setText("");
         txtEspecialidade.setText("");
-        carregarTabela();
+        txtNomeMedico.setText("");
+        carregarTabelaEnfermeiro();
         }catch(RuntimeException e) {
             //Todas as labels estão preenchidas, no entanto com o tipo de dados errado
-            JOptionPane.showMessageDialog(null,"Nome da especialidade inválido","Erro",JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(null,"Nome inválido","Erro",JOptionPane.ERROR_MESSAGE);
         }
         guardarAlteracoes();
-    }//GEN-LAST:event_btInserirEActionPerformed
+    }//GEN-LAST:event_btInserirEnfermeiroActionPerformed
+
+    private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEmailActionPerformed
 
     /**
      * @param args the command line arguments
@@ -508,8 +548,8 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir1;
-    private javax.swing.JButton btInserir;
-    private javax.swing.JButton btInserirE;
+    private javax.swing.JButton btInserirEnfermeiro;
+    private javax.swing.JButton btInserirMedico;
     private javax.swing.JButton btLDoentes;
     private javax.swing.JButton btLimpar;
     private javax.swing.JLabel imgGuardar;
@@ -519,13 +559,17 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tableEnfermeiros;
     private javax.swing.JTable tableMedicos;
+    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEspecialidade;
-    private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtNomeEnfermeiro;
+    private javax.swing.JTextField txtNomeMedico;
     // End of variables declaration//GEN-END:variables
 }

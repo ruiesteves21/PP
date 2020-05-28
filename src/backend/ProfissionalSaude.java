@@ -6,14 +6,16 @@
 package backend;
 
 import java.io.Serializable;
+import java.util.UUID;
 
 /**
  *
  * @author rodrm
  */
 public class ProfissionalSaude implements Serializable {
-    private int idProfSaude;
+    private String idProfSaude;
     private String nomeProfSaude;
+    private ListaDoente listaDoente;
     
 
     public ProfissionalSaude() 
@@ -21,16 +23,19 @@ public class ProfissionalSaude implements Serializable {
         
     }
 
-    public ProfissionalSaude(int idProfSaude, String nomeProfsaude) {
+    public ProfissionalSaude(String idProfSaude, String nomeProfsaude) {
         this.idProfSaude = idProfSaude;
         this.nomeProfSaude = nomeProfsaude;
+        listaDoente = new ListaDoente();
         
     }
 
-    
-    
-
-    public int getIdProfSaude() {
+     public static UUID randomUUID(){
+        UUID uuid = UUID.randomUUID();
+        return uuid;
+        }
+     
+    public String getIdProfSaude() {
         return idProfSaude;
     }
 
@@ -38,7 +43,11 @@ public class ProfissionalSaude implements Serializable {
         return nomeProfSaude;
     }
 
-    public void setIdProfSaude(int idProfSaude) {
+    public ListaDoente getListaDoente() {
+        return listaDoente;
+    }
+    
+    public void setIdProfSaude(String idProfSaude) {
         this.idProfSaude = idProfSaude;
     }
 

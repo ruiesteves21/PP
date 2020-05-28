@@ -19,6 +19,8 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
     private Hospital hospitalSelecionado;
     private int nCamas;
     private ListaEquipamento listaEquipamento;
+    private ListaProfissionalSaude listaProfissionalSaude;
+    private ListaMedico listaMedico;
     
     public Enfermaria () 
     {
@@ -31,6 +33,8 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
         this.tipo = tipo;
         this.nCamas = nCamas;
         listaEquipamento = new ListaEquipamento();
+        listaProfissionalSaude = new ListaProfissionalSaude();
+        listaMedico = new ListaMedico();
     }
     
     public static UUID randomUUID(){
@@ -41,6 +45,15 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
     public ListaEquipamento getListaEquipamento() {
         return listaEquipamento;
     }
+
+    public ListaProfissionalSaude getListaProfissionalSaude() {
+        return listaProfissionalSaude;
+    }
+
+    public ListaMedico getListaMedico() {
+        return listaMedico;
+    }
+   
     
     public Hospital getHospitalSelecionado() {
         return hospitalSelecionado;
@@ -106,10 +119,7 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
         return "Enfermaria{" + "idEnfermaria=" + idEnfermaria + ", tipo=" + tipo + ", nCamas=" + nCamas + '}';
     }
 
-    public Object getUtiLigado() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+   
     
 
 

@@ -26,17 +26,20 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    private int indice;
+    private int indiceEnfermaria;
+    private int indiceHospital;
     
     /**
      * Creates new form ListaEquipamentos
      */
-    public ListaEquipamentos(Sistema sistema, Serializacao bd, int indice) {
+    public ListaEquipamentos(Sistema sistema, Serializacao bd, int indiceHospital, int indiceEnfermaria) {
         initComponents();
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
-        this.indice = indice;
+        this.indiceEnfermaria = indiceEnfermaria;
+        this.indiceHospital = indiceHospital;
+        
         carregarTabela();
         labelCodigo.setVisible(false);
         txtCodigo.setVisible(false); 
@@ -48,9 +51,10 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     {
         model.setRowCount(0);
         
-        for (int i = 0; i < sistema.getListaEnfermaria().getListaEnfermaria().get(indice).getListaEquipamento().getListaEquipamento().size(); i++) {
+        
+        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().size(); i++) {
             
-            Equipamento e = sistema.getListaEnfermaria().getListaEnfermaria().get(indice).getListaEquipamento().getListaEquipamento().get(i);
+            Equipamento e = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(i);
             
             model.addRow(new Object[]{e.getIdEquip(),e.getTipoEquipamento(),e.getIndicacao(),e.getDoente()});
  
@@ -176,7 +180,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btInserir);
-        btInserir.setBounds(10, 330, 90, 30);
+        btInserir.setBounds(50, 50, 90, 30);
 
         btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimpar.setText("Limpar");
@@ -208,7 +212,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(520, 330, 80, 29);
+        btEditar.setBounds(180, 50, 80, 29);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel9.setText("Tipo :");
@@ -315,10 +319,10 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         
          String id = UUID.randomUUID().toString();
         
-        int index = table.getSelectedRow();
+       /* int index = table.getSelectedRow();
         
-        Equipamento tipoEquipamento = sistema.getListaEnfermaria().getListaEnfermaria().get(indice).getListaEquipamento().getListaEquipamento().get(index);
-        Equipamento disponibilidadeEquipamento = sistema.getListaEnfermaria().getListaEnfermaria().get(indice).getListaEquipamento().getListaEquipamento().get(index);
+        Equipamento tipoEquipamento = sistema.getListaHospital().getListaHospital().get(indice_hospital).getListaEnfermaria().getListaEnfermaria().get(indice).getListaEquipamento().getListaEquipamento().get(index);
+        Equipamento disponibilidadeEquipamento = sistema.getListaHospital().getListaHospital().get(indice_hospital).getListaEnfermaria().getListaEnfermaria().get(indice).getListaEquipamento().getListaEquipamento().get(index);
         
         if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
             JOptionPane.showMessageDialog(null, "Selecione o tipo de equipamento!!");
@@ -358,7 +362,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
                   
         }        
         
-         /*var result = new ArrayList<Equipamento>();
+         var result = new ArrayList<Equipamento>();
          sistema.getListaEquipamento().getListaEquipamento().stream().filter((equipamento) -> (equipamento.getDoente().equals(txtDoente.getText()))).forEachOrdered((Equipamento) -> {
          result.add(Equipamento);
          }); 
@@ -402,7 +406,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         Equipamento eq = new Equipamento(id, Disponibilidade, Tipo, txtDoente.getText());
         
         try {
-        sistema.getListaEnfermaria().getListaEnfermaria().get(indice).getListaEquipamento().adicionar(eq);
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().adicionar(eq);
         JOptionPane.showMessageDialog(null, "Equipamento registado!");
         txtCodigo.setText("");
         txtDoente.setText(""); 
@@ -468,7 +472,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
          dispose();
-       ListaEnfermarias l = new ListaEnfermarias(sistema,bd,indice);
+       ListaEnfermarias l = new ListaEnfermarias(sistema,bd,indiceHospital);
         //FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow());
         l.setLocationRelativeTo(null);
         l.setVisible(true);

@@ -28,30 +28,38 @@ public class ListaDoentes extends javax.swing.JFrame {
     private Sistema sistema;
     private Serializacao bd;
     private ListaDoente listaDoente;
-    private int indice;
+    private int indiceHospital;
+    private int indiceEnfermaria;
+    private int indiceMedico;
   
     
     /**
      * Creates new form ListaDoentes
      */
     
-    public ListaDoentes(Sistema sistema, Serializacao bd, int indice) {
+    public ListaDoentes(Sistema sistema, Serializacao bd, int indiceHospital, int indiceEnfermaria, int indiceMedico) {
         initComponents();
 
         model = (DefaultTableModel) tableDoentes.getModel();
-        this.sistema=sistema;
+        this.sistema = sistema;
         this.bd = bd;      
-        this.indice=indice;
+        this.indiceHospital = indiceHospital;
+        this.indiceEnfermaria = indiceEnfermaria;
+        this.indiceMedico = indiceMedico;
         carregarTabela();
         //listaDoente = sistema.getListaDoente().getListaDoente().get(sistema.getHospitalSelecionado()).getListaDoente();
     }
     
+    
     public void carregarTabela()
     {
         model.setRowCount(0);
-        for (int i = 0; i < sistema.getListaDoente().getListaDoente().size(); i++) {
-            Doente d = sistema.getListaDoente().getListaDoente().get(i);
-            model.addRow(new Object[]{d.getIdDoente(), d.getNome(), d.getDataNasc(), d.getLocalidade(), d.getNCama(), d.getMedico(), d.getEnfermaria(), d.getGravidade(), d.getDataEntrada(), d.getDataSaida()});
+        
+        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().getListaProfissionalSaude().get(indiceMedico).getListaDoente().getListaDoente().size(); i++) {
+            
+            Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().getListaProfissionalSaude().get(indiceMedico).getListaDoente().getListaDoente().get(i);
+            
+            model.addRow(new Object[]{doente.getIdDoente(), doente.getNome(), doente.getDataNasc(), doente.getLocalidade(), doente.getNCama(), doente.getMedico(), doente.getEnfermaria(), doente.getGravidade(), doente.getDataEntrada(), doente.getDataSaida()});
 
         }
         tableDoentes.setModel(model);
@@ -426,7 +434,7 @@ public class ListaDoentes extends javax.swing.JFrame {
         
         Doente doente = sistema.getListaMedico().todos().get(index).getListaDoente().getListaDoente().get(index);
         sistema.getListaDoente().adicionar(doente);
-        */
+        
         Doente tipoDoente = sistema.getListaMedico().todos().get(indice).getListaDoente().getListaDoente().get(indice);
 
         if(!btModerado.isSelected() && !btGrave.isSelected() && !btMuitoGrave.isSelected()) {
@@ -448,7 +456,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             carregarTabela();
 
                 }        
-        }        
+        }*/        
         
         String Tipo="";
         
@@ -481,10 +489,10 @@ public class ListaDoentes extends javax.swing.JFrame {
         }
 
         model.insertRow(model.getRowCount(),new Object[] {id, txtNome.getText(), DataNasc.getDate(), txtLocalidade.getText(), txtCama.getText(), txtMedico.getText(), txtEnfermaria.getText(), Tipo, DataEntrada.getDate(), DataSaida.getDate()});
-        Doente doente = new Doente(Integer.parseInt(id), txtNome.getText(), txtLocalidade.getText(), Tipo, DataNasc.getCalendar(), DataEntrada.getCalendar(), DataSaida.getCalendar(), Integer.parseInt(txtCama.getText()), txtEnfermaria.getText(), txtMedico.getText());
+        Doente doente = new Doente(id, txtNome.getText(), txtLocalidade.getText(), Tipo, DataNasc.getCalendar(), DataEntrada.getCalendar(), DataSaida.getCalendar(), Integer.parseInt(txtCama.getText()), txtEnfermaria.getText(), txtMedico.getText());
        
         try {
-        sistema.getListaMedico().todos().get(indice).getListaDoentes().adicionar(doente);
+       // sistema.getListaMedico().todos().get(indice).getListaDoentes().adicionar(doente);
         JOptionPane.showMessageDialog(null, "Doente adicionado!");
         txtNome.setText("");
         txtLocalidade.setText("");
@@ -520,7 +528,7 @@ public class ListaDoentes extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
         dispose();
-       ListaProfissionaisSaude p = new ListaProfissionaisSaude(sistema,bd,indice);
+       ListaProfissionaisSaude p = new ListaProfissionaisSaude(sistema,bd,indiceHospital,indiceMedico);
         //FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow());
         p.setLocationRelativeTo(null);
         p.setVisible(true);

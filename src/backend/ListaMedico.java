@@ -44,7 +44,20 @@ public class ListaMedico implements Serializable {
         }else{
             throw new UtilizadorDuplicadoException(String.format("O utilizador '%s' já existe na coleção", medico.getUsername()));
         } 
-    }        
+    }
+   
+    public void adicionarMedico(Medico medico) {
+        
+         if (medico == null) {
+            throw new NullPointerException("O parâmetro 'medico' não pode ser um valor nulo");
+        }   
+         
+        if(!listaMedico.containsKey(medico.getIdMedico())) {
+            listaMedico.put(medico.getIdMedico(), medico);
+        } else {
+            throw new RuntimeException("Este medico já se encontra registado");
+        }
+    }
     
     public boolean existe(String username) {
         return listaMedico.containsKey(username);

@@ -15,7 +15,7 @@ import java.util.Date;
 
 public class Doente implements Serializable
 {
-    private int idDoente;
+    private String idDoente;
     private int nCama;
     private String nome;
     private String localidade;
@@ -30,7 +30,7 @@ public class Doente implements Serializable
     public Doente(){   
     }
 
-    public Doente(int idDoente, String nome, String localidade, String gravidade, Calendar dataNasc, Calendar dataEntrada, Calendar dataSaida,int nCama, String enfermaria, String medico) {
+    public Doente(String idDoente, String nome, String localidade, String gravidade, Calendar dataNasc, Calendar dataEntrada, Calendar dataSaida,int nCama, String enfermaria, String medico) {
         this.idDoente = idDoente;
         this.nome = nome;
         this.localidade = localidade;
@@ -48,7 +48,7 @@ public class Doente implements Serializable
 
     
     //getters
-    public int getIdDoente() {
+    public String getIdDoente() {
         return idDoente;
     }
 
@@ -94,7 +94,7 @@ public class Doente implements Serializable
     
     
     //setters
-    public void setIdDoente(int idDoente) {
+    public void setIdDoente(String idDoente) {
         this.idDoente = idDoente;
     }
 

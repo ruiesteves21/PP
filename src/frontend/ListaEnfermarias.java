@@ -21,16 +21,16 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    private int indice;
+    private int indiceHospital;
      /**
      * Creates new form ListaEnfermarias
      */
-    public ListaEnfermarias(Sistema sistema, Serializacao bd, int indice) {
+    public ListaEnfermarias(Sistema sistema, Serializacao bd, int indiceHospital) {
         initComponents();
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
-        this.indice=indice;
+        this.indiceHospital=indiceHospital;
    
         carregarTabela();
         labelCodigo.setVisible(false);
@@ -45,9 +45,9 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     {
         model.setRowCount(0);
          
-         for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().size(); i++) {
+         for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size(); i++) {
              
-            Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().get(i);
+            Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(i);
              
             model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getnCamas(), enf.getIdEnfermaria() });
          }
@@ -312,7 +312,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
        Enfermaria enf = new Enfermaria(txtNome.getText(), id, Integer.parseInt(txtCamas.getText()), ComboTip.getSelectedItem().toString());
        
        try {
-       sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().adicionar(enf);
+       sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().adicionar(enf);
        JOptionPane.showMessageDialog(null, "Enfermaria registada!");
        txtNome.setText("");
        txtCamas.setText("");
@@ -375,19 +375,20 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
     private void btEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipamentosActionPerformed
         // TODO add your handling code here:
-        int indice = table.getSelectedRow();   
-        
-        ListaEquipamentos e = new ListaEquipamentos(sistema, bd, indice);
+        int indiceEnfermaria = table.getSelectedRow(); 
+                 
+        ListaEquipamentos equipamento = new ListaEquipamentos(sistema, bd, indiceHospital, indiceEnfermaria);
         guardarAlteracoes();
         dispose();
-        e.setVisible(true);
-        e.setLocationRelativeTo(null);
+        equipamento.setVisible(true);
+        equipamento.setLocationRelativeTo(null);
     }//GEN-LAST:event_btEquipamentosActionPerformed
 
     private void btProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProfissionaisActionPerformed
         // TODO add your handling code here:
-        int indice = table.getSelectedRow();    
-        ListaProfissionaisSaude p = new ListaProfissionaisSaude(sistema, bd, indice);
+        int indiceEnfermaria = table.getSelectedRow();    
+        
+        ListaProfissionaisSaude p = new ListaProfissionaisSaude(sistema, bd, indiceHospital, indiceEnfermaria);
         guardarAlteracoes();
         dispose();
         p.setVisible(true);

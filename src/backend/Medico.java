@@ -5,6 +5,8 @@
  */
 package backend;
 
+import java.util.UUID;
+
 /**
  *
  * @author rodrm
@@ -15,6 +17,7 @@ public class Medico extends ProfissionalSaude {
     private String password;
     private String email;
     private String username;
+    private String idMedico;
     private ListaDoente listaDoente; 
 
     public Medico()
@@ -22,10 +25,10 @@ public class Medico extends ProfissionalSaude {
         
     }
 
-    public Medico(String especialidade, String nome, String password, String email) {
+    public Medico(String especialidade, String nome, String idMedico, String email) {
         this.especialidade = especialidade;
         this.nome = nome;
-        this.password = password;
+        this.idMedico = idMedico;
         this.email = email;
         listaDoente = new ListaDoente();
     }
@@ -36,9 +39,18 @@ public class Medico extends ProfissionalSaude {
         this.password = password;
         this.nome = nome;
     }
-
+    
+     public static UUID randomUUID(){
+        UUID uuid = UUID.randomUUID();
+        return uuid;
+        }
+     
     public ListaDoente getListaDoente() {
         return listaDoente;
+    }
+
+    public String getIdMedico() {
+        return idMedico;
     }
     
     
