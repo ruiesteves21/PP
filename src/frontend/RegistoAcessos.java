@@ -131,7 +131,6 @@ public class RegistoAcessos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Registo de Acessos");
-        setMaximumSize(new java.awt.Dimension(350, 315));
         setMinimumSize(new java.awt.Dimension(345, 313));
         setUndecorated(true);
         setSize(new java.awt.Dimension(345, 313));
@@ -176,9 +175,9 @@ public class RegistoAcessos extends javax.swing.JFrame {
         getContentPane().add(imgSair);
         imgSair.setBounds(310, 10, 24, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/wp2.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dash66.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-210, 0, 650, 320);
+        jLabel1.setBounds(-260, 0, 650, 320);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         getContentPane().add(imgRetroceder);

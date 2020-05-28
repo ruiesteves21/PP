@@ -50,218 +50,175 @@ public class Dashboard extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jPanel2 = new javax.swing.JPanel();
-        jLabel1 = new javax.swing.JLabel();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
-        jLabel4 = new javax.swing.JLabel();
-        jLabel6 = new javax.swing.JLabel();
-        jLabel5 = new javax.swing.JLabel();
-        txtModerado = new javax.swing.JTextField();
-        txtGrave = new javax.swing.JTextField();
-        txtMuitoGrave = new javax.swing.JTextField();
-        txtGravePerc = new javax.swing.JTextField();
-        txtMuitoGravePerc = new javax.swing.JTextField();
-        jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
-        jLabel9 = new javax.swing.JLabel();
-        txtVentilador = new javax.swing.JTextField();
-        txtDesfibrilhador = new javax.swing.JTextField();
-        txtOutro = new javax.swing.JTextField();
-        jLabel10 = new javax.swing.JLabel();
-        jLabel11 = new javax.swing.JLabel();
-        jLabel12 = new javax.swing.JLabel();
-        txtModeradoPerc = new javax.swing.JTextField();
-        txtDesfibrilhadorPerc = new javax.swing.JTextField();
-        txtVentiladorPerc = new javax.swing.JTextField();
-        txtOutroPerc = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         txtEnfermariaProb = new javax.swing.JTextField();
+        jLabel9 = new javax.swing.JLabel();
+        txtOutro = new javax.swing.JTextField();
+        jLabel8 = new javax.swing.JLabel();
+        txtVentilador = new javax.swing.JTextField();
+        jLabel12 = new javax.swing.JLabel();
+        txtOutroPerc = new javax.swing.JTextField();
+        jLabel11 = new javax.swing.JLabel();
+        txtVentiladorPerc = new javax.swing.JTextField();
+        jLabel10 = new javax.swing.JLabel();
+        txtDesfibrilhadorPerc = new javax.swing.JTextField();
+        jLabel7 = new javax.swing.JLabel();
+        txtDesfibrilhador = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
+        txtMuitoGrave = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel5 = new javax.swing.JLabel();
+        txtMuitoGravePerc = new javax.swing.JTextField();
+        jLabel6 = new javax.swing.JLabel();
+        txtGravePerc = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        txtModeradoPerc = new javax.swing.JTextField();
+        txtGrave = new javax.swing.JTextField();
+        jLabel1 = new javax.swing.JLabel();
+        txtModerado = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        getContentPane().setLayout(null);
 
-        jLabel1.setText("Doentes em estado Moderado:");
-
-        jLabel2.setText("Doentes em estado Muito Grave:");
-
-        jLabel3.setText("Doentes em estado Grave:");
-
-        jLabel4.setText("% Doentes em estado Moderado:: ");
-
-        jLabel6.setText("% Doentes em estado Grave:");
-
-        jLabel5.setText("% Doentes em estado Muito Grave::");
-
-        txtModerado.setEditable(false);
-
-        txtGrave.setEditable(false);
-
-        txtMuitoGrave.setEditable(false);
-
-        txtGravePerc.setEditable(false);
-
-        txtMuitoGravePerc.setEditable(false);
-
-        jLabel7.setText("Desfibrilhadores Ocupados:");
-
-        jLabel8.setText("Ventiladores Ocupados:");
-
-        jLabel9.setText("Outros equipamentos Ocupados:");
-
-        txtVentilador.setEditable(false);
-
-        txtDesfibrilhador.setEditable(false);
-
-        txtOutro.setEditable(false);
-
-        jLabel10.setText("% Desfibrilhadores Ocupados:");
-
-        jLabel11.setText("% Ventiladores Ocupados:");
-
-        jLabel12.setText("% Outros equipamentos Ocupados:");
-
-        txtModeradoPerc.setEditable(false);
-
-        txtDesfibrilhadorPerc.setEditable(false);
-
-        txtVentiladorPerc.setEditable(false);
-
-        txtOutroPerc.setEditable(false);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(39, 39, 39)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
-                        .addGap(41, 41, 41)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(txtGrave, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addComponent(txtMuitoGrave, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(txtModerado, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                                .addGap(0, 0, Short.MAX_VALUE)
-                                .addComponent(jLabel7)
-                                .addGap(67, 67, 67))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                    .addComponent(jLabel8)
-                                    .addComponent(jLabel9))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txtDesfibrilhador, javax.swing.GroupLayout.DEFAULT_SIZE, 185, Short.MAX_VALUE)
-                            .addComponent(txtVentilador)
-                            .addComponent(txtOutro))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 115, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jLabel5)
-                    .addComponent(jLabel6)
-                    .addComponent(jLabel4)
-                    .addComponent(jLabel10)
-                    .addComponent(jLabel11)
-                    .addComponent(jLabel12))
-                .addGap(27, 27, 27)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(txtOutroPerc, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txtVentiladorPerc, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                        .addComponent(txtGravePerc, javax.swing.GroupLayout.Alignment.LEADING)
-                        .addComponent(txtMuitoGravePerc)
-                        .addComponent(txtDesfibrilhadorPerc, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(txtModeradoPerc, javax.swing.GroupLayout.Alignment.LEADING)))
-                .addGap(81, 81, 81))
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(30, 30, 30)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                                    .addComponent(jLabel1)
-                                    .addComponent(jLabel4)
-                                    .addComponent(txtModerado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                .addGap(44, 44, 44))
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(txtModeradoPerc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(34, 34, 34)))
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel6)
-                            .addComponent(jLabel3)
-                            .addComponent(txtGrave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtGravePerc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(39, 39, 39)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel2)
-                            .addComponent(jLabel5)
-                            .addComponent(txtMuitoGrave, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(txtMuitoGravePerc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(65, 65, 65)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jLabel7)
-                            .addComponent(txtDesfibrilhador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel10)
-                            .addComponent(txtDesfibrilhadorPerc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(33, 33, 33)
-                        .addComponent(jLabel8))
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(txtVentilador, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel11)
-                        .addComponent(txtVentiladorPerc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 36, Short.MAX_VALUE)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel9)
-                    .addComponent(txtOutro, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12)
-                    .addComponent(txtOutroPerc, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19))
-        );
-
+        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel13.setText("Enfermaria mais Problemática:");
+        getContentPane().add(jLabel13);
+        jLabel13.setBounds(20, 350, 200, 20);
 
         txtEnfermariaProb.setEditable(false);
+        getContentPane().add(txtEnfermariaProb);
+        txtEnfermariaProb.setBounds(250, 340, 185, 30);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(169, 169, 169)
-                        .addComponent(jLabel13)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtEnfermariaProb, javax.swing.GroupLayout.PREFERRED_SIZE, 185, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(23, Short.MAX_VALUE))
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(47, 47, 47)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel13)
-                    .addComponent(txtEnfermariaProb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(68, Short.MAX_VALUE))
-        );
+        jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel9.setText("Outros equipamentos Ocupados:");
+        getContentPane().add(jLabel9);
+        jLabel9.setBounds(20, 300, 220, 20);
+
+        txtOutro.setEditable(false);
+        getContentPane().add(txtOutro);
+        txtOutro.setBounds(250, 290, 185, 30);
+
+        jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel8.setText("Ventiladores Ocupados:");
+        getContentPane().add(jLabel8);
+        jLabel8.setBounds(20, 250, 160, 20);
+
+        txtVentilador.setEditable(false);
+        getContentPane().add(txtVentilador);
+        txtVentilador.setBounds(250, 240, 185, 30);
+
+        jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel12.setText("% Outros equipamentos Ocupados:");
+        getContentPane().add(jLabel12);
+        jLabel12.setBounds(450, 350, 230, 20);
+
+        txtOutroPerc.setEditable(false);
+        getContentPane().add(txtOutroPerc);
+        txtOutroPerc.setBounds(700, 340, 180, 30);
+
+        jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel11.setText("% Ventiladores Ocupados:");
+        getContentPane().add(jLabel11);
+        jLabel11.setBounds(450, 300, 170, 20);
+
+        txtVentiladorPerc.setEditable(false);
+        getContentPane().add(txtVentiladorPerc);
+        txtVentiladorPerc.setBounds(700, 290, 180, 30);
+
+        jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel10.setText("% Desfibrilhadores Ocupados:");
+        getContentPane().add(jLabel10);
+        jLabel10.setBounds(450, 250, 190, 20);
+
+        txtDesfibrilhadorPerc.setEditable(false);
+        getContentPane().add(txtDesfibrilhadorPerc);
+        txtDesfibrilhadorPerc.setBounds(700, 240, 180, 30);
+
+        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel7.setText("Desfibrilhadores Ocupados:");
+        getContentPane().add(jLabel7);
+        jLabel7.setBounds(20, 200, 180, 20);
+
+        txtDesfibrilhador.setEditable(false);
+        getContentPane().add(txtDesfibrilhador);
+        txtDesfibrilhador.setBounds(250, 190, 185, 30);
+
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel2.setText("Doentes em estado Muito Grave:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(20, 150, 220, 20);
+
+        txtMuitoGrave.setEditable(false);
+        getContentPane().add(txtMuitoGrave);
+        txtMuitoGrave.setBounds(250, 140, 185, 30);
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel3.setText("Doentes em estado Grave:");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(20, 100, 170, 20);
+
+        jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel5.setText("% Doentes em estado Muito Grave:");
+        getContentPane().add(jLabel5);
+        jLabel5.setBounds(450, 200, 230, 20);
+
+        txtMuitoGravePerc.setEditable(false);
+        getContentPane().add(txtMuitoGravePerc);
+        txtMuitoGravePerc.setBounds(700, 190, 180, 30);
+
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel6.setText("% Doentes em estado Grave:");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(450, 150, 190, 20);
+
+        txtGravePerc.setEditable(false);
+        getContentPane().add(txtGravePerc);
+        txtGravePerc.setBounds(700, 140, 180, 30);
+
+        jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel4.setText("% Doentes em estado Moderado: ");
+        getContentPane().add(jLabel4);
+        jLabel4.setBounds(450, 100, 220, 20);
+
+        txtModeradoPerc.setEditable(false);
+        txtModeradoPerc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtModeradoPercActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtModeradoPerc);
+        txtModeradoPerc.setBounds(700, 90, 180, 30);
+
+        txtGrave.setEditable(false);
+        getContentPane().add(txtGrave);
+        txtGrave.setBounds(250, 90, 185, 30);
+
+        jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel1.setText("Doentes em estado Moderado:");
+        getContentPane().add(jLabel1);
+        jLabel1.setBounds(20, 50, 200, 20);
+
+        txtModerado.setEditable(false);
+        getContentPane().add(txtModerado);
+        txtModerado.setBounds(250, 40, 185, 30);
+
+        jLabel14.setFont(new java.awt.Font("Leelawadee", 1, 36)); // NOI18N
+        jLabel14.setText("Dashboard");
+        getContentPane().add(jLabel14);
+        jLabel14.setBounds(570, 10, 200, 44);
+
+        jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dash66.jpg"))); // NOI18N
+        getContentPane().add(jLabel15);
+        jLabel15.setBounds(-330, -80, 1280, 840);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void txtModeradoPercActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeradoPercActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtModeradoPercActionPerformed
 
     /**
      * @param args the command line arguments
@@ -304,6 +261,8 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -312,7 +271,6 @@ public class Dashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel2;
     private javax.swing.JTextField txtDesfibrilhador;
     private javax.swing.JTextField txtDesfibrilhadorPerc;
     private javax.swing.JTextField txtEnfermariaProb;

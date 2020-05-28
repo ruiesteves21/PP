@@ -141,7 +141,6 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(370, 370));
         setMinimumSize(new java.awt.Dimension(366, 368));
         setUndecorated(true);
         setSize(new java.awt.Dimension(366, 368));
@@ -217,9 +216,9 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         getContentPane().add(btRegistoAcesso);
         btRegistoAcesso.setBounds(40, 320, 160, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/wp2.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dash66.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-370, 0, 1120, 430);
+        jLabel1.setBounds(-500, 0, 1120, 430);
 
         pack();
         setLocationRelativeTo(null);
