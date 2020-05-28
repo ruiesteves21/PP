@@ -100,7 +100,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(620, 378));
+        setMinimumSize(new java.awt.Dimension(613, 389));
         setUndecorated(true);
         setSize(new java.awt.Dimension(604, 333));
         getContentPane().setLayout(null);
@@ -292,7 +292,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/listaEquipamentosfundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-10, 0, 650, 420);
+        jLabel1.setBounds(0, 0, 650, 420);
 
         pack();
         setLocationRelativeTo(null);
