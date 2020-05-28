@@ -6,8 +6,8 @@
 package frontend;
 import backend.Sistema;
 import javax.swing.JOptionPane;
-import backend.ListaMedico;
-import backend.Medico;
+import backend.ListaUtilizador;
+import backend.Utilizador;
 
 /**
  *
@@ -19,9 +19,9 @@ public class Perfil extends javax.swing.JFrame {
     //Referencia a Pagina Administrador. Se for indicado, depois de alterarmos um registo podemos solicitar que a tabela seja redesenhada
     private PaginaAdministrador listagem;
     //Referencia o Utilizador que queremos visualizar/editar
-    private Medico utilizador;   
+    private Utilizador utilizador;   
     
-    public Perfil(Sistema sistema, Medico utilizador, PaginaAdministrador listagem) {
+    public Perfil(Sistema sistema, Utilizador utilizador, PaginaAdministrador listagem) {
         
         initComponents();          
                               
@@ -94,14 +94,14 @@ public class Perfil extends javax.swing.JFrame {
         
         if (registoNovo()) {      
             txtUsername.setEditable(true);                                 
-            Medico novoMedico = new Medico();
+            Utilizador novoMedico = new Utilizador();
             novoMedico.setNome(txtNome.getText());
             novoMedico.setUsername(txtUsername.getText());
             novoMedico.setPassword(password);
           
             try {
-                sistema.getListaMedico().adicionar(novoMedico);
-            } catch (ListaMedico.UtilizadorDuplicadoException ex) {
+                sistema.getListaUtilizador().adicionar(novoMedico);
+            } catch (ListaUtilizador.UtilizadorDuplicadoException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
                 return;
             }                      

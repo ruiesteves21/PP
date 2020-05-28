@@ -278,7 +278,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLivre);
-        btLivre.setBounds(10, 290, 47, 23);
+        btLivre.setBounds(10, 290, 49, 23);
 
         btOcupado.setBackground(new java.awt.Color(213, 234, 242));
         btOcupado.setText("Ocupado");

@@ -5,39 +5,28 @@
  */
 package backend;
 
+import java.io.Serializable;
 import java.util.UUID;
 
 /**
  *
- * @author rodrm
+ * @author Utilizador
  */
-public class Medico extends ProfissionalSaude {
+public class Medico implements Serializable {
     private String especialidade;
     private String nome;
-    private String password;
-    private String email;
-    private String username;
     private String idMedico;
     private ListaDoente listaDoente; 
-
-    public Medico()
-    {
+    
+    public Medico() {
         
     }
-
-    public Medico(String especialidade, String nome, String idMedico, String email) {
+    
+    public Medico(String especialidade, String nome, String idMedico) {
         this.especialidade = especialidade;
         this.nome = nome;
-        this.idMedico = idMedico;
-        this.email = email;
+        this.idMedico = idMedico;    
         listaDoente = new ListaDoente();
-    }
-    
-    public Medico (String username, String password, String nome)
-    {
-        this.username = username;
-        this.password = password;
-        this.nome = nome;
     }
     
      public static UUID randomUUID(){
@@ -49,58 +38,33 @@ public class Medico extends ProfissionalSaude {
         return listaDoente;
     }
 
-    public String getIdMedico() {
-        return idMedico;
-    }
-    
-    
-    public String getNome() {
-        return nome;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-    
-    public String getUsername() {
-        return username;
-    }
-    
     public String getEspecialidade() {
         return especialidade;
     }
 
-    public void setNome(String nome) {
-        this.nome = nome;
+    public String getNomeMedico() {
+        return nome;
     }
 
-    public void setPassword(String password) {
-        this.password = password;
+    public String getIdMedico() {
+        return idMedico;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
-    }
-    
-    
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
     }
 
-    public void setUsername(String username) {
-        this.username = username;
+    public void setNomeMedico(String nome) {
+        this.nome = nome;
+    }
+
+    public void setIdMedico(String idMedico) {
+        this.idMedico = idMedico;
+    }
+
+    public void setListaDoente(ListaDoente listaDoente) {
+        this.listaDoente = listaDoente;
     }
     
-    public ListaDoente getListaDoentes() {
-        return listaDoente;
-    }
-    
-    @Override
-    public String toString() {
-        return "Medico{" + "especialidade=" + especialidade + ", nome=" + nome + ", password=" + password + ", email=" + email + '}';
-    }  
+  
 }

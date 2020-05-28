@@ -16,7 +16,7 @@ public class Hospital implements Serializable  {
     private String nome;
     private String localidade;
     private String idHospital;
-    private Medico utiLigado;
+    private Utilizador utiLigado;
     private ListaEnfermaria listaEnfermaria;
     /*
    
@@ -28,7 +28,7 @@ public class Hospital implements Serializable  {
     
     }
 
-    public Hospital(Medico utiLigado, String nome, String localidade, String idHospital) {
+    public Hospital(Utilizador utiLigado, String nome, String localidade, String idHospital) {
         this.utiLigado = utiLigado;
         this.nome = nome;
         this.localidade = localidade;
@@ -44,7 +44,7 @@ public class Hospital implements Serializable  {
             
     //Getters
     
-     public Medico getUtiLigado() {
+     public Utilizador getUtiLigado() {
         return utiLigado;
     }
     
@@ -65,7 +65,7 @@ public class Hospital implements Serializable  {
     }
     
     //Setters
-    public void setUtiLigado(Medico utiLigado) {
+    public void setUtiLigado(Utilizador utiLigado) {
         this.utiLigado = utiLigado;
     }
     

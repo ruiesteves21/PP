@@ -6,9 +6,9 @@
 package frontend;
 
 import backend.Administrador;
-import backend.Medico;
+import backend.Utilizador;
 import backend.Sistema;
-import backend.ListaMedico;
+import backend.ListaUtilizador;
 import backend.Serializacao;
 
 /**
@@ -17,7 +17,7 @@ import backend.Serializacao;
  */
 public class Arranque {
     
-    public static void main(String[] args) throws ListaMedico.UtilizadorDuplicadoException 
+    public static void main(String[] args) throws ListaUtilizador.UtilizadorDuplicadoException 
     {
         Sistema sistema;        
         String ficheiroDados = String.format("%s\\utilizadores.data", System.getProperty("user.dir"));
@@ -29,8 +29,8 @@ public class Arranque {
             //Cria uma instancia do sistema
             sistema = new Sistema();      
             //Adiciona dois utilizadores para que possa ser possivel entrar no sistema
-            sistema.getListaMedico().adicionar(new Administrador("admin", "admin", "Aministrador"));
-            sistema.getListaMedico().adicionar(new Medico("user1", "1234", "Utilizador 1"));                    
+            sistema.getListaUtilizador().adicionar(new Administrador("admin","admin", "Aministrador"));
+            sistema.getListaUtilizador().adicionar(new Utilizador("user1", "1234", "Utilizador 1"));                    
         }else{
             sistema = bd.lerSistema();            
         }                 

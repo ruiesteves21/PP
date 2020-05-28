@@ -16,21 +16,19 @@ import java.util.List;
  */
 public class Sistema implements Serializable
 {
-    private final ListaMedico listaMedico;
+    private final ListaUtilizador listaUtilizador;
     private ListaEnfermaria listaEnfermaria;
     private ListaEquipamento listaEquipamento;
-    private Medico utilizadorLigado;
+    private Utilizador utilizadorLigado;
     private final List<RegistoAcesso> listaEntradas;
     private ListaHospital listaHospital;
-    private Hospital hospitalSelecionado;
-    private Enfermaria enfermariaSelecionada;
     private ListaProfissionalSaude listaProfissionalSaude;
     private ListaDoente listaDoente;
     
 
     public Sistema()
     {
-        listaMedico = new ListaMedico();
+        listaUtilizador = new ListaUtilizador();
         listaEnfermaria = new ListaEnfermaria();
         listaEntradas = new ArrayList<>();
         listaHospital = new ListaHospital();
@@ -64,38 +62,22 @@ public class Sistema implements Serializable
     public void setListaHospital(ListaHospital listaHospital) {
         this.listaHospital = listaHospital;
     }
-
-    public Hospital getHospitalSelecionado() {
-        return hospitalSelecionado;
-    }
-
-    public void setHospitalSelecionado(Hospital hospitalSelecionado) {
-        this.hospitalSelecionado = hospitalSelecionado;
-    }
-
-    public Enfermaria getEnfermariaSelecionada() {
-        return enfermariaSelecionada;
-    }
-
-    public void setEnfermariaSelecionada(Enfermaria enfermariaSelecionada) {
-        this.enfermariaSelecionada = enfermariaSelecionada;
-    }
     
     
-    public ListaMedico getListaMedico()
+    public ListaUtilizador getListaUtilizador()
     {
-        return listaMedico;
+        return listaUtilizador;
     }
     
      public List<RegistoAcesso> getListaEntradas() {
         return listaEntradas;
     }
 
-    public Medico getUtilizadorLigado() {
+    public Utilizador getUtilizadorLigado() {
         return utilizadorLigado;
     }
 
-    public void setUtilizadorLigado(Medico utilizadorLigado) {
+    public void setUtilizadorLigado(Utilizador utilizadorLigado) {
         this.utilizadorLigado = utilizadorLigado;
     }
     
@@ -118,9 +100,9 @@ public class Sistema implements Serializable
     }
     
     public boolean autenticarUtilizador(String username, String password) {        
-        if (listaMedico.existe(username)) {
+        if (listaUtilizador.existe(username)) {
             try{
-                Medico u = listaMedico.getMedico(username);                
+                Utilizador u = listaUtilizador.getUtilizador(username);                
                 if (u.getPassword().equals(password)){
                     utilizadorLigado = u;
                     listaEntradas.add(new RegistoAcesso(u, LocalDateTime.now()));
@@ -131,10 +113,10 @@ public class Sistema implements Serializable
         return false;        
     }
     
-     public void inicializar() throws ListaMedico.UtilizadorDuplicadoException {
-        listaMedico.adicionar(new Administrador("admin", "admin", "Administrador"));
-        listaMedico.adicionar(new Medico("user1", "1234", "Utilizador 1"));
-        listaMedico.adicionar(new Medico("user2", "1234", "Utilizador 2"));        
+    public void inicializar() throws ListaUtilizador.UtilizadorDuplicadoException {
+        listaUtilizador.adicionar(new Administrador("admin", "admin", "Administrador"));
+        listaUtilizador.adicionar(new Utilizador("user1", "1234", "Utilizador 1"));
+        listaUtilizador.adicionar(new Utilizador("user2", "1234", "Utilizador 2"));        
     }
     
     public void terminar() {

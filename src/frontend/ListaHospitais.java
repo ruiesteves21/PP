@@ -5,7 +5,7 @@
  */
 package frontend;
 import backend.Hospital;
-import backend.Medico;
+import backend.Utilizador;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;

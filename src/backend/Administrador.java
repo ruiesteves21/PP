@@ -11,7 +11,7 @@ import java.io.Serializable;
  *
  * @author Rui Esteves
  */
-public class Administrador extends Medico implements Serializable  {
+public class Administrador extends Utilizador implements Serializable  {
 
     public Administrador() {
     }

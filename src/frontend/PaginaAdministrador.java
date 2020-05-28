@@ -7,9 +7,9 @@ package frontend;
 
 import javax.swing.JOptionPane;
 import javax.swing.table.AbstractTableModel;
-import backend.ListaMedico;
+import backend.ListaUtilizador;
 import backend.Sistema;
-import backend.Medico;
+import backend.Utilizador;
 import backend.Serializacao;
 
 /**
@@ -51,7 +51,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             @Override
             public int getRowCount() {
                 //Retorna o número de linhas que a tabela deverá ter
-                return sistema.getListaMedico().size();
+                return sistema.getListaUtilizador().size();
             }
 
             @Override
@@ -70,9 +70,9 @@ public class PaginaAdministrador extends javax.swing.JFrame {
             */
                 switch (columnIndex) {
                     case 0: 
-                        return sistema.getListaMedico().todos().get(rowIndex).getUsername();
+                        return sistema.getListaUtilizador().todos().get(rowIndex).getUsername();
                     case 1:
-                        return sistema.getListaMedico().todos().get(rowIndex).getNome();
+                        return sistema.getListaUtilizador().todos().get(rowIndex).getNome();
                     default:
                         return "";
                 }                              
@@ -94,10 +94,10 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         String username = (String) modeloTabelaAdmin.getValueAt(rowIndex, 0);
         
         try {
-            Medico medico = sistema.getListaMedico().getMedico(username);
+            Utilizador medico = sistema.getListaUtilizador().getUtilizador(username);
              Perfil perfil = new Perfil(sistema, medico, this);   
             perfil.setVisible(true);
-        } catch (ListaMedico.UtilizadorNaoExistenteException ex) {            
+        } catch (ListaUtilizador.UtilizadorNaoExistenteException ex) {            
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
         

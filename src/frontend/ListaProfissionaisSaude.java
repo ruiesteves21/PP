@@ -5,9 +5,9 @@
  */
 package frontend;
 
-import backend.Hospital;
 import backend.ListaMedico;
 import backend.Medico;
+import backend.Utilizador;
 import backend.ProfissionalSaude;
 import backend.Serializacao;
 import backend.Sistema;
@@ -62,18 +62,18 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
              modelEnfermeiro.addRow(new Object[]{profSaude.getIdProfSaude(), profSaude.getNomePS()});
    
         }
-            tableEnfermeiros.setModel( modelEnfermeiro);
+            tableEnfermeiros.setModel(modelEnfermeiro);
     }
     
      public void carregarTabelaMedico()
     {
         modelMedico.setRowCount(0);
         
-        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().todos().size(); i++) {
+        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().size(); i++) {
             
-            Medico medico = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().todos().get(i);
+            Medico medico = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(i);
             
-            modelMedico.addRow(new Object[]{medico.getIdMedico(),medico.getNome(), medico.getEspecialidade(), medico.getEmail()});
+            modelMedico.addRow(new Object[]{medico.getIdMedico(),medico.getNomeMedico(), medico.getEspecialidade()});
 
         }
             tableMedicos.setModel(modelMedico);
@@ -102,7 +102,6 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         btLDoentes = new javax.swing.JButton();
         btLimparEnfermeiro = new javax.swing.JButton();
         txtNomeEnfermeiro = new javax.swing.JTextField();
-        txtEmail = new javax.swing.JTextField();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
         imgGuardar = new javax.swing.JLabel();
@@ -113,7 +112,6 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        jLabel7 = new javax.swing.JLabel();
         txtNomeMedico = new javax.swing.JTextField();
         txtEspecialidade = new javax.swing.JTextField();
         btLimparMedico = new javax.swing.JButton();
@@ -177,7 +175,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btInserirMedico);
-        btInserirMedico.setBounds(330, 430, 80, 29);
+        btInserirMedico.setBounds(330, 410, 80, 29);
 
         btLDoentes.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLDoentes.setText("Lista Doentes");
@@ -187,7 +185,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLDoentes);
-        btLDoentes.setBounds(330, 480, 120, 29);
+        btLDoentes.setBounds(420, 460, 120, 29);
 
         btLimparEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimparEnfermeiro.setText("Limpar");
@@ -206,8 +204,6 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         });
         getContentPane().add(txtNomeEnfermeiro);
         txtNomeEnfermeiro.setBounds(160, 300, 140, 30);
-        getContentPane().add(txtEmail);
-        txtEmail.setBounds(500, 380, 120, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -251,14 +247,14 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Especialidade", "Email"
+                "Código", "Nome", "Especialidade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Object.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class
+                java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false
+                false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -299,11 +295,6 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         getContentPane().add(jLabel5);
         jLabel5.setBounds(330, 310, 100, 20);
 
-        jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel7.setText("Email:");
-        getContentPane().add(jLabel7);
-        jLabel7.setBounds(330, 390, 40, 20);
-
         txtNomeMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeMedicoActionPerformed(evt);
@@ -328,7 +319,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimparMedico);
-        btLimparMedico.setBounds(430, 430, 80, 30);
+        btLimparMedico.setBounds(440, 410, 80, 30);
 
         btExcluirMedico.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluirMedico.setText("Excluir");
@@ -338,7 +329,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluirMedico);
-        btExcluirMedico.setBounds(540, 430, 80, 29);
+        btExcluirMedico.setBounds(550, 410, 80, 29);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -405,29 +396,17 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
              return;
         }
         
-        if (txtEmail.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null,"Introduza o email","Erro",JOptionPane.ERROR_MESSAGE);
-             txtEmail.requestFocus();
-             return;
-        }
-        
-        //Impede que existam localidades com digitos e caracteres no nome. Exemplo: 123fg4 
-        if (txtEmail.getText().matches(".*\\d.*")){
-             JOptionPane.showMessageDialog(null,"Email inválido","Erro",JOptionPane.ERROR_MESSAGE);
-             txtEmail.requestFocus();
-             return;
-        }
-        
-        Medico medico = new Medico(txtEspecialidade.getText(), txtNomeMedico.getText(), id, txtEmail.getText());     
+
+        Medico medico = new Medico(txtEspecialidade.getText(), txtNomeMedico.getText(), id);     
         
         //txtNome.setText(txtNome.getText());
         
         try {
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().adicionarMedico(medico);
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().adicionar(medico);
         JOptionPane.showMessageDialog(null, "Medico registado!");
         txtNomeMedico.setText("");
         txtEspecialidade.setText("");
-        txtEmail.setText("");
+        
         carregarTabelaMedico();
         }catch(RuntimeException e) {
             //Todas as labels estão preenchidas, no entanto com o tipo de dados errado
@@ -541,8 +520,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
     private void btLimparMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparMedicoActionPerformed
         // TODO add your handling code here:
         txtEspecialidade.setText(null);
-        txtNomeMedico.setText(null);
-        txtEmail.setText(null);
+        txtNomeMedico.setText(null);       
         
     }//GEN-LAST:event_btLimparMedicoActionPerformed
 
@@ -552,7 +530,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         int c = tableMedicos.getSelectedRow();
         if(c >= 0){
             model.removeRow(c); //remove a linha selecionada
-            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().todos().remove(c);
+            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().remove(c);
             JOptionPane.showMessageDialog(this, "Removido!");
             guardarAlteracoes();   
         }
@@ -615,13 +593,11 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
-    private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTable tableEnfermeiros;
     private javax.swing.JTable tableMedicos;
-    private javax.swing.JTextField txtEmail;
     private javax.swing.JTextField txtEspecialidade;
     private javax.swing.JTextField txtNomeEnfermeiro;
     private javax.swing.JTextField txtNomeMedico;

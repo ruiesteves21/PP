@@ -53,11 +53,7 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
     public ListaMedico getListaMedico() {
         return listaMedico;
     }
-   
-    
-    public Hospital getHospitalSelecionado() {
-        return hospitalSelecionado;
-    }
+        
     
     public String getIdEnfermaria() {
         return idEnfermaria;
@@ -78,10 +74,7 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
     public void setIdEnfermaria(String idEnfermaria) {
         this.idEnfermaria = idEnfermaria;
     }
-    
-     public void setHospitalSelecionado(Hospital hospitalSelecionado) {
-        this.hospitalSelecionado = hospitalSelecionado;
-    }
+   
      
     public void setTipo(String tipo) {
         this.tipo = tipo;

@@ -14,21 +14,21 @@ import java.time.LocalDateTime;
  */
 public class RegistoAcesso implements Serializable {
     
-    private Medico medico;
+    private Utilizador medico;
     private LocalDateTime data;
 
     public RegistoAcesso() {  }
 
-    public RegistoAcesso(Medico utilizador, LocalDateTime data) {
+    public RegistoAcesso(Utilizador utilizador, LocalDateTime data) {
         this.medico = utilizador;
         this.data = data;
     }
 
-    public Medico getMedico() {
+    public Utilizador getMedico() {
         return medico;
     }
 
-    public void setMedico(Medico medico) {
+    public void setMedico(Utilizador medico) {
         this.medico = medico;
     }
 
