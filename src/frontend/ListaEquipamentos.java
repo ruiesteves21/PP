@@ -100,7 +100,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(620, 378));
+        setMinimumSize(new java.awt.Dimension(613, 389));
         setUndecorated(true);
         setSize(new java.awt.Dimension(604, 333));
         getContentPane().setLayout(null);
@@ -136,7 +136,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         jScrollPane3.setViewportView(table);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(260, 80, 350, 230);
+        jScrollPane3.setBounds(210, 50, 380, 290);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel3.setText("Lista de Equipamentos");
@@ -146,63 +146,57 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         labelCodigo.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         labelCodigo.setText("Código  :");
         getContentPane().add(labelCodigo);
-        labelCodigo.setBounds(10, 80, 60, 20);
+        labelCodigo.setBounds(10, 70, 60, 20);
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel5.setText("Disponibilidade :");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(10, 210, 120, 20);
+        jLabel5.setBounds(10, 260, 120, 20);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel4.setText("Doente :");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(10, 260, 60, 20);
-
-        txtDoente.setEnabled(false);
+        jLabel4.setBounds(10, 110, 60, 20);
         getContentPane().add(txtDoente);
-        txtDoente.setBounds(120, 260, 110, 30);
+        txtDoente.setBounds(80, 100, 110, 30);
 
-        txtCodigo.setEnabled(false);
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoActionPerformed(evt);
             }
         });
         getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(120, 80, 110, 30);
+        txtCodigo.setBounds(80, 60, 110, 30);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
-        btInserir.setEnabled(false);
         btInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btInserirActionPerformed(evt);
             }
         });
         getContentPane().add(btInserir);
-        btInserir.setBounds(40, 330, 90, 30);
+        btInserir.setBounds(310, 350, 80, 30);
 
         btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimpar.setText("Limpar");
-        btLimpar.setEnabled(false);
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLimparActionPerformed(evt);
             }
         });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(350, 330, 80, 30);
+        btLimpar.setBounds(410, 350, 80, 30);
 
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
-        btExcluir.setEnabled(false);
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btExcluirActionPerformed(evt);
             }
         });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(500, 330, 80, 29);
+        btExcluir.setBounds(510, 350, 80, 29);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -212,7 +206,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(200, 330, 80, 29);
+        btEditar.setBounds(210, 350, 80, 29);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel9.setText("Tipo :");
@@ -246,6 +240,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         getContentPane().add(imgGuardar);
         imgGuardar.setBounds(480, 10, 30, 30);
 
+        btVentilador.setBackground(new java.awt.Color(213, 234, 242));
         btVentilador.setText("Ventilador");
         btVentilador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -253,8 +248,9 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btVentilador);
-        btVentilador.setBounds(60, 140, 80, 23);
+        btVentilador.setBounds(10, 170, 80, 23);
 
+        btDesfibrilhador.setBackground(new java.awt.Color(213, 234, 242));
         btDesfibrilhador.setText("Desfibrilhador");
         btDesfibrilhador.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -262,8 +258,9 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btDesfibrilhador);
-        btDesfibrilhador.setBounds(140, 140, 91, 23);
+        btDesfibrilhador.setBounds(10, 200, 93, 23);
 
+        btOutro.setBackground(new java.awt.Color(213, 234, 242));
         btOutro.setText("Outro");
         btOutro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,8 +268,9 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btOutro);
-        btOutro.setBounds(110, 160, 60, 23);
+        btOutro.setBounds(10, 230, 60, 23);
 
+        btLivre.setBackground(new java.awt.Color(213, 234, 242));
         btLivre.setText("Livre");
         btLivre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -280,8 +278,9 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLivre);
-        btLivre.setBounds(130, 210, 49, 23);
+        btLivre.setBounds(10, 290, 47, 23);
 
+        btOcupado.setBackground(new java.awt.Color(213, 234, 242));
         btOcupado.setText("Ocupado");
         btOcupado.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -289,11 +288,11 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btOcupado);
-        btOcupado.setBounds(180, 210, 70, 23);
+        btOcupado.setBounds(10, 320, 70, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/listaEquipamentosfundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 650, 380);
+        jLabel1.setBounds(0, 0, 650, 420);
 
         pack();
         setLocationRelativeTo(null);
