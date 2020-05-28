@@ -77,6 +77,8 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtModerado = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
+        imgSair = new javax.swing.JLabel();
+        imgHome = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -207,7 +209,25 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel14.setFont(new java.awt.Font("Leelawadee", 1, 36)); // NOI18N
         jLabel14.setText("Dashboard");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(570, 10, 200, 44);
+        jLabel14.setBounds(580, 10, 200, 44);
+
+        imgSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
+        imgSair.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgSairMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgSair);
+        imgSair.setBounds(810, 10, 24, 30);
+
+        imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
+        imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgHomeMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgHome);
+        imgHome.setBounds(850, 10, 30, 30);
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dash66.jpg"))); // NOI18N
         getContentPane().add(jLabel15);
@@ -219,6 +239,20 @@ public class Dashboard extends javax.swing.JFrame {
     private void txtModeradoPercActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeradoPercActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtModeradoPercActionPerformed
+
+    private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
+        // TODO add your handling code here:
+        terminar();
+    }//GEN-LAST:event_imgSairMouseClicked
+
+    private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
+        // TODO add your handling code here:
+        dispose();
+        PaginaInicialUtilizador paginaInicialUtilizador = new PaginaInicialUtilizador(sistema,bd);
+        paginaInicialUtilizador.setLocationRelativeTo(null);
+        paginaInicialUtilizador.setVisible(true);
+
+    }//GEN-LAST:event_imgHomeMouseClicked
 
     /**
      * @param args the command line arguments
@@ -256,6 +290,8 @@ public class Dashboard extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JLabel imgHome;
+    private javax.swing.JLabel imgSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
