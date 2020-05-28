@@ -319,11 +319,11 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         
          String id = UUID.randomUUID().toString();
         
-        int index = table.getSelectedRow();
+        /*int index = table.getSelectedRow();
         
         Equipamento tipoEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
         Equipamento disponibilidadeEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
-        
+        */
        /*  var result = new ArrayList<Equipamento>();
          sistema.getListaEquipamento().getListaEquipamento().stream().filter((equipamento) -> (equipamento.getDoente().equals(txtDoente.getText()))).forEachOrdered((Equipamento) -> {
          result.add(Equipamento);
@@ -379,7 +379,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         btOcupado.setSelected(false);
         carregarTabela();
        
-        if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
+       /* if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
             JOptionPane.showMessageDialog(null, "Selecione o tipo de equipamento!!");
         
         
@@ -415,7 +415,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             carregarTabela();
             }
                   
-        }        
+        } */       
         
         } catch(RuntimeException e) {
             JOptionPane.showMessageDialog(null,"Este equipamento já se encontra registado!","Erro",JOptionPane.ERROR_MESSAGE);
