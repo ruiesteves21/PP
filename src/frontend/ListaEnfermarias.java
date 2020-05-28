@@ -146,7 +146,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         getContentPane().add(labelCodigo);
         labelCodigo.setBounds(20, 190, 90, 20);
 
-        txtNome.setEnabled(false);
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtNomeActionPerformed(evt);
@@ -155,7 +154,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         getContentPane().add(txtNome);
         txtNome.setBounds(120, 70, 120, 30);
 
-        txtCamas.setEnabled(false);
         txtCamas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCamasActionPerformed(evt);
@@ -164,7 +162,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         getContentPane().add(txtCamas);
         txtCamas.setBounds(120, 150, 120, 30);
 
-        txtCodigo.setEnabled(false);
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCodigoActionPerformed(evt);
@@ -175,7 +172,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
-        btInserir.setEnabled(false);
         btInserir.setName(""); // NOI18N
         btInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -187,7 +183,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
         btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimpar.setText("Limpar");
-        btLimpar.setEnabled(false);
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLimparActionPerformed(evt);
@@ -198,7 +193,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
-        btExcluir.setEnabled(false);
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btExcluirActionPerformed(evt);
@@ -344,13 +338,17 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
-        btInserir.setEnabled(true);
-        btExcluir.setEnabled(true);
-        btLimpar.setEnabled(true);
-        txtNome.setEnabled(true);
-        ComboTip.setEnabled(true);
-        txtCamas.setEnabled(true);
-        txtCodigo.setEnabled(true);
+       
+        
+        int indiceEnfermaria = table.getSelectedRow();
+
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).setNome(txtNome.getText());
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).setnCamas(Integer.parseInt(txtCamas.getText()));
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).setTipo(ComboTip.getSelectedItem().toString());
+
+        carregarTabela();
+        guardarAlteracoes();
+        
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed

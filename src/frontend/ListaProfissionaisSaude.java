@@ -171,7 +171,6 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
 
         btInserirMedico.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserirMedico.setText("Inserir");
-        btInserirMedico.setEnabled(false);
         btInserirMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btInserirMedicoActionPerformed(evt);
@@ -192,7 +191,6 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
 
         btLimparEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimparEnfermeiro.setText("Limpar");
-        btLimparEnfermeiro.setEnabled(false);
         btLimparEnfermeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLimparEnfermeiroActionPerformed(evt);
@@ -243,7 +241,6 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
 
         btExcluirEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluirEnfermeiro.setText("Excluir");
-        btExcluirEnfermeiro.setEnabled(false);
         btExcluirEnfermeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btExcluirEnfermeiroActionPerformed(evt);
@@ -282,7 +279,6 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
 
         btInserirEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserirEnfermeiro.setText("Inserir");
-        btInserirEnfermeiro.setEnabled(false);
         btInserirEnfermeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btInserirEnfermeiroActionPerformed(evt);
@@ -329,7 +325,6 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
 
         btLimparMedico.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimparMedico.setText("Limpar");
-        btLimparMedico.setEnabled(false);
         btLimparMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLimparMedicoActionPerformed(evt);
@@ -340,7 +335,6 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
 
         btExcluirMedico.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluirMedico.setText("Excluir");
-        btExcluirMedico.setEnabled(false);
         btExcluirMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btExcluirMedicoActionPerformed(evt);
