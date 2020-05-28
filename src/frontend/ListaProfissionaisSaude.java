@@ -470,7 +470,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         }
         else
         {
-            JOptionPane.showMessageDialog(null,"Selecione um profissional de saúde");
+            JOptionPane.showMessageDialog(null,"Selecione um enfermeiro");
         }
     }//GEN-LAST:event_btExcluirEnfermeiroActionPerformed
 
@@ -550,11 +550,11 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         int c = tableMedicos.getSelectedRow();
         if(c >= 0){
             model.removeRow(c); //remove a linha selecionada
-            sistema.getListaProfissionalSaude().getListaProfissionalSaude().remove(c);
+            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().todos().remove(c);
         }
         else
         {
-            JOptionPane.showMessageDialog(null,"Selecione um profissional de saúde");
+            JOptionPane.showMessageDialog(null,"Selecione um médico");
         }
     }//GEN-LAST:event_btExcluirMedicoActionPerformed
 
