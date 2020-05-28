@@ -55,11 +55,11 @@ public class ListaDoentes extends javax.swing.JFrame {
     {
         model.setRowCount(0);
         
-        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().getListaProfissionalSaude().get(indiceMedico).getListaDoente().getListaDoente().size(); i++) {
+        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().todos().get(indiceMedico).getListaDoente().getListaDoente().size(); i++) {
             
-            Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().getListaProfissionalSaude().get(indiceMedico).getListaDoente().getListaDoente().get(i);
+            Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().todos().get(indiceMedico).getListaDoente().getListaDoente().get(i);
             
-            model.addRow(new Object[]{doente.getIdDoente(), doente.getNome(), doente.getDataNasc(), doente.getLocalidade(), doente.getNCama(), doente.getMedico(), doente.getEnfermaria(), doente.getGravidade(), doente.getDataEntrada(), doente.getDataSaida()});
+            model.addRow(new Object[]{doente.getIdDoente(), doente.getNome(), doente.getDataNasc(), doente.getLocalidade(), doente.getNCama(), doente.getGravidade(), doente.getDataEntrada(), doente.getDataSaida()});
 
         }
         tableDoentes.setModel(model);
@@ -98,8 +98,6 @@ public class ListaDoentes extends javax.swing.JFrame {
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
-        jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
@@ -108,8 +106,6 @@ public class ListaDoentes extends javax.swing.JFrame {
         btExcluir = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btInserir = new javax.swing.JButton();
-        txtEnfermaria = new javax.swing.JTextField();
-        txtMedico = new javax.swing.JTextField();
         txtCama = new javax.swing.JTextField();
         txtLocalidade = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
@@ -160,7 +156,7 @@ public class ListaDoentes extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tableDoentes);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(10, 50, 760, 160);
+        jScrollPane3.setBounds(10, 50, 760, 210);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -170,7 +166,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(680, 390, 100, 30);
+        btEditar.setBounds(680, 450, 100, 30);
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel10.setText("Data de Saída :");
@@ -187,25 +183,15 @@ public class ListaDoentes extends javax.swing.JFrame {
         getContentPane().add(jLabel12);
         jLabel12.setBounds(260, 290, 80, 20);
 
-        jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel13.setText("Enfermaria :");
-        getContentPane().add(jLabel13);
-        jLabel13.setBounds(260, 230, 90, 20);
-
-        jLabel14.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel14.setText("Médico :");
-        getContentPane().add(jLabel14);
-        jLabel14.setBounds(20, 460, 60, 20);
-
         jLabel15.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel15.setText("Cama :");
         getContentPane().add(jLabel15);
-        jLabel15.setBounds(20, 400, 60, 20);
+        jLabel15.setBounds(30, 460, 60, 20);
 
         jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel16.setText("Localidade :");
         getContentPane().add(jLabel16);
-        jLabel16.setBounds(20, 350, 80, 20);
+        jLabel16.setBounds(30, 410, 80, 20);
 
         jLabel17.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel17.setText("Data Nasc:");
@@ -215,12 +201,12 @@ public class ListaDoentes extends javax.swing.JFrame {
         jLabel18.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel18.setText("Nome :");
         getContentPane().add(jLabel18);
-        jLabel18.setBounds(20, 290, 60, 20);
+        jLabel18.setBounds(30, 360, 60, 20);
 
         jLabel19.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel19.setText("Codigo :");
         getContentPane().add(jLabel19);
-        jLabel19.setBounds(20, 230, 60, 20);
+        jLabel19.setBounds(30, 300, 60, 20);
 
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
@@ -231,7 +217,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(680, 330, 100, 30);
+        btExcluir.setBounds(680, 400, 100, 30);
 
         btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimpar.setText("Limpar");
@@ -242,7 +228,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(680, 280, 100, 30);
+        btLimpar.setBounds(680, 350, 100, 30);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
@@ -253,15 +239,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btInserir);
-        btInserir.setBounds(680, 230, 100, 30);
-
-        txtEnfermaria.setEnabled(false);
-        getContentPane().add(txtEnfermaria);
-        txtEnfermaria.setBounds(390, 230, 110, 30);
-
-        txtMedico.setEnabled(false);
-        getContentPane().add(txtMedico);
-        txtMedico.setBounds(110, 450, 100, 30);
+        btInserir.setBounds(680, 300, 100, 30);
 
         txtCama.setEnabled(false);
         txtCama.addActionListener(new java.awt.event.ActionListener() {
@@ -270,19 +248,19 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtCama);
-        txtCama.setBounds(110, 400, 100, 30);
+        txtCama.setBounds(120, 450, 100, 30);
 
         txtLocalidade.setEnabled(false);
         getContentPane().add(txtLocalidade);
-        txtLocalidade.setBounds(110, 350, 100, 30);
+        txtLocalidade.setBounds(120, 400, 100, 30);
 
         txtNome.setEnabled(false);
         getContentPane().add(txtNome);
-        txtNome.setBounds(110, 290, 100, 30);
+        txtNome.setBounds(120, 350, 100, 30);
 
         txtCodigo.setEnabled(false);
         getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(110, 230, 100, 30);
+        txtCodigo.setBounds(120, 290, 100, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -324,7 +302,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btModerado);
-        btModerado.setBounds(360, 290, 80, 23);
+        btModerado.setBounds(360, 290, 80, 21);
 
         btGrave.setText("Grave");
         btGrave.addActionListener(new java.awt.event.ActionListener() {
@@ -333,7 +311,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btGrave);
-        btGrave.setBounds(460, 290, 60, 23);
+        btGrave.setBounds(460, 290, 60, 21);
 
         btMuitoGrave.setText("Muito Grave");
         btMuitoGrave.addActionListener(new java.awt.event.ActionListener() {
@@ -342,7 +320,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btMuitoGrave);
-        btMuitoGrave.setBounds(540, 290, 83, 23);
+        btMuitoGrave.setBounds(540, 290, 79, 21);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaDoentesFundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -362,8 +340,6 @@ public class ListaDoentes extends javax.swing.JFrame {
         DataNasc.setEnabled(true);
         txtLocalidade.setEnabled(true);
         txtCama.setEnabled(true);
-        txtMedico.setEnabled(true);
-        txtEnfermaria.setEnabled(true);
         btModerado.setEnabled(true);
         btGrave.setEnabled(true);
         btMuitoGrave.setEnabled(true);
@@ -378,8 +354,6 @@ public class ListaDoentes extends javax.swing.JFrame {
         DataNasc.setDate(null);
         txtLocalidade.setText(null);
         txtCama.setText(null);
-        txtMedico.setText(null);
-        txtEnfermaria.setText(null);
        /* btModerado.setSelectedItem(null);
         btGrave.setSelectedItem(null);
         btMuitoGrave.setSelectedItem(null);*/
@@ -412,16 +386,16 @@ public class ListaDoentes extends javax.swing.JFrame {
        // TODO add your handling code here:
         String id = UUID.randomUUID().toString();
         
-       /* int index = tableDoentes.getSelectedRow();
+     int index = tableDoentes.getSelectedRow();
         
                 
         var result = new ArrayList<Doente>();
          sistema.getListaDoente().getListaDoente().stream().filter((doente) -> (doente.getNome().equals(txtNome.getText()))).forEachOrdered((doente) -> {
          result.add(doente);
          });
-        
+           
         if (txtCama.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null,"Introduza o nome do doente","Erro",JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(null,"Introduza a cama do doente","Erro",JOptionPane.ERROR_MESSAGE);
              txtCama.requestFocus();
              return;
         } else {
@@ -432,32 +406,13 @@ public class ListaDoentes extends javax.swing.JFrame {
         }     
         }
         
-        Doente doente = sistema.getListaMedico().todos().get(index).getListaDoente().getListaDoente().get(index);
-        sistema.getListaDoente().adicionar(doente);
-        
-        Doente tipoDoente = sistema.getListaMedico().todos().get(indice).getListaDoente().getListaDoente().get(indice);
+       // Doente doente = sistema.getListaMedico().todos().get(index).getListaDoente().getListaDoente().get(index);
+            
 
         if(!btModerado.isSelected() && !btGrave.isSelected() && !btMuitoGrave.isSelected()) {
             JOptionPane.showMessageDialog(null, "Selecione gravidade do estado em que se encontra o doente!!");
-        }else {
-        
-        if(btModerado.isSelected()) {
-            tipoDoente.setGravidade("Moderado");          
-            carregarTabela();
-         }
-             
-        if(btGrave.isSelected()) {
-           tipoDoente.setGravidade("Grave");     
-            carregarTabela();
         }
-        
-        if(btMuitoGrave.isSelected()) {
-            tipoDoente.setGravidade("Muito Grave");           
-            carregarTabela();
-
-                }        
-        }*/        
-        
+                              
         String Tipo="";
         
             if(btModerado.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
@@ -472,6 +427,29 @@ public class ListaDoentes extends javax.swing.JFrame {
                 }
             }
         
+        if (txtNome.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Introduza o nome do doente","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNome.requestFocus();
+             return;
+        }  
+        if (txtNome.getText().matches(".*\\d.*")){
+             JOptionPane.showMessageDialog(null," Nome do doente inválido","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNome.requestFocus();
+             return;
+        }
+        
+        if (txtLocalidade.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Introduza a localidade do doente","Erro",JOptionPane.ERROR_MESSAGE);
+             txtLocalidade.requestFocus();
+             return;
+        }
+        //Impede que existam localidades com digitos e caracteres no nome. Exemplo: 123fg4 
+        if (txtLocalidade.getText().matches(".*\\d.*")){
+             JOptionPane.showMessageDialog(null," Nome da localidade inválido","Erro",JOptionPane.ERROR_MESSAGE);
+             txtLocalidade.requestFocus();
+             return;
+        }
+            
         if(DataEntrada.getDate().getTime() >= DataSaida.getDate().getTime()){
             JOptionPane.showMessageDialog(null, "A data de entrada não pode ser superior à data de saída!!!");
             DataEntrada.requestFocus();
@@ -488,8 +466,8 @@ public class ListaDoentes extends javax.swing.JFrame {
             return;
         }
 
-        model.insertRow(model.getRowCount(),new Object[] {id, txtNome.getText(), DataNasc.getDate(), txtLocalidade.getText(), txtCama.getText(), txtMedico.getText(), txtEnfermaria.getText(), Tipo, DataEntrada.getDate(), DataSaida.getDate()});
-        Doente doente = new Doente(id, txtNome.getText(), txtLocalidade.getText(), Tipo, DataNasc.getCalendar(), DataEntrada.getCalendar(), DataSaida.getCalendar(), Integer.parseInt(txtCama.getText()), txtEnfermaria.getText(), txtMedico.getText());
+        model.insertRow(model.getRowCount(),new Object[] {id, txtNome.getText(), DataNasc.getDate(), txtLocalidade.getText(), txtCama.getText(), Tipo, DataEntrada.getDate(), DataSaida.getDate()});
+        Doente doente = new Doente(id, txtNome.getText(), txtLocalidade.getText(), Tipo, DataNasc.getCalendar(), DataEntrada.getCalendar(), DataSaida.getCalendar(), Integer.parseInt(txtCama.getText()));
        
         try {
        // sistema.getListaMedico().todos().get(indice).getListaDoentes().adicionar(doente);
@@ -498,13 +476,31 @@ public class ListaDoentes extends javax.swing.JFrame {
         txtLocalidade.setText("");
         txtCodigo.setText("");
         txtCama.setText("");
-        txtMedico.setText("");
-        txtEnfermaria.setText("");
         //btModerado.clearSelection();
         DataNasc.setDate(null);
         DataSaida.setDate(null);
         DataEntrada.setDate(null);
         carregarTabela();
+        
+        /*Doente tipoDoente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().todos().get(indiceMedico).getListaDoente().getListaDoente();
+        
+        if(btModerado.isSelected()) {
+            tipoDoente.setGravidade("Moderado");          
+            carregarTabela();
+         }
+             
+        if(btGrave.isSelected()) {
+           tipoDoente.setGravidade("Grave");     
+            carregarTabela();
+        }
+        
+        if(btMuitoGrave.isSelected()) {
+            tipoDoente.setGravidade("Muito Grave");           
+            carregarTabela();
+
+                } */
+        
+        
         }catch(RuntimeException e) {
             //Todas as labels estão preenchidas, no entanto com o tipo de dados errado
             JOptionPane.showMessageDialog(null,"Este doente já se encontre registado!!!","Erro",JOptionPane.ERROR_MESSAGE);
@@ -620,8 +616,6 @@ public class ListaDoentes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;
-    private javax.swing.JLabel jLabel13;
-    private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
@@ -632,9 +626,7 @@ public class ListaDoentes extends javax.swing.JFrame {
     private javax.swing.JTable tableDoentes;
     private javax.swing.JTextField txtCama;
     private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtEnfermaria;
     private javax.swing.JTextField txtLocalidade;
-    private javax.swing.JTextField txtMedico;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 
