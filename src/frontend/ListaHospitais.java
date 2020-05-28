@@ -108,7 +108,6 @@ public class ListaHospitais extends javax.swing.JFrame {
 
         btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimpar.setText("Limpar");
-        btLimpar.setEnabled(false);
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLimparActionPerformed(evt);
@@ -136,8 +135,6 @@ public class ListaHospitais extends javax.swing.JFrame {
         labelCodigo.setText("Codigo :");
         getContentPane().add(labelCodigo);
         labelCodigo.setBounds(20, 60, 60, 20);
-
-        txtCodigo.setEnabled(false);
         getContentPane().add(txtCodigo);
         txtCodigo.setBounds(110, 60, 100, 30);
 
@@ -145,14 +142,11 @@ public class ListaHospitais extends javax.swing.JFrame {
         jLabel4.setText("Nome :");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(20, 100, 60, 20);
-
-        txtNome.setEnabled(false);
         getContentPane().add(txtNome);
         txtNome.setBounds(110, 100, 100, 30);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
-        btInserir.setEnabled(false);
         btInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btInserirActionPerformed(evt);
@@ -163,7 +157,6 @@ public class ListaHospitais extends javax.swing.JFrame {
 
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
-        btExcluir.setEnabled(false);
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btExcluirActionPerformed(evt);
@@ -185,8 +178,6 @@ public class ListaHospitais extends javax.swing.JFrame {
         jLabel6.setText("Localidade :");
         getContentPane().add(jLabel6);
         jLabel6.setBounds(20, 140, 80, 20);
-
-        txtLocalidade.setEnabled(false);
         getContentPane().add(txtLocalidade);
         txtLocalidade.setBounds(110, 140, 100, 30);
 
@@ -336,12 +327,12 @@ public class ListaHospitais extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
-        btInserir.setEnabled(true);
-        btExcluir.setEnabled(true);
-        btLimpar.setEnabled(true);
-        txtCodigo.setEnabled(true);
-        txtNome.setEnabled(true);
-        txtLocalidade.setEnabled(true);
+        int indice = table.getSelectedRow();
+
+        sistema.getListaHospital().getListaHospital().get(indice).setNome(txtNome.getText());
+        sistema.getListaHospital().getListaHospital().get(indice).setLocalidade(txtLocalidade.getText());
+        carregarTabela();
+        guardarAlteracoes();
         
     }//GEN-LAST:event_btEditarActionPerformed
 
@@ -437,12 +428,7 @@ public class ListaHospitais extends javax.swing.JFrame {
 
     private void btFiltrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFiltrar2ActionPerformed
         // TODO add your handling code here:
-         int indice = table.getSelectedRow();
-         
-        sistema.getListaHospital().getListaHospital().get(indice).setNome(txtNome.getText());
-        sistema.getListaHospital().getListaHospital().get(indice).setLocalidade(txtLocalidade.getText());
-        carregarTabela();
-        guardarAlteracoes();
+
     }//GEN-LAST:event_btFiltrar2ActionPerformed
 
     
