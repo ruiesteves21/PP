@@ -100,14 +100,13 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         btInserirMedico = new javax.swing.JButton();
         btLDoentes = new javax.swing.JButton();
-        btLimpar = new javax.swing.JButton();
-        btEditar = new javax.swing.JButton();
+        btLimparEnfermeiro = new javax.swing.JButton();
         txtNomeEnfermeiro = new javax.swing.JTextField();
         txtEmail = new javax.swing.JTextField();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
         imgGuardar = new javax.swing.JLabel();
-        btExcluir = new javax.swing.JButton();
+        btExcluirEnfermeiro = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableMedicos = new javax.swing.JTable();
         btInserirEnfermeiro = new javax.swing.JButton();
@@ -117,10 +116,12 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         txtEspecialidade = new javax.swing.JTextField();
         txtNomeMedico = new javax.swing.JTextField();
+        btLimparMedico = new javax.swing.JButton();
+        btExcluirMedico = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(819, 415));
+        setMinimumSize(new java.awt.Dimension(635, 525));
         setUndecorated(true);
         setSize(new java.awt.Dimension(819, 415));
         getContentPane().setLayout(null);
@@ -128,7 +129,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel3.setText("Lista de Profissionais de Saúde");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(290, 10, 270, 20);
+        jLabel3.setBounds(190, 0, 270, 20);
 
         tableEnfermeiros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -156,28 +157,27 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tableEnfermeiros);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(260, 100, 210, 230);
+        jScrollPane3.setBounds(20, 60, 280, 230);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel6.setText("Nome Enfermeiro :");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(0, 120, 130, 20);
+        jLabel6.setBounds(20, 310, 130, 20);
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel8.setText("Especialidade :");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(10, 170, 100, 20);
+        jLabel8.setBounds(330, 350, 100, 20);
 
         btInserirMedico.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserirMedico.setText("Inserir");
-        btInserirMedico.setEnabled(false);
         btInserirMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btInserirMedicoActionPerformed(evt);
             }
         });
         getContentPane().add(btInserirMedico);
-        btInserirMedico.setBounds(500, 360, 80, 29);
+        btInserirMedico.setBounds(330, 430, 80, 29);
 
         btLDoentes.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLDoentes.setText("Lista Doentes");
@@ -187,28 +187,17 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLDoentes);
-        btLDoentes.setBounds(670, 360, 120, 29);
+        btLDoentes.setBounds(330, 480, 120, 29);
 
-        btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        btLimpar.setText("Limpar");
-        btLimpar.setEnabled(false);
-        btLimpar.addActionListener(new java.awt.event.ActionListener() {
+        btLimparEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btLimparEnfermeiro.setText("Limpar");
+        btLimparEnfermeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btLimparActionPerformed(evt);
+                btLimparEnfermeiroActionPerformed(evt);
             }
         });
-        getContentPane().add(btLimpar);
-        btLimpar.setBounds(100, 380, 80, 30);
-
-        btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        btEditar.setText("Editar");
-        btEditar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btEditarActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btEditar);
-        btEditar.setBounds(10, 340, 80, 29);
+        getContentPane().add(btLimparEnfermeiro);
+        btLimparEnfermeiro.setBounds(120, 350, 80, 30);
 
         txtNomeEnfermeiro.setEnabled(false);
         txtNomeEnfermeiro.addActionListener(new java.awt.event.ActionListener() {
@@ -217,11 +206,11 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNomeEnfermeiro);
-        txtNomeEnfermeiro.setBounds(130, 120, 120, 30);
+        txtNomeEnfermeiro.setBounds(160, 300, 140, 30);
 
         txtEmail.setEnabled(false);
         getContentPane().add(txtEmail);
-        txtEmail.setBounds(130, 270, 120, 30);
+        txtEmail.setBounds(500, 380, 120, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -230,7 +219,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgRetroceder);
-        imgRetroceder.setBounds(720, 10, 24, 30);
+        imgRetroceder.setBounds(560, 0, 24, 30);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -239,7 +228,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(760, 10, 30, 30);
+        imgHome.setBounds(600, 0, 30, 30);
 
         imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
         imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -248,18 +237,17 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgGuardar);
-        imgGuardar.setBounds(680, 10, 30, 30);
+        imgGuardar.setBounds(520, 0, 30, 30);
 
-        btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        btExcluir.setText("Excluir");
-        btExcluir.setEnabled(false);
-        btExcluir.addActionListener(new java.awt.event.ActionListener() {
+        btExcluirEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btExcluirEnfermeiro.setText("Excluir");
+        btExcluirEnfermeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btExcluirActionPerformed(evt);
+                btExcluirEnfermeiroActionPerformed(evt);
             }
         });
-        getContentPane().add(btExcluir);
-        btExcluir.setBounds(160, 340, 80, 29);
+        getContentPane().add(btExcluirEnfermeiro);
+        btExcluirEnfermeiro.setBounds(220, 350, 80, 29);
 
         tableMedicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -287,38 +275,37 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableMedicos);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(500, 100, 290, 230);
+        jScrollPane1.setBounds(330, 60, 290, 230);
 
         btInserirEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserirEnfermeiro.setText("Inserir");
-        btInserirEnfermeiro.setEnabled(false);
         btInserirEnfermeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btInserirEnfermeiroActionPerformed(evt);
             }
         });
         getContentPane().add(btInserirEnfermeiro);
-        btInserirEnfermeiro.setBounds(260, 350, 80, 29);
+        btInserirEnfermeiro.setBounds(20, 350, 80, 29);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel2.setText("Medicos");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(500, 80, 90, 20);
+        jLabel2.setBounds(330, 40, 90, 20);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel4.setText("Enfermeiros");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(260, 80, 80, 20);
+        jLabel4.setBounds(20, 40, 80, 20);
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel5.setText("Nome Médico:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(10, 220, 100, 20);
+        jLabel5.setBounds(330, 310, 100, 20);
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel7.setText("Email:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(30, 270, 40, 20);
+        jLabel7.setBounds(330, 390, 40, 20);
 
         txtEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -326,7 +313,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtEspecialidade);
-        txtEspecialidade.setBounds(130, 170, 120, 30);
+        txtEspecialidade.setBounds(500, 300, 120, 30);
 
         txtNomeMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -334,26 +321,35 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNomeMedico);
-        txtNomeMedico.setBounds(130, 220, 120, 30);
+        txtNomeMedico.setBounds(500, 340, 120, 30);
+
+        btLimparMedico.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btLimparMedico.setText("Limpar");
+        btLimparMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btLimparMedicoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btLimparMedico);
+        btLimparMedico.setBounds(430, 430, 80, 30);
+
+        btExcluirMedico.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btExcluirMedico.setText("Excluir");
+        btExcluirMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btExcluirMedicoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btExcluirMedico);
+        btExcluirMedico.setBounds(540, 430, 80, 29);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-20, -390, 1050, 950);
+        jLabel1.setBounds(-10, -380, 1050, 950);
 
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
-        // TODO add your handling code here:
-        btInserirMedico.setEnabled(true);
-        btLDoentes.setEnabled(true);
-        btLimpar.setEnabled(true);
-        btInserirEnfermeiro.setEnabled(true);
-        txtNomeEnfermeiro.setEnabled(true);
-        txtEmail.setEnabled(true);
-        txtNomeMedico.setEnabled(true);
-    }//GEN-LAST:event_btEditarActionPerformed
 
     private void btLDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLDoentesActionPerformed
        //int c = tableProfissionaisSaude.getSelectedRow();
@@ -373,14 +369,13 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeEnfermeiroActionPerformed
 
-    private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
+    private void btLimparEnfermeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparEnfermeiroActionPerformed
         // TODO add your handling code here:
         
         txtNomeEnfermeiro.setText(null);
-        txtNomeMedico.setText(null);
-        txtEmail.setText(null);
         
-    }//GEN-LAST:event_btLimparActionPerformed
+        
+    }//GEN-LAST:event_btLimparEnfermeiroActionPerformed
 
     private void btInserirMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirMedicoActionPerformed
         // TODO add your handling code here:
@@ -458,7 +453,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         l.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
-    private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
+    private void btExcluirEnfermeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirEnfermeiroActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)tableEnfermeiros.getModel();
         int c = tableEnfermeiros.getSelectedRow();
@@ -470,7 +465,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         {
             JOptionPane.showMessageDialog(null,"Selecione um profissional de saúde");
         }
-    }//GEN-LAST:event_btExcluirActionPerformed
+    }//GEN-LAST:event_btExcluirEnfermeiroActionPerformed
 
     private void btInserirEnfermeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirEnfermeiroActionPerformed
         // TODO add your handling code here:
@@ -524,6 +519,19 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtNomeMedicoActionPerformed
 
+    private void btLimparMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparMedicoActionPerformed
+        // TODO add your handling code here:
+        txtNomeMedico.setText(null);
+        txtEspecialidade.setText(null);
+        txtEmail.setText(null);
+        
+    }//GEN-LAST:event_btLimparMedicoActionPerformed
+
+    private void btExcluirMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirMedicoActionPerformed
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_btExcluirMedicoActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -561,12 +569,13 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btEditar;
-    private javax.swing.JButton btExcluir;
+    private javax.swing.JButton btExcluirEnfermeiro;
+    private javax.swing.JButton btExcluirMedico;
     private javax.swing.JButton btInserirEnfermeiro;
     private javax.swing.JButton btInserirMedico;
     private javax.swing.JButton btLDoentes;
-    private javax.swing.JButton btLimpar;
+    private javax.swing.JButton btLimparEnfermeiro;
+    private javax.swing.JButton btLimparMedico;
     private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;

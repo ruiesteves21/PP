@@ -386,7 +386,7 @@ public class ListaDoentes extends javax.swing.JFrame {
        // TODO add your handling code here:
         String id = UUID.randomUUID().toString();
         
-     int index = tableDoentes.getSelectedRow();
+     /*int index = tableDoentes.getSelectedRow();
         
                 
         var result = new ArrayList<Doente>();
@@ -413,20 +413,6 @@ public class ListaDoentes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione gravidade do estado em que se encontra o doente!!");
         }
                               
-        String Tipo="";
-        
-            if(btModerado.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
-                Tipo = "Moderado";
-            }else{
-                if(btGrave.isSelected()) {
-                    Tipo = "Grave";
-                }else {
-                    if(btMuitoGrave.isSelected()) {
-                        Tipo = "Muito Grave";
-                    }
-                }
-            }
-        
         if (txtNome.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o nome do doente","Erro",JOptionPane.ERROR_MESSAGE);
              txtNome.requestFocus();
@@ -464,9 +450,22 @@ public class ListaDoentes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data de entrada ou saída!!!");
             DataNasc.requestFocus();
             return;
-        }
-
-        model.insertRow(model.getRowCount(),new Object[] {id, txtNome.getText(), DataNasc.getDate(), txtLocalidade.getText(), txtCama.getText(), Tipo, DataEntrada.getDate(), DataSaida.getDate()});
+        }*/
+        
+        String Tipo="";
+        
+            if(btModerado.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
+                Tipo = "Moderado";
+            }else{
+                if(btGrave.isSelected()) {
+                    Tipo = "Grave";
+                }else {
+                    if(btMuitoGrave.isSelected()) {
+                        Tipo = "Muito Grave";
+                    }
+                }
+            }
+        
         Doente doente = new Doente(id, txtNome.getText(), txtLocalidade.getText(), Tipo, DataNasc.getCalendar(), DataEntrada.getCalendar(), DataSaida.getCalendar(), Integer.parseInt(txtCama.getText()));
        
         try {

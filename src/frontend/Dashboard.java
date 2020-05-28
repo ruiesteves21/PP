@@ -97,6 +97,8 @@ public class Dashboard extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setMinimumSize(new java.awt.Dimension(895, 396));
+        setPreferredSize(new java.awt.Dimension(895, 396));
         getContentPane().setLayout(null);
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
