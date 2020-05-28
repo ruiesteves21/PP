@@ -363,15 +363,20 @@ public class ListaHospitais extends javax.swing.JFrame {
 
     private void btEnfermariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnfermariaActionPerformed
         // TODO add your handling code here:
-        
-        
+              
         int indice = table.getSelectedRow();    //abre a janela que cria as tarefas de um projeto
                                                     //selecionado da tabela
+        if (indice == -1){
+            
+              JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE); 
+        }  else {             
+        
         ListaEnfermarias enf = new ListaEnfermarias(sistema, bd, indice);
         guardarAlteracoes();
         dispose();
         enf.setVisible(true);
         enf.setLocationRelativeTo(null);
+        }
         
        /* int rowIndex = table.getSelectedRow();
         String ID = (String) table.getValueAt(rowIndex, 0);

@@ -102,7 +102,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         btLimpar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
         txtNomeEnfermeiro = new javax.swing.JTextField();
-        txtEspecialidade = new javax.swing.JTextField();
+        txtEmail = new javax.swing.JTextField();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
         imgGuardar = new javax.swing.JLabel();
@@ -113,9 +113,9 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
-        txtNomeMedico = new javax.swing.JTextField();
         jLabel7 = new javax.swing.JLabel();
-        txtEmail = new javax.swing.JTextField();
+        txtEspecialidade = new javax.swing.JTextField();
+        txtNomeMedico = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -158,14 +158,14 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         jScrollPane3.setBounds(260, 110, 210, 230);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel6.setText("Nome Enfermeiro:");
+        jLabel6.setText("Nome Enfermeiro :");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(10, 110, 120, 20);
+        jLabel6.setBounds(0, 120, 130, 20);
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel8.setText("Especialidade :");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(10, 220, 100, 20);
+        jLabel8.setBounds(10, 170, 100, 20);
 
         btInserirMedico.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserirMedico.setText("Inserir");
@@ -197,7 +197,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(10, 320, 80, 30);
+        btLimpar.setBounds(100, 380, 80, 30);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -207,7 +207,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(80, 360, 80, 29);
+        btEditar.setBounds(10, 340, 80, 29);
 
         txtNomeEnfermeiro.setEnabled(false);
         txtNomeEnfermeiro.addActionListener(new java.awt.event.ActionListener() {
@@ -216,11 +216,11 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNomeEnfermeiro);
-        txtNomeEnfermeiro.setBounds(130, 110, 120, 30);
+        txtNomeEnfermeiro.setBounds(130, 120, 120, 30);
 
-        txtEspecialidade.setEnabled(false);
-        getContentPane().add(txtEspecialidade);
-        txtEspecialidade.setBounds(130, 220, 120, 30);
+        txtEmail.setEnabled(false);
+        getContentPane().add(txtEmail);
+        txtEmail.setBounds(130, 270, 120, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -258,7 +258,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir1);
-        btExcluir1.setBounds(160, 320, 80, 29);
+        btExcluir1.setBounds(160, 340, 80, 29);
 
         tableMedicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -310,28 +310,34 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         jLabel4.setBounds(260, 80, 80, 20);
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel5.setText("Nome Medico:");
+        jLabel5.setText("Nome Médico:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(10, 160, 100, 20);
-        getContentPane().add(txtNomeMedico);
-        txtNomeMedico.setBounds(130, 160, 120, 30);
+        jLabel5.setBounds(10, 220, 100, 20);
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel7.setText("Email:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(10, 270, 50, 20);
+        jLabel7.setBounds(30, 270, 40, 20);
 
-        txtEmail.addActionListener(new java.awt.event.ActionListener() {
+        txtEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtEmailActionPerformed(evt);
+                txtEspecialidadeActionPerformed(evt);
             }
         });
-        getContentPane().add(txtEmail);
-        txtEmail.setBounds(130, 270, 120, 30);
+        getContentPane().add(txtEspecialidade);
+        txtEspecialidade.setBounds(130, 170, 120, 30);
+
+        txtNomeMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtNomeMedicoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(txtNomeMedico);
+        txtNomeMedico.setBounds(130, 220, 120, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-10, -390, 1050, 950);
+        jLabel1.setBounds(-20, -390, 1050, 950);
 
         pack();
         setLocationRelativeTo(null);
@@ -344,7 +350,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         btLimpar.setEnabled(true);
         btInserirEnfermeiro.setEnabled(true);
         txtNomeEnfermeiro.setEnabled(true);
-        txtEspecialidade.setEnabled(true);
+        txtEmail.setEnabled(true);
         txtNomeMedico.setEnabled(true);
     }//GEN-LAST:event_btEditarActionPerformed
 
@@ -371,7 +377,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         
         txtNomeEnfermeiro.setText(null);
         txtNomeMedico.setText(null);
-        txtEspecialidade.setText(null);
+        txtEmail.setText(null);
         
     }//GEN-LAST:event_btLimparActionPerformed
 
@@ -409,7 +415,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
              return;
         }*/
         
-        Medico medico = new Medico(txtEspecialidade.getText(), txtNomeMedico.getText(), id, txtEmail.getText());     
+        Medico medico = new Medico(txtEmail.getText(), txtNomeMedico.getText(), id, txtEmail.getText());     
         
         //txtNome.setText(txtNome.getText());
         
@@ -418,7 +424,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Medico registado!");
         txtNomeEnfermeiro.setText("");
         txtEmail.setText("");
-        txtEspecialidade.setText("");
+        txtEmail.setText("");
         carregarTabelaMedico();
         }catch(RuntimeException e) {
             //Todas as labels estão preenchidas, no entanto com o tipo de dados errado
@@ -495,7 +501,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().adicionar(profSaude);
         JOptionPane.showMessageDialog(null, "Enfermeiro registado!");
         txtNomeEnfermeiro.setText("");
-        txtEspecialidade.setText("");
+        txtEmail.setText("");
         txtNomeMedico.setText("");
         carregarTabelaEnfermeiro();
         }catch(RuntimeException e) {
@@ -508,6 +514,14 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
     private void txtEmailActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEmailActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtEmailActionPerformed
+
+    private void txtEspecialidadeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEspecialidadeActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEspecialidadeActionPerformed
+
+    private void txtNomeMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeMedicoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtNomeMedicoActionPerformed
 
     /**
      * @param args the command line arguments

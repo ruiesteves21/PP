@@ -100,7 +100,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(604, 333));
+        setMinimumSize(new java.awt.Dimension(620, 378));
         setUndecorated(true);
         setSize(new java.awt.Dimension(604, 333));
         getContentPane().setLayout(null);
@@ -146,7 +146,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         labelCodigo.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         labelCodigo.setText("Código  :");
         getContentPane().add(labelCodigo);
-        labelCodigo.setBounds(10, 100, 60, 20);
+        labelCodigo.setBounds(10, 80, 60, 20);
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel5.setText("Disponibilidade :");
@@ -169,7 +169,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(120, 90, 110, 30);
+        txtCodigo.setBounds(120, 80, 110, 30);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
@@ -180,7 +180,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btInserir);
-        btInserir.setBounds(50, 50, 90, 30);
+        btInserir.setBounds(40, 330, 90, 30);
 
         btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimpar.setText("Limpar");
@@ -191,7 +191,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(130, 330, 80, 30);
+        btLimpar.setBounds(350, 330, 80, 30);
 
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
@@ -202,7 +202,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(240, 330, 80, 29);
+        btExcluir.setBounds(500, 330, 80, 29);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -212,7 +212,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(180, 50, 80, 29);
+        btEditar.setBounds(200, 330, 80, 29);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel9.setText("Tipo :");
@@ -280,7 +280,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLivre);
-        btLivre.setBounds(120, 210, 49, 23);
+        btLivre.setBounds(130, 210, 49, 23);
 
         btOcupado.setText("Ocupado");
         btOcupado.addActionListener(new java.awt.event.ActionListener() {
@@ -289,7 +289,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btOcupado);
-        btOcupado.setBounds(170, 210, 70, 23);
+        btOcupado.setBounds(180, 210, 70, 23);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/listaEquipamentosfundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -319,10 +319,10 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         
          String id = UUID.randomUUID().toString();
         
-       /* int index = table.getSelectedRow();
+        /*int index = table.getSelectedRow();
         
-        Equipamento tipoEquipamento = sistema.getListaHospital().getListaHospital().get(indice_hospital).getListaEnfermaria().getListaEnfermaria().get(indice).getListaEquipamento().getListaEquipamento().get(index);
-        Equipamento disponibilidadeEquipamento = sistema.getListaHospital().getListaHospital().get(indice_hospital).getListaEnfermaria().getListaEnfermaria().get(indice).getListaEquipamento().getListaEquipamento().get(index);
+        Equipamento tipoEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
+        Equipamento disponibilidadeEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
         
         if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
             JOptionPane.showMessageDialog(null, "Selecione o tipo de equipamento!!");

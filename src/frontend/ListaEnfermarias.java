@@ -37,9 +37,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         txtCodigo.setVisible(false); 
     }
 
-    ListaEnfermarias() {
-        carregarTabela();
-    }
     
     public void carregarTabela()
     {
@@ -376,23 +373,35 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private void btEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEquipamentosActionPerformed
         // TODO add your handling code here:
         int indiceEnfermaria = table.getSelectedRow(); 
-                 
+        
+        if (indiceEnfermaria == -1){
+            
+              JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE); 
+        }  else {    
+                    
         ListaEquipamentos equipamento = new ListaEquipamentos(sistema, bd, indiceHospital, indiceEnfermaria);
         guardarAlteracoes();
         dispose();
         equipamento.setVisible(true);
         equipamento.setLocationRelativeTo(null);
+        }
     }//GEN-LAST:event_btEquipamentosActionPerformed
 
     private void btProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btProfissionaisActionPerformed
         // TODO add your handling code here:
         int indiceEnfermaria = table.getSelectedRow();    
         
+        if (indiceEnfermaria == -1){
+            
+              JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE); 
+        }  else {   
+                   
         ListaProfissionaisSaude p = new ListaProfissionaisSaude(sistema, bd, indiceHospital, indiceEnfermaria);
         guardarAlteracoes();
         dispose();
         p.setVisible(true);
         p.setLocationRelativeTo(null);
+          }
     }//GEN-LAST:event_btProfissionaisActionPerformed
     
      

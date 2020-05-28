@@ -139,14 +139,14 @@ public class ListaDoentes extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Código", "Nome", "Data de Nascimento", "Localidade", "Cama", "Médico", "Enfermaria", "Gravidade", "Data entrada", "Data Saída"
+                "Código", "Nome", "Data de Nascimento", "Localidade", "Cama", "Gravidade", "Data entrada", "Data Saída"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Double.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Double.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
