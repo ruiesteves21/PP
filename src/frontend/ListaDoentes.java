@@ -8,14 +8,11 @@ package frontend;
 
 import backend.ListaDoente;
 import backend.Doente;
-import backend.Hospital;
 import javax.swing.JOptionPane;
 import backend.Serializacao;
-import java.util.ArrayList;
 import backend.Sistema;
-import java.util.Calendar;
+import java.text.SimpleDateFormat;
 import java.util.UUID;
-import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -95,8 +92,6 @@ public class ListaDoentes extends javax.swing.JFrame {
         buttonGroup1 = new javax.swing.ButtonGroup();
         buttonGroup2 = new javax.swing.ButtonGroup();
         jLabel3 = new javax.swing.JLabel();
-        jScrollPane3 = new javax.swing.JScrollPane();
-        tableDoentes = new javax.swing.JTable();
         btEditar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -122,6 +117,8 @@ public class ListaDoentes extends javax.swing.JFrame {
         btModerado = new javax.swing.JRadioButton();
         btGrave = new javax.swing.JRadioButton();
         btMuitoGrave = new javax.swing.JRadioButton();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableDoentes = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -132,34 +129,6 @@ public class ListaDoentes extends javax.swing.JFrame {
         jLabel3.setText("Lista de Doentes");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(290, 10, 150, 20);
-
-        tableDoentes.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Código", "Nome", "Data de Nascimento", "Localidade", "Cama", "Gravidade", "Data entrada", "Data Saída"
-            }
-        ) {
-            Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
-            };
-            boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false
-            };
-
-            public Class getColumnClass(int columnIndex) {
-                return types [columnIndex];
-            }
-
-            public boolean isCellEditable(int rowIndex, int columnIndex) {
-                return canEdit [columnIndex];
-            }
-        });
-        jScrollPane3.setViewportView(tableDoentes);
-
-        getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(10, 50, 760, 210);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -325,6 +294,22 @@ public class ListaDoentes extends javax.swing.JFrame {
         getContentPane().add(btMuitoGrave);
         btMuitoGrave.setBounds(540, 290, 83, 23);
 
+        tableDoentes.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null}
+            },
+            new String [] {
+                "Codigo", "Nome", "Data de Nascimento", "Localidade", "Cama", "Data Entrada", "Data de Saída"
+            }
+        ));
+        jScrollPane1.setViewportView(tableDoentes);
+
+        getContentPane().add(jScrollPane1);
+        jScrollPane1.setBounds(30, 60, 740, 210);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaDoentesFundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 850, 520);
@@ -388,6 +373,11 @@ public class ListaDoentes extends javax.swing.JFrame {
        // TODO add your handling code here:
         String id = UUID.randomUUID().toString();
         
+        SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy");
+        String dataNascimento = sdf.format(DataNasc.getDate());  
+        String dataDeEntrada = sdf.format(DataEntrada.getDate()); 
+        String dataDeSaida = sdf.format(DataSaida.getDate()); 
+                
      /*int index = tableDoentes.getSelectedRow();
         
                 
@@ -468,7 +458,7 @@ public class ListaDoentes extends javax.swing.JFrame {
                 }
             }
         
-        Doente doente = new Doente(id, txtNome.getText(), txtLocalidade.getText(), Gravidade, DataNasc.getCalendar(), DataEntrada.getCalendar(), DataSaida.getCalendar(), Integer.parseInt(txtCama.getText()));
+        Doente doente = new Doente(id, txtNome.getText(), txtLocalidade.getText(), Gravidade, dataNascimento, dataDeEntrada, dataDeSaida, Integer.parseInt(txtCama.getText()));
        
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().adicionar(doente);
@@ -519,7 +509,6 @@ public class ListaDoentes extends javax.swing.JFrame {
         ListaHospitais listaHospitais = new ListaHospitais(sistema,bd);
         listaHospitais.setLocationRelativeTo(null);
         listaHospitais.setVisible(true);
-        this.close();
     }//GEN-LAST:event_imgHomeMouseClicked
 
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
@@ -622,7 +611,7 @@ public class ListaDoentes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
-    private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JLabel labelCodigo;
     private javax.swing.JTable tableDoentes;
     private javax.swing.JTextField txtCama;
@@ -631,7 +620,5 @@ public class ListaDoentes extends javax.swing.JFrame {
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 
-    private void close() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+ 
 }

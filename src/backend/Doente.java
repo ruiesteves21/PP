@@ -20,16 +20,16 @@ public class Doente implements Serializable
     private String nome;
     private String localidade;
     private String gravidade;
-    private Calendar dataNasc;
-    private Calendar dataEntrada;
-    private Calendar dataSaida;
+    private String dataNasc;
+    private String dataEntrada;
+    private String dataSaida;
 
 
     
     public Doente(){   
     }
 
-    public Doente(String idDoente, String nome, String localidade, String gravidade, Calendar dataNasc, Calendar dataEntrada, Calendar dataSaida,int nCama) {
+    public Doente(String idDoente, String nome, String localidade, String gravidade, String dataNasc, String dataEntrada, String dataSaida,int nCama) {
         this.idDoente = idDoente;
         this.nome = nome;
         this.localidade = localidade;
@@ -61,7 +61,7 @@ public class Doente implements Serializable
         return gravidade;
     }
 
-    public Calendar getDataNasc() {
+    public String getDataNasc() {
         return dataNasc;
     }
 
@@ -69,11 +69,11 @@ public class Doente implements Serializable
         return nCama;
     }
 
-    public Calendar getDataEntrada() {
+    public String getDataEntrada() {
         return dataEntrada;
     }
 
-    public Calendar getDataSaida() {
+    public String getDataSaida() {
         return dataSaida;
     }
     
@@ -103,15 +103,15 @@ public class Doente implements Serializable
         this.gravidade = gravidade;
     }
 
-    public void setDataNasc(Calendar dataNasc) {
+    public void setDataNasc(String dataNasc) {
         this.dataNasc = dataNasc;
     }
    
-    public void setDataEntrada(Calendar dataEntrada){
+    public void setDataEntrada(String dataEntrada){
         this.dataEntrada = dataEntrada;
     }
 
-    public void setDataSaida(Calendar dataSaida){
+    public void setDataSaida(String dataSaida){
         this.dataSaida = dataSaida;
     }
     
@@ -159,10 +159,10 @@ public class Doente implements Serializable
     }
     
     
-    public void setTeveAlta(Calendar dt){
+    /*public void setTeveAlta(String dt){
         this.gravidade = "Teve Alta";
         this.dataSaida = Calendar.getInstance();;
-    }
+    }*/
     
     @Override
     public String toString() {
