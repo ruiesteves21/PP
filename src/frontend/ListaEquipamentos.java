@@ -59,7 +59,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             
             Equipamento e = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(i);
             
-            model.addRow(new Object[]{e.getIdEquip(),e.getTipoEquipamento(),e.getIndicacao(),e.getDoente()});
+            model.addRow(new Object[]{e.getIdEquip(),e.getIndicacao(), e.getTipoEquipamento(),e.getDoente()});
  
         }
         
@@ -339,7 +339,16 @@ public class ListaEquipamentos extends javax.swing.JFrame {
          sistema.getListaEquipamento().getListaEquipamento().stream().filter((equipamento) -> (equipamento.getDoente().equals(txtDoente.getText()))).forEachOrdered((Equipamento) -> {
          result.add(Equipamento);
          }); */
-  
+        
+         if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Selecione o tipo de equipamento!!");
+            return;
+         }
+         
+          if(!btLivre.isSelected() && !btOcupado.isSelected() ) {
+            JOptionPane.showMessageDialog(null, "Selecione a disponibilidade do equipamento!!");
+            return;
+          }
                       
         String Tipo="";
             if(btVentilador.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
@@ -357,10 +366,10 @@ public class ListaEquipamentos extends javax.swing.JFrame {
          String Disponibilidade="";
          
             if(btLivre.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
-                Disponibilidade = "Ventilador";
+                Disponibilidade = "Livre";
             }else{
                 if(btOcupado.isSelected()) {
-                    Disponibilidade = "Desfibrilhador";
+                    Disponibilidade = "Ocupado";
                 }
             }
         
@@ -386,8 +395,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
        
            
        
-        if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Selecione o tipo de equipamento!!");
+        
         
         
         if(btVentilador.isSelected()) {
@@ -405,12 +413,10 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             carregarTabela();
 
                 }        
-        }        
+                
         
         
-        if(!btLivre.isSelected() && !btOcupado.isSelected() ) {
-            JOptionPane.showMessageDialog(null, "Selecione a disponibilidade do equipamento!!");
-        
+       
         
         if(btLivre.isSelected()) {
            disponibilidadeEquipamento.setIndicacao("Livre");          
@@ -422,7 +428,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             carregarTabela();
             }
                   
-        }*/      
+        */      
        
         } catch(RuntimeException e) {
             JOptionPane.showMessageDialog(null,"Este equipamento já se encontra registado","Erro",JOptionPane.ERROR_MESSAGE);
