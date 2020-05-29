@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package frontend;
+import backend.Doente;
 import backend.Hospital;
 import backend.Equipamento;
 import backend.ListaEquipamento;
@@ -28,6 +29,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     private Serializacao bd;
     private int indiceEnfermaria;
     private int indiceHospital;
+    private int indiceMedico;
     
     /**
      * Creates new form ListaEquipamentos
@@ -41,6 +43,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         this.indiceHospital = indiceHospital;
         
         carregarTabela();
+        carregarComboBox();
         labelCodigo.setVisible(false);
         txtCodigo.setVisible(false); 
       
@@ -62,7 +65,18 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         
          table.setModel(model);
     }
+    
+    private void carregarComboBox() {
         
+        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().size(); i++) {
+            
+            Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(i);
+            
+            comboDoente.addItem(doente.getNomeDoente());
+        }
+    }
+    
+    
     private void guardarAlteracoes() {
         bd.gravaSistema(sistema);
     }
@@ -82,7 +96,6 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         labelCodigo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtDoente = new javax.swing.JTextField();
         txtCodigo = new javax.swing.JTextField();
         btInserir = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
@@ -97,6 +110,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         btOutro = new javax.swing.JRadioButton();
         btLivre = new javax.swing.JRadioButton();
         btOcupado = new javax.swing.JRadioButton();
+        comboDoente = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -110,7 +124,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Tipo", "Disponibilidade", "Doente"
+                "Codigo", "Disponibilidade", "Tipo", "Doente"
             }
         ) {
             Class[] types = new Class [] {
@@ -157,8 +171,6 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         jLabel4.setText("Doente :");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(10, 110, 60, 20);
-        getContentPane().add(txtDoente);
-        txtDoente.setBounds(80, 100, 110, 30);
 
         txtCodigo.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -166,7 +178,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(80, 60, 110, 30);
+        txtCodigo.setBounds(70, 70, 130, 30);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
@@ -176,7 +188,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btInserir);
-        btInserir.setBounds(310, 350, 80, 30);
+        btInserir.setBounds(210, 350, 80, 30);
 
         btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimpar.setText("Limpar");
@@ -186,7 +198,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(410, 350, 80, 30);
+        btLimpar.setBounds(420, 350, 80, 30);
 
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
@@ -196,7 +208,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(510, 350, 80, 29);
+        btExcluir.setBounds(520, 350, 80, 29);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -206,7 +218,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(210, 350, 80, 29);
+        btEditar.setBounds(310, 350, 80, 29);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel9.setText("Tipo :");
@@ -248,7 +260,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btVentilador);
-        btVentilador.setBounds(10, 170, 80, 23);
+        btVentilador.setBounds(10, 170, 110, 23);
 
         btDesfibrilhador.setBackground(new java.awt.Color(213, 234, 242));
         btDesfibrilhador.setText("Desfibrilhador");
@@ -258,7 +270,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btDesfibrilhador);
-        btDesfibrilhador.setBounds(10, 200, 93, 23);
+        btDesfibrilhador.setBounds(10, 200, 110, 23);
 
         btOutro.setBackground(new java.awt.Color(213, 234, 242));
         btOutro.setText("Outro");
@@ -268,7 +280,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btOutro);
-        btOutro.setBounds(10, 230, 60, 23);
+        btOutro.setBounds(10, 230, 110, 23);
 
         btLivre.setBackground(new java.awt.Color(213, 234, 242));
         btLivre.setText("Livre");
@@ -278,7 +290,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLivre);
-        btLivre.setBounds(10, 290, 49, 23);
+        btLivre.setBounds(10, 290, 110, 23);
 
         btOcupado.setBackground(new java.awt.Color(213, 234, 242));
         btOcupado.setText("Ocupado");
@@ -288,7 +300,11 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btOcupado);
-        btOcupado.setBounds(10, 320, 70, 23);
+        btOcupado.setBounds(10, 320, 110, 23);
+
+        comboDoente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Item -- " }));
+        getContentPane().add(comboDoente);
+        comboDoente.setBounds(70, 110, 130, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/listaEquipamentosfundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -308,21 +324,31 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         btDesfibrilhador.setSelected(false);
         btOutro.setSelected(false);
         btLivre.setSelected(false);
-        btOcupado.setSelected(false);
-        txtCodigo.setText(null);
-        txtDoente.setText(null);
+        btOcupado.setSelected(false);       
+        comboDoente.setSelectedItem(null);
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
         
-         String id = UUID.randomUUID().toString();
-        
-        var result = new ArrayList<Equipamento>();
+        String id = UUID.randomUUID().toString();
+         
+        String doenteSelecionado = comboDoente.getSelectedItem().toString();
+         
+        /*var result = new ArrayList<Equipamento>();
          sistema.getListaEquipamento().getListaEquipamento().stream().filter((equipamento) -> (equipamento.getDoente().equals(txtDoente.getText()))).forEachOrdered((Equipamento) -> {
          result.add(Equipamento);
-         }); 
-  
+         }); */
+        
+        if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
+           JOptionPane.showMessageDialog(null,"Selecione o tipo de equipamento.","Erro",JOptionPane.ERROR_MESSAGE);
+            return;
+        }
+        
+         if(!btLivre.isSelected() && !btOcupado.isSelected() ) {
+            JOptionPane.showMessageDialog(null,"Selecione a disponibilidade do equipamento.","Erro",JOptionPane.ERROR_MESSAGE);
+            return;
+         }
                       
         String Tipo="";
             if(btVentilador.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
@@ -340,38 +366,31 @@ public class ListaEquipamentos extends javax.swing.JFrame {
          String Disponibilidade="";
          
             if(btLivre.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
-                Disponibilidade = "Ventilador";
+                Disponibilidade = "Disponivel";
             }else{
                 if(btOcupado.isSelected()) {
-                    Disponibilidade = "Desfibrilhador";
+                    Disponibilidade = "Ocupado";
                 }
             }
         
        
-        Equipamento eq = new Equipamento(id, Tipo, Disponibilidade, txtDoente.getText());
+        Equipamento eq = new Equipamento(id, Tipo, Disponibilidade, doenteSelecionado);
         
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().adicionar(eq);
         JOptionPane.showMessageDialog(null, "Equipamento registado!");
         txtCodigo.setText("");
-        txtDoente.setText(""); 
+        comboDoente.setSelectedItem(null); 
         btVentilador.setSelected(false);
         btDesfibrilhador.setSelected(false);
         btOutro.setSelected(false);
         btLivre.setSelected(false);
         btOcupado.setSelected(false);
         
-        carregarTabela();
-        
-        /*int index = table.getSelectedRow();
+       /* int index = table.getSelectedRow();
         Equipamento tipoEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
         Equipamento disponibilidadeEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
-       
-           
-       
-        if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Selecione o tipo de equipamento!!");
-        
+             
         
         if(btVentilador.isSelected()) {
            tipoEquipamento.setTipoEquipamento("Ventilador");          
@@ -386,14 +405,8 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         if(btOutro.isSelected()) {
             tipoEquipamento.setTipoEquipamento("Outro");              
             carregarTabela();
-
-                }        
-        }        
-        
-        
-        if(!btLivre.isSelected() && !btOcupado.isSelected() ) {
-            JOptionPane.showMessageDialog(null, "Selecione a disponibilidade do equipamento!!");
-        
+        }                        
+               
         
         if(btLivre.isSelected()) {
            disponibilidadeEquipamento.setIndicacao("Livre");          
@@ -403,10 +416,10 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         if(btOcupado.isSelected()) {
             disponibilidadeEquipamento.setIndicacao("Ocupado");        
             carregarTabela();
-            }
-                  
-        }*/      
-       
+            }*/
+                
+        carregarTabela();
+            
         } catch(RuntimeException e) {
             JOptionPane.showMessageDialog(null,"Este equipamento já se encontra registado","Erro",JOptionPane.ERROR_MESSAGE);
         }
@@ -418,7 +431,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
         int indiceEquipamento = table.getSelectedRow();
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setDoente(txtDoente.getText());
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setDoente(comboDoente.getSelectedItem().toString());
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setDoente(btVentilador.getText());
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setDoente(btDesfibrilhador.getText());
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setDoente(btOutro.getText());
@@ -557,6 +570,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     private javax.swing.JRadioButton btOcupado;
     private javax.swing.JRadioButton btOutro;
     private javax.swing.JRadioButton btVentilador;
+    private javax.swing.JComboBox<String> comboDoente;
     private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
@@ -569,6 +583,5 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     private javax.swing.JLabel labelCodigo;
     private javax.swing.JTable table;
     private javax.swing.JTextField txtCodigo;
-    private javax.swing.JTextField txtDoente;
     // End of variables declaration//GEN-END:variables
 }

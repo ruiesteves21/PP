@@ -8,6 +8,7 @@ package frontend;
 
 import backend.ListaDoente;
 import backend.Doente;
+import backend.Enfermaria;
 import javax.swing.JOptionPane;
 import backend.Serializacao;
 import backend.Sistema;
@@ -46,6 +47,7 @@ public class ListaDoentes extends javax.swing.JFrame {
         this.indiceMedico = indiceMedico;
         
         carregarTabela();
+        carregarComboBox();
         labelCodigo.setVisible(false);
         txtCodigo.setVisible(false);
         //listaDoente = sistema.getListaDoente().getListaDoente().get(sistema.getHospitalSelecionado()).getListaDoente();
@@ -60,12 +62,23 @@ public class ListaDoentes extends javax.swing.JFrame {
             
             Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(i);
             
-            model.addRow(new Object[]{doente.getIdDoente(), doente.getNome(), doente.getDataNasc(), doente.getLocalidade(), doente.getNCama(), doente.getGravidade(), doente.getDataEntrada(), doente.getDataSaida()});
+            model.addRow(new Object[]{doente.getIdDoente(), doente.getNomeDoente(), doente.getDataNasc(), doente.getLocalidade(), doente.getNCama(), doente.getGravidade(), doente.getDataEntrada(), doente.getDataSaida()});
 
         }
         tableDoentes.setModel(model);
     }
-
+    
+    private void carregarComboBox() {
+        
+                 
+          /*for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size(); i++) {
+             
+            Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(i);
+            
+            comboCama.addItem(enf.getNCamas());*/
+          
+    }
+    
     private void guardarAlteracoes() {
     bd.gravaSistema(sistema);
     }
@@ -114,12 +127,12 @@ public class ListaDoentes extends javax.swing.JFrame {
         DataSaida = new com.toedter.calendar.JDateChooser();
         DataNasc = new com.toedter.calendar.JDateChooser();
         DataEntrada = new com.toedter.calendar.JDateChooser();
-        imgGuardar = new javax.swing.JLabel();
         btModerado = new javax.swing.JRadioButton();
         btGrave = new javax.swing.JRadioButton();
         btMuitoGrave = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDoentes = new javax.swing.JTable();
+        comboCama = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -217,7 +230,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtCama);
-        txtCama.setBounds(120, 450, 100, 30);
+        txtCama.setBounds(520, 330, 100, 30);
         getContentPane().add(txtLocalidade);
         txtLocalidade.setBounds(120, 400, 100, 30);
         getContentPane().add(txtNome);
@@ -234,7 +247,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgRetroceder);
-        imgRetroceder.setBounds(600, 10, 24, 30);
+        imgRetroceder.setBounds(690, 10, 24, 30);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -243,22 +256,13 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(640, 10, 30, 30);
+        imgHome.setBounds(740, 10, 30, 30);
         getContentPane().add(DataSaida);
         DataSaida.setBounds(390, 450, 110, 30);
         getContentPane().add(DataNasc);
         DataNasc.setBounds(390, 340, 110, 30);
         getContentPane().add(DataEntrada);
         DataEntrada.setBounds(390, 400, 110, 30);
-
-        imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
-        imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgGuardarMouseClicked(evt);
-            }
-        });
-        getContentPane().add(imgGuardar);
-        imgGuardar.setBounds(560, 10, 30, 30);
 
         btModerado.setText("Moderado");
         btModerado.addActionListener(new java.awt.event.ActionListener() {
@@ -267,7 +271,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btModerado);
-        btModerado.setBounds(360, 290, 80, 21);
+        btModerado.setBounds(360, 290, 80, 23);
 
         btGrave.setText("Grave");
         btGrave.addActionListener(new java.awt.event.ActionListener() {
@@ -276,7 +280,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btGrave);
-        btGrave.setBounds(460, 290, 60, 21);
+        btGrave.setBounds(460, 290, 60, 23);
 
         btMuitoGrave.setText("Muito Grave");
         btMuitoGrave.addActionListener(new java.awt.event.ActionListener() {
@@ -285,7 +289,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btMuitoGrave);
-        btMuitoGrave.setBounds(540, 290, 79, 21);
+        btMuitoGrave.setBounds(540, 290, 83, 23);
 
         tableDoentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -302,6 +306,10 @@ public class ListaDoentes extends javax.swing.JFrame {
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(30, 60, 740, 210);
+
+        comboCama.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Cama --", " " }));
+        getContentPane().add(comboCama);
+        comboCama.setBounds(100, 460, 140, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaDoentesFundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -421,7 +429,7 @@ public class ListaDoentes extends javax.swing.JFrame {
              return;
         }
         
-       */ 
+       
         if(DataEntrada.getDate().getTime() >= DataSaida.getDate().getTime()){
             JOptionPane.showMessageDialog(null, "A data de entrada não pode ser superior à data de saída!!!");
             DataEntrada.requestFocus();
@@ -437,7 +445,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             DataNasc.requestFocus();
             return;
         }
-        
+        */
         String Gravidade="";
         
             if(btModerado.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
@@ -500,26 +508,19 @@ public class ListaDoentes extends javax.swing.JFrame {
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
         dispose();
-        ListaHospitais listaHospitais = new ListaHospitais(sistema,bd);
-        listaHospitais.setLocationRelativeTo(null);
-        listaHospitais.setVisible(true);
+        PaginaInicialUtilizador paginaInicial = new PaginaInicialUtilizador(sistema,bd);
+        paginaInicial.setLocationRelativeTo(null);
+        paginaInicial.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
 
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
         dispose();
-       ListaProfissionaisSaude p = new ListaProfissionaisSaude(sistema,bd,indiceHospital,indiceMedico);
+       ListaProfissionaisSaude p = new ListaProfissionaisSaude(sistema,bd,indiceHospital,indiceEnfermaria);
         //FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow());
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
-
-    private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
-        // TODO add your handling code here:
-        //sistema.getListaDoente().adicionar(new Doente (Integer.parseInt(txtCodigo.getText()),txtNome.getText(), txtLocalidade.getText(), ComboGrav.getSelectedItem(),/*DataNasc.getDate(), DataEntrada.getLocalDate()), DataSaida.getLocalDate()*/, Integer.parseInt(txtCama.getText()), txtEnfermaria.getText(), txtMedico.getText()));
-        guardarAlteracoes();
-        JOptionPane.showMessageDialog(this, "Alterações guardadas.");
-    }//GEN-LAST:event_imgGuardarMouseClicked
 
     private void btModeradoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btModeradoActionPerformed
         // TODO add your handling code here:
@@ -593,7 +594,7 @@ public class ListaDoentes extends javax.swing.JFrame {
     private javax.swing.JRadioButton btMuitoGrave;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JLabel imgGuardar;
+    private javax.swing.JComboBox<String> comboCama;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;
