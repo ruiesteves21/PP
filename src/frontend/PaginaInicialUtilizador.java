@@ -34,6 +34,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         
         //O processo de fecho da janela será controlado pelo programa
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
+                
         
     }
     

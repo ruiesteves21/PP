@@ -71,12 +71,12 @@ public class ListaDoentes extends javax.swing.JFrame {
     private void carregarComboBox() {
         
                  
-          /*for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size(); i++) {
+          for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size(); i++) {
              
             Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(i);
             
-            comboCama.addItem(enf.getNCamas());*/
-          
+            comboCama.addItem(String.valueOf(enf.getNCamas()));
+          }
     }
     
     private void guardarAlteracoes() {
@@ -472,7 +472,7 @@ public class ListaDoentes extends javax.swing.JFrame {
        
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().adicionar(doente);
-        JOptionPane.showMessageDialog(null, "Doente adicionado!");
+        JOptionPane.showMessageDialog(null, "Doente " + txtNome.getText() + " adicionado!");
         txtNome.setText("");
         txtLocalidade.setText("");
         txtCodigo.setText("");
