@@ -13,7 +13,6 @@ import backend.Serializacao;
 import backend.Sistema;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
-import java.util.Date;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -183,6 +182,7 @@ public class ListaDoentes extends javax.swing.JFrame {
 
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
+        btExcluir.setEnabled(false);
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btExcluirActionPerformed(evt);
@@ -193,6 +193,7 @@ public class ListaDoentes extends javax.swing.JFrame {
 
         btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimpar.setText("Limpar");
+        btLimpar.setEnabled(false);
         btLimpar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btLimparActionPerformed(evt);
@@ -203,6 +204,7 @@ public class ListaDoentes extends javax.swing.JFrame {
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
+        btInserir.setEnabled(false);
         btInserir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btInserirActionPerformed(evt);
@@ -211,6 +213,7 @@ public class ListaDoentes extends javax.swing.JFrame {
         getContentPane().add(btInserir);
         btInserir.setBounds(680, 300, 100, 30);
 
+        txtCama.setEnabled(false);
         txtCama.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCamaActionPerformed(evt);
@@ -218,8 +221,12 @@ public class ListaDoentes extends javax.swing.JFrame {
         });
         getContentPane().add(txtCama);
         txtCama.setBounds(120, 450, 100, 30);
+
+        txtLocalidade.setEnabled(false);
         getContentPane().add(txtLocalidade);
         txtLocalidade.setBounds(120, 400, 100, 30);
+
+        txtNome.setEnabled(false);
         getContentPane().add(txtNome);
         txtNome.setBounds(120, 350, 100, 30);
 
@@ -267,7 +274,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btModerado);
-        btModerado.setBounds(360, 290, 80, 21);
+        btModerado.setBounds(360, 290, 80, 23);
 
         btGrave.setText("Grave");
         btGrave.addActionListener(new java.awt.event.ActionListener() {
@@ -276,7 +283,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btGrave);
-        btGrave.setBounds(460, 290, 60, 21);
+        btGrave.setBounds(460, 290, 60, 23);
 
         btMuitoGrave.setText("Muito Grave");
         btMuitoGrave.addActionListener(new java.awt.event.ActionListener() {
@@ -285,7 +292,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btMuitoGrave);
-        btMuitoGrave.setBounds(540, 290, 79, 21);
+        btMuitoGrave.setBounds(540, 290, 83, 23);
 
         tableDoentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -313,19 +320,19 @@ public class ListaDoentes extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
-       /* int indiceDoente = tableDoentes.getSelectedRow();
-        
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().setNome(txtNome.getText());
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().setLocalidade(txtLocalidade.getText());
-     //   sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().setGravidade(btModerado.getSelectedItem());
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().setDataNasc(DataNasc.getDate());
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().setDataEntrada(DataEntrada.getDate());
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().setDataSaida(DataSaida.getDate());
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().setnCamas(Integer.parseInt(txtCamas.getText()));
-        
-        carregarTabela();
-        guardarAlteracoes();
-       */
+        btInserir.setEnabled(true);
+        btExcluir.setEnabled(true);
+        btLimpar.setEnabled(true);
+        txtCodigo.setEnabled(true);
+        txtNome.setEnabled(true);
+        DataNasc.setEnabled(true);
+        txtLocalidade.setEnabled(true);
+        txtCama.setEnabled(true);
+        btModerado.setEnabled(true);
+        btGrave.setEnabled(true);
+        btMuitoGrave.setEnabled(true);
+        DataEntrada.setEnabled(true);
+        DataSaida.setEnabled(true);
     }//GEN-LAST:event_btEditarActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
@@ -420,8 +427,7 @@ public class ListaDoentes extends javax.swing.JFrame {
              txtLocalidade.requestFocus();
              return;
         }
-        
-       */ 
+            
         if(DataEntrada.getDate().getTime() >= DataSaida.getDate().getTime()){
             JOptionPane.showMessageDialog(null, "A data de entrada não pode ser superior à data de saída!!!");
             DataEntrada.requestFocus();
@@ -436,7 +442,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data de entrada ou saída!!!");
             DataNasc.requestFocus();
             return;
-        }
+        }*/
         
         String Gravidade="";
         
