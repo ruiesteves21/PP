@@ -49,7 +49,7 @@ public class Doente implements Serializable
         return idDoente;
     }
 
-    public String getNome() {
+    public String getNomeDoente() {
         return nome;
     }
 
