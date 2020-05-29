@@ -40,7 +40,7 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
              
             Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().get(i);
              
-            model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getNCamas(), enf.getIdEnfermaria() });
+            model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getnCamas(), enf.getIdEnfermaria() });
          }
          
           table.setModel(model);

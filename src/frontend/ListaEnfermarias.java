@@ -46,7 +46,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
              
             Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(i);
              
-            model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getNCamas(), enf.getIdEnfermaria() });
+            model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getnCamas(), enf.getIdEnfermaria() });
          }
          
           table.setModel(model);
@@ -282,7 +282,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         // TODO add your handling code here:
       
        String id = UUID.randomUUID().toString();
-     
        
          if (txtNome.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o nome da enfermaria","Erro",JOptionPane.ERROR_MESSAGE);

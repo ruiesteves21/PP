@@ -67,7 +67,7 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
         return tipo;
     }
 
-    public int getNCamas() {
+    public int getnCamas() {
         return nCamas;
     }
     
