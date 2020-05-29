@@ -359,7 +359,7 @@ public class ListaHospitais extends javax.swing.JFrame {
                                                     //selecionado da tabela
         if (indiceHospital == -1){
             
-              JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE); 
+              JOptionPane.showMessageDialog(null,"Selecione um hospital","Atenção",JOptionPane.WARNING_MESSAGE); 
         }  else {             
         
         ListaEnfermarias enf = new ListaEnfermarias(sistema, bd, indiceHospital);

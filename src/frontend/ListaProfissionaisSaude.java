@@ -343,12 +343,17 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
        //int c = tableProfissionaisSaude.getSelectedRow();
        int indiceMedico = tableMedicos.getSelectedRow();    
        
+        if (indiceMedico == -1){
+                JOptionPane.showMessageDialog(null,"Selecione um médico","Atenção",JOptionPane.WARNING_MESSAGE); 
+        } else {
+        
         ListaDoentes doentes = new ListaDoentes(sistema, bd, indiceHospital, indiceEnfermaria, indiceMedico);
         
         guardarAlteracoes();
         dispose();
         doentes.setVisible(true);
         doentes.setLocationRelativeTo(null);
+        }
        
         
     }//GEN-LAST:event_btLDoentesActionPerformed

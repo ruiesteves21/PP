@@ -397,7 +397,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         
         if (indiceEnfermaria == -1){
             
-              JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE); 
+              JOptionPane.showMessageDialog(null,"Selecione um equipamento","Atenção",JOptionPane.WARNING_MESSAGE); 
         }  else {    
                     
         ListaEquipamentos equipamento = new ListaEquipamentos(sistema, bd, indiceHospital, indiceEnfermaria);
@@ -414,7 +414,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         
         if (indiceEnfermaria == -1){
             
-              JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE); 
+              JOptionPane.showMessageDialog(null,"Selecione um enfermeiro","Atenção",JOptionPane.WARNING_MESSAGE); 
         }  else {   
                    
         ListaProfissionaisSaude p = new ListaProfissionaisSaude(sistema, bd, indiceHospital, indiceEnfermaria);
