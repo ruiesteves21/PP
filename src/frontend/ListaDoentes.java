@@ -340,7 +340,7 @@ public class ListaDoentes extends javax.swing.JFrame {
     carregarTabela();
     guardarAlteracoes();  
     
-    
+           }
  
     }//GEN-LAST:event_btEditarActionPerformed
 
@@ -350,9 +350,9 @@ public class ListaDoentes extends javax.swing.JFrame {
         DataNasc.setDate(null);
         txtLocalidade.setText(null);
         txtCama.setText(null);
-       /* btModerado.setSelectedItem(null);
-        btGrave.setSelectedItem(null);
-        btMuitoGrave.setSelectedItem(null);*/
+        btModerado.setSelected(false);
+        btGrave.setSelected(false);
+        btMuitoGrave.setSelected(false);
         DataEntrada.setDate(null);
         DataSaida.setDate(null);
         
