@@ -328,6 +328,10 @@ public class ListaHospitais extends javax.swing.JFrame {
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
         int indice = table.getSelectedRow();
+           if (indice == -1){
+                JOptionPane.showMessageDialog(null,"Selecione um hospital","Atenção",JOptionPane.WARNING_MESSAGE); 
+        
+           }
 
         sistema.getListaHospital().getListaHospital().get(indice).setNome(txtNome.getText());
         sistema.getListaHospital().getListaHospital().get(indice).setLocalidade(txtLocalidade.getText());

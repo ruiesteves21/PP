@@ -343,7 +343,10 @@ public class ListaEnfermarias extends javax.swing.JFrame {
        
         
         int indiceEnfermaria = table.getSelectedRow();
-
+        if (indiceEnfermaria == -1){
+                JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE); 
+        
+           }
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).setNome(txtNome.getText());
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).setnCamas(Integer.parseInt(txtCamas.getText()));
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).setTipo(ComboTip.getSelectedItem().toString());
