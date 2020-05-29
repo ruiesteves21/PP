@@ -322,7 +322,7 @@ public class ListaDoentes extends javax.swing.JFrame {
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
     int indiceDoente = tableDoentes.getSelectedRow();
-           if (indiceHospital == -1){
+           if (indiceDoente == -1){
             
               JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE); 
     sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setNome(txtNome.getText());
