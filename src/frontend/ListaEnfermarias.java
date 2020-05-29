@@ -46,7 +46,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
              
             Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(i);
              
-            model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getnCamas(), enf.getIdEnfermaria() });
+            model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getNCamas(), enf.getIdEnfermaria() });
          }
          
           table.setModel(model);
@@ -266,9 +266,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
          DefaultTableModel model = (DefaultTableModel)table.getModel();
         int c = table.getSelectedRow();
         if(c >= 0){
-            model.removeRow(c); 
-            //remove a linha selecionada
-            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().remove(c);
+            model.removeRow(c); //remove a linha selecionada
             guardarAlteracoes();
             JOptionPane.showMessageDialog(this, "Removido!");
         }
@@ -282,6 +280,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         // TODO add your handling code here:
       
        String id = UUID.randomUUID().toString();
+     
        
          if (txtNome.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o nome da enfermaria","Erro",JOptionPane.ERROR_MESSAGE);
