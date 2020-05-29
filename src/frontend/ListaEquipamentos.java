@@ -434,11 +434,11 @@ public class ListaEquipamentos extends javax.swing.JFrame {
          DefaultTableModel model = (DefaultTableModel)table.getModel();
         int c = table.getSelectedRow();
         if(c >= 0){
-            model.removeRow(c); //remove a linha selecionada
+            model.removeRow(c); 
+            //remove a linha selecionada
             sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().remove(c);
-            JOptionPane.showMessageDialog(this, "Removido!");
             guardarAlteracoes();
-            
+            JOptionPane.showMessageDialog(this, "Removido!");
         }
         else
         {

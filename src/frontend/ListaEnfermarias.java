@@ -266,7 +266,9 @@ public class ListaEnfermarias extends javax.swing.JFrame {
          DefaultTableModel model = (DefaultTableModel)table.getModel();
         int c = table.getSelectedRow();
         if(c >= 0){
-            model.removeRow(c); //remove a linha selecionada
+            model.removeRow(c); 
+            //remove a linha selecionada
+            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().remove(c);
             guardarAlteracoes();
             JOptionPane.showMessageDialog(this, "Removido!");
         }
