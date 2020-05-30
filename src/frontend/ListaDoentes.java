@@ -450,17 +450,26 @@ public class ListaDoentes extends javax.swing.JFrame {
      
         int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
         
-        if (Integer.parseInt(txtCama.getText()) > nCamas || Integer.parseInt(txtCama.getText()) <= 0) {
-             JOptionPane.showMessageDialog(null,"O número da cama que inseriu não está correto", "Erro", JOptionPane.ERROR_MESSAGE);
+            if (Integer.parseInt(txtCama.getText()) > nCamas || Integer.parseInt(txtCama.getText()) <= 0) {
+             JOptionPane.showMessageDialog(null,"O número da cama que inseriu não existe", "Erro", JOptionPane.ERROR_MESSAGE);
              return;
         }
     
        
-    /*String numeroCama = tableDoentes.getValueAt(rowIndex, 4).toString();
+        String numeroCama = tableDoentes.getValueAt(rowIndex, 4).toString();
     
-        if(numeroCama.equals(txtCama.getText())){
-        
-    }*/
+             if(numeroCama.equals(txtCama.getText())) {             
+                 int row = tableDoentes.getRowCount();
+                 
+                    for (int i = 0; i < row ; i++)
+                        {
+                            if (tableDoentes.getValueAt(i, 4).toString().equals(txtCama.getText()))
+                            {
+                                JOptionPane.showMessageDialog(null,"Esta cama já se encontra ocupada", "Erro", JOptionPane.ERROR_MESSAGE);
+                                return;
+                            }
+                        }   
+            }
      
         String Gravidade="";
         
