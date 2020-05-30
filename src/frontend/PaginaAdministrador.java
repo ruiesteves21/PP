@@ -88,7 +88,10 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     private void editar() {
         int rowIndex = tabelUtilizadores.getSelectedRow();
         //Se nenhum registo selecionado, nao é possivel editar
-        if (rowIndex == -1) return;
+        if (rowIndex == -1) {
+            
+              JOptionPane.showMessageDialog(null,"Selecione um utilizador","Atenção",JOptionPane.WARNING_MESSAGE); 
+        }  else {             
         
         
         String username = (String) modeloTabelaAdmin.getValueAt(rowIndex, 0);
@@ -100,7 +103,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         } catch (ListaUtilizador.UtilizadorNaoExistenteException ex) {            
             JOptionPane.showMessageDialog(this, ex.getMessage());
         }
-        
+        }
     }
     
     private void guardarAlteracoes() {

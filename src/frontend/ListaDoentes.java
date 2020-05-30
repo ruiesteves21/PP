@@ -30,7 +30,7 @@ public class ListaDoentes extends javax.swing.JFrame {
     private int indiceHospital;
     private int indiceEnfermaria;
     private int indiceMedico;
-    private int rowIndex;
+   
   
     
     /**
@@ -131,7 +131,6 @@ public class ListaDoentes extends javax.swing.JFrame {
         btMuitoGrave = new javax.swing.JRadioButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDoentes = new javax.swing.JTable();
-        comboCama = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -224,7 +223,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtCama);
-        txtCama.setBounds(520, 350, 100, 30);
+        txtCama.setBounds(120, 450, 100, 30);
         getContentPane().add(txtLocalidade);
         txtLocalidade.setBounds(120, 400, 100, 30);
         getContentPane().add(txtNome);
@@ -297,15 +296,6 @@ public class ListaDoentes extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(30, 60, 740, 210);
 
-        comboCama.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Cama --", " " }));
-        comboCama.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                comboCamaActionPerformed(evt);
-            }
-        });
-        getContentPane().add(comboCama);
-        comboCama.setBounds(100, 460, 140, 20);
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaDoentesFundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 850, 520);
@@ -329,7 +319,7 @@ public class ListaDoentes extends javax.swing.JFrame {
     sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setDataEntrada(DataEntrada.getCalendar().toString());
     sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setDataNasc(DataNasc.getCalendar().toString());
     sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setDataSaida(DataSaida.getDate().toString());
-    sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setCama(Integer.parseInt(comboCama.getSelectedItem().toString()));
+   // sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setCama(Integer.parseInt(comboCama.getSelectedItem().toString()));
     
   
     carregarTabela();
@@ -374,7 +364,7 @@ public class ListaDoentes extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCamaActionPerformed
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
-       // TODO add your handling code here:
+       // TODO add your handling code here:       
         String id = UUID.randomUUID().toString();
         
         SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy");
@@ -382,8 +372,9 @@ public class ListaDoentes extends javax.swing.JFrame {
         String dataDeEntrada = sdf.format(DataEntrada.getDate()); 
         String dataDeSaida = sdf.format(DataSaida.getDate()); 
         
+        //int rowIndex = tableDoentes.getSelectedRow();
         
-              
+
      /*int index = tableDoentes.getSelectedRow();
         
                 
@@ -461,11 +452,11 @@ public class ListaDoentes extends javax.swing.JFrame {
                      return;
                 }
     
-      String numeroCama = tableDoentes.getValueAt(rowIndex, 4).toString();  
+    /*  String numeroCama = tableDoentes.getValueAt(rowIndex, 4).toString();  
          
             
       
-         /*   //Se o que está na coluna 4 for diferente ao que está na txtCamas
+            //Se o que está na coluna 4 for diferente ao que está na txtCamas
             if(numeroCama.equals(txtCama.getText())) 
                 {             
                   int row = tableDoentes.getRowCount();  
@@ -585,10 +576,6 @@ public class ListaDoentes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btMuitoGraveActionPerformed
 
-    private void comboCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCamaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_comboCamaActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -637,7 +624,6 @@ public class ListaDoentes extends javax.swing.JFrame {
     private javax.swing.JRadioButton btMuitoGrave;
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
-    private javax.swing.JComboBox<String> comboCama;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;
