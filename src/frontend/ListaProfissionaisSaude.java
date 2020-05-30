@@ -408,7 +408,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().adicionar(medico);
-        JOptionPane.showMessageDialog(null, "Medico registado!");
+        JOptionPane.showMessageDialog(null, "Medico " + txtNomeMedico.getText() + " registado!");
         txtNomeMedico.setText("");
         txtEspecialidade.setText("");
         
@@ -500,7 +500,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().adicionar(profSaude);
-        JOptionPane.showMessageDialog(null, "Enfermeiro registado!");
+        JOptionPane.showMessageDialog(null, "Enfermeiro " + txtNomeEnfermeiro.getText() + " registado!");
         txtNomeEnfermeiro.setText("");        
         carregarTabelaEnfermeiro();
         }catch(RuntimeException e) {

@@ -95,7 +95,6 @@ public class ListaHospitais extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         txtLocalidade = new javax.swing.JTextField();
         btEnfermaria = new javax.swing.JButton();
-        btFiltrar2 = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
@@ -124,7 +123,7 @@ public class ListaHospitais extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(20, 270, 80, 29);
+        btEditar.setBounds(110, 230, 80, 29);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel1.setText("Lista de Hospitais");
@@ -189,17 +188,7 @@ public class ListaHospitais extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEnfermaria);
-        btEnfermaria.setBounds(20, 310, 170, 29);
-
-        btFiltrar2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        btFiltrar2.setText("Filtrar");
-        btFiltrar2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btFiltrar2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(btFiltrar2);
-        btFiltrar2.setBounds(110, 270, 80, 29);
+        btEnfermaria.setBounds(20, 280, 170, 29);
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -288,7 +277,7 @@ public class ListaHospitais extends javax.swing.JFrame {
         
         try {
         sistema.getListaHospital().adicionar(h);
-        JOptionPane.showMessageDialog(null, "Hospital registado!");
+        JOptionPane.showMessageDialog(null, "Hospital " + txtNome.getText() + " registado!");
         txtNome.setText("");
         txtLocalidade.setText("");
         txtCodigo.setText(""); 
@@ -430,11 +419,6 @@ public class ListaHospitais extends javax.swing.JFrame {
         }*/
     }//GEN-LAST:event_tableMouseClicked
 
-    private void btFiltrar2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btFiltrar2ActionPerformed
-        // TODO add your handling code here:
-
-    }//GEN-LAST:event_btFiltrar2ActionPerformed
-
     
     
     /**
@@ -477,7 +461,6 @@ public class ListaHospitais extends javax.swing.JFrame {
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btEnfermaria;
     private javax.swing.JButton btExcluir;
-    private javax.swing.JButton btFiltrar2;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
     private javax.swing.JLabel imgHome;

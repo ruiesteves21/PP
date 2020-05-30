@@ -327,7 +327,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
        
        try {
        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().adicionar(enf);
-       JOptionPane.showMessageDialog(null, "Enfermaria registada!");
+       JOptionPane.showMessageDialog(null, "Enfermaria " + txtNome.getText() + " registada!");
        txtNome.setText("");
        txtCamas.setText("");
        txtCodigo.setText(""); 
