@@ -451,16 +451,16 @@ public class ListaDoentes extends javax.swing.JFrame {
         int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
         
         if (Integer.parseInt(txtCama.getText()) > nCamas || Integer.parseInt(txtCama.getText()) <= 0) {
-             JOptionPane.showMessageDialog(null,"O número da cama que inseriu não está correto", "Erro", JOptionPane.ERROR);
+             JOptionPane.showMessageDialog(null,"O número da cama que inseriu não está correto", "Erro", JOptionPane.ERROR_MESSAGE);
              return;
         }
     
        
-    String numeroCama = tableDoentes.getValueAt(rowIndex, 4).toString();
+    /*String numeroCama = tableDoentes.getValueAt(rowIndex, 4).toString();
     
         if(numeroCama.equals(txtCama.getText())){
         
-    }
+    }*/
      
         String Gravidade="";
         
