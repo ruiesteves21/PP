@@ -242,6 +242,17 @@ public class ListaHospitais extends javax.swing.JFrame {
         Se esse nome já estiver registado, não deixa registar outra vez.
         */
         
+        for (Hospital hospital :  sistema.getListaHospital().getListaHospital() )
+        {
+            if (hospital.getNome().equals(txtNome.getText()) || (hospital.getLocalidade().equals(txtLocalidade.getText())))
+            {
+                
+            }
+        
+        }
+            
+        
+        
         var result = new ArrayList<Hospital>();
          sistema.getListaHospital().getListaHospital().stream().filter((hospital) -> (hospital.getNome().equals(txtNome.getText()))).forEachOrdered((hospital) -> {
          result.add(hospital);

@@ -30,6 +30,7 @@ public class ListaDoentes extends javax.swing.JFrame {
     private int indiceHospital;
     private int indiceEnfermaria;
     private int indiceMedico;
+    private int rowIndex;
   
     
     /**
@@ -447,13 +448,19 @@ public class ListaDoentes extends javax.swing.JFrame {
         }
         */
      
-       /* int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
+        int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
         
-        if (nCamas <= 0 || nCamas > ) {
-            
-        }*/
+        if (Integer.parseInt(txtCama.getText()) > nCamas || Integer.parseInt(txtCama.getText()) <= 0) {
+             JOptionPane.showMessageDialog(null,"O número da cama que inseriu não está correto", "Erro", JOptionPane.ERROR);
+             return;
+        }
+    
+       
+    String numeroCama = tableDoentes.getValueAt(rowIndex, 4).toString();
+    
+        if(numeroCama.equals(txtCama.getText())){
         
-     
+    }
      
         String Gravidade="";
         

@@ -70,6 +70,7 @@ public class ListaEquipamento implements Serializable {
                totalVentOcupados ++;
                     }
         }
+            // totalVentOcupados = listaEquipamento.stream().filter((e) -> (e.getTipoEquipamento().equals("Ventilador") && e.getIndicacao().equals("Ocupado"))).map((_item) -> 1).reduce(totalVentOcupados, Integer::sum);
             
        if (listaEquipamento.isEmpty()){
            return 0;
