@@ -14,6 +14,7 @@ import java.util.UUID;
  */
 public class ProfissionalSaude implements Serializable {
     private String idProfSaude;
+    private Utilizador utiLigado;
     private String nomeProfSaude;
     private ListaDoente listaDoente;
     
@@ -23,7 +24,8 @@ public class ProfissionalSaude implements Serializable {
         
     }
 
-    public ProfissionalSaude(String idProfSaude, String nomeProfsaude) {
+    public ProfissionalSaude(Utilizador utiLigado, String idProfSaude, String nomeProfsaude) {
+        this.utiLigado = utiLigado;
         this.idProfSaude = idProfSaude;
         this.nomeProfSaude = nomeProfsaude;
         listaDoente = new ListaDoente();
@@ -34,6 +36,11 @@ public class ProfissionalSaude implements Serializable {
         UUID uuid = UUID.randomUUID();
         return uuid;
         }
+
+    public Utilizador getUtiLigado() {
+        return utiLigado;
+    }
+     
      
     public String getIdProfSaude() {
         return idProfSaude;

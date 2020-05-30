@@ -57,10 +57,11 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         
         for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().size(); i++) {
             
-            Equipamento e = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(i);
+            Equipamento equipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(i);
             
-            model.addRow(new Object[]{e.getIdEquip(), e.getTipoEquipamento(), e.getIndicacao(), e.getDoente()});
- 
+            if (equipamento.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+            model.addRow(new Object[]{equipamento.getIdEquip(), equipamento.getTipoEquipamento(), equipamento.getIndicacao(), equipamento.getDoente()});
+            }
         }
         
          table.setModel(model);
@@ -419,7 +420,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }*/
         
        
-        Equipamento eq = new Equipamento(id, disponibilidade, tipo, doenteSelecionado);
+        Equipamento eq = new Equipamento(sistema.getUtilizadorLigado(), id, disponibilidade, tipo, doenteSelecionado);
         
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().adicionar(eq);

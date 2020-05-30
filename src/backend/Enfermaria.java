@@ -16,7 +16,7 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
     private String nome;
     private String idEnfermaria;
     private String tipo; //normal, UCI
-    private Hospital hospitalSelecionado;
+    private Utilizador utiLigado;
     private int nCamas;
     private ListaEquipamento listaEquipamento;
     private ListaProfissionalSaude listaProfissionalSaude;
@@ -27,7 +27,8 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
     
     }
 
-    public Enfermaria(String nome, String idEnfermaria, int nCamas, String tipo) {
+    public Enfermaria(Utilizador utiLigado, String nome, String idEnfermaria, int nCamas, String tipo) {
+        this.utiLigado = utiLigado;
         this.nome = nome;
         this.idEnfermaria = idEnfermaria;
         this.tipo = tipo;
@@ -42,6 +43,10 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
         return uuid;
         }
 
+    public Utilizador getUtiLigado() {
+        return utiLigado;
+    }
+    
     public ListaEquipamento getListaEquipamento() {
         return listaEquipamento;
     }

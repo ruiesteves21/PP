@@ -17,6 +17,7 @@ public class Doente implements Serializable
 {
     private String idDoente;
     private int nCama;
+    private Utilizador utiLigado;
     private String nome;
     private String localidade;
     private String gravidade;
@@ -29,7 +30,8 @@ public class Doente implements Serializable
     public Doente(){   
     }
 
-    public Doente(String idDoente, String nome, String localidade, String gravidade, String dataNasc, String dataEntrada, String dataSaida,int nCama) {
+    public Doente(Utilizador utiLigado, String idDoente, String nome, String localidade, String gravidade, String dataNasc, String dataEntrada, String dataSaida,int nCama) {
+        this.utiLigado = utiLigado;
         this.idDoente = idDoente;
         this.nome = nome;
         this.localidade = localidade;
@@ -41,10 +43,13 @@ public class Doente implements Serializable
         this.dataEntrada = dataEntrada;
         this.dataSaida = dataSaida;
     }
-
-
     
     //getters
+    
+    public Utilizador getUtiLigado() {
+        return utiLigado;
+    }
+  
     public String getIdDoente() {
         return idDoente;
     }

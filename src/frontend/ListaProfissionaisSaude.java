@@ -59,8 +59,9 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             
             ProfissionalSaude profSaude = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().getListaProfissionalSaude().get(i);
             
+             if (profSaude.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
              modelEnfermeiro.addRow(new Object[]{profSaude.getIdProfSaude(), profSaude.getNomePS()});
-   
+             }
         }
             tableEnfermeiros.setModel(modelEnfermeiro);
     }
@@ -73,8 +74,9 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             
             Medico medico = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(i);
             
+             if (medico.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
             modelMedico.addRow(new Object[]{medico.getIdMedico(),medico.getNomeMedico(), medico.getEspecialidade()});
-
+             }
         }
             tableMedicos.setModel(modelMedico);
     }
@@ -402,7 +404,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         }
         
 
-        Medico medico = new Medico(txtEspecialidade.getText(), txtNomeMedico.getText(), id);     
+        Medico medico = new Medico(sistema.getUtilizadorLigado(), txtEspecialidade.getText(), txtNomeMedico.getText(), id);     
         
         //txtNome.setText(txtNome.getText());
         
@@ -496,7 +498,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
              return;
         }
         
-        ProfissionalSaude profSaude = new ProfissionalSaude(id, txtNomeEnfermeiro.getText());             
+        ProfissionalSaude profSaude = new ProfissionalSaude(sistema.getUtilizadorLigado(), id, txtNomeEnfermeiro.getText());             
         
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().adicionar(profSaude);

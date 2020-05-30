@@ -46,7 +46,9 @@ public class ListaEnfermarias extends javax.swing.JFrame {
              
             Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(i);
              
+            if (enf.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
             model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getNCamas(), enf.getIdEnfermaria() });
+            }
          }
          
           table.setModel(model);
@@ -323,7 +325,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         
         
        model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(), ComboTip.getSelectedItem(),txtCamas.getText(),txtCodigo.getText()});
-       Enfermaria enf = new Enfermaria(txtNome.getText(), id, Integer.parseInt(txtCamas.getText()), ComboTip.getSelectedItem().toString());
+       Enfermaria enf = new Enfermaria(sistema.getUtilizadorLigado(), txtNome.getText(), id, Integer.parseInt(txtCamas.getText()), ComboTip.getSelectedItem().toString());
        
        try {
        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().adicionar(enf);

@@ -14,6 +14,7 @@ import java.util.UUID;
  */
 public class Medico implements Serializable {
     private String especialidade;
+     private Utilizador utiLigado;
     private String nome;
     private String idMedico;
     private ListaDoente listaDoente; 
@@ -22,7 +23,8 @@ public class Medico implements Serializable {
         
     }
     
-    public Medico(String especialidade, String nome, String idMedico) {
+    public Medico(Utilizador utiLigado, String especialidade, String nome, String idMedico) {
+        this.utiLigado = utiLigado;
         this.especialidade = especialidade;
         this.nome = nome;
         this.idMedico = idMedico;    
@@ -33,6 +35,10 @@ public class Medico implements Serializable {
         UUID uuid = UUID.randomUUID();
         return uuid;
         }
+
+    public Utilizador getUtiLigado() {
+        return utiLigado;
+    }
      
     public ListaDoente getListaDoente() {
         return listaDoente;

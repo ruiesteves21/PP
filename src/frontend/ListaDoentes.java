@@ -61,8 +61,10 @@ public class ListaDoentes extends javax.swing.JFrame {
             
             Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(i);
             
+             if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
             model.addRow(new Object[]{doente.getIdDoente(), doente.getNomeDoente(), doente.getDataNasc(), doente.getLocalidade(), doente.getNCama(), doente.getGravidade(), doente.getDataEntrada(), doente.getDataSaida()});
 
+            }
         }
         tableDoentes.setModel(model);
     }
@@ -281,13 +283,13 @@ public class ListaDoentes extends javax.swing.JFrame {
 
         tableDoentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null},
-                {null, null, null, null, null, null, null}
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null},
+                {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Nome", "Data de Nascimento", "Localidade", "Cama", "Data Entrada", "Data de Saída"
+                "Codigo", "Nome", "Data de Nascimento", "Localidade", "Cama", "Gravidade", "Data Entrada", "Data de Saída"
             }
         ));
         jScrollPane1.setViewportView(tableDoentes);
@@ -379,7 +381,9 @@ public class ListaDoentes extends javax.swing.JFrame {
         String dataNascimento = sdf.format(DataNasc.getDate());  
         String dataDeEntrada = sdf.format(DataEntrada.getDate()); 
         String dataDeSaida = sdf.format(DataSaida.getDate()); 
-                
+        
+        
+              
      /*int index = tableDoentes.getSelectedRow();
         
                 
@@ -448,44 +452,55 @@ public class ListaDoentes extends javax.swing.JFrame {
         }
         */
      
-        int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
         
-            if (Integer.parseInt(txtCama.getText()) > nCamas || Integer.parseInt(txtCama.getText()) <= 0) {
-             JOptionPane.showMessageDialog(null,"O número da cama que inseriu não existe", "Erro", JOptionPane.ERROR_MESSAGE);
-             return;
-        }
+     int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
+     
+            if (Integer.parseInt(txtCama.getText()) > nCamas || Integer.parseInt(txtCama.getText()) <= 0) 
+                {
+                     JOptionPane.showMessageDialog(null,"O número da cama que inseriu não existe", "Erro", JOptionPane.ERROR_MESSAGE);
+                     return;
+                }
     
-       
-        String numeroCama = tableDoentes.getValueAt(rowIndex, 4).toString();
-    
-             if(numeroCama.equals(txtCama.getText())) {             
-                 int row = tableDoentes.getRowCount();
-                 
+      String numeroCama = tableDoentes.getValueAt(rowIndex, 4).toString();  
+         
+            
+      
+         /*   //Se o que está na coluna 4 for diferente ao que está na txtCamas
+            if(numeroCama.equals(txtCama.getText())) 
+                {             
+                  int row = tableDoentes.getRowCount();  
+
                     for (int i = 0; i < row ; i++)
                         {
+                            //Vai ver na coluna 4, linha a linha, se o numero da cama que está a ser inserido
+                            // é igual que está na textBox
                             if (tableDoentes.getValueAt(i, 4).toString().equals(txtCama.getText()))
-                            {
-                                JOptionPane.showMessageDialog(null,"Esta cama já se encontra ocupada", "Erro", JOptionPane.ERROR_MESSAGE);
-                                return;
-                            }
+                                {
+                                    JOptionPane.showMessageDialog(null,"Esta cama já se encontra ocupada", "Erro", JOptionPane.ERROR_MESSAGE);
+                                    return;
+                                }
                         }   
-            }
+                 }*/
      
         String Gravidade="";
         
-            if(btModerado.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
+            if(btModerado.isSelected()) 
+            {   
+                //verificar qual dos radiobuttons esta selecionado
                 Gravidade = "Moderado";
-            }else{
-                if(btGrave.isSelected()) {
+            } else {
+                if(btGrave.isSelected()) 
+                {
                     Gravidade = "Grave";
-                }else {
-                    if(btMuitoGrave.isSelected()) {
+                } else {
+                    if(btMuitoGrave.isSelected())
+                    {
                         Gravidade = "Muito Grave";
                     }
                 }
             }
         
-        Doente doente = new Doente(id, txtNome.getText(), txtLocalidade.getText(), Gravidade, dataNascimento, dataDeEntrada, dataDeSaida, Integer.parseInt(txtCama.getText()));
+        Doente doente = new Doente(sistema.getUtilizadorLigado(), id, txtNome.getText(), txtLocalidade.getText(), Gravidade, dataNascimento, dataDeEntrada, dataDeSaida, Integer.parseInt(txtCama.getText()));
        
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().adicionar(doente);

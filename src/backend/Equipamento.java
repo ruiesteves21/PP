@@ -18,6 +18,7 @@ public class Equipamento implements Serializable {
     private String idEquip;
     private String indicacao; //livre, ocupado
     private Calendar  dataOcupado;
+    private Utilizador utiLigado;
     private String tipoEquipamento;
     private boolean disponivel;
     private boolean indisponivel;
@@ -28,7 +29,8 @@ public class Equipamento implements Serializable {
         
     }
 
-    public Equipamento(String idEquip, String indicacao, String tipoEquipamento, String doente) {
+    public Equipamento(Utilizador utiLigado, String idEquip, String indicacao, String tipoEquipamento, String doente) {
+        this.utiLigado = utiLigado;
         this.idEquip = idEquip;
          this.indicacao = indicacao;
         this.tipoEquipamento = tipoEquipamento;
@@ -39,6 +41,11 @@ public class Equipamento implements Serializable {
         UUID uuid = UUID.randomUUID();
         return uuid;
         }
+
+    public Utilizador getUtiLigado() {
+        return utiLigado;
+    }
+    
     
     public String getDoente() {
         return doente;

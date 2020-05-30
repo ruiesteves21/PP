@@ -244,16 +244,16 @@ public class ListaHospitais extends javax.swing.JFrame {
         
         for (Hospital hospital :  sistema.getListaHospital().getListaHospital() )
         {
-            if (hospital.getNome().equals(txtNome.getText()) || (hospital.getLocalidade().equals(txtLocalidade.getText())))
+            if (hospital.getNome().equals(txtNome.getText()) && (hospital.getLocalidade().equals(txtLocalidade.getText())))
             {
-                
+                JOptionPane.showMessageDialog(null,"Esse hospital já existe","Erro",JOptionPane.ERROR_MESSAGE);
+                return;
             }
         
         }
-            
+          
         
-        
-        var result = new ArrayList<Hospital>();
+        /*var result = new ArrayList<Hospital>();
          sistema.getListaHospital().getListaHospital().stream().filter((hospital) -> (hospital.getNome().equals(txtNome.getText()))).forEachOrdered((hospital) -> {
          result.add(hospital);
          });
@@ -268,7 +268,7 @@ public class ListaHospitais extends javax.swing.JFrame {
                 txtNome.requestFocus();
                 return;
         }     
-        } 
+        } */
         
         if (txtLocalidade.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza a localidade que o hospital se encontra","Erro",JOptionPane.ERROR_MESSAGE);
