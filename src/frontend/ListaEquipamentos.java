@@ -68,12 +68,16 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     }
     
     private void carregarComboBox() {
-        
+        try{
+            
         for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().size(); i++) {
             
             Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(i);
             
-            comboDoente.addItem(doente.getNomeDoente());
+            comboDoente.addItem(doente.getNomeDoente());           
+        }   
+    } catch (IndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null,"Nenhum doente encontra-se registado.","Erro",JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -191,7 +195,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btInserir);
-        btInserir.setBounds(310, 350, 80, 30);
+        btInserir.setBounds(200, 350, 80, 30);
 
         btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimpar.setText("Limpar");
@@ -221,7 +225,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(210, 350, 80, 29);
+        btEditar.setBounds(300, 350, 80, 29);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel9.setText("Tipo :");

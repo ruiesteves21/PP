@@ -344,6 +344,13 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
     private void btLDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLDoentesActionPerformed
        //int c = tableProfissionaisSaude.getSelectedRow();
        int indiceMedico = tableMedicos.getSelectedRow();    
+       int indiceEnfermeiro = tableEnfermeiros.getSelectedRow();
+       
+       if (indiceEnfermeiro >= 0){
+                JOptionPane.showMessageDialog(null,"Selecione um médico","Atenção",JOptionPane.WARNING_MESSAGE); 
+                tableEnfermeiros.clearSelection();
+                return;
+        }
        
         if (indiceMedico == -1){
                 JOptionPane.showMessageDialog(null,"Selecione um médico","Atenção",JOptionPane.WARNING_MESSAGE); 
