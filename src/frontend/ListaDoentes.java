@@ -47,9 +47,7 @@ public class ListaDoentes extends javax.swing.JFrame {
         this.indiceMedico = indiceMedico;
         
         carregarTabela();
-        carregarComboBox();
-        labelCodigo.setVisible(false);
-        txtCodigo.setVisible(false);
+       // carregarComboBox();
         //listaDoente = sistema.getListaDoente().getListaDoente().get(sistema.getHospitalSelecionado()).getListaDoente();
     }
     
@@ -68,7 +66,7 @@ public class ListaDoentes extends javax.swing.JFrame {
         tableDoentes.setModel(model);
     }
     
-    private void carregarComboBox() {
+    /*private void carregarComboBox() {
         
                  
           for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size(); i++) {
@@ -77,7 +75,7 @@ public class ListaDoentes extends javax.swing.JFrame {
             
             comboCama.addItem(String.valueOf(enf.getNCamas()));
           }
-    }
+    }*/
     
     private void guardarAlteracoes() {
     bd.gravaSistema(sistema);
@@ -114,14 +112,12 @@ public class ListaDoentes extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         jLabel18 = new javax.swing.JLabel();
-        labelCodigo = new javax.swing.JLabel();
         btExcluir = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btInserir = new javax.swing.JButton();
         txtCama = new javax.swing.JTextField();
         txtLocalidade = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
-        txtCodigo = new javax.swing.JTextField();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
         DataSaida = new com.toedter.calendar.JDateChooser();
@@ -189,11 +185,6 @@ public class ListaDoentes extends javax.swing.JFrame {
         getContentPane().add(jLabel18);
         jLabel18.setBounds(30, 360, 60, 20);
 
-        labelCodigo.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        labelCodigo.setText("Codigo :");
-        getContentPane().add(labelCodigo);
-        labelCodigo.setBounds(30, 300, 60, 20);
-
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
         btExcluir.addActionListener(new java.awt.event.ActionListener() {
@@ -230,15 +221,11 @@ public class ListaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtCama);
-        txtCama.setBounds(520, 330, 100, 30);
+        txtCama.setBounds(520, 350, 100, 30);
         getContentPane().add(txtLocalidade);
         txtLocalidade.setBounds(120, 400, 100, 30);
         getContentPane().add(txtNome);
         txtNome.setBounds(120, 350, 100, 30);
-
-        txtCodigo.setEnabled(false);
-        getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(120, 290, 100, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -308,6 +295,11 @@ public class ListaDoentes extends javax.swing.JFrame {
         jScrollPane1.setBounds(30, 60, 740, 210);
 
         comboCama.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Cama --", " " }));
+        comboCama.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                comboCamaActionPerformed(evt);
+            }
+        });
         getContentPane().add(comboCama);
         comboCama.setBounds(100, 460, 140, 20);
 
@@ -454,6 +446,15 @@ public class ListaDoentes extends javax.swing.JFrame {
             return;
         }
         */
+     
+       /* int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
+        
+        if (nCamas <= 0 || nCamas > ) {
+            
+        }*/
+        
+     
+     
         String Gravidade="";
         
             if(btModerado.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
@@ -474,8 +475,7 @@ public class ListaDoentes extends javax.swing.JFrame {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().adicionar(doente);
         JOptionPane.showMessageDialog(null, "Doente " + txtNome.getText() + " adicionado!");
         txtNome.setText("");
-        txtLocalidade.setText("");
-        txtCodigo.setText("");
+        txtLocalidade.setText("");       
         txtCama.setText("");
         //btModerado.clearSelection();
         DataNasc.setDate(null);
@@ -554,6 +554,10 @@ public class ListaDoentes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btMuitoGraveActionPerformed
 
+    private void comboCamaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_comboCamaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_comboCamaActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -615,10 +619,8 @@ public class ListaDoentes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JLabel labelCodigo;
     private javax.swing.JTable tableDoentes;
     private javax.swing.JTextField txtCama;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtLocalidade;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables

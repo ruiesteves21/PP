@@ -153,26 +153,12 @@
         </Constraint>
       </Constraints>
     </Component>
-    <Component class="javax.swing.JLabel" name="labelCodigo">
-      <Properties>
-        <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-          <Font name="Yu Gothic UI" size="14" style="1"/>
-        </Property>
-        <Property name="text" type="java.lang.String" value="Codigo :"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="30" y="300" width="60" height="-1"/>
-        </Constraint>
-      </Constraints>
-    </Component>
     <Component class="javax.swing.JButton" name="btExcluir">
       <Properties>
         <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
           <Font name="Yu Gothic UI" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Excluir"/>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btExcluirActionPerformed"/>
@@ -189,7 +175,6 @@
           <Font name="Yu Gothic UI" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Limpar"/>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btLimparActionPerformed"/>
@@ -206,7 +191,6 @@
           <Font name="Yu Gothic UI" size="14" style="0"/>
         </Property>
         <Property name="text" type="java.lang.String" value="Inserir"/>
-        <Property name="enabled" type="boolean" value="false"/>
       </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="btInserirActionPerformed"/>
@@ -218,22 +202,16 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txtCama">
-      <Properties>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
       <Events>
         <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="txtCamaActionPerformed"/>
       </Events>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="520" y="330" width="100" height="30"/>
+          <AbsoluteConstraints x="520" y="350" width="100" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txtLocalidade">
-      <Properties>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="120" y="400" width="100" height="30"/>
@@ -241,22 +219,9 @@
       </Constraints>
     </Component>
     <Component class="javax.swing.JTextField" name="txtNome">
-      <Properties>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
       <Constraints>
         <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
           <AbsoluteConstraints x="120" y="350" width="100" height="30"/>
-        </Constraint>
-      </Constraints>
-    </Component>
-    <Component class="javax.swing.JTextField" name="txtCodigo">
-      <Properties>
-        <Property name="enabled" type="boolean" value="false"/>
-      </Properties>
-      <Constraints>
-        <Constraint layoutClass="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout" value="org.netbeans.modules.form.compat2.layouts.DesignAbsoluteLayout$AbsoluteConstraintsDescription">
-          <AbsoluteConstraints x="120" y="290" width="100" height="30"/>
         </Constraint>
       </Constraints>
     </Component>
@@ -430,6 +395,9 @@
           </StringArray>
         </Property>
       </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="comboCamaActionPerformed"/>
+      </Events>
       <AuxValues>
         <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
       </AuxValues>

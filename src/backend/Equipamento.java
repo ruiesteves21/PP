@@ -15,7 +15,6 @@ import java.util.UUID;
  */
 public class Equipamento implements Serializable {
     
-    private Enfermaria enfermariaSelecionada;
     private String idEquip;
     private String indicacao; //livre, ocupado
     private Calendar  dataOcupado;
@@ -31,8 +30,8 @@ public class Equipamento implements Serializable {
 
     public Equipamento(String idEquip, String indicacao, String tipoEquipamento, String doente) {
         this.idEquip = idEquip;
+         this.indicacao = indicacao;
         this.tipoEquipamento = tipoEquipamento;
-        this.indicacao = indicacao;
         this.doente = doente;
     }
     
@@ -40,10 +39,6 @@ public class Equipamento implements Serializable {
         UUID uuid = UUID.randomUUID();
         return uuid;
         }
-     
-    public Enfermaria getEnfermariaSelecionada() {
-        return enfermariaSelecionada;
-    }
     
     public String getDoente() {
         return doente;
@@ -86,9 +81,6 @@ public class Equipamento implements Serializable {
         this.indicacao = indicacao;
     }
     
-    public void setEnfermariaSelecionada(Enfermaria enfermariaSelecionada) {
-        this.enfermariaSelecionada = enfermariaSelecionada;
-    }
     
     public void setDataOcupado(Calendar dataOcupado) {
         this.dataOcupado = dataOcupado;

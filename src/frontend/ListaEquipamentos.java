@@ -59,7 +59,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             
             Equipamento e = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(i);
             
-            model.addRow(new Object[]{e.getIdEquip(),e.getIndicacao(), e.getTipoEquipamento(),e.getDoente()});
+            model.addRow(new Object[]{e.getIdEquip(), e.getTipoEquipamento(), e.getIndicacao(), e.getDoente()});
  
         }
         
@@ -111,6 +111,8 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         btLivre = new javax.swing.JRadioButton();
         btOcupado = new javax.swing.JRadioButton();
         comboDoente = new javax.swing.JComboBox<>();
+        comboTipo = new javax.swing.JComboBox<>();
+        comboDisponibilidade = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -306,6 +308,14 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         getContentPane().add(comboDoente);
         comboDoente.setBounds(70, 110, 130, 30);
 
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Ventilador", "Desfibrilhador", "Outro", " " }));
+        getContentPane().add(comboTipo);
+        comboTipo.setBounds(130, 200, 80, 20);
+
+        comboDisponibilidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Livre", "Ocupado", " " }));
+        getContentPane().add(comboDisponibilidade);
+        comboDisponibilidade.setBounds(130, 270, 69, 20);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/listaEquipamentosfundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 650, 420);
@@ -334,13 +344,15 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         String id = UUID.randomUUID().toString();
          
         String doenteSelecionado = comboDoente.getSelectedItem().toString();
+        String tipo = comboTipo.getSelectedItem().toString();
+        String disponibilidade = comboDisponibilidade.getSelectedItem().toString();
          
         /*var result = new ArrayList<Equipamento>();
          sistema.getListaEquipamento().getListaEquipamento().stream().filter((equipamento) -> (equipamento.getDoente().equals(txtDoente.getText()))).forEachOrdered((Equipamento) -> {
          result.add(Equipamento);
          }); */
         
-         if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
+         /*if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
             JOptionPane.showMessageDialog(null, "Selecione o tipo de equipamento!!");
             return;
          }
@@ -349,7 +361,40 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null, "Selecione a disponibilidade do equipamento!!");
             return;
           }
-                      
+          
+        int index = table.getSelectedRow();
+        Equipamento tipoEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
+        Equipamento disponibilidadeEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
+       
+          
+        if(btVentilador.isSelected()) {
+           tipoEquipamento.setTipoEquipamento("Ventilador");          
+            carregarTabela();
+         }
+             
+        if(btDesfibrilhador.isSelected()) {
+            tipoEquipamento.setTipoEquipamento("Desfibrilhador");        
+            carregarTabela();
+        }
+        
+        if(btOutro.isSelected()) {
+            tipoEquipamento.setTipoEquipamento("Outro");              
+            carregarTabela();
+
+                }        
+                
+        if(btLivre.isSelected()) {
+           disponibilidadeEquipamento.setIndicacao("Livre");          
+            carregarTabela();
+         }
+             
+        if(btOcupado.isSelected()) {
+            disponibilidadeEquipamento.setIndicacao("Ocupado");        
+            carregarTabela();
+            }
+                  
+             
+           
         String Tipo="";
             if(btVentilador.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
                 Tipo = "Ventilador";
@@ -371,10 +416,10 @@ public class ListaEquipamentos extends javax.swing.JFrame {
                 if(btOcupado.isSelected()) {
                     Disponibilidade = "Ocupado";
                 }
-            }
+            }*/
         
        
-        Equipamento eq = new Equipamento(id, Tipo, Disponibilidade, doenteSelecionado);
+        Equipamento eq = new Equipamento(id, disponibilidade, tipo, doenteSelecionado);
         
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().adicionar(eq);
@@ -387,48 +432,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         btLivre.setSelected(false);
         btOcupado.setSelected(false);
         
-        carregarTabela();
-        
-        /*int index = table.getSelectedRow();
-        Equipamento tipoEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
-        Equipamento disponibilidadeEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
-       
-           
-       
-        
-        
-        
-        if(btVentilador.isSelected()) {
-           tipoEquipamento.setTipoEquipamento("Ventilador");          
-            carregarTabela();
-         }
-             
-        if(btDesfibrilhador.isSelected()) {
-            tipoEquipamento.setTipoEquipamento("Desfibrilhador");        
-            carregarTabela();
-        }
-        
-        if(btOutro.isSelected()) {
-            tipoEquipamento.setTipoEquipamento("Outro");              
-            carregarTabela();
-
-                }        
-                
-        
-        
-       
-        
-        if(btLivre.isSelected()) {
-           disponibilidadeEquipamento.setIndicacao("Livre");          
-            carregarTabela();
-         }
-             
-        if(btOcupado.isSelected()) {
-            disponibilidadeEquipamento.setIndicacao("Ocupado");        
-            carregarTabela();
-            }
-                  
-        */      
+        carregarTabela();       
        
         } catch(RuntimeException e) {
             JOptionPane.showMessageDialog(null,"Este equipamento já se encontra registado","Erro",JOptionPane.ERROR_MESSAGE);
@@ -584,7 +588,9 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     private javax.swing.JRadioButton btOcupado;
     private javax.swing.JRadioButton btOutro;
     private javax.swing.JRadioButton btVentilador;
+    private javax.swing.JComboBox<String> comboDisponibilidade;
     private javax.swing.JComboBox<String> comboDoente;
+    private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
