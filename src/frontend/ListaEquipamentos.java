@@ -449,12 +449,47 @@ public class ListaEquipamentos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE); 
         
            }
+          
+         if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
+            JOptionPane.showMessageDialog(null, "Selecione o tipo de equipamento!!");
+            return;
+         }
+         
+          if(!btLivre.isSelected() && !btOcupado.isSelected() ) {
+            JOptionPane.showMessageDialog(null, "Selecione a disponibilidade do equipamento!!");
+            return;
+          }
+                  
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setDoente(comboDoente.getSelectedItem().toString());
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setTipoEquipamento(btVentilador.getText());
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setTipoEquipamento(btDesfibrilhador.getText());
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setTipoEquipamento(btOutro.getText());
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setIndicacao(btLivre.getText());
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setIndicacao(btOcupado.getText());
+           String Disponibilidade="";
+         
+            if(btLivre.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
+                Disponibilidade = "Livre";
+                sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setIndicacao(btLivre.getText());
+            }else{
+                if(btOcupado.isSelected()) {
+                   Disponibilidade = "Ocupado";
+                    sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setIndicacao(btOcupado.getText());
+                }
+            }
+        
+        String Tipo="";
+            if(btVentilador.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
+                Tipo = "Ventilador";
+                 sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setTipoEquipamento(btVentilador.getText());
+            }else{
+                if(btDesfibrilhador.isSelected()) {
+                  Tipo = "Desfrbilhador";
+                     sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setTipoEquipamento(btDesfibrilhador.getText());
+                }else {
+                    if(btOutro.isSelected()) {
+                   Tipo = "Outro";
+                         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setTipoEquipamento(btOutro.getText());
+                    }
+                }
+            }
+    
+        
         carregarTabela();
         guardarAlteracoes();
         
