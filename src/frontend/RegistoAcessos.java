@@ -216,7 +216,9 @@ public class RegistoAcessos extends javax.swing.JFrame {
 
     private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
         // TODO add your handling code here:
-        terminar();
+        dispose();
+        LoginForm l = new LoginForm(sistema, bd);
+        l.setVisible(true);
     }//GEN-LAST:event_imgSairMouseClicked
 
     private void imgRetroceder1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder1MouseClicked

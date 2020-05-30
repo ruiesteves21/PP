@@ -204,7 +204,9 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
         // TODO add your handling code here:
-        terminar();
+        dispose();
+        LoginForm l = new LoginForm(sistema, bd);
+        l.setVisible(true);
     }//GEN-LAST:event_imgSairMouseClicked
 
     private void btListaDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaDoentesActionPerformed
