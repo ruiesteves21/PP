@@ -9,6 +9,7 @@ import backend.Serializacao;
 import backend.Sistema;
 import backend.Administrador;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 /**
  *
  * @author ssoar
@@ -144,9 +145,23 @@ public class PaginaInicial extends javax.swing.JFrame {
 
     private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
         // TODO add your handling code here:
-        dispose();
-        PaginaLogin l = new PaginaLogin(sistema, bd);
-        l.setVisible(true);
+        //PaginaLogin l = new PaginaLogin(sistema, bd);
+        //l.setVisible(true);
+        UIManager.put("OptionPane.noButtonText", "Não");  
+        UIManager.put("OptionPane.yesButtonText", "Sim");
+        
+        if (JOptionPane.showConfirmDialog(null, 
+               "Deseja realmente terminar o programa?", 
+               "Terminar",
+               
+               JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                dispose();
+                PaginaLogin l = new PaginaLogin(sistema, bd);
+                l.setVisible(true);
+                guardarAlteracoes();
+                dispose();
+            
+       }
     }//GEN-LAST:event_imgSairMouseClicked
 
     /**

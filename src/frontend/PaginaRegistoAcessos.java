@@ -9,6 +9,7 @@ import backend.RegistoAcesso;
 import backend.Serializacao;
 import backend.Sistema;
 import javax.swing.JOptionPane;
+import javax.swing.UIManager;
 
 /**
  *
@@ -216,9 +217,21 @@ public class PaginaRegistoAcessos extends javax.swing.JFrame {
 
     private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
         // TODO add your handling code here:
-        dispose();
-        PaginaLogin l = new PaginaLogin(sistema, bd);
-        l.setVisible(true);
+        UIManager.put("OptionPane.noButtonText", "Não");  
+        UIManager.put("OptionPane.yesButtonText", "Sim");
+        
+        if (JOptionPane.showConfirmDialog(null, 
+               "Deseja realmente terminar o programa?", 
+               "Terminar",
+               
+               JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                dispose();
+                PaginaLogin l = new PaginaLogin(sistema, bd);
+                l.setVisible(true);
+                guardarAlteracoes();
+                dispose();
+            
+       }
     }//GEN-LAST:event_imgSairMouseClicked
 
     private void imgRetroceder1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder1MouseClicked
