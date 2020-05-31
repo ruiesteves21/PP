@@ -16,6 +16,7 @@ import java.text.SimpleDateFormat;
 import java.util.UUID;
 import java.util.Date;
 import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -48,7 +49,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         this.indiceMedico = indiceMedico;
         
         carregarTabela();
-       
+        tableDoentes.setRowSorter(new TableRowSorter(model));
         //listaDoente = sistema.getListaDoente().getListaDoente().get(sistema.getHospitalSelecionado()).getListaDoente();
     }
     
