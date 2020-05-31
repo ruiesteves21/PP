@@ -84,7 +84,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         btEditar = new javax.swing.JButton();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
-        ComboTip = new javax.swing.JComboBox<>();
+        ComboTipo = new javax.swing.JComboBox<>();
         btEquipamentos = new javax.swing.JButton();
         btProfissionais = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -231,9 +231,9 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(570, 30, 30, 30);
 
-        ComboTip.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Normal", "UCI", " ", " ", " " }));
-        getContentPane().add(ComboTip);
-        ComboTip.setBounds(120, 110, 120, 30);
+        ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Normal", "UCI", " ", " ", " " }));
+        getContentPane().add(ComboTipo);
+        ComboTipo.setBounds(120, 110, 120, 30);
 
         btEquipamentos.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEquipamentos.setText("Lista Equipamentos");
@@ -316,17 +316,12 @@ public class ListaEnfermarias extends javax.swing.JFrame {
              return;
         }
          
-        // Verificar se todos os campos estao preenchidos
-        /* if(txtNome.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "O campo 'Nome' deve ser preenchido");
+        if ((ComboTipo.getSelectedIndex()==0)){
+             JOptionPane.showMessageDialog(null," Selecione um tipo de enfermaria","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
         }
-         if(txtCamas.getText().equals("")) {
-            JOptionPane.showMessageDialog(null, "O campo 'Confirmar Password' deve ser preenchido");
-        }*/
         
-        
-       model.insertRow(model.getRowCount(),new Object[] {txtNome.getText(), ComboTip.getSelectedItem(),txtCamas.getText(),txtCodigo.getText()});
-       Enfermaria enf = new Enfermaria(sistema.getUtilizadorLigado(), txtNome.getText(), id, Integer.parseInt(txtCamas.getText()), ComboTip.getSelectedItem().toString());
+       Enfermaria enf = new Enfermaria(sistema.getUtilizadorLigado(), txtNome.getText(), id, Integer.parseInt(txtCamas.getText()), ComboTipo.getSelectedItem().toString());
        
        try {
        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().adicionar(enf);
@@ -352,7 +347,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
            }
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).setNome(txtNome.getText());
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).setnCamas(Integer.parseInt(txtCamas.getText()));
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).setTipo(ComboTip.getSelectedItem().toString());
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).setTipo(ComboTipo.getSelectedItem().toString());
 
         carregarTabela();
         guardarAlteracoes();
@@ -470,7 +465,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboTip;
+    private javax.swing.JComboBox<String> ComboTipo;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btEquipamentos;
     private javax.swing.JButton btExcluir;

@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author pedro,ruiesteves
+ * 
  */
 public class ListaDoentes extends javax.swing.JFrame {
     
@@ -308,7 +308,7 @@ public class ListaDoentes extends javax.swing.JFrame {
         // TODO add your handling code here:
     SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy");
     int indiceDoente = tableDoentes.getSelectedRow();
-        if (indiceEnfermaria == -1){
+        if (indiceDoente == -1){
                 JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE); 
         
         }
@@ -391,7 +391,7 @@ public class ListaDoentes extends javax.swing.JFrame {
         String dataDeEntrada = sdf.format(DataEntrada.getDate()); 
         String dataDeSaida = sdf.format(DataSaida.getDate()); 
         
-        //int rowIndex = tableDoentes.getSelectedRow();
+       
         
 
      /*int index = tableDoentes.getSelectedRow();
@@ -470,13 +470,15 @@ public class ListaDoentes extends javax.swing.JFrame {
                      JOptionPane.showMessageDialog(null,"O número da cama que inseriu não existe", "Erro", JOptionPane.ERROR_MESSAGE);
                      return;
                 }
-    
-    /*  String numeroCama = tableDoentes.getValueAt(rowIndex, 4).toString();  
-         
             
-      
+     /* int a = tableDoentes.getRowCount();
+      if (a > 0) 
+      {       
+         int rowIndex = tableDoentes.getSelectedRow();      
+         String numeroCama = tableDoentes.getValueAt(rowIndex, 4).toString();  
+         
             //Se o que está na coluna 4 for diferente ao que está na txtCamas
-            if(numeroCama.equals(txtCama.getText())) 
+            if(!numeroCama.equals(txtCama.getText())) 
                 {             
                   int row = tableDoentes.getRowCount();  
 
@@ -490,7 +492,8 @@ public class ListaDoentes extends javax.swing.JFrame {
                                     return;
                                 }
                         }   
-                 }*/
+                 }
+      }*/
      
         String Gravidade="";
         

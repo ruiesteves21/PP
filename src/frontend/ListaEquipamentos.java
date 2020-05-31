@@ -20,7 +20,7 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author pedro
+ * 
  */
 public class ListaEquipamentos extends javax.swing.JFrame {
 
@@ -44,8 +44,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         
         carregarTabela();
         carregarComboBox();
-        labelCodigo.setVisible(false);
-        txtCodigo.setVisible(false); 
+        
       
     }
     
@@ -68,7 +67,8 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     }
     
     private void carregarComboBox() {
-        try{
+        
+        try {
             
         for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().size(); i++) {
             
@@ -76,8 +76,8 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             
             comboDoente.addItem(doente.getNomeDoente());           
         }   
-    } catch (IndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(null,"Nenhum doente encontra-se registado.","Erro",JOptionPane.ERROR_MESSAGE);
+        } catch (IndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null,"Neste momento, não há doentes registados!!","Aviso",JOptionPane.INFORMATION_MESSAGE);
         }
     }
     
@@ -98,10 +98,8 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
-        labelCodigo = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
         btInserir = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
@@ -112,7 +110,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         imgGuardar = new javax.swing.JLabel();
         comboDoente = new javax.swing.JComboBox<>();
         comboTipo = new javax.swing.JComboBox<>();
-        comboDisponibilidade = new javax.swing.JComboBox<>();
+        comboIndicacao = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -126,7 +124,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Tipo", "Disponibilidade", "Doente"
+                "Codigo", "Tipo", "Indicação", "Doente"
             }
         ) {
             Class[] types = new Class [] {
@@ -152,35 +150,22 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         jScrollPane3.setViewportView(table);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(210, 50, 380, 290);
+        jScrollPane3.setBounds(240, 50, 370, 290);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel3.setText("Lista de Equipamentos");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(210, 10, 190, 20);
 
-        labelCodigo.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        labelCodigo.setText("Código  :");
-        getContentPane().add(labelCodigo);
-        labelCodigo.setBounds(10, 70, 60, 20);
-
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel5.setText("Disponibilidade:");
+        jLabel5.setText("Indicação:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(0, 200, 120, 20);
+        jLabel5.setBounds(10, 200, 80, 20);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel4.setText("Doente :");
         getContentPane().add(jLabel4);
         jLabel4.setBounds(10, 110, 60, 20);
-
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(70, 70, 130, 30);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
@@ -190,7 +175,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btInserir);
-        btInserir.setBounds(200, 350, 80, 30);
+        btInserir.setBounds(230, 350, 80, 30);
 
         btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimpar.setText("Limpar");
@@ -200,7 +185,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(410, 350, 80, 30);
+        btLimpar.setBounds(430, 350, 80, 30);
 
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
@@ -210,7 +195,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(510, 350, 80, 29);
+        btExcluir.setBounds(530, 350, 80, 29);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -220,7 +205,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(300, 350, 80, 29);
+        btEditar.setBounds(330, 350, 80, 29);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel9.setText("Tipo :");
@@ -254,19 +239,20 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         getContentPane().add(imgGuardar);
         imgGuardar.setBounds(480, 10, 30, 30);
 
-        comboDoente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Item --" }));
+        comboDoente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doente não selecionado" }));
         getContentPane().add(comboDoente);
-        comboDoente.setBounds(70, 110, 130, 30);
+        comboDoente.setBounds(70, 110, 150, 30);
 
-        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Item --", "Disfribilhador", "Ventilador", "Outro" }));
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Tipo --", "Desfibrilhador", "Ventilador", "Outro" }));
         getContentPane().add(comboTipo);
-        comboTipo.setBounds(70, 150, 130, 30);
+        comboTipo.setBounds(70, 150, 150, 30);
 
-        comboDisponibilidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Item --", "Livre", "Ocupado", "" }));
-        getContentPane().add(comboDisponibilidade);
-        comboDisponibilidade.setBounds(110, 200, 90, 30);
+        comboIndicacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Estado --", "Livre", "Ocupado", " " }));
+        getContentPane().add(comboIndicacao);
+        comboIndicacao.setBounds(80, 200, 140, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/listaEquipamentosfundo.png"))); // NOI18N
+        jLabel1.setMinimumSize(new java.awt.Dimension(617, 389));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 650, 420);
 
@@ -274,13 +260,9 @@ public class ListaEquipamentos extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
-
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here
-        comboDisponibilidade.setSelectedItem(null);   
+        comboIndicacao.setSelectedItem(null);   
         comboDoente.setSelectedItem(null);
         comboTipo.setSelectedItem(null);;
     }//GEN-LAST:event_btLimparActionPerformed
@@ -292,7 +274,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
          
         String doenteSelecionado = comboDoente.getSelectedItem().toString();
         String tipo = comboTipo.getSelectedItem().toString();
-        String disponibilidade = comboDisponibilidade.getSelectedItem().toString();
+        String disponibilidade = comboIndicacao.getSelectedItem().toString();
          
         /*var result = new ArrayList<Equipamento>();
          sistema.getListaEquipamento().getListaEquipamento().stream().filter((equipamento) -> (equipamento.getDoente().equals(txtDoente.getText()))).forEachOrdered((Equipamento) -> {
@@ -364,17 +346,25 @@ public class ListaEquipamentos extends javax.swing.JFrame {
                     Disponibilidade = "Ocupado";
                 }
             }*/
+         
+        if ((comboTipo.getSelectedIndex()==0)){
+             JOptionPane.showMessageDialog(null," Selecione um tipo de equipamento","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+        }
         
+        if ((comboIndicacao.getSelectedIndex()==0)){
+             JOptionPane.showMessageDialog(null," Selecione a disponibilidade do equipamento","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+        }
        
         Equipamento eq = new Equipamento(sistema.getUtilizadorLigado(), id, disponibilidade, tipo, doenteSelecionado);
         
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().adicionar(eq);
-        JOptionPane.showMessageDialog(null, "Equipamento registado!");
-        txtCodigo.setText("");
+        JOptionPane.showMessageDialog(null, "Equipamento registado!");       
         comboDoente.setSelectedItem(null); 
         comboTipo.setSelectedItem(null);
-        comboDisponibilidade.setSelectedItem(null);
+        comboIndicacao.setSelectedItem(null);
         carregarTabela();       
        
         } catch(RuntimeException e) {
@@ -392,7 +382,7 @@ public class ListaEquipamentos extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE); 
         
         }
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setIndicacao(comboDisponibilidade.getSelectedItem().toString());
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setIndicacao(comboIndicacao.getSelectedItem().toString());
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setTipoEquipamento(comboTipo.getSelectedItem().toString());
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento).setDoente(comboDoente.getSelectedItem().toString());   
         carregarTabela();
@@ -484,8 +474,8 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
-    private javax.swing.JComboBox<String> comboDisponibilidade;
     private javax.swing.JComboBox<String> comboDoente;
+    private javax.swing.JComboBox<String> comboIndicacao;
     private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgHome;
@@ -496,8 +486,6 @@ public class ListaEquipamentos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel labelCodigo;
     private javax.swing.JTable table;
-    private javax.swing.JTextField txtCodigo;
     // End of variables declaration//GEN-END:variables
 }

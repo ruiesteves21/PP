@@ -401,11 +401,9 @@ public class ListaHospitais extends javax.swing.JFrame {
                                                   //na tabela
 
         if(indice>=0 && indice < sistema.getListaHospital().getListaHospital().size()) {
-            Hospital h = (Hospital)sistema.getListaHospital().getListaHospital().get(indice);
+            Hospital h = (Hospital) sistema.getListaHospital().getListaHospital().get(indice);
             txtNome.setText(h.getNome());
             txtLocalidade.setText(h.getLocalidade());
-            txtNome.setEnabled(true);
-            txtLocalidade.setEnabled(true);
         }
             
        /* if (evt.getClickCount() == 2){
