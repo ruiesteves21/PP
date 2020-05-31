@@ -15,6 +15,7 @@ import backend.Sistema;
 import java.text.SimpleDateFormat;
 import java.util.UUID;
 import java.util.Date;
+import javax.swing.RowFilter;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -121,6 +122,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDoentes = new javax.swing.JTable();
         comboGravidade = new javax.swing.JComboBox<>();
+        jTextField1 = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -237,7 +239,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(740, 10, 30, 30);
         getContentPane().add(DataSaida);
-        DataSaida.setBounds(390, 420, 110, 30);
+        DataSaida.setBounds(390, 410, 110, 30);
         getContentPane().add(DataNasc);
         DataNasc.setBounds(120, 410, 110, 30);
         getContentPane().add(DataEntrada);
@@ -262,6 +264,15 @@ public class PaginaDoentes extends javax.swing.JFrame {
         comboGravidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione Gravidade -- ", "Moderado", "Grave ", "Muito Grave" }));
         getContentPane().add(comboGravidade);
         comboGravidade.setBounds(390, 300, 160, 30);
+
+        jTextField1.setText("jTextField1");
+        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                jTextField1KeyReleased(evt);
+            }
+        });
+        getContentPane().add(jTextField1);
+        jTextField1.setBounds(30, 30, 100, 19);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaDoentesFundo.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -551,6 +562,16 @@ public class PaginaDoentes extends javax.swing.JFrame {
         p.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
+    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+        // TODO add your handling code here:
+        DefaultTableModel table = (DefaultTableModel)tableDoentes.getModel();
+        String search = jTextField1.getText().toLowerCase();
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+        tableDoentes.setRowSorter(tr);
+        tr.setRowFilter(RowFilter.regexFilter(search));
+        
+    }//GEN-LAST:event_jTextField1KeyReleased
+
     /**
      * @param args the command line arguments
      */
@@ -612,6 +633,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel18;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tableDoentes;
     private javax.swing.JTextField txtCama;
     private javax.swing.JTextField txtLocalidade;
