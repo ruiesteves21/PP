@@ -13,6 +13,7 @@ import javax.swing.JOptionPane;
 import backend.Serializacao;
 import backend.Sistema;
 import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.UUID;
 import java.util.Date;
 import javax.swing.RowFilter;
@@ -48,6 +49,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         this.indiceHospital = indiceHospital;
         this.indiceEnfermaria = indiceEnfermaria;
         this.indiceMedico = indiceMedico;
+        LocalDate date = LocalDate.now(); 
         
         carregarTabela();
         tableDoentes.setRowSorter(new TableRowSorter(model));
@@ -432,24 +434,46 @@ public class PaginaDoentes extends javax.swing.JFrame {
         }
         
        
-        if(DataEntrada.getDate().getTime() >= DataSaida.getDate().getTime()){
-            JOptionPane.showMessageDialog(null, "A data de entrada não pode ser superior à data de saída!!!");
-            DataEntrada.requestFocus();
-            return;
-        }
         if(DataNasc.getDate().getTime() > 24/05/2020){
             JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data atual!!!");
             DataNasc.requestFocus();
             return;
         }
-        if(DataNasc.getDate().getTime() > DataEntrada.getDate().getTime() || DataNasc.getDate().getTime() > DataSaida.getDate().getTime()){
-            JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data de entrada ou saída!!!");
+        
+        */
+     
+     // if((DataEntrada.compareTo(DataSaida))>0)
+       // {
+         //   JOptionPane.showMessageDialog(null, "Data de Fim mais recente que a de Inicio", "Erro", JOptionPane.ERROR_MESSAGE);
+           
+     //Restricoes das datas
+         if(DataNasc.getDate().getTime() >= DataEntrada.getDate().getTime()){
+            JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data de entrada!!!");
+            DataEntrada.requestFocus();
             DataNasc.requestFocus();
             return;
         }
-        */
-     
+         
+         if(DataNasc.getDate().getTime() >= DataSaida.getDate().getTime()){
+            JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data de saida!!!");
+            DataSaida.requestFocus();
+            DataNasc.requestFocus();
+            return;
+        }
+         
+         if(DataEntrada.getDate().getTime() >= DataSaida.getDate().getTime()){
+            JOptionPane.showMessageDialog(null, "A data de entrada não pode ser superior à data de saida!!!");
+            DataSaida.requestFocus();
+            DataEntrada.requestFocus();
+            return;
+        }
         
+         if(DataNasc.getDate().getTime() > 31/05/2020 ){
+         JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data atual!!!");
+         DataNasc.requestFocus();
+         return;
+        }
+       
      int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
      
             if (Integer.parseInt(txtCama.getText()) > nCamas || Integer.parseInt(txtCama.getText()) <= 0) 
