@@ -107,7 +107,6 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         txtNomeEnfermeiro = new javax.swing.JTextField();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
-        imgGuardar = new javax.swing.JLabel();
         btExcluirEnfermeiro = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableMedicos = new javax.swing.JTable();
@@ -227,15 +226,6 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         });
         getContentPane().add(imgHome);
         imgHome.setBounds(600, 0, 30, 30);
-
-        imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
-        imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgGuardarMouseClicked(evt);
-            }
-        });
-        getContentPane().add(imgGuardar);
-        imgGuardar.setBounds(520, 0, 30, 30);
 
         btExcluirEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluirEnfermeiro.setText("Excluir");
@@ -461,12 +451,6 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         
     }//GEN-LAST:event_imgHomeMouseClicked
 
-    private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
-        // TODO add your handling code here:
-        guardarAlteracoes();
-        JOptionPane.showMessageDialog(this, "Alterações guardadas.");
-    }//GEN-LAST:event_imgGuardarMouseClicked
-
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
          dispose();
@@ -673,7 +657,6 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
     private javax.swing.JButton btLDoentes;
     private javax.swing.JButton btLimparEnfermeiro;
     private javax.swing.JButton btLimparMedico;
-    private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JButton jButton1;
