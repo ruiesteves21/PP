@@ -4,8 +4,6 @@
  * and open the template in the editor.
  */
 package frontend;
-import backend.Enfermaria;
-import backend.ListaEnfermaria;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
@@ -13,40 +11,23 @@ import backend.Serializacao;
 
 /**
  *
- * @author ssoar,ruiesteves
+ * @author ssoar
  */
-public class ListaEnfermariasGenerica extends javax.swing.JFrame {
+public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
      DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    private int indice;
+
     /**
-     * Creates new form ListaEnfermariasGenerica
+     * Creates new form ListaEquipamentosGenerica
      */
-    public ListaEnfermariasGenerica(Sistema sistema,Serializacao bd) {
+    public PaginaEquipamentosGenerica(Sistema sistema, Serializacao bd) {
         initComponents();
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
-        indice=0;
-        
     }
-    
-     public void carregarTabelaGenerica()
-    {
-        model.setRowCount(0);
-         
-         for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().size(); i++) {
-             
-            Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().get(i);
-             
-            model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getNCamas(), enf.getIdEnfermaria() });
-         }
-         
-          table.setModel(model);
-          
-    }
-    
+
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -56,19 +37,17 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDesktopPane1 = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         table = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         imgHome = new javax.swing.JLabel();
         txtFiltrar = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(496, 364));
+        setMinimumSize(new java.awt.Dimension(807, 358));
         setUndecorated(true);
-        setSize(new java.awt.Dimension(496, 364));
+        setSize(new java.awt.Dimension(807, 358));
         getContentPane().setLayout(null);
 
         table.setModel(new javax.swing.table.DefaultTableModel(
@@ -76,36 +55,26 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Nome", "Tipo", "Nº Camas", "Codigo"
+                "Codigo", "Nome", "Tipo", "Disponibilidade", "Enfermaria", "Doente"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
         });
-        table.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableMouseClicked(evt);
-            }
-        });
         jScrollPane1.setViewportView(table);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(20, 40, 440, 260);
+        jScrollPane1.setBounds(70, 40, 690, 250);
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setText("Filtrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
         getContentPane().add(jButton1);
-        jButton1.setBounds(380, 310, 80, 29);
+        jButton1.setBounds(680, 310, 80, 29);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -114,22 +83,19 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(10, 0, 30, 30);
-        getContentPane().add(txtFiltrar);
-        txtFiltrar.setBounds(230, 310, 140, 30);
+        imgHome.setBounds(10, 10, 30, 30);
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
+        txtFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
+                txtFiltrarActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(90, 310, 71, 21);
+        getContentPane().add(txtFiltrar);
+        txtFiltrar.setBounds(500, 310, 160, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G4.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, -950, 750, 1370);
+        jLabel1.setBounds(-180, -150, 1550, 830);
 
         pack();
         setLocationRelativeTo(null);
@@ -143,23 +109,9 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
 
-                                
-    
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void txtFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltrarActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
-    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_tableMouseClicked
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-       // ListaEnfermarias varEnf = new ListaEnfermarias();
-       // varEnf.carregarTabela();
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
+    }//GEN-LAST:event_txtFiltrarActionPerformed
 
     /**
      * @param args the command line arguments
@@ -178,20 +130,23 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaEnfermariasGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaEquipamentosGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaEnfermariasGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaEquipamentosGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaEnfermariasGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaEquipamentosGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaEnfermariasGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaEquipamentosGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new ListaEnfermariasGenerica().setVisible(true);
+                //new ListaEquipamentosGenerica().setVisible(true);
             }
         });
     }
@@ -199,8 +154,6 @@ public class ListaEnfermariasGenerica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imgHome;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;

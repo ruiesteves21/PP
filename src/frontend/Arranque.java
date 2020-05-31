@@ -37,7 +37,7 @@ public class Arranque {
         
         //Uma vez que a JanelaLogin é modal, este método irá bloquear até que a janela seja fechada.
         //A janela só fecha quando os dados de login são válidos.                
-        LoginForm login = new LoginForm(sistema, bd);               
+        PaginaLogin login = new PaginaLogin(sistema, bd);               
         login.setVisible(true);
         
     }

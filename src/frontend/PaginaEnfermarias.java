@@ -15,9 +15,9 @@ import java.util.UUID;
 
 /**
  *
- * @author ruiesteves
+ * 
  */
-public class ListaEnfermarias extends javax.swing.JFrame {
+public class PaginaEnfermarias extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
@@ -25,16 +25,14 @@ public class ListaEnfermarias extends javax.swing.JFrame {
      /**
      * Creates new form ListaEnfermarias
      */
-    public ListaEnfermarias(Sistema sistema, Serializacao bd, int indiceHospital) {
+    public PaginaEnfermarias(Sistema sistema, Serializacao bd, int indiceHospital) {
         initComponents();
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
         this.indiceHospital=indiceHospital;
    
-        carregarTabela();
-        labelCodigo.setVisible(false);
-        txtCodigo.setVisible(false); 
+        carregarTabela();       
     }
 
     
@@ -74,17 +72,15 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        labelCodigo = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         txtCamas = new javax.swing.JTextField();
-        txtCodigo = new javax.swing.JTextField();
         btInserir = new javax.swing.JButton();
         btLimpar = new javax.swing.JButton();
         btExcluir = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
-        ComboTipo = new javax.swing.JComboBox<>();
+        comboTipo = new javax.swing.JComboBox<>();
         btEquipamentos = new javax.swing.JButton();
         btProfissionais = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -94,6 +90,12 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         setUndecorated(true);
         setSize(new java.awt.Dimension(614, 317));
         getContentPane().setLayout(null);
+
+        jScrollPane3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jScrollPane3MouseClicked(evt);
+            }
+        });
 
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -131,22 +133,17 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel11.setText("Nome :");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(20, 70, 60, 20);
+        jLabel11.setBounds(20, 100, 60, 20);
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel12.setText("Tipo :");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(20, 110, 60, 20);
+        jLabel12.setBounds(20, 140, 60, 20);
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel13.setText("Nº Camas :");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(20, 150, 80, 20);
-
-        labelCodigo.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        labelCodigo.setText("Código :");
-        getContentPane().add(labelCodigo);
-        labelCodigo.setBounds(20, 190, 90, 20);
+        jLabel13.setBounds(20, 180, 80, 20);
 
         txtNome.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -154,7 +151,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNome);
-        txtNome.setBounds(120, 70, 120, 30);
+        txtNome.setBounds(110, 100, 120, 30);
 
         txtCamas.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -162,15 +159,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtCamas);
-        txtCamas.setBounds(120, 150, 120, 30);
-
-        txtCodigo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtCodigoActionPerformed(evt);
-            }
-        });
-        getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(120, 190, 120, 30);
+        txtCamas.setBounds(110, 180, 120, 30);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
@@ -231,9 +220,9 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(570, 30, 30, 30);
 
-        ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Normal", "UCI", " ", " ", " " }));
-        getContentPane().add(ComboTipo);
-        ComboTipo.setBounds(120, 110, 120, 30);
+        comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Por definir", "Normal", "UCI", " ", " ", " " }));
+        getContentPane().add(comboTipo);
+        comboTipo.setBounds(110, 140, 120, 30);
 
         btEquipamentos.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEquipamentos.setText("Lista Equipamentos");
@@ -316,19 +305,19 @@ public class ListaEnfermarias extends javax.swing.JFrame {
              return;
         }
          
-        if ((ComboTipo.getSelectedIndex()==0)){
+        if ((comboTipo.getSelectedIndex()==0)){
              JOptionPane.showMessageDialog(null," Selecione um tipo de enfermaria","Erro",JOptionPane.ERROR_MESSAGE);             
              return;
         }
         
-       Enfermaria enf = new Enfermaria(sistema.getUtilizadorLigado(), txtNome.getText(), id, Integer.parseInt(txtCamas.getText()), ComboTipo.getSelectedItem().toString());
+       Enfermaria enf = new Enfermaria(sistema.getUtilizadorLigado(), txtNome.getText(), id, Integer.parseInt(txtCamas.getText()), comboTipo.getSelectedItem().toString());
        
        try {
        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().adicionar(enf);
        JOptionPane.showMessageDialog(null, "Enfermaria " + txtNome.getText() + " registada!");
        txtNome.setText("");
        txtCamas.setText("");
-       txtCodigo.setText(""); 
+       comboTipo.setSelectedItem(null);
        carregarTabela();
        } catch(RuntimeException e) {
             JOptionPane.showMessageDialog(null,"Esta enfermaria já se encontra registada!","Erro",JOptionPane.ERROR_MESSAGE);
@@ -338,16 +327,22 @@ public class ListaEnfermarias extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
-       
-        
-        int indiceEnfermaria = table.getSelectedRow();
-        if (indiceEnfermaria == -1){
-                JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE); 
-        
-           }
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).setNome(txtNome.getText());
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).setnCamas(Integer.parseInt(txtCamas.getText()));
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).setTipo(ComboTipo.getSelectedItem().toString());
+       try {
+            int indiceEnfermaria = table.getSelectedRow();
+            Enfermaria editarEnfermaria =  sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria);
+
+            if (indiceEnfermaria == -1){
+                    JOptionPane.showMessageDialog(null,"Selecione uma enfermaria","Atenção",JOptionPane.WARNING_MESSAGE); 
+                    return;
+               }
+
+            editarEnfermaria.setNome(txtNome.getText());
+            editarEnfermaria.setnCamas(Integer.parseInt(txtCamas.getText()));
+            editarEnfermaria.setTipo(comboTipo.getSelectedItem().toString());
+        } catch (IndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null,"Selecione uma enfermaria","Atenção",JOptionPane.WARNING_MESSAGE);
+            return;
+            } 
 
         carregarTabela();
         guardarAlteracoes();
@@ -359,7 +354,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
         
         txtNome.setText(null);
         txtCamas.setText(null);
-        txtCodigo.setText(null);
+        comboTipo.setSelectedItem(null);
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void txtNomeActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtNomeActionPerformed
@@ -369,10 +364,6 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private void txtCamasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCamasActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtCamasActionPerformed
-
-    private void txtCodigoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCodigoActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtCodigoActionPerformed
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
@@ -387,7 +378,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
        dispose();
-       ListaHospitais lh = new ListaHospitais(sistema, bd);
+       PaginaHospitais lh = new PaginaHospitais(sistema, bd);
        lh.setLocationRelativeTo(null);
        lh.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
@@ -401,7 +392,7 @@ public class ListaEnfermarias extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null,"Selecione um equipamento","Atenção",JOptionPane.WARNING_MESSAGE); 
         }  else {    
                     
-        ListaEquipamentos equipamento = new ListaEquipamentos(sistema, bd, indiceHospital, indiceEnfermaria);
+        PaginaEquipamentos equipamento = new PaginaEquipamentos(sistema, bd, indiceHospital, indiceEnfermaria);
         guardarAlteracoes();
         dispose();
         equipamento.setVisible(true);
@@ -418,13 +409,33 @@ public class ListaEnfermarias extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null,"Selecione um enfermeiro","Atenção",JOptionPane.WARNING_MESSAGE); 
         }  else {   
                    
-        ListaProfissionaisSaude p = new ListaProfissionaisSaude(sistema, bd, indiceHospital, indiceEnfermaria);
+        PaginaProfissionaisSaude p = new PaginaProfissionaisSaude(sistema, bd, indiceHospital, indiceEnfermaria);
         guardarAlteracoes();
         dispose();
         p.setVisible(true);
         p.setLocationRelativeTo(null);
           }
     }//GEN-LAST:event_btProfissionaisActionPerformed
+
+    private void jScrollPane3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jScrollPane3MouseClicked
+        // TODO add your handling code here:
+         int indiceEnfermaria = table.getSelectedRow();  //quando o utilizador seleciona uma enfermaria clicando
+                                                  //na tabela
+
+        if(indiceEnfermaria>=0 && indiceEnfermaria < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size()) {
+            
+           Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria);
+           
+            txtNome.setText(enf.getNome());
+            txtCamas.setText(String.valueOf(enf.getNCamas()));
+
+            /*txtNome.setText(enf.getNome());
+            txtCamas.setText(String.valueOf(enf.getNCamas()));
+            comboTipo.setSelectedItem(enf.getTipo());*/
+        }
+        
+        
+    }//GEN-LAST:event_jScrollPane3MouseClicked
     
      
      
@@ -446,14 +457,17 @@ public class ListaEnfermarias extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaEnfermarias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaEnfermarias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaEnfermarias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaEnfermarias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaEnfermarias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaEnfermarias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaEnfermarias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaEnfermarias.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
@@ -465,13 +479,13 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboTipo;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btEquipamentos;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btInserir;
     private javax.swing.JButton btLimpar;
     private javax.swing.JButton btProfissionais;
+    private javax.swing.JComboBox<String> comboTipo;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;
@@ -480,10 +494,8 @@ public class ListaEnfermarias extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JLabel labelCodigo;
     private javax.swing.JTable table;
     private javax.swing.JTextField txtCamas;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables
 }

@@ -194,7 +194,7 @@ public class FichaHospital extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
         dispose();
-        ListaHospitais listaHospitais = new ListaHospitais(sistema,bd);
+        PaginaHospitais listaHospitais = new PaginaHospitais(sistema,bd);
         listaHospitais.setLocationRelativeTo(null);
         listaHospitais.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked

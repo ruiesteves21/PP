@@ -15,11 +15,11 @@ import javax.swing.JOptionPane;
  * @author
  * Bruno Ferreira (bruno@dsi.uminho.pt)
  */
-public class RegistoAcessos extends javax.swing.JFrame {
+public class PaginaRegistoAcessos extends javax.swing.JFrame {
     private final Sistema sistema;
     private Serializacao bd;
 
-    public RegistoAcessos(Sistema sistema, Serializacao bd) {
+    public PaginaRegistoAcessos(Sistema sistema, Serializacao bd) {
         initComponents();
         this.sistema = sistema;   
         this.bd = bd;
@@ -217,14 +217,14 @@ public class RegistoAcessos extends javax.swing.JFrame {
     private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
         // TODO add your handling code here:
         dispose();
-        LoginForm l = new LoginForm(sistema, bd);
+        PaginaLogin l = new PaginaLogin(sistema, bd);
         l.setVisible(true);
     }//GEN-LAST:event_imgSairMouseClicked
 
     private void imgRetroceder1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder1MouseClicked
         // TODO add your handling code here:
         dispose();
-        ListaHospitais lh = new ListaHospitais(sistema, bd);
+        PaginaHospitais lh = new PaginaHospitais(sistema, bd);
         /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
         FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
         lh.setLocationRelativeTo(null);
@@ -234,7 +234,7 @@ public class RegistoAcessos extends javax.swing.JFrame {
     private void imgRetroceder2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder2MouseClicked
         // TODO add your handling code here:
         dispose();
-        ListaHospitais lh = new ListaHospitais(sistema, bd);
+        PaginaHospitais lh = new PaginaHospitais(sistema, bd);
         /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
         FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
         lh.setLocationRelativeTo(null);
@@ -244,7 +244,7 @@ public class RegistoAcessos extends javax.swing.JFrame {
     private void imgRetroceder3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder3MouseClicked
         // TODO add your handling code here:
         dispose();
-        ListaHospitais lh = new ListaHospitais(sistema, bd);
+        PaginaHospitais lh = new PaginaHospitais(sistema, bd);
         /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
         FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
         lh.setLocationRelativeTo(null);
@@ -254,7 +254,7 @@ public class RegistoAcessos extends javax.swing.JFrame {
     private void imgRetroceder4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder4MouseClicked
         // TODO add your handling code here:
         dispose();
-        ListaHospitais lh = new ListaHospitais(sistema, bd);
+        PaginaHospitais lh = new PaginaHospitais(sistema, bd);
         /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
         FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
         lh.setLocationRelativeTo(null);
@@ -264,7 +264,7 @@ public class RegistoAcessos extends javax.swing.JFrame {
     private void imgRetroceder5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder5MouseClicked
         // TODO add your handling code here:
         dispose();
-        ListaHospitais lh = new ListaHospitais(sistema, bd);
+        PaginaHospitais lh = new PaginaHospitais(sistema, bd);
         /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
         FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
         lh.setLocationRelativeTo(null);

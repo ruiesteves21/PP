@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author rodrm
+ * 
  */
 public class ListaHospital implements Serializable {
      private ArrayList<Hospital> listaHospital;

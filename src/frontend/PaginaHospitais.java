@@ -17,9 +17,9 @@ import javax.swing.table.TableModel;
 
 /**
  *
- * @author rodrm
+ * 
  */
-public class ListaHospitais extends javax.swing.JFrame {
+public class PaginaHospitais extends javax.swing.JFrame {
 
     /**
      * Creates new form Lista_Hospitais
@@ -28,21 +28,14 @@ public class ListaHospitais extends javax.swing.JFrame {
     private Sistema sistema;
     private Serializacao bd;
     
-    
- 
-    
-    
-    
-    public ListaHospitais(Sistema sistema, Serializacao bd) {
+    public PaginaHospitais(Sistema sistema, Serializacao bd) {
         initComponents();
         
         model = (DefaultTableModel) table.getModel();
         this.sistema = sistema;
         this.bd = bd;
         
-        carregarTabela();
-        labelCodigo.setVisible(false);
-        txtCodigo.setVisible(false); 
+        carregarTabela();      
         
     }
     
@@ -50,10 +43,10 @@ public class ListaHospitais extends javax.swing.JFrame {
     {
         model.setRowCount(0);
         for (int i = 0; i < sistema.getListaHospital().getListaHospital().size(); i++) {
-            Hospital h = sistema.getListaHospital().getListaHospital().get(i);
+            Hospital hospital = sistema.getListaHospital().getListaHospital().get(i);
             
-            if (h.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-            model.addRow(new Object[]{h.getIdHospital(), h.getNome(),h.getLocalidade()});
+            if (hospital.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+            model.addRow(new Object[]{hospital.getIdHospital(), hospital.getNome(),hospital.getLocalidade()});
 
             }
          }
@@ -85,8 +78,6 @@ public class ListaHospitais extends javax.swing.JFrame {
         btLimpar = new javax.swing.JButton();
         btEditar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
-        labelCodigo = new javax.swing.JLabel();
-        txtCodigo = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         txtNome = new javax.swing.JTextField();
         btInserir = new javax.swing.JButton();
@@ -130,19 +121,12 @@ public class ListaHospitais extends javax.swing.JFrame {
         getContentPane().add(jLabel1);
         jLabel1.setBounds(190, 10, 150, 25);
 
-        labelCodigo.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        labelCodigo.setText("Codigo :");
-        getContentPane().add(labelCodigo);
-        labelCodigo.setBounds(20, 60, 60, 20);
-        getContentPane().add(txtCodigo);
-        txtCodigo.setBounds(110, 60, 100, 30);
-
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel4.setText("Nome :");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 100, 60, 20);
+        jLabel4.setBounds(20, 90, 60, 20);
         getContentPane().add(txtNome);
-        txtNome.setBounds(110, 100, 100, 30);
+        txtNome.setBounds(110, 90, 100, 30);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
@@ -251,6 +235,12 @@ public class ListaHospitais extends javax.swing.JFrame {
             }
         
         }
+        
+        if (txtNome.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Introduza o nome do hospital","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNome.requestFocus();
+             return;
+        }
           
         
         /*var result = new ArrayList<Hospital>();
@@ -284,14 +274,13 @@ public class ListaHospitais extends javax.swing.JFrame {
         }
         
         
-        Hospital h = new Hospital(sistema.getUtilizadorLigado(),txtNome.getText(), txtLocalidade.getText(), id);
+        Hospital hospital = new Hospital(sistema.getUtilizadorLigado(),txtNome.getText(), txtLocalidade.getText(), id);
         
         try {
-        sistema.getListaHospital().adicionar(h);
+        sistema.getListaHospital().adicionar(hospital);
         JOptionPane.showMessageDialog(null, "Hospital " + txtNome.getText() + " registado!");
         txtNome.setText("");
         txtLocalidade.setText("");
-        txtCodigo.setText(""); 
         carregarTabela();
         }catch(RuntimeException e) {
             //Todas as labels estão preenchidas, no entanto com o tipo de dados errado
@@ -301,40 +290,49 @@ public class ListaHospitais extends javax.swing.JFrame {
     }//GEN-LAST:event_btInserirActionPerformed
 
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
-        // TODO add your handling code here:
-        txtCodigo.setText(null);
+        // TODO add your handling code here:        
         txtNome.setText(null);
         txtLocalidade.setText(null);
     }//GEN-LAST:event_btLimparActionPerformed
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
-         DefaultTableModel model = (DefaultTableModel)table.getModel();
-        int c = table.getSelectedRow();
+         
+        int row = table.getSelectedRow();
         //ou seja se a linha estiver selecionada
-        if(c >= 0){
-            model.removeRow(c);
+        
+        if(row >= 0){
+            model.removeRow(row);
             //remove a linha selecionada
-            sistema.getListaHospital().getListaHospital().remove(c);
+            sistema.getListaHospital().getListaHospital().remove(row);
             guardarAlteracoes();
-            JOptionPane.showMessageDialog(this, "Removido!");
+            JOptionPane.showMessageDialog(null,"Removido","Informação",JOptionPane.INFORMATION_MESSAGE);
         }
         else
         {
-            JOptionPane.showMessageDialog(null,"Selecione um hospital");
+            JOptionPane.showMessageDialog(null,"Selecione um hospital","Atenção",JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btExcluirActionPerformed
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
-        int indice = table.getSelectedRow();
-           if (indice == -1){
-                JOptionPane.showMessageDialog(null,"Selecione um hospital","Atenção",JOptionPane.WARNING_MESSAGE); 
-        
-           }
+        try {
+            int indiceHospital = table.getSelectedRow();
+            Hospital editarHospital = sistema.getListaHospital().getListaHospital().get(indiceHospital);
 
-        sistema.getListaHospital().getListaHospital().get(indice).setNome(txtNome.getText());
-        sistema.getListaHospital().getListaHospital().get(indice).setLocalidade(txtLocalidade.getText());
+               if (indiceHospital == -1){
+                    JOptionPane.showMessageDialog(null,"Selecione um hospital","Atenção",JOptionPane.WARNING_MESSAGE); 
+                    return;       
+               }
+
+
+            editarHospital.setNome(txtNome.getText());
+            editarHospital.setLocalidade(txtLocalidade.getText());
+        } catch (IndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null,"Selecione um hospital","Atenção",JOptionPane.WARNING_MESSAGE);
+            return;
+            }
+        
         carregarTabela();
         guardarAlteracoes();
         
@@ -366,7 +364,7 @@ public class ListaHospitais extends javax.swing.JFrame {
               JOptionPane.showMessageDialog(null,"Selecione um hospital","Atenção",JOptionPane.WARNING_MESSAGE); 
         }  else {             
         
-        ListaEnfermarias enf = new ListaEnfermarias(sistema, bd, indiceHospital);
+        PaginaEnfermarias enf = new PaginaEnfermarias(sistema, bd, indiceHospital);
         guardarAlteracoes();
         dispose();
         enf.setVisible(true);
@@ -397,13 +395,14 @@ public class ListaHospitais extends javax.swing.JFrame {
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         // TODO add your handling code here:
-         int indice = table.getSelectedRow();  //quando o utilizador seleciona um hospital clicando
+         int indiceHospital = table.getSelectedRow();  //quando o utilizador seleciona um hospital clicando
                                                   //na tabela
 
-        if(indice>=0 && indice < sistema.getListaHospital().getListaHospital().size()) {
-            Hospital h = (Hospital) sistema.getListaHospital().getListaHospital().get(indice);
-            txtNome.setText(h.getNome());
-            txtLocalidade.setText(h.getLocalidade());
+        if(indiceHospital>=0 && indiceHospital < sistema.getListaHospital().getListaHospital().size()) {
+            
+            Hospital hospital = sistema.getListaHospital().getListaHospital().get(indiceHospital);
+            txtNome.setText(hospital.getNome());
+            txtLocalidade.setText(hospital.getLocalidade());
         }
             
        /* if (evt.getClickCount() == 2){
@@ -447,14 +446,20 @@ public class ListaHospitais extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaHospitais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaHospitais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaHospitais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaHospitais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaHospitais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaHospitais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaHospitais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaHospitais.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -478,9 +483,7 @@ public class ListaHospitais extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JLabel labelCodigo;
     private javax.swing.JTable table;
-    private javax.swing.JTextField txtCodigo;
     private javax.swing.JTextField txtLocalidade;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables

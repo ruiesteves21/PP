@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 /**
  *
- * @author Utilizador
+ * 
  */
 public class ListaMedico implements Serializable {
     

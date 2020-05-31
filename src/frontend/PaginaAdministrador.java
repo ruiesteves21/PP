@@ -81,7 +81,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     }
     
     private void adicionar() {
-        Perfil perfil = new Perfil(sistema, null, this);   
+        PaginaPerfil perfil = new PaginaPerfil(sistema, null, this);   
         perfil.setVisible(true);
     }
     
@@ -98,7 +98,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         
         try {
             Utilizador medico = sistema.getListaUtilizador().getUtilizador(username);
-             Perfil perfil = new Perfil(sistema, medico, this);   
+             PaginaPerfil perfil = new PaginaPerfil(sistema, medico, this);   
             perfil.setVisible(true);
         } catch (ListaUtilizador.UtilizadorNaoExistenteException ex) {            
             JOptionPane.showMessageDialog(this, ex.getMessage());
@@ -240,7 +240,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
         // TODO add your handling code here:
         dispose();
-        LoginForm l = new LoginForm(sistema, bd);
+        PaginaLogin l = new PaginaLogin(sistema, bd);
         l.setVisible(true);
     }//GEN-LAST:event_imgSairMouseClicked
 
@@ -255,7 +255,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     private void btRegistoAcessoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btRegistoAcessoActionPerformed
         // TODO add your handling code here:
         dispose();
-        RegistoAcessos registoAcessos = new RegistoAcessos(sistema, bd);
+        PaginaRegistoAcessos registoAcessos = new PaginaRegistoAcessos(sistema, bd);
         registoAcessos.setVisible(true);
     }//GEN-LAST:event_btRegistoAcessoActionPerformed
 

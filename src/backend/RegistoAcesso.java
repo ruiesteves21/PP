@@ -10,7 +10,7 @@ import java.time.LocalDateTime;
 
 /**
  *
- * @author rodrm
+ * 
  */
 public class RegistoAcesso implements Serializable {
     

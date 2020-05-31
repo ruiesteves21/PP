@@ -145,7 +145,7 @@ public class PaginaInicial extends javax.swing.JFrame {
     private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
         // TODO add your handling code here:
         dispose();
-        LoginForm l = new LoginForm(sistema, bd);
+        PaginaLogin l = new PaginaLogin(sistema, bd);
         l.setVisible(true);
     }//GEN-LAST:event_imgSairMouseClicked
 

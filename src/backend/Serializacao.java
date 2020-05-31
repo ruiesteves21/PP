@@ -10,8 +10,7 @@ import java.io.ObjectOutputStream;
 
 /**
  *
- * @author
- * Bruno Ferreira (bruno@dsi.uminho.pt)
+ * 
  */
 
 public class Serializacao {    

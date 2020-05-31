@@ -21,7 +21,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * 
  */
-public class ListaDoentes extends javax.swing.JFrame {
+public class PaginaDoentes extends javax.swing.JFrame {
     
     DefaultTableModel model; 
     private Sistema sistema;
@@ -37,7 +37,7 @@ public class ListaDoentes extends javax.swing.JFrame {
      * Creates new form ListaDoentes
      */
     
-    public ListaDoentes(Sistema sistema, Serializacao bd, int indiceHospital, int indiceEnfermaria, int indiceMedico) {
+    public PaginaDoentes(Sistema sistema, Serializacao bd, int indiceHospital, int indiceEnfermaria, int indiceMedico) {
         initComponents();
 
         model = (DefaultTableModel) tableDoentes.getModel();
@@ -272,14 +272,17 @@ public class ListaDoentes extends javax.swing.JFrame {
 
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
+    try {
     SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy");
     
-    int indiceDoente = tableDoentes.getSelectedRow();
-    
-        if (indiceDoente == -1)
-        {
-                JOptionPane.showMessageDialog(null,"Selecione uma linha","Atenção",JOptionPane.WARNING_MESSAGE);         
-        }
+            int indiceDoente = tableDoentes.getSelectedRow();
+
+            Doente editarDoente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente);
+
+                if (indiceDoente == -1)
+                {
+                        JOptionPane.showMessageDialog(null,"Selecione um doente","Atenção",JOptionPane.WARNING_MESSAGE);         
+                }
         
            /*String Gravidade="";
         
@@ -304,14 +307,19 @@ public class ListaDoentes extends javax.swing.JFrame {
             }*/
             
             
-    sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setNome(txtNome.getText());
-    sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setLocalidade(txtLocalidade.getText());
-    sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setCama(Integer.parseInt(txtCama.getText()));
-    sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setDataEntrada(sdf.format(DataEntrada.getDate()));
-    sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setDataNasc(sdf.format(DataNasc.getDate()));
-    sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setDataSaida(sdf.format(DataSaida.getDate())); 
-    sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setGravidade(comboGravidade.getSelectedItem().toString());
-      
+            editarDoente.setNome(txtNome.getText());
+            editarDoente.setLocalidade(txtLocalidade.getText());
+            editarDoente.setCama(Integer.parseInt(txtCama.getText()));
+            editarDoente.setDataEntrada(sdf.format(DataEntrada.getDate()));
+            editarDoente.setDataNasc(sdf.format(DataNasc.getDate()));
+            editarDoente.setDataSaida(sdf.format(DataSaida.getDate())); 
+            editarDoente.setGravidade(comboGravidade.getSelectedItem().toString());
+
+    } catch (IndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null,"Selecione um doente","Atenção",JOptionPane.WARNING_MESSAGE);
+            return;
+            } 
+    
     carregarTabela();
     guardarAlteracoes();
 
@@ -536,7 +544,7 @@ public class ListaDoentes extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
         dispose();
-       ListaProfissionaisSaude p = new ListaProfissionaisSaude(sistema,bd,indiceHospital,indiceEnfermaria);
+       PaginaProfissionaisSaude p = new PaginaProfissionaisSaude(sistema,bd,indiceHospital,indiceEnfermaria);
         //FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow());
         p.setLocationRelativeTo(null);
         p.setVisible(true);
@@ -559,14 +567,17 @@ public class ListaDoentes extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaDoentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaDoentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaDoentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaDoentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaDoentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaDoentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaDoentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaDoentes.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */

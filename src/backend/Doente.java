@@ -10,7 +10,7 @@ import java.util.Calendar;
 import java.util.Date;
 /**
  *
- * @author Rui Esteves
+ * 
  */
 
 public class Doente implements Serializable

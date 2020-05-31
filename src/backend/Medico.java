@@ -10,7 +10,7 @@ import java.util.UUID;
 
 /**
  *
- * @author Utilizador
+ * 
  */
 public class Medico implements Serializable {
     private String especialidade;

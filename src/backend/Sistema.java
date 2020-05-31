@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author rodrm
+ * 
  */
 public class Sistema implements Serializable
 {
@@ -22,7 +22,7 @@ public class Sistema implements Serializable
     private Utilizador utilizadorLigado;
     private final List<RegistoAcesso> listaEntradas;
     private ListaHospital listaHospital;
-    private ListaProfissionalSaude listaProfissionalSaude;
+    private ListaEnfermeiro listaEnfermeiro;
     private ListaDoente listaDoente;
     
 
@@ -33,37 +33,25 @@ public class Sistema implements Serializable
         listaEntradas = new ArrayList<>();
         listaHospital = new ListaHospital();
         listaDoente = new ListaDoente();
-        listaProfissionalSaude = new ListaProfissionalSaude();
+        listaEnfermeiro = new ListaEnfermeiro();
         listaEquipamento = new ListaEquipamento();
     }
 
-    public ListaProfissionalSaude getListaProfissionalSaude() {
-        return listaProfissionalSaude;
+    public ListaEnfermeiro getListaEnfermeiro() {
+        return listaEnfermeiro;
     }
-
-    public void setListaProfissionalSaude(ListaProfissionalSaude listaProfissionalSaude) {
-        this.listaProfissionalSaude = listaProfissionalSaude;
-    }
+   
 
     public ListaDoente getListaDoente() {
         return listaDoente;
     }
 
-    public void setListaDoente(ListaDoente listaDoente) {
-        this.listaDoente = listaDoente;
-    }
-    
-    
 
      public ListaHospital getListaHospital() {
         return listaHospital;
     }
 
-    public void setListaHospital(ListaHospital listaHospital) {
-        this.listaHospital = listaHospital;
-    }
-    
-    
+       
     public ListaUtilizador getListaUtilizador()
     {
         return listaUtilizador;
@@ -76,28 +64,17 @@ public class Sistema implements Serializable
     public Utilizador getUtilizadorLigado() {
         return utilizadorLigado;
     }
-
-    public void setUtilizadorLigado(Utilizador utilizadorLigado) {
-        this.utilizadorLigado = utilizadorLigado;
-    }
+   
     
     public ListaEnfermaria getListaEnfermaria()
     {
         return listaEnfermaria;
-    }
-
-    public void setListaEnfermaria(ListaEnfermaria listaEnfermaria)
-    {
-        this.listaEnfermaria = listaEnfermaria;
-    }
+    }    
     
     public ListaEquipamento getListaEquipamento() {
         return listaEquipamento;
     }
-
-    public void setListaEquipamento(ListaEquipamento listaEquipamento) {
-        this.listaEquipamento = listaEquipamento;
-    }
+ 
     
     public boolean autenticarUtilizador(String username, String password) {        
         if (listaUtilizador.existe(username)) {

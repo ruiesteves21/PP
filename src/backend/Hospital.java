@@ -10,7 +10,7 @@ import java.util.UUID;
 
 /**
  *
- * @author rodrm
+ * 
  */
 public class Hospital implements Serializable  {
     private String nome;

@@ -13,15 +13,14 @@ import backend.Serializacao;
  *
  * @author ssoar
  */
-public class ListaEquipamentosGenerica extends javax.swing.JFrame {
-     DefaultTableModel model; 
+public class PaginaDoentesGenerica extends javax.swing.JFrame {
+    DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-
     /**
-     * Creates new form ListaEquipamentosGenerica
+     * Creates new form ListaDoentesGenerica
      */
-    public ListaEquipamentosGenerica(Sistema sistema, Serializacao bd) {
+    public PaginaDoentesGenerica(Sistema sistema,Serializacao bd) {
         initComponents();
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
@@ -45,10 +44,9 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(807, 358));
-        setMinimumSize(new java.awt.Dimension(807, 358));
+        setMinimumSize(new java.awt.Dimension(804, 363));
         setUndecorated(true);
-        setSize(new java.awt.Dimension(807, 358));
+        setSize(new java.awt.Dimension(804, 363));
         getContentPane().setLayout(null);
 
         table.setModel(new javax.swing.table.DefaultTableModel(
@@ -56,26 +54,35 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Nome", "Tipo", "Disponibilidade", "Enfermaria", "Doente"
+                "Codigo", "Nome", "Localidade", "Data Nascimento", "Cama", "Médico", "Enfermaria", "Gravidade", "Data Entrada", "Data Saída"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+            };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
+        table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        table.setEnabled(false);
         jScrollPane1.setViewportView(table);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(70, 40, 690, 250);
+        jScrollPane1.setBounds(40, 60, 750, 250);
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setText("Filtrar");
         getContentPane().add(jButton1);
-        jButton1.setBounds(680, 310, 80, 29);
+        jButton1.setBounds(710, 320, 80, 30);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -92,11 +99,11 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFiltrar);
-        txtFiltrar.setBounds(500, 310, 160, 30);
+        txtFiltrar.setBounds(520, 320, 170, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G4.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G2.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-180, -150, 1550, 830);
+        jLabel1.setBounds(-590, -410, 1700, 1100);
 
         pack();
         setLocationRelativeTo(null);
@@ -131,20 +138,23 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaEquipamentosGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaDoentesGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaEquipamentosGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaDoentesGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaEquipamentosGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaDoentesGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaEquipamentosGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaDoentesGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                //new ListaEquipamentosGenerica().setVisible(true);
+                //new ListaDoentesGenerica().setVisible(true);
             }
         });
     }
@@ -157,4 +167,8 @@ public class ListaEquipamentosGenerica extends javax.swing.JFrame {
     private javax.swing.JTable table;
     private javax.swing.JTextField txtFiltrar;
     // End of variables declaration//GEN-END:variables
+
+    private void close() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

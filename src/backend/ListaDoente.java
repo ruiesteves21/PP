@@ -12,7 +12,7 @@ import java.util.Calendar;
 
 /**
  *
- * @author Rui Esteves
+ * 
  */
 public class ListaDoente implements Serializable  {
     

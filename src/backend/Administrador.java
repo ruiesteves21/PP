@@ -9,7 +9,7 @@ import java.io.Serializable;
 
 /**
  *
- * @author Rui Esteves
+ * 
  */
 public class Administrador extends Utilizador implements Serializable  {
 

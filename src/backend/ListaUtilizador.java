@@ -11,7 +11,7 @@ import java.util.TreeMap;
 
 /**
  *
- * @author rodrm
+ * 
  */
 public class ListaUtilizador implements Serializable {
     private TreeMap<String, Utilizador> listaUtilizador;

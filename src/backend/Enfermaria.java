@@ -12,14 +12,14 @@ import java.util.UUID;
  *
  * @author rodrm
  */
-public class Enfermaria extends ProfissionalSaude implements Serializable {
+public class Enfermaria extends Enfermeiro implements Serializable {
     private String nome;
     private String idEnfermaria;
     private String tipo; //normal, UCI
     private Utilizador utiLigado;
     private int nCamas;
     private ListaEquipamento listaEquipamento;
-    private ListaProfissionalSaude listaProfissionalSaude;
+    private ListaEnfermeiro listaEnfermeiro;
     private ListaMedico listaMedico;
     
     public Enfermaria () 
@@ -34,7 +34,7 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
         this.tipo = tipo;
         this.nCamas = nCamas;
         listaEquipamento = new ListaEquipamento();
-        listaProfissionalSaude = new ListaProfissionalSaude();
+        listaEnfermeiro = new ListaEnfermeiro();
         listaMedico = new ListaMedico();
     }
     
@@ -51,8 +51,8 @@ public class Enfermaria extends ProfissionalSaude implements Serializable {
         return listaEquipamento;
     }
 
-    public ListaProfissionalSaude getListaProfissionalSaude() {
-        return listaProfissionalSaude;
+    public ListaEnfermeiro getListaEnfermeiro() {
+        return listaEnfermeiro;
     }
 
     public ListaMedico getListaMedico() {

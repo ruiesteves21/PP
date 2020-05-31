@@ -9,7 +9,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 /**
  *
- * @author rodrm
+ * 
  */
 public class ListaEnfermaria implements Serializable {
     

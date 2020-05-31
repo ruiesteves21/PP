@@ -12,7 +12,7 @@ import backend.Utilizador;
 /**
  *
  */
-public class Perfil extends javax.swing.JFrame {
+public class PaginaPerfil extends javax.swing.JFrame {
 
     //Referencia ao Sistema, a lista de utilizadores esta no sistema
     private Sistema sistema;    
@@ -21,7 +21,7 @@ public class Perfil extends javax.swing.JFrame {
     //Referencia o Utilizador que queremos visualizar/editar
     private Utilizador utilizador;   
     
-    public Perfil(Sistema sistema, Utilizador utilizador, PaginaAdministrador listagem) {
+    public PaginaPerfil(Sistema sistema, Utilizador utilizador, PaginaAdministrador listagem) {
         
         initComponents();          
                               
@@ -147,7 +147,6 @@ public class Perfil extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMaximumSize(new java.awt.Dimension(363, 343));
         setMinimumSize(new java.awt.Dimension(363, 343));
         setUndecorated(true);
         setSize(new java.awt.Dimension(363, 343));
@@ -243,14 +242,16 @@ public class Perfil extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Perfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaPerfil.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

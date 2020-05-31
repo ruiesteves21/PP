@@ -10,24 +10,24 @@ import java.util.UUID;
 
 /**
  *
- * @author rodrm
+ * 
  */
-public class ProfissionalSaude implements Serializable {
-    private String idProfSaude;
+public class Enfermeiro implements Serializable {
+    private String idEnfermeiro;
     private Utilizador utiLigado;
-    private String nomeProfSaude;
+    private String nomeEnfermeiro;
     private ListaDoente listaDoente;
     
 
-    public ProfissionalSaude() 
+    public Enfermeiro() 
     {
         
     }
 
-    public ProfissionalSaude(Utilizador utiLigado, String idProfSaude, String nomeProfsaude) {
+    public Enfermeiro(Utilizador utiLigado, String idEnfermeiro, String nomeEnfermeiro) {
         this.utiLigado = utiLigado;
-        this.idProfSaude = idProfSaude;
-        this.nomeProfSaude = nomeProfsaude;
+        this.idEnfermeiro = idEnfermeiro;
+        this.nomeEnfermeiro = nomeEnfermeiro;
         listaDoente = new ListaDoente();
         
     }
@@ -42,29 +42,29 @@ public class ProfissionalSaude implements Serializable {
     }
      
      
-    public String getIdProfSaude() {
-        return idProfSaude;
+    public String getIdEnfermeiro() {
+        return idEnfermeiro;
     }
 
-    public String getNomePS() {
-        return nomeProfSaude;
+    public String getNomeEnfermeiro() {
+        return nomeEnfermeiro;
     }
 
     public ListaDoente getListaDoente() {
         return listaDoente;
     }
     
-    public void setIdProfSaude(String idProfSaude) {
-        this.idProfSaude = idProfSaude;
+    public void setIdEnfermeiro(String idProfSaude) {
+        this.idEnfermeiro = idProfSaude;
     }
 
-    public void setNomePS(String nomeProfSaude) {
-        this.nomeProfSaude = nomeProfSaude;
+    public void setNomeEnfermeiro(String nomeProfSaude) {
+        this.nomeEnfermeiro = nomeProfSaude;
     }
 
     @Override
     public String toString() {
-        return "ProfissionalSaude{" + "idProfsaude=" + idProfSaude + ", nome=" + nomeProfSaude + '}';
+        return "Enfermeiro{" + "idEnfermeiro=" + idEnfermeiro + ", nomeEnfermeiro=" + nomeEnfermeiro + '}';
     }
     
     

@@ -5,10 +5,11 @@
  */
 package frontend;
 
+import backend.Equipamento;
 import backend.ListaMedico;
 import backend.Medico;
 import backend.Utilizador;
-import backend.ProfissionalSaude;
+import backend.Enfermeiro;
 import backend.Serializacao;
 import backend.Sistema;
 import java.util.ArrayList;
@@ -25,9 +26,9 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author pedro
+ * 
  */
-public class ListaProfissionaisSaude extends javax.swing.JFrame {
+public class PaginaProfissionaisSaude extends javax.swing.JFrame {
     
     DefaultTableModel modelEnfermeiro; 
     DefaultTableModel modelMedico; 
@@ -38,7 +39,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
     private int indiceHospital;
     private int indiceEnfermaria;
     
-    public ListaProfissionaisSaude(Sistema sistema, Serializacao bd, int indiceHospital, int indiceEnfermaria) {
+    public PaginaProfissionaisSaude(Sistema sistema, Serializacao bd, int indiceHospital, int indiceEnfermaria) {
         initComponents();
         modelEnfermeiro = (DefaultTableModel) tableEnfermeiros.getModel();
         modelMedico = (DefaultTableModel) tableMedicos.getModel();
@@ -55,12 +56,12 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
     {
          modelEnfermeiro.setRowCount(0);
         
-        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().getListaProfissionalSaude().size(); i++) {
+        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().size(); i++) {
             
-            ProfissionalSaude profSaude = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().getListaProfissionalSaude().get(i);
+            Enfermeiro profSaude = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().get(i);
             
              if (profSaude.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-             modelEnfermeiro.addRow(new Object[]{profSaude.getIdProfSaude(), profSaude.getNomePS()});
+             modelEnfermeiro.addRow(new Object[]{profSaude.getIdEnfermeiro(), profSaude.getNomeEnfermeiro()});
              }
         }
             tableEnfermeiros.setModel(modelEnfermeiro);
@@ -118,6 +119,8 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         txtEspecialidade = new javax.swing.JTextField();
         btLimparMedico = new javax.swing.JButton();
         btExcluirMedico = new javax.swing.JButton();
+        btEditarEnfermeiro = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -187,7 +190,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLDoentes);
-        btLDoentes.setBounds(420, 460, 120, 29);
+        btLDoentes.setBounds(350, 460, 120, 29);
 
         btLimparEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimparEnfermeiro.setText("Limpar");
@@ -333,6 +336,26 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         getContentPane().add(btExcluirMedico);
         btExcluirMedico.setBounds(550, 410, 80, 29);
 
+        btEditarEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btEditarEnfermeiro.setText("Editar");
+        btEditarEnfermeiro.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btEditarEnfermeiroActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btEditarEnfermeiro);
+        btEditarEnfermeiro.setBounds(120, 400, 80, 30);
+
+        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jButton1.setText("Editar");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton1);
+        jButton1.setBounds(510, 460, 80, 30);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(-10, -380, 1050, 950);
@@ -356,7 +379,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"Selecione um médico","Atenção",JOptionPane.WARNING_MESSAGE); 
         } else {
         
-        ListaDoentes doentes = new ListaDoentes(sistema, bd, indiceHospital, indiceEnfermaria, indiceMedico);
+        PaginaDoentes doentes = new PaginaDoentes(sistema, bd, indiceHospital, indiceEnfermaria, indiceMedico);
         
         guardarAlteracoes();
         dispose();
@@ -447,7 +470,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
          dispose();
-        ListaEnfermarias l = new ListaEnfermarias(sistema,bd,indiceHospital);
+        PaginaEnfermarias l = new PaginaEnfermarias(sistema,bd,indiceHospital);
         //FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow());
         l.setLocationRelativeTo(null);
         l.setVisible(true);
@@ -459,7 +482,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         int c = tableEnfermeiros.getSelectedRow();
         if(c >= 0){
             model.removeRow(c); //remove a linha selecionada
-            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().getListaProfissionalSaude().remove(c);
+            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().remove(c);
             JOptionPane.showMessageDialog(this, "Removido!");
             guardarAlteracoes();   
         }
@@ -505,10 +528,10 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
              return;
         }
         
-        ProfissionalSaude profSaude = new ProfissionalSaude(sistema.getUtilizadorLigado(), id, txtNomeEnfermeiro.getText());             
+        Enfermeiro profSaude = new Enfermeiro(sistema.getUtilizadorLigado(), id, txtNomeEnfermeiro.getText());             
         
         try {
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaProfissionalSaude().adicionar(profSaude);
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().adicionar(profSaude);
         JOptionPane.showMessageDialog(null, "Enfermeiro " + txtNomeEnfermeiro.getText() + " registado!");
         txtNomeEnfermeiro.setText("");        
         carregarTabelaEnfermeiro();
@@ -554,6 +577,55 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btExcluirMedicoActionPerformed
 
+    private void btEditarEnfermeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarEnfermeiroActionPerformed
+        // TODO add your handling code here:
+         try {
+        int indiceEnfermeiro = tableEnfermeiros.getSelectedRow();
+        
+        Enfermeiro editarEnfermeiro = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().get(indiceEnfermeiro);
+        
+        if (indiceEnfermeiro == -1){
+                JOptionPane.showMessageDialog(null,"Selecione um enfermeiro","Atenção",JOptionPane.WARNING_MESSAGE); 
+        
+        }
+        
+        editarEnfermeiro.setNomeEnfermeiro(txtNomeEnfermeiro.getText());
+        
+        
+        } catch (IndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null,"Selecione um enfermeiro","Atenção",JOptionPane.WARNING_MESSAGE);
+            return;
+            } 
+        
+        carregarTabelaEnfermeiro();
+        guardarAlteracoes();
+        
+    }//GEN-LAST:event_btEditarEnfermeiroActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        try {
+                int indiceMedico = tableMedicos.getSelectedRow();
+
+                 Medico editarMedico = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico);
+
+                if (indiceMedico == -1){
+                        JOptionPane.showMessageDialog(null,"Selecione um médico","Atenção",JOptionPane.WARNING_MESSAGE); 
+
+                }
+
+                editarMedico.setNomeMedico(txtNomeMedico.getText());
+                editarMedico.setEspecialidade(txtEspecialidade.getText());
+
+        } catch (IndexOutOfBoundsException e) {
+            JOptionPane.showMessageDialog(null,"Selecione um médico","Atenção",JOptionPane.WARNING_MESSAGE);
+            return;
+            } 
+        
+        carregarTabelaMedico();
+        guardarAlteracoes();
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -571,14 +643,16 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(ListaProfissionaisSaude.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaProfissionaisSaude.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(ListaProfissionaisSaude.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaProfissionaisSaude.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(ListaProfissionaisSaude.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaProfissionaisSaude.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(ListaProfissionaisSaude.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaProfissionaisSaude.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 
@@ -591,6 +665,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btEditarEnfermeiro;
     private javax.swing.JButton btExcluirEnfermeiro;
     private javax.swing.JButton btExcluirMedico;
     private javax.swing.JButton btInserirEnfermeiro;
@@ -601,6 +676,7 @@ public class ListaProfissionaisSaude extends javax.swing.JFrame {
     private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

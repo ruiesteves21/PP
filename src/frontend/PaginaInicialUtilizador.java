@@ -176,7 +176,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private void btListaHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaHospitalActionPerformed
         // TODO add your handling code here:
         dispose();
-        ListaHospitais p = new ListaHospitais(sistema,bd);
+        PaginaHospitais p = new PaginaHospitais(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_btListaHospitalActionPerformed
@@ -184,7 +184,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private void btListaEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaEquipamentosActionPerformed
         // TODO add your handling code here:
         dispose();
-        ListaEquipamentosGenerica p = new ListaEquipamentosGenerica(sistema,bd);
+        PaginaEquipamentosGenerica p = new PaginaEquipamentosGenerica(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_btListaEquipamentosActionPerformed
@@ -197,7 +197,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void imgPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgPerfilMouseClicked
         // TODO add your handling code here:
-        Perfil perfil = new Perfil(sistema, sistema.getUtilizadorLigado(), null);
+        PaginaPerfil perfil = new PaginaPerfil(sistema, sistema.getUtilizadorLigado(), null);
         perfil.setVisible(true);
         
     }//GEN-LAST:event_imgPerfilMouseClicked
@@ -205,14 +205,14 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
         // TODO add your handling code here:
         dispose();
-        LoginForm l = new LoginForm(sistema, bd);
+        PaginaLogin l = new PaginaLogin(sistema, bd);
         l.setVisible(true);
     }//GEN-LAST:event_imgSairMouseClicked
 
     private void btListaDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaDoentesActionPerformed
         // TODO add your handling code here:
         dispose();
-        ListaDoentesGenerica p = new ListaDoentesGenerica(sistema,bd);
+        PaginaDoentesGenerica p = new PaginaDoentesGenerica(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_btListaDoentesActionPerformed
@@ -220,7 +220,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private void btListaProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaProfissionaisActionPerformed
         // TODO add your handling code here:
         
-        ListaProfissionaisGenerica p = new ListaProfissionaisGenerica(sistema,bd);
+        PaginaProfissionaisSaudeGenerica p = new PaginaProfissionaisSaudeGenerica(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
         this.close();
@@ -229,7 +229,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private void btListaEnfermariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaEnfermariasActionPerformed
         // TODO add your handling code here:
         dispose();
-        ListaEnfermariasGenerica p = new ListaEnfermariasGenerica(sistema,bd);
+        PaginaEnfermariasGenerica p = new PaginaEnfermariasGenerica(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_btListaEnfermariasActionPerformed
@@ -237,7 +237,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
         // TODO add your handling code here:
         dispose();
-        Dashboard d = new Dashboard(sistema,bd);
+        PaginaDashboard d = new PaginaDashboard(sistema,bd);
         d.setLocationRelativeTo(null);
         d.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked

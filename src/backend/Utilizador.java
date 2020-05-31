@@ -6,13 +6,12 @@
 package backend;
 
 import java.io.Serializable;
-import java.util.UUID;
 
 /**
  *
- * @author rodrm
+ * 
  */
-public class Utilizador extends ProfissionalSaude implements Serializable {
+public class Utilizador implements Serializable {
     private String nome;
     private String password;    
     private String username; 

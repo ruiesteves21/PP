@@ -13,7 +13,7 @@ import javax.swing.JOptionPane;
  *
  * @author rodrm
  */
-public class Dashboard extends javax.swing.JFrame {
+public class PaginaDashboard extends javax.swing.JFrame {
 
     /**
      * Creates new form Dashboard
@@ -21,7 +21,7 @@ public class Dashboard extends javax.swing.JFrame {
     private Sistema sistema;
     private Serializacao bd;
     
-    public Dashboard(Sistema sistema, Serializacao bd) {
+    public PaginaDashboard(Sistema sistema, Serializacao bd) {
         initComponents();
         this.sistema = sistema;
         this.bd = bd;
@@ -86,7 +86,6 @@ public class Dashboard extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(895, 396));
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(895, 396));
         getContentPane().setLayout(null);
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
@@ -307,14 +306,15 @@ public class Dashboard extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Dashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaDashboard.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
