@@ -387,6 +387,16 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         
         }
         
+         if ((comboTipo.getSelectedIndex()==0)){
+             JOptionPane.showMessageDialog(null," Selecione um tipo de equipamento","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+        }
+        
+        if ((comboIndicacao.getSelectedIndex()==0)){
+             JOptionPane.showMessageDialog(null," Selecione a disponibilidade do equipamento","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+        }
+        
         editarEquipamento.setIndicacao(comboIndicacao.getSelectedItem().toString());
         editarEquipamento.setTipoEquipamento(comboTipo.getSelectedItem().toString());
         editarEquipamento.setDoente(comboDoente.getSelectedItem().toString()); 

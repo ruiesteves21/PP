@@ -215,16 +215,6 @@ public class PaginaHospitais extends javax.swing.JFrame {
         // TODO add your handling code here:
         
         String id = UUID.randomUUID().toString();
-    
-        /*
-        Stream() - Suporta vários metodos, entre quais está o filter
-        filter() - Seleciona elementos de acordo com o Predicado passado como argumento.
-        forEach() - Itera todos os elementos do fluxo.
-        
-        Estamos a selecionar todos os hospitais registados(nome, localidade e id do mesmo).
-        Comparamos o nome dos hospitais todos com o que está na textbox.
-        Se esse nome já estiver registado, não deixa registar outra vez.
-        */
         
         for (Hospital hospital :  sistema.getListaHospital().getListaHospital() )
         {
@@ -243,25 +233,8 @@ public class PaginaHospitais extends javax.swing.JFrame {
         }
           
         
-        /*var result = new ArrayList<Hospital>();
-         sistema.getListaHospital().getListaHospital().stream().filter((hospital) -> (hospital.getNome().equals(txtNome.getText()))).forEachOrdered((hospital) -> {
-         result.add(hospital);
-         });
-          
-        if (txtNome.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null,"Introduza o nome do hospital","Erro",JOptionPane.ERROR_MESSAGE);
-             txtNome.requestFocus();
-             return;
-        } else {
-             if(!result.isEmpty()){
-                JOptionPane.showMessageDialog(null,"Esse hospital já existe","Erro",JOptionPane.ERROR_MESSAGE);
-                txtNome.requestFocus();
-                return;
-        }     
-        } */
-        
         if (txtLocalidade.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null,"Introduza a localidade que o hospital se encontra","Erro",JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(null,"Introduza a localidade em que o hospital se encontra","Erro",JOptionPane.ERROR_MESSAGE);
              txtLocalidade.requestFocus();
              return;
         }
@@ -270,6 +243,13 @@ public class PaginaHospitais extends javax.swing.JFrame {
         if (txtLocalidade.getText().matches(".*\\d.*")){
              JOptionPane.showMessageDialog(null," Nome da localidade inválido","Erro",JOptionPane.ERROR_MESSAGE);
              txtLocalidade.requestFocus();
+             return;
+        }
+        
+        //Impede que existam hospitais com somente numeros no nome ou com digitos e caracteres no nome. Exemplo: 123fg4 
+        if (txtNome.getText().matches(".*\\d.*")){
+             JOptionPane.showMessageDialog(null," Nome do hospital inválido","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNome.requestFocus();
              return;
         }
         
@@ -324,7 +304,44 @@ public class PaginaHospitais extends javax.swing.JFrame {
                     JOptionPane.showMessageDialog(null,"Selecione um hospital","Atenção",JOptionPane.WARNING_MESSAGE); 
                     return;       
                }
-
+            
+             for (Hospital hospital :  sistema.getListaHospital().getListaHospital() )
+        {
+            if (hospital.getNome().equals(txtNome.getText()) && (hospital.getLocalidade().equals(txtLocalidade.getText())))
+            {
+                JOptionPane.showMessageDialog(null,"Esse hospital já existe","Erro",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        
+        }
+        
+        if (txtNome.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Introduza o nome do hospital","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNome.requestFocus();
+             return;
+        }
+          
+        
+        if (txtLocalidade.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Introduza a localidade em que o hospital se encontra","Erro",JOptionPane.ERROR_MESSAGE);
+             txtLocalidade.requestFocus();
+             return;
+        }
+        
+        //Impede que existam localidades com digitos e caracteres no nome. Exemplo: 123fg4 
+        if (txtLocalidade.getText().matches(".*\\d.*")){
+             JOptionPane.showMessageDialog(null," Nome da localidade inválido","Erro",JOptionPane.ERROR_MESSAGE);
+             txtLocalidade.requestFocus();
+             return;
+        }
+        
+        //Impede que existam hospitais com somente numeros no nome ou com digitos e caracteres no nome. Exemplo: 123fg4 
+        if (txtNome.getText().matches(".*\\d.*")){
+             JOptionPane.showMessageDialog(null," Nome do hospital inválido","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNome.requestFocus();
+             return;
+        }
+        
 
             editarHospital.setNome(txtNome.getText());
             editarHospital.setLocalidade(txtLocalidade.getText());

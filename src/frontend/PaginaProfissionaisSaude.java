@@ -107,7 +107,6 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         txtNomeEnfermeiro = new javax.swing.JTextField();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
-        imgGuardar = new javax.swing.JLabel();
         btExcluirEnfermeiro = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableMedicos = new javax.swing.JTable();
@@ -227,15 +226,6 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         });
         getContentPane().add(imgHome);
         imgHome.setBounds(600, 0, 30, 30);
-
-        imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
-        imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgGuardarMouseClicked(evt);
-            }
-        });
-        getContentPane().add(imgGuardar);
-        imgGuardar.setBounds(520, 0, 30, 30);
 
         btExcluirEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluirEnfermeiro.setText("Excluir");
@@ -406,6 +396,16 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         
        String id = UUID.randomUUID().toString();
        
+       for (Medico medico :  sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico() )
+        {
+            if (medico.getNomeMedico().equals(txtNomeMedico.getText()) && (medico.getEspecialidade()).equals(txtEspecialidade.getText()))
+            {
+                JOptionPane.showMessageDialog(null,"Este médico já existe","Erro",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        
+        }
+       
        if (txtNomeMedico.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o nome do médico","Erro",JOptionPane.ERROR_MESSAGE);
              txtNomeMedico.requestFocus();
@@ -461,12 +461,6 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         
     }//GEN-LAST:event_imgHomeMouseClicked
 
-    private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
-        // TODO add your handling code here:
-        guardarAlteracoes();
-        JOptionPane.showMessageDialog(this, "Alterações guardadas.");
-    }//GEN-LAST:event_imgGuardarMouseClicked
-
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
          dispose();
@@ -496,25 +490,18 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         // TODO add your handling code here:
         
          String id = UUID.randomUUID().toString();
-          
-       /* var result = new ArrayList<ProfissionalSaude>();
-         sistema.getListaProfissionalSaude().getListaProfissionalSaude().stream().filter((profissionalsaude) -> (profissionalsaude.getNomePS().equals(txtNomeEnfermeiro.getText()))).forEachOrdered((profissionalSaude) -> {
-         result.add(profissionalSaude);
-         });
          
-     if (txtNomeEnfermeiro.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null,"Introduza o nome do profissional de saude","Erro",JOptionPane.ERROR_MESSAGE);
-             txtNomeEnfermeiro.requestFocus();
-             return;
-             
-        } else {
-         
-             if(!result.isEmpty()){
-                JOptionPane.showMessageDialog(null,"Esse profissional de saude já existe","Erro",JOptionPane.ERROR_MESSAGE);
-                txtNomeEnfermeiro.requestFocus();
+         for (Enfermeiro enfermeiro: sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro() )
+        {
+            if (enfermeiro.getNomeEnfermeiro().equals(txtNomeEnfermeiro.getText()))
+            {
+                JOptionPane.showMessageDialog(null,"Este enfermeiro já existe","Erro",JOptionPane.ERROR_MESSAGE);
                 return;
-            }     
-        }*/
+            }
+        
+        }
+         
+      
         if (txtNomeEnfermeiro.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o nome do enfermeiro","Erro",JOptionPane.ERROR_MESSAGE);
              txtNomeMedico.requestFocus();
@@ -589,6 +576,30 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         
         }
         
+        for (Enfermeiro enfermeiro: sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro() )
+        {
+            if (enfermeiro.getNomeEnfermeiro().equals(txtNomeEnfermeiro.getText()))
+            {
+                JOptionPane.showMessageDialog(null,"Este enfermeiro já existe","Erro",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        
+        }
+         
+      
+        if (txtNomeEnfermeiro.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Introduza o nome do enfermeiro","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNomeMedico.requestFocus();
+             return;
+        }
+        
+        //Impede que existam localidades com digitos e caracteres no nome. Exemplo: 123fg4 
+        if (txtNomeEnfermeiro.getText().matches(".*\\d.*")){
+             JOptionPane.showMessageDialog(null,"Nome do enfermeiro inválido","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNomeEnfermeiro.requestFocus();
+             return;
+        }
+        
         editarEnfermeiro.setNomeEnfermeiro(txtNomeEnfermeiro.getText());
         
         
@@ -613,7 +624,45 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(null,"Selecione um médico","Atenção",JOptionPane.WARNING_MESSAGE); 
 
                 }
+                
+                
+                for (Medico medico :  sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico() )
+                    {
+                        if (medico.getNomeMedico().equals(txtNomeMedico.getText()) && (medico.getEspecialidade()).equals(txtEspecialidade.getText()))
+                        {
+                            JOptionPane.showMessageDialog(null,"Este médico já existe","Erro",JOptionPane.ERROR_MESSAGE);
+                            return;
+                        }
+        
+                    }
+       
+                if (txtNomeMedico.getText().isEmpty()) {
+                      JOptionPane.showMessageDialog(null,"Introduza o nome do médico","Erro",JOptionPane.ERROR_MESSAGE);
+                      txtNomeMedico.requestFocus();
+                      return;
+                 }
 
+                 //Impede que existam localidades com digitos e caracteres no nome. Exemplo: 123fg4 
+                 if (txtNomeMedico.getText().matches(".*\\d.*")){
+                      JOptionPane.showMessageDialog(null,"Nome do médico inválido","Erro",JOptionPane.ERROR_MESSAGE);
+                      txtNomeMedico.requestFocus();
+                      return;
+                 }
+
+
+                 if (txtEspecialidade.getText().isEmpty()) {
+                      JOptionPane.showMessageDialog(null,"Introduza a especialidade","Erro",JOptionPane.ERROR_MESSAGE);
+                      txtEspecialidade.requestFocus();
+                      return;
+                 }
+
+                 //Impede que existam localidades com digitos e caracteres no nome. Exemplo: 123fg4 
+                 if (txtEspecialidade.getText().matches(".*\\d.*")){
+                      JOptionPane.showMessageDialog(null,"Especialidade inválida","Erro",JOptionPane.ERROR_MESSAGE);
+                      txtEspecialidade.requestFocus();
+                      return;
+                 }
+        
                 editarMedico.setNomeMedico(txtNomeMedico.getText());
                 editarMedico.setEspecialidade(txtEspecialidade.getText());
 
@@ -673,7 +722,6 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
     private javax.swing.JButton btLDoentes;
     private javax.swing.JButton btLimparEnfermeiro;
     private javax.swing.JButton btLimparMedico;
-    private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JButton jButton1;

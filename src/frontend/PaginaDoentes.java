@@ -17,6 +17,7 @@ import java.time.LocalDate;
 import java.util.UUID;
 import java.util.Date;
 import javax.swing.RowFilter;
+import javax.swing.RowFilter.ComparisonType;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 
@@ -52,11 +53,13 @@ public class PaginaDoentes extends javax.swing.JFrame {
         LocalDate date = LocalDate.now(); 
         
         carregarTabela();
+        
+        //ordena tabela de forma ascedente e descendente
         tableDoentes.setRowSorter(new TableRowSorter(model));
-        //listaDoente = sistema.getListaDoente().getListaDoente().get(sistema.getHospitalSelecionado()).getListaDoente();
+       
     }
-    
-    
+            
+            
     public void carregarTabela()
     {
         model.setRowCount(0);
@@ -124,7 +127,8 @@ public class PaginaDoentes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDoentes = new javax.swing.JTable();
         comboGravidade = new javax.swing.JComboBox<>();
-        jTextField1 = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
+        jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -134,7 +138,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel3.setText("Lista de Doentes");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(290, 10, 150, 20);
+        jLabel3.setBounds(350, 10, 150, 20);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -149,17 +153,17 @@ public class PaginaDoentes extends javax.swing.JFrame {
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel10.setText("Data de Saída :");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(250, 410, 110, 20);
+        jLabel10.setBounds(270, 410, 110, 20);
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel11.setText("Data de Entrada :");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(250, 360, 110, 20);
+        jLabel11.setBounds(270, 360, 110, 20);
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel12.setText("Gravidade :");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(260, 300, 80, 20);
+        jLabel12.setBounds(280, 300, 80, 20);
 
         jLabel15.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel15.setText("Cama :");
@@ -241,11 +245,11 @@ public class PaginaDoentes extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(740, 10, 30, 30);
         getContentPane().add(DataSaida);
-        DataSaida.setBounds(390, 410, 110, 30);
+        DataSaida.setBounds(390, 410, 160, 30);
         getContentPane().add(DataNasc);
         DataNasc.setBounds(120, 410, 110, 30);
         getContentPane().add(DataEntrada);
-        DataEntrada.setBounds(390, 360, 110, 30);
+        DataEntrada.setBounds(390, 360, 160, 30);
 
         tableDoentes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -261,26 +265,36 @@ public class PaginaDoentes extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableDoentes);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(30, 60, 740, 210);
+        jScrollPane1.setBounds(30, 70, 780, 190);
 
         comboGravidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione Gravidade -- ", "Moderado", "Grave ", "Muito Grave" }));
         getContentPane().add(comboGravidade);
         comboGravidade.setBounds(390, 300, 160, 30);
 
-        jTextField1.setText("jTextField1");
-        jTextField1.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                jTextField1KeyReleased(evt);
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtSearchActionPerformed(evt);
             }
         });
-        getContentPane().add(jTextField1);
-        jTextField1.setBounds(30, 30, 100, 19);
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtSearchKeyReleased(evt);
+            }
+        });
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(150, 30, 120, 30);
+
+        jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
+        jLabel2.setText("Filtrar:");
+        getContentPane().add(jLabel2);
+        jLabel2.setBounds(70, 30, 60, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaDoentesFundo.png"))); // NOI18N
+        jLabel1.setMinimumSize(new java.awt.Dimension(848, 521));
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, 0, 850, 520);
 
-        setSize(new java.awt.Dimension(801, 503));
+        setSize(new java.awt.Dimension(848, 521));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
@@ -586,15 +600,27 @@ public class PaginaDoentes extends javax.swing.JFrame {
         p.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
-    private void jTextField1KeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyReleased
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
         // TODO add your handling code here:
+        
+        //regexFilter --> Retorna um RowFilterque usa uma expressão regular para determinar quais entradas incluir.
+                          //neste caso a entrada é o search 
         DefaultTableModel table = (DefaultTableModel)tableDoentes.getModel();
-        String search = jTextField1.getText().toLowerCase();
+        String search = txtSearch.getText().toLowerCase();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
         tableDoentes.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(search));
         
-    }//GEN-LAST:event_jTextField1KeyReleased
+        //filtra as datas
+       RowFilter.dateFilter(ComparisonType.AFTER, new Date());
+       
+       
+               
+    }//GEN-LAST:event_txtSearchKeyReleased
+
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -655,13 +681,14 @@ public class PaginaDoentes extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel18;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTextField jTextField1;
     private javax.swing.JTable tableDoentes;
     private javax.swing.JTextField txtCama;
     private javax.swing.JTextField txtLocalidade;
     private javax.swing.JTextField txtNome;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 
  

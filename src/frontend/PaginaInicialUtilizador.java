@@ -70,7 +70,6 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         btListaDoentes = new javax.swing.JButton();
         btListaEquipamentos = new javax.swing.JButton();
         btListaProfissionais = new javax.swing.JButton();
-        imgGuardar = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -148,15 +147,6 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         getContentPane().add(btListaProfissionais);
         btListaProfissionais.setBounds(10, 210, 180, 30);
 
-        imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
-        imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgGuardarMouseClicked(evt);
-            }
-        });
-        getContentPane().add(imgGuardar);
-        imgGuardar.setBounds(100, 10, 30, 30);
-
         jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dashboard (1).png"))); // NOI18N
         jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -189,12 +179,6 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         p.setLocationRelativeTo(null);
         p.setVisible(true);
     }//GEN-LAST:event_btListaEquipamentosActionPerformed
-
-    private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
-        // TODO add your handling code here:
-        guardarAlteracoes();
-        JOptionPane.showMessageDialog(this, "Alterações guardadas.");
-    }//GEN-LAST:event_imgGuardarMouseClicked
 
     private void imgPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgPerfilMouseClicked
         // TODO add your handling code here:
@@ -296,7 +280,6 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private javax.swing.JButton btListaEquipamentos;
     private javax.swing.JButton btListaHospital;
     private javax.swing.JButton btListaProfissionais;
-    private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgPerfil;
     private javax.swing.JLabel imgSair;
     private javax.swing.JLabel jLabel1;
