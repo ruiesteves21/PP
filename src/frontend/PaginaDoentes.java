@@ -14,6 +14,7 @@ import backend.Serializacao;
 import backend.Sistema;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.UUID;
 import java.util.Date;
 import javax.swing.RowFilter;
@@ -76,7 +77,21 @@ public class PaginaDoentes extends javax.swing.JFrame {
         tableDoentes.setModel(model);
     }
     
-   
+   private void filtrar(String gravidade) 
+   {
+       TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+       tableDoentes.setRowSorter(tr);
+       
+       if (!"-- Selecione gravidade --".equals(gravidade))
+       {
+           tr.setRowFilter(RowFilter.regexFilter(gravidade));
+       } else {
+           //se não quisermos aplicar nenhum filtro, os valores inseridos na tabela
+           //voltam a aparecer
+           tableDoentes.setRowSorter(tr);
+       }
+       
+   }
     
     private void guardarAlteracoes() {
     bd.gravaSistema(sistema);
@@ -129,6 +144,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         comboGravidade = new javax.swing.JComboBox<>();
         txtSearch = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
+        comboSearch = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -280,14 +296,26 @@ public class PaginaDoentes extends javax.swing.JFrame {
             public void keyReleased(java.awt.event.KeyEvent evt) {
                 txtSearchKeyReleased(evt);
             }
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtSearchKeyTyped(evt);
+            }
         });
         getContentPane().add(txtSearch);
-        txtSearch.setBounds(150, 30, 120, 30);
+        txtSearch.setBounds(90, 40, 120, 20);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
-        jLabel2.setText("Filtrar:");
+        jLabel2.setText("Pesquisar:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(70, 30, 60, 20);
+        jLabel2.setBounds(10, 40, 80, 20);
+
+        comboSearch.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione gravidade --", "Moderado", "Grave", "Muito Grave" }));
+        comboSearch.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                comboSearchItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(comboSearch);
+        comboSearch.setBounds(230, 40, 170, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaDoentesFundo.png"))); // NOI18N
         jLabel1.setMinimumSize(new java.awt.Dimension(848, 521));
@@ -391,44 +419,25 @@ public class PaginaDoentes extends javax.swing.JFrame {
         
         SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy");
         String dataNascimento = sdf.format(DataNasc.getDate());  
-        String dataDeEntrada = sdf.format(DataEntrada.getDate()); 
-        String dataDeSaida = sdf.format(DataSaida.getDate()); 
+        String dataEntrada = sdf.format(DataEntrada.getDate()); 
+        String dataSaida = sdf.format(DataSaida.getDate()); 
+        long dataAtual = System.currentTimeMillis() / (1000 * 60 * 60 * 24);
         
         String gravidadeSelecionada = comboGravidade.getSelectedItem().toString();
         
-
-     /*int index = tableDoentes.getSelectedRow();
-        
-                
-        var result = new ArrayList<Doente>();
-         sistema.getListaDoente().getListaDoente().stream().filter((doente) -> (doente.getNome().equals(txtNome.getText()))).forEachOrdered((doente) -> {
-         result.add(doente);
-         });
-           
+   
         if (txtCama.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza a cama do doente","Erro",JOptionPane.ERROR_MESSAGE);
              txtCama.requestFocus();
              return;
-        } else {
-             if(!result.isEmpty()){
-                JOptionPane.showMessageDialog(null,"Essa cama já está ocupada","Erro",JOptionPane.ERROR_MESSAGE);
-                txtCama.requestFocus();
-                return;
-        }     
-        }
+        } 
         
-       // Doente doente = sistema.getListaMedico().todos().get(index).getListaDoente().getListaDoente().get(index);
-            
-
-        if(!btModerado.isSelected() && !btGrave.isSelected() && !btMuitoGrave.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Selecione gravidade do estado em que se encontra o doente!!");
-        }
-                              
         if (txtNome.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o nome do doente","Erro",JOptionPane.ERROR_MESSAGE);
              txtNome.requestFocus();
              return;
         }  
+        
         if (txtNome.getText().matches(".*\\d.*")){
              JOptionPane.showMessageDialog(null," Nome do doente inválido","Erro",JOptionPane.ERROR_MESSAGE);
              txtNome.requestFocus();
@@ -447,46 +456,44 @@ public class PaginaDoentes extends javax.swing.JFrame {
              return;
         }
         
-       
-        if(DataNasc.getDate().getTime() > 24/05/2020){
-            JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data atual!!!");
-            DataNasc.requestFocus();
-            return;
+         if ((comboGravidade.getSelectedIndex()==0)){
+             JOptionPane.showMessageDialog(null," Selecione a gravidade do estado do doente","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
         }
-        
-        */
+         
+        //Se a data de Entrada for > que a data de saida
+        //compareTo retorna > 0 se dataEntrada > dataSaida
+         if ((dataEntrada.compareTo(dataSaida))>0)
+         {
+             JOptionPane.showMessageDialog(null," A data de entrada não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+         }
+         
+         if ((dataNascimento.compareTo(dataEntrada))>0)
+         {
+             JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de entrada","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+         }
      
-     // if((DataEntrada.compareTo(DataSaida))>0)
-       // {
-         //   JOptionPane.showMessageDialog(null, "Data de Fim mais recente que a de Inicio", "Erro", JOptionPane.ERROR_MESSAGE);
-           
-     //Restricoes das datas
-         if(DataNasc.getDate().getTime() >= DataEntrada.getDate().getTime()){
-            JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data de entrada!!!");
-            DataEntrada.requestFocus();
-            DataNasc.requestFocus();
-            return;
-        }
+         if ((dataNascimento.compareTo(dataSaida))>0)
+         {
+             JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+         }
+        
+         /*if ((dataNascimento.compareTo(Long.toString(dataAtual))>0))
+         {
+             JOptionPane.showMessageDialog(null," A data não pode ser superior à data atual","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+         }
          
-         if(DataNasc.getDate().getTime() >= DataSaida.getDate().getTime()){
-            JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data de saida!!!");
-            DataSaida.requestFocus();
-            DataNasc.requestFocus();
-            return;
-        }
-         
-         if(DataEntrada.getDate().getTime() >= DataSaida.getDate().getTime()){
-            JOptionPane.showMessageDialog(null, "A data de entrada não pode ser superior à data de saida!!!");
-            DataSaida.requestFocus();
-            DataEntrada.requestFocus();
-            return;
-        }
+     
         
          if(DataNasc.getDate().getTime() > 31/05/2020 ){
          JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data atual!!!");
          DataNasc.requestFocus();
          return;
-        }
+        }*/
        
      int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
      
@@ -539,7 +546,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
                 }
             }*/
         
-        Doente doente = new Doente(sistema.getUtilizadorLigado(), id, txtNome.getText(), txtLocalidade.getText(), gravidadeSelecionada, dataNascimento, dataDeEntrada, dataDeSaida, Integer.parseInt(txtCama.getText()));
+        Doente doente = new Doente(sistema.getUtilizadorLigado(), id, txtNome.getText(), txtLocalidade.getText(), gravidadeSelecionada, dataNascimento, dataEntrada, dataSaida, Integer.parseInt(txtCama.getText()));
        
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().adicionar(doente);
@@ -622,6 +629,19 @@ public class PaginaDoentes extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtSearchActionPerformed
 
+    private void txtSearchKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtSearchKeyTyped
+
+    private void comboSearchItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_comboSearchItemStateChanged
+        // TODO add your handling code here:
+        String gravidade = comboSearch.getSelectedItem().toString();
+        
+        filtrar(gravidade);
+        
+        
+    }//GEN-LAST:event_comboSearchItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -671,6 +691,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> comboGravidade;
+    private javax.swing.JComboBox<String> comboSearch;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;
