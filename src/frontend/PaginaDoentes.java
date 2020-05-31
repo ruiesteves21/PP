@@ -56,8 +56,8 @@ public class PaginaDoentes extends javax.swing.JFrame {
         tableDoentes.setRowSorter(new TableRowSorter(model));
        
     }
-    
-    
+            
+            
     public void carregarTabela()
     {
         model.setRowCount(0);
@@ -125,7 +125,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDoentes = new javax.swing.JTable();
         comboGravidade = new javax.swing.JComboBox<>();
-        txtSerch = new javax.swing.JTextField();
+        txtSearch = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
@@ -269,18 +269,18 @@ public class PaginaDoentes extends javax.swing.JFrame {
         getContentPane().add(comboGravidade);
         comboGravidade.setBounds(390, 300, 160, 30);
 
-        txtSerch.addActionListener(new java.awt.event.ActionListener() {
+        txtSearch.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtSerchActionPerformed(evt);
+                txtSearchActionPerformed(evt);
             }
         });
-        txtSerch.addKeyListener(new java.awt.event.KeyAdapter() {
+        txtSearch.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtSerchKeyReleased(evt);
+                txtSearchKeyReleased(evt);
             }
         });
-        getContentPane().add(txtSerch);
-        txtSerch.setBounds(150, 30, 120, 30);
+        getContentPane().add(txtSearch);
+        txtSearch.setBounds(150, 30, 120, 30);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel2.setText("Filtrar:");
@@ -576,13 +576,13 @@ public class PaginaDoentes extends javax.swing.JFrame {
         p.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
-    private void txtSerchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSerchKeyReleased
+    private void txtSearchKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtSearchKeyReleased
         // TODO add your handling code here:
         
         //regexFilter --> Retorna um RowFilterque usa uma expressão regular para determinar quais entradas incluir.
                           //neste caso a entrada é o search 
         DefaultTableModel table = (DefaultTableModel)tableDoentes.getModel();
-        String search = txtSerch.getText().toLowerCase();
+        String search = txtSearch.getText().toLowerCase();
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
         tableDoentes.setRowSorter(tr);
         tr.setRowFilter(RowFilter.regexFilter(search));
@@ -590,12 +590,13 @@ public class PaginaDoentes extends javax.swing.JFrame {
         //filtra as datas
        RowFilter.dateFilter(ComparisonType.AFTER, new Date());
        
+       
                
-    }//GEN-LAST:event_txtSerchKeyReleased
+    }//GEN-LAST:event_txtSearchKeyReleased
 
-    private void txtSerchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSerchActionPerformed
+    private void txtSearchActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtSearchActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtSerchActionPerformed
+    }//GEN-LAST:event_txtSearchActionPerformed
 
     /**
      * @param args the command line arguments
@@ -663,7 +664,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
     private javax.swing.JTextField txtCama;
     private javax.swing.JTextField txtLocalidade;
     private javax.swing.JTextField txtNome;
-    private javax.swing.JTextField txtSerch;
+    private javax.swing.JTextField txtSearch;
     // End of variables declaration//GEN-END:variables
 
  
