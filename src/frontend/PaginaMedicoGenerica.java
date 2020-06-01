@@ -77,6 +77,7 @@ public class PaginaMedicoGenerica extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtFiltrar = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -126,6 +127,11 @@ public class PaginaMedicoGenerica extends javax.swing.JFrame {
         jLabel6.setBounds(10, 10, 30, 30);
         getContentPane().add(txtFiltrar);
         txtFiltrar.setBounds(300, 300, 140, 30);
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel3.setText("Lista de Médicos");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(210, 10, 160, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G6.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -189,6 +195,7 @@ public class PaginaMedicoGenerica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
