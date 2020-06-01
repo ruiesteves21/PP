@@ -217,7 +217,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private void btListaProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaProfissionaisActionPerformed
         // TODO add your handling code here:
         
-        PaginaProfissionaisSaudeGenerica p = new PaginaProfissionaisSaudeGenerica(sistema,bd);
+        PaginaMedicoGenerica p = new PaginaMedicoGenerica(sistema,bd);
         p.setLocationRelativeTo(null);
         p.setVisible(true);
         this.close();

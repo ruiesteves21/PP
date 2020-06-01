@@ -19,7 +19,7 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
      DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    private int indice;
+    
     /**
      * Creates new form ListaEnfermariasGenerica
      */
@@ -28,7 +28,7 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
-        indice=0;
+        carregarTabelaGenerica();
         
     }
     
@@ -36,11 +36,13 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
     {
         model.setRowCount(0);
          
-         for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().size(); i++) {
+         for(int i=0; i< sistema.getListaEnfermaria().getListaEnfermaria().size(); i++) {
              
-            Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indice).getListaEnfermaria().getListaEnfermaria().get(i);
-             
+            Enfermaria enf = sistema.getListaEnfermaria().getListaEnfermaria().get(i);
+            
+             if (enf.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
             model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getNCamas(), enf.getIdEnfermaria() });
+             }
          }
          
           table.setModel(model);

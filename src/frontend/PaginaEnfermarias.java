@@ -260,10 +260,13 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
          DefaultTableModel model = (DefaultTableModel)table.getModel();
-        int c = table.getSelectedRow();
-        if(c >= 0){
-            model.removeRow(c); //remove a linha selecionada
-            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().remove(c);
+        int row = table.getSelectedRow();
+         
+        if(row  >= 0){
+            model.removeRow(row ); //remove a linha selecionada
+            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().remove(row);
+            //excluir das listas genericas
+            sistema.getListaEnfermaria().getListaEnfermaria().remove(row);
             guardarAlteracoes();
             JOptionPane.showMessageDialog(this, "Removido!");
         }
@@ -315,15 +318,18 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
         }
         
          
-        if ((comboTipo.getSelectedIndex()==0)){
+        if ((comboTipo.getSelectedIndex()==0 || (comboTipo.getSelectedIndex() < 0))){
              JOptionPane.showMessageDialog(null," Selecione um tipo de enfermaria","Erro",JOptionPane.ERROR_MESSAGE);             
              return;
         }
         
+         
        Enfermaria enf = new Enfermaria(sistema.getUtilizadorLigado(), txtNome.getText(), id, Integer.parseInt(txtCamas.getText()), comboTipo.getSelectedItem().toString());
        
        try {
        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().adicionar(enf);
+       //adicionar nas listas genericas
+       sistema.getListaEnfermaria().adicionar(enf);
        JOptionPane.showMessageDialog(null, "Enfermaria " + txtNome.getText() + " registada!");
        txtNome.setText("");
        txtCamas.setText("");
@@ -340,6 +346,7 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
        try {
                 int indiceEnfermaria = table.getSelectedRow();
                 Enfermaria editarEnfermaria =  sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria);
+               
 
                 if (indiceEnfermaria == -1){
                         JOptionPane.showMessageDialog(null,"Selecione uma enfermaria","Atenção",JOptionPane.WARNING_MESSAGE); 
@@ -390,14 +397,16 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
                }
 
 
-               if ((comboTipo.getSelectedIndex()==0)){
+                if ((comboTipo.getSelectedIndex()==0 || (comboTipo.getSelectedIndex() < 0))){
                     JOptionPane.showMessageDialog(null," Selecione um tipo de enfermaria","Erro",JOptionPane.ERROR_MESSAGE);             
                     return;
-               }
+                }       
 
                 editarEnfermaria.setNome(txtNome.getText());
                 editarEnfermaria.setnCamas(Integer.parseInt(txtCamas.getText()));
                 editarEnfermaria.setTipo(comboTipo.getSelectedItem().toString());
+                
+                
         } catch (IndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null,"Selecione uma enfermaria","Atenção",JOptionPane.WARNING_MESSAGE);
             return;

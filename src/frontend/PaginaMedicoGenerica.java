@@ -4,6 +4,8 @@
  * and open the template in the editor.
  */
 package frontend;
+import backend.Enfermeiro;
+import backend.Medico;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
@@ -13,18 +15,52 @@ import backend.Serializacao;
  *
  * @author ssoar
  */
-public class PaginaProfissionaisSaudeGenerica extends javax.swing.JFrame {
+public class PaginaMedicoGenerica extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
     /**
      * Creates new form ListaProfissionaisGenerica
      */
-    public PaginaProfissionaisSaudeGenerica(Sistema sistema,Serializacao bd) {
+    public PaginaMedicoGenerica(Sistema sistema,Serializacao bd) {
         initComponents();
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
+        
+        //carregarTabelaEnfermeiro();
+        carregarTabelaMedico();
+    }
+    
+     /*public void carregarTabelaEnfermeiro()
+    {
+         model.setRowCount(0);
+        
+        for (int i = 0; i < sistema.getListaEnfermeiro().getListaEnfermeiro().size(); i++) {
+            
+            Enfermeiro enfermeiro = sistema.getListaEnfermeiro().getListaEnfermeiro().get(i);
+            
+              if (enfermeiro.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+             model.addRow(new Object[]{enfermeiro.getIdEnfermeiro(), enfermeiro.getNomeEnfermeiro()});
+              }
+        }
+        
+            table.setModel(model);
+    }*/
+     
+     public void carregarTabelaMedico()
+    {
+        model.setRowCount(0);
+        
+        for (int i = 0; i < sistema.getListaMedico().getListaMedico().size(); i++) {
+            
+            Medico medico = sistema.getListaMedico().getListaMedico().get(i);
+            
+            if (medico.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+            model.addRow(new Object[]{medico.getIdMedico(),medico.getNomeMedico(), medico.getEspecialidade()});
+            }  
+        }
+            table.setModel(model);
     }
 
     /**
@@ -54,11 +90,11 @@ public class PaginaProfissionaisSaudeGenerica extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Nome", "Função", "Especialidade"
+                "Codigo", "Nome", "Especialidade"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.String.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.String.class
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -129,14 +165,16 @@ public class PaginaProfissionaisSaudeGenerica extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(PaginaProfissionaisSaudeGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaMedicoGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(PaginaProfissionaisSaudeGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaMedicoGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(PaginaProfissionaisSaudeGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaMedicoGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(PaginaProfissionaisSaudeGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(PaginaMedicoGenerica.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
         //</editor-fold>
 

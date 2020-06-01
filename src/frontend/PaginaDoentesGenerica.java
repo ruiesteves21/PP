@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package frontend;
+import backend.Doente;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
@@ -25,8 +26,26 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
+        
+        carregarTabela();
     }
+    
+    public void carregarTabela()
+    {
+        model.setRowCount(0);
+        
+        for (int i = 0; i < sistema.getListaDoente().getListaDoente().size(); i++) {
+            
+            Doente doente = sistema.getListaDoente().getListaDoente().get(i);
+            
+             if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+            model.addRow(new Object[]{doente.getIdDoente(), doente.getNomeDoente(), doente.getDataNasc(), doente.getLocalidade(), doente.getNCama(), doente.getGravidade(), doente.getDataEntrada(), doente.getDataSaida()});
 
+            }
+        }
+        table.setModel(model);
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always

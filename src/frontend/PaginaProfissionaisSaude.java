@@ -58,10 +58,10 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         
         for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().size(); i++) {
             
-            Enfermeiro profSaude = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().get(i);
+            Enfermeiro enfermeiro = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().get(i);
             
-             if (profSaude.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-             modelEnfermeiro.addRow(new Object[]{profSaude.getIdEnfermeiro(), profSaude.getNomeEnfermeiro()});
+             if (enfermeiro.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+             modelEnfermeiro.addRow(new Object[]{enfermeiro.getIdEnfermeiro(), enfermeiro.getNomeEnfermeiro()});
              }
         }
             tableEnfermeiros.setModel(modelEnfermeiro);
@@ -450,6 +450,8 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().adicionar(medico);
+        //inserir nas listas genericas
+        sistema.getListaMedico().adicionar(medico);
         JOptionPane.showMessageDialog(null, "Medico " + txtNomeMedico.getText() + " registado!");
         txtNomeMedico.setText("");
         txtEspecialidade.setText("");
@@ -483,10 +485,12 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
     private void btExcluirEnfermeiroActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirEnfermeiroActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)tableEnfermeiros.getModel();
-        int c = tableEnfermeiros.getSelectedRow();
-        if(c >= 0){
-            model.removeRow(c); //remove a linha selecionada
-            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().remove(c);
+        int row = tableEnfermeiros.getSelectedRow();
+        if(row >= 0){
+            model.removeRow(row); //remove a linha selecionada
+            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().remove(row);
+            //excluir das listas genericas
+            sistema.getListaEnfermeiro().getListaEnfermeiro().remove(row);
             JOptionPane.showMessageDialog(this, "Removido!");
             guardarAlteracoes();   
         }
@@ -525,10 +529,12 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
              return;
         }
         
-        Enfermeiro profSaude = new Enfermeiro(sistema.getUtilizadorLigado(), id, txtNomeEnfermeiro.getText());             
+        Enfermeiro enfermeiro = new Enfermeiro(sistema.getUtilizadorLigado(), id, txtNomeEnfermeiro.getText());             
         
         try {
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().adicionar(profSaude);
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().adicionar(enfermeiro);
+        //inserir nas listas genericas
+        sistema.getListaEnfermeiro().adicionar(enfermeiro);
         JOptionPane.showMessageDialog(null, "Enfermeiro " + txtNomeEnfermeiro.getText() + " registado!");
         txtNomeEnfermeiro.setText("");        
         carregarTabelaEnfermeiro();
@@ -561,10 +567,12 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
     private void btExcluirMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirMedicoActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel)tableMedicos.getModel();
-        int c = tableMedicos.getSelectedRow();
-        if(c >= 0){
-            model.removeRow(c); //remove a linha selecionada
-            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().remove(c);
+        int row = tableMedicos.getSelectedRow();
+        if(row >= 0){
+            model.removeRow(row); //remove a linha selecionada
+            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().remove(row);
+            //excluir das listas genericas
+            sistema.getListaMedico().getListaMedico().remove(row);
             JOptionPane.showMessageDialog(this, "Removido!");
             guardarAlteracoes();   
         }

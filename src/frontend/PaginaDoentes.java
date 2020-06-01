@@ -15,8 +15,11 @@ import backend.Sistema;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.UUID;
 import java.util.Date;
+import java.util.Locale;
+import java.util.TimeZone;
 import javax.swing.RowFilter;
 import javax.swing.RowFilter.ComparisonType;
 import javax.swing.table.DefaultTableModel;
@@ -137,7 +140,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
         DataSaida = new com.toedter.calendar.JDateChooser();
-        DataNasc = new com.toedter.calendar.JDateChooser();
+        dataNasc = new com.toedter.calendar.JDateChooser();
         DataEntrada = new com.toedter.calendar.JDateChooser();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableDoentes = new javax.swing.JTable();
@@ -262,8 +265,8 @@ public class PaginaDoentes extends javax.swing.JFrame {
         imgHome.setBounds(740, 10, 30, 30);
         getContentPane().add(DataSaida);
         DataSaida.setBounds(390, 410, 160, 30);
-        getContentPane().add(DataNasc);
-        DataNasc.setBounds(120, 410, 110, 30);
+        getContentPane().add(dataNasc);
+        dataNasc.setBounds(120, 410, 110, 30);
         getContentPane().add(DataEntrada);
         DataEntrada.setBounds(390, 360, 160, 30);
 
@@ -306,7 +309,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSearch);
-        txtSearch.setBounds(90, 40, 120, 19);
+        txtSearch.setBounds(90, 40, 120, 20);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel2.setText("Pesquisar:");
@@ -320,7 +323,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboSearch);
-        comboSearch.setBounds(230, 40, 170, 19);
+        comboSearch.setBounds(230, 40, 170, 20);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaDoentesFundo.png"))); // NOI18N
         jLabel1.setMinimumSize(new java.awt.Dimension(848, 521));
@@ -334,7 +337,19 @@ public class PaginaDoentes extends javax.swing.JFrame {
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
     try {
-    SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy");
+        
+            SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy");
+    
+        
+            String dataNascimento = sdf.format(dataNasc.getDate());  
+            String dataEntrada = sdf.format(DataEntrada.getDate()); 
+            String dataSaida = sdf.format(DataSaida.getDate()); 
+
+            //Obter data atual
+            Locale locale1 = Locale.UK;
+            TimeZone tz1 = TimeZone.getTimeZone("GMT");
+            Calendar data = Calendar.getInstance(tz1, locale1);
+            String dataAtual = sdf.format(data.getTime());
     
             int indiceDoente = tableDoentes.getSelectedRow();
 
@@ -366,13 +381,93 @@ public class PaginaDoentes extends javax.swing.JFrame {
                     }
                 }
             }*/
+           
             
+            if (txtCama.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Introduza a cama do doente","Erro",JOptionPane.ERROR_MESSAGE);
+             txtCama.requestFocus();
+             return;
+             } 
+        
+            if (txtNome.getText().isEmpty()) {
+                 JOptionPane.showMessageDialog(null,"Introduza o nome do doente","Erro",JOptionPane.ERROR_MESSAGE);
+                 txtNome.requestFocus();
+                 return;
+            }  
+
+            if (txtNome.getText().matches(".*\\d.*")){
+                 JOptionPane.showMessageDialog(null," Nome do doente inválido","Erro",JOptionPane.ERROR_MESSAGE);
+                 txtNome.requestFocus();
+                 return;
+            }
+
+            if (txtLocalidade.getText().isEmpty()) {
+                 JOptionPane.showMessageDialog(null,"Introduza a localidade do doente","Erro",JOptionPane.ERROR_MESSAGE);
+                 txtLocalidade.requestFocus();
+                 return;
+            }
+            //Impede que existam localidades com digitos e caracteres no nome. Exemplo: 123fg4 
+            if (txtLocalidade.getText().matches(".*\\d.*")){
+                 JOptionPane.showMessageDialog(null," Nome da localidade inválido","Erro",JOptionPane.ERROR_MESSAGE);
+                 txtLocalidade.requestFocus();
+                 return;
+            }
+
+             if ((comboGravidade.getSelectedIndex()==0) || (comboGravidade.getSelectedIndex() < 0)){
+             JOptionPane.showMessageDialog(null," Selecione a gravidade do estado do doente","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+            }   
+
+            //Se a data de Entrada for > que a data de saida
+            //compareTo retorna > 0 se dataEntrada > dataSaida
+             if ((dataEntrada.compareTo(dataSaida))>0)
+             {
+                 JOptionPane.showMessageDialog(null," A data de entrada não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
+                 return;
+             }
+
+             if ((dataNascimento.compareTo(dataEntrada))>0)
+             {
+                 JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de entrada","Erro",JOptionPane.ERROR_MESSAGE);             
+                 return;
+             }
+
+             if ((dataNascimento.compareTo(dataSaida))>0)
+             {
+                 JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
+                 return;
+             }
+
+             if (DataEntrada.getCalendar() == null)
+             {
+                JOptionPane.showMessageDialog(null," Introduza a data de entrada","Erro",JOptionPane.ERROR_MESSAGE);             
+                return;
+             }
+
+              if (DataSaida.getCalendar() == null)
+             {
+                JOptionPane.showMessageDialog(null," Introduza a data de saida","Erro",JOptionPane.ERROR_MESSAGE);             
+                return;
+             }
+
+              if (dataNasc.getCalendar() == null)
+             {
+                JOptionPane.showMessageDialog(null," Introduza a data de nascimento","Erro",JOptionPane.ERROR_MESSAGE);             
+                return;
+             }
+
+             if ((dataNascimento.compareTo(dataAtual)>0))
+             {
+                 JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data atual","Erro",JOptionPane.ERROR_MESSAGE);             
+                 return;
+             }
+         
             
             editarDoente.setNome(txtNome.getText());
             editarDoente.setLocalidade(txtLocalidade.getText());
             editarDoente.setCama(Integer.parseInt(txtCama.getText()));
             editarDoente.setDataEntrada(sdf.format(DataEntrada.getDate()));
-            editarDoente.setDataNasc(sdf.format(DataNasc.getDate()));
+            editarDoente.setDataNasc(sdf.format(dataNasc.getDate()));
             editarDoente.setDataSaida(sdf.format(DataSaida.getDate())); 
             editarDoente.setGravidade(comboGravidade.getSelectedItem().toString());
 
@@ -389,7 +484,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
     private void btLimparActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btLimparActionPerformed
         // TODO add your handling code here:
         txtNome.setText(null);      
-        DataNasc.setDate(null);
+        dataNasc.setDate(null);
         txtLocalidade.setText(null);
         txtCama.setText(null);
         comboGravidade.setSelectedItem(null); 
@@ -401,10 +496,12 @@ public class PaginaDoentes extends javax.swing.JFrame {
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
         DefaultTableModel model = (DefaultTableModel) tableDoentes.getModel();
-        int c = tableDoentes.getSelectedRow();
-        if(c >= 0){
-            model.removeRow(c); //remove a linha selecionada
-            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().remove(c);
+        int row = tableDoentes.getSelectedRow();
+        if(row >= 0){
+            model.removeRow(row); //remove a linha selecionada
+            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().remove(row);
+            //excluir das listas genericas
+            sistema.getListaDoente().getListaDoente().remove(row);
             JOptionPane.showMessageDialog(this, "Removido!");
             guardarAlteracoes();           
         }
@@ -419,14 +516,21 @@ public class PaginaDoentes extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCamaActionPerformed
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
-       // TODO add your handling code here:       
+       // TODO add your handling code here:  
+       try {
         String id = UUID.randomUUID().toString();
         
+        //converter calendar para string
         SimpleDateFormat sdf = new SimpleDateFormat ("dd/MM/yyyy");
-        String dataNascimento = sdf.format(DataNasc.getDate());  
+        String dataNascimento = sdf.format(dataNasc.getDate());  
         String dataEntrada = sdf.format(DataEntrada.getDate()); 
         String dataSaida = sdf.format(DataSaida.getDate()); 
-        long dataAtual = System.currentTimeMillis() / (1000 * 60 * 60 * 24);
+        
+        //Obter data atual
+        Locale locale1 = Locale.UK;
+        TimeZone tz1 = TimeZone.getTimeZone("GMT");
+        Calendar data = Calendar.getInstance(tz1, locale1);
+        String dataAtual = sdf.format(data.getTime());
         
         String gravidadeSelecionada = comboGravidade.getSelectedItem().toString();
         
@@ -461,7 +565,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
              return;
         }
         
-         if ((comboGravidade.getSelectedIndex()==0)){
+         if ((comboGravidade.getSelectedIndex()==0) || (comboGravidade.getSelectedIndex() < 0)){
              JOptionPane.showMessageDialog(null," Selecione a gravidade do estado do doente","Erro",JOptionPane.ERROR_MESSAGE);             
              return;
         }
@@ -485,20 +589,31 @@ public class PaginaDoentes extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
              return;
          }
-        
-         /*if ((dataNascimento.compareTo(Long.toString(dataAtual))>0))
+         
+         if (DataEntrada.getCalendar() == null)
          {
-             JOptionPane.showMessageDialog(null," A data não pode ser superior à data atual","Erro",JOptionPane.ERROR_MESSAGE);             
+            JOptionPane.showMessageDialog(null," Introduza a data de entrada","Erro",JOptionPane.ERROR_MESSAGE);             
+            return;
+         }
+         
+          if (DataSaida.getCalendar() == null)
+         {
+            JOptionPane.showMessageDialog(null," Introduza a data de saida","Erro",JOptionPane.ERROR_MESSAGE);             
+            return;
+         }
+          
+          if (dataNasc.getCalendar() == null)
+         {
+            JOptionPane.showMessageDialog(null," Introduza a data de nascimento","Erro",JOptionPane.ERROR_MESSAGE);             
+            return;
+         }
+        
+         if ((dataNascimento.compareTo(dataAtual)>0))
+         {
+             JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data atual","Erro",JOptionPane.ERROR_MESSAGE);             
              return;
          }
          
-     
-        
-         if(DataNasc.getDate().getTime() > 31/05/2020 ){
-         JOptionPane.showMessageDialog(null, "A data de nascimento não pode ser superior à data atual!!!");
-         DataNasc.requestFocus();
-         return;
-        }*/
        
      int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
      
@@ -555,12 +670,14 @@ public class PaginaDoentes extends javax.swing.JFrame {
        
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().adicionar(doente);
+        //inserir nas listas genericas
+        sistema.getListaDoente().adicionar(doente);
         JOptionPane.showMessageDialog(null, "Doente " + txtNome.getText() + " adicionado!");
         txtNome.setText("");
         txtLocalidade.setText("");       
         txtCama.setText("");
         //btModerado.clearSelection();
-        DataNasc.setDate(null);
+        dataNasc.setDate(null);
         DataSaida.setDate(null);
         DataEntrada.setDate(null);
         carregarTabela();
@@ -587,6 +704,11 @@ public class PaginaDoentes extends javax.swing.JFrame {
         }catch(RuntimeException e) {
             //Todas as labels estão preenchidas, no entanto com o tipo de dados errado
             JOptionPane.showMessageDialog(null,"Este doente já se encontre registado.","Erro",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null," Preencha todos os campos","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
         }
         
             
@@ -705,7 +827,6 @@ public class PaginaDoentes extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private com.toedter.calendar.JDateChooser DataEntrada;
-    private com.toedter.calendar.JDateChooser DataNasc;
     private com.toedter.calendar.JDateChooser DataSaida;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
@@ -715,6 +836,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
     private javax.swing.ButtonGroup buttonGroup2;
     private javax.swing.JComboBox<String> comboGravidade;
     private javax.swing.JComboBox<String> comboSearch;
+    private com.toedter.calendar.JDateChooser dataNasc;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;

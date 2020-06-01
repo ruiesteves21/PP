@@ -107,7 +107,6 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         jLabel9 = new javax.swing.JLabel();
         imgRetroceder = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
-        imgGuardar = new javax.swing.JLabel();
         comboDoente = new javax.swing.JComboBox<>();
         comboTipo = new javax.swing.JComboBox<>();
         comboIndicacao = new javax.swing.JComboBox<>();
@@ -230,15 +229,6 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(560, 10, 30, 30);
 
-        imgGuardar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/save.png"))); // NOI18N
-        imgGuardar.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgGuardarMouseClicked(evt);
-            }
-        });
-        getContentPane().add(imgGuardar);
-        imgGuardar.setBounds(480, 10, 30, 30);
-
         comboDoente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doente não selecionado" }));
         getContentPane().add(comboDoente);
         comboDoente.setBounds(80, 130, 150, 30);
@@ -269,106 +259,129 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
         // TODO add your handling code here:
-        
-        String id = UUID.randomUUID().toString();
-         
-        String doenteSelecionado = comboDoente.getSelectedItem().toString();
-        String tipo = comboTipo.getSelectedItem().toString();
-        String disponibilidade = comboIndicacao.getSelectedItem().toString();
-         
-        /*var result = new ArrayList<Equipamento>();
-         sistema.getListaEquipamento().getListaEquipamento().stream().filter((equipamento) -> (equipamento.getDoente().equals(txtDoente.getText()))).forEachOrdered((Equipamento) -> {
-         result.add(Equipamento);
-         }); */
-        
-         /*if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
-            JOptionPane.showMessageDialog(null, "Selecione o tipo de equipamento!!");
-            return;
-         }
-         
-          if(!btLivre.isSelected() && !btOcupado.isSelected() ) {
-            JOptionPane.showMessageDialog(null, "Selecione a disponibilidade do equipamento!!");
-            return;
-          }
-          
-        int index = table.getSelectedRow();
-        Equipamento tipoEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
-        Equipamento disponibilidadeEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
-       
-          
-        if(btVentilador.isSelected()) {
-           tipoEquipamento.setTipoEquipamento("Ventilador");          
-            carregarTabela();
-         }
-             
-        if(btDesfibrilhador.isSelected()) {
-            tipoEquipamento.setTipoEquipamento("Desfibrilhador");        
-            carregarTabela();
-        }
-        
-        if(btOutro.isSelected()) {
-            tipoEquipamento.setTipoEquipamento("Outro");              
-            carregarTabela();
-
-                }        
-                
-        if(btLivre.isSelected()) {
-           disponibilidadeEquipamento.setIndicacao("Livre");          
-            carregarTabela();
-         }
-             
-        if(btOcupado.isSelected()) {
-            disponibilidadeEquipamento.setIndicacao("Ocupado");        
-            carregarTabela();
-            }
-                  
-             
-           
-        String Tipo="";
-            if(btVentilador.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
-                Tipo = "Ventilador";
-            }else{
-                if(btDesfibrilhador.isSelected()) {
-                    Tipo = "Desfibrilhador";
-                }else {
-                    if(btOutro.isSelected()) {
-                        Tipo = "Outro";
-                    }
-                }
-            }
+        try {
             
-         String Disponibilidade="";
-         
-            if(btLivre.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
-                Disponibilidade = "Livre";
-            }else{
-                if(btOcupado.isSelected()) {
-                    Disponibilidade = "Ocupado";
-                }
-            }*/
-         
-        if ((comboTipo.getSelectedIndex()==0)){
-             JOptionPane.showMessageDialog(null," Selecione um tipo de equipamento","Erro",JOptionPane.ERROR_MESSAGE);             
-             return;
-        }
+                String id = UUID.randomUUID().toString();
+
+
+                String doenteSelecionado = comboDoente.getSelectedItem().toString();
+                String tipo = comboTipo.getSelectedItem().toString();
+                String disponibilidade = comboIndicacao.getSelectedItem().toString();
         
-        if ((comboIndicacao.getSelectedIndex()==0)){
-             JOptionPane.showMessageDialog(null," Selecione a disponibilidade do equipamento","Erro",JOptionPane.ERROR_MESSAGE);             
-             return;
-        }
+        
+         
+                /*var result = new ArrayList<Equipamento>();
+                 sistema.getListaEquipamento().getListaEquipamento().stream().filter((equipamento) -> (equipamento.getDoente().equals(txtDoente.getText()))).forEachOrdered((Equipamento) -> {
+                 result.add(Equipamento);
+                 }); */
+
+                 /*if(!btVentilador.isSelected() && !btDesfibrilhador.isSelected() && !btOutro.isSelected()) {
+                    JOptionPane.showMessageDialog(null, "Selecione o tipo de equipamento!!");
+                    return;
+                 }
+
+                  if(!btLivre.isSelected() && !btOcupado.isSelected() ) {
+                    JOptionPane.showMessageDialog(null, "Selecione a disponibilidade do equipamento!!");
+                    return;
+                  }
+
+                int index = table.getSelectedRow();
+                Equipamento tipoEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
+                Equipamento disponibilidadeEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(index);
+
+
+                if(btVentilador.isSelected()) {
+                   tipoEquipamento.setTipoEquipamento("Ventilador");          
+                    carregarTabela();
+                 }
+
+                if(btDesfibrilhador.isSelected()) {
+                    tipoEquipamento.setTipoEquipamento("Desfibrilhador");        
+                    carregarTabela();
+                }
+
+                if(btOutro.isSelected()) {
+                    tipoEquipamento.setTipoEquipamento("Outro");              
+                    carregarTabela();
+
+                        }        
+
+                if(btLivre.isSelected()) {
+                   disponibilidadeEquipamento.setIndicacao("Livre");          
+                    carregarTabela();
+                 }
+
+                if(btOcupado.isSelected()) {
+                    disponibilidadeEquipamento.setIndicacao("Ocupado");        
+                    carregarTabela();
+                    }
+
+
+
+                String Tipo="";
+                    if(btVentilador.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
+                        Tipo = "Ventilador";
+                    }else{
+                        if(btDesfibrilhador.isSelected()) {
+                            Tipo = "Desfibrilhador";
+                        }else {
+                            if(btOutro.isSelected()) {
+                                Tipo = "Outro";
+                            }
+                        }
+                    }
+
+                 String Disponibilidade="";
+
+                    if(btLivre.isSelected()) {   //verificar qual dos radiobuttons esta selecionado
+                        Disponibilidade = "Livre";
+                    }else{
+                        if(btOcupado.isSelected()) {
+                            Disponibilidade = "Ocupado";
+                        }
+                    }*/
+
+                if ((comboTipo.getSelectedIndex()== 0) || (comboTipo.getSelectedIndex() < 0)){
+                     JOptionPane.showMessageDialog(null," Selecione um tipo de equipamento","Erro",JOptionPane.ERROR_MESSAGE);             
+                     return;
+                }
+
+                if ((comboIndicacao.getSelectedIndex()== 0) || (comboIndicacao.getSelectedIndex() < 0)){
+                     JOptionPane.showMessageDialog(null," Selecione a disponibilidade do equipamento","Erro",JOptionPane.ERROR_MESSAGE);             
+                     return;
+                }
+
+                if ((comboDoente.getSelectedIndex() < 0)){
+                     JOptionPane.showMessageDialog(null," Selecione um doente","Erro",JOptionPane.ERROR_MESSAGE);             
+                     return;
+                }
+
+                if ((comboIndicacao.getSelectedIndex()== 1)){
+                     if ((comboDoente.getSelectedIndex() != 0)){
+                     JOptionPane.showMessageDialog(null," Não pode atribuir um equipamento livre a um doente","Erro",JOptionPane.ERROR_MESSAGE);             
+                     return;
+                      }
+                }
        
-        Equipamento eq = new Equipamento(sistema.getUtilizadorLigado(), id, disponibilidade, tipo, doenteSelecionado);
+        Equipamento equipamento = new Equipamento(sistema.getUtilizadorLigado(), id, disponibilidade, tipo, doenteSelecionado);
         
         try {
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().adicionar(eq);
-        JOptionPane.showMessageDialog(null, "Equipamento registado!");       
-        comboDoente.setSelectedItem(null); 
-        comboTipo.setSelectedItem(null);
-        comboIndicacao.setSelectedItem(null);
-        carregarTabela();       
+                sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().adicionar(equipamento);
+                //inserir nas listas genericas
+                sistema.getListaEquipamento().adicionar(equipamento);
+                JOptionPane.showMessageDialog(null, "Equipamento registado!");       
+                comboDoente.setSelectedItem(null); 
+                comboTipo.setSelectedItem(null);
+                comboIndicacao.setSelectedItem(null);
+                carregarTabela();       
        
         } catch(RuntimeException e) {
             JOptionPane.showMessageDialog(null,"Este equipamento já se encontra registado","Erro",JOptionPane.ERROR_MESSAGE);
+        }
+        
+        } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null," Preencha todos os campos","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
         }
         
         guardarAlteracoes(); 
@@ -387,16 +400,28 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         
         }
         
-         if ((comboTipo.getSelectedIndex()==0)){
+       if ((comboTipo.getSelectedIndex()== 0) || (comboTipo.getSelectedIndex() < 0)){
              JOptionPane.showMessageDialog(null," Selecione um tipo de equipamento","Erro",JOptionPane.ERROR_MESSAGE);             
              return;
         }
         
-        if ((comboIndicacao.getSelectedIndex()==0)){
+        if ((comboIndicacao.getSelectedIndex()== 0) || (comboIndicacao.getSelectedIndex() < 0)){
              JOptionPane.showMessageDialog(null," Selecione a disponibilidade do equipamento","Erro",JOptionPane.ERROR_MESSAGE);             
              return;
         }
         
+        if ((comboDoente.getSelectedIndex() < 0)){
+             JOptionPane.showMessageDialog(null," Selecione um doente","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+        }
+        
+         if ((comboIndicacao.getSelectedIndex()== 1)){
+              if ((comboDoente.getSelectedIndex()!= 0)){
+             JOptionPane.showMessageDialog(null," Não pode atribuir um equipamento livre a um doente","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+              }
+        }
+         
         editarEquipamento.setIndicacao(comboIndicacao.getSelectedItem().toString());
         editarEquipamento.setTipoEquipamento(comboTipo.getSelectedItem().toString());
         editarEquipamento.setDoente(comboDoente.getSelectedItem().toString()); 
@@ -414,10 +439,12 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
          DefaultTableModel model = (DefaultTableModel)table.getModel();
-        int c = table.getSelectedRow();
-        if(c >= 0){
-            model.removeRow(c); //remove a linha selecionada
-            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().remove(c);
+        int row = table.getSelectedRow();
+        if(row >= 0){
+            model.removeRow(row); //remove a linha selecionada
+            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().remove(row);
+            //excluir das listas genericas
+            sistema.getListaEquipamento().getListaEquipamento().remove(row);
             JOptionPane.showMessageDialog(this, "Removido!");
             guardarAlteracoes();
             
@@ -435,12 +462,6 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
-
-    private void imgGuardarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgGuardarMouseClicked
-        // TODO add your handling code here:
-        guardarAlteracoes();
-        JOptionPane.showMessageDialog(this, "Alterações guardadas.");
-    }//GEN-LAST:event_imgGuardarMouseClicked
 
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
@@ -510,7 +531,6 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> comboDoente;
     private javax.swing.JComboBox<String> comboIndicacao;
     private javax.swing.JComboBox<String> comboTipo;
-    private javax.swing.JLabel imgGuardar;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel jLabel1;

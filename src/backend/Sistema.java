@@ -24,6 +24,7 @@ public class Sistema implements Serializable
     private ListaHospital listaHospital;
     private ListaEnfermeiro listaEnfermeiro;
     private ListaDoente listaDoente;
+    private ListaMedico listaMedico;
     
 
     public Sistema()
@@ -35,6 +36,7 @@ public class Sistema implements Serializable
         listaDoente = new ListaDoente();
         listaEnfermeiro = new ListaEnfermeiro();
         listaEquipamento = new ListaEquipamento();
+        listaMedico = new ListaMedico();
     }
 
     public ListaEnfermeiro getListaEnfermeiro() {
@@ -46,7 +48,11 @@ public class Sistema implements Serializable
         return listaDoente;
     }
 
+    public ListaMedico getListaMedico() {
+        return listaMedico;
+    }
 
+    
      public ListaHospital getListaHospital() {
         return listaHospital;
     }
