@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -25,7 +27,7 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
      */
     public PaginaEnfermariasGenerica(Sistema sistema,Serializacao bd) {
         initComponents();
-        model = (DefaultTableModel) table.getModel();
+        model = (DefaultTableModel) tableEnf.getModel();
         this.sistema=sistema;
         this.bd = bd;
         carregarTabelaGenerica();
@@ -45,7 +47,7 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
              }
          }
          
-          table.setModel(model);
+          tableEnf.setModel(model);
           
     }
     
@@ -60,7 +62,7 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        tableEnf = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         imgHome = new javax.swing.JLabel();
         txtFiltrar = new javax.swing.JTextField();
@@ -73,7 +75,7 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(496, 364));
         getContentPane().setLayout(null);
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tableEnf.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -89,12 +91,12 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        table.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableEnf.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableMouseClicked(evt);
+                tableEnfMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(table);
+        jScrollPane1.setViewportView(tableEnf);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(20, 40, 440, 260);
@@ -117,6 +119,12 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
         });
         getContentPane().add(imgHome);
         imgHome.setBounds(10, 0, 30, 30);
+
+        txtFiltrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFiltrarKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtFiltrar);
         txtFiltrar.setBounds(230, 310, 140, 30);
 
@@ -147,9 +155,18 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
 
-    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+    private void tableEnfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEnfMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tableMouseClicked
+    }//GEN-LAST:event_tableEnfMouseClicked
+
+    private void txtFiltrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltrarKeyReleased
+        // TODO add your handling code here:
+         DefaultTableModel table = (DefaultTableModel)tableEnf.getModel();
+         String search = txtFiltrar.getText().toLowerCase();
+         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+         tableEnf.setRowSorter(tr);
+         tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_txtFiltrarKeyReleased
 
     /**
      * @param args the command line arguments
@@ -196,7 +213,7 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable table;
+    private javax.swing.JTable tableEnf;
     private javax.swing.JTextField txtFiltrar;
     // End of variables declaration//GEN-END:variables
 }

@@ -9,6 +9,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -23,7 +25,7 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
      */
     public PaginaDoentesGenerica(Sistema sistema,Serializacao bd) {
         initComponents();
-        model = (DefaultTableModel) table.getModel();
+        model = (DefaultTableModel) tableD.getModel();
         this.sistema=sistema;
         this.bd = bd;
         
@@ -43,7 +45,7 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
 
             }
         }
-        table.setModel(model);
+        tableD.setModel(model);
     }
     
     /**
@@ -56,7 +58,7 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        tableD = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         imgHome = new javax.swing.JLabel();
         txtFiltrar = new javax.swing.JTextField();
@@ -69,7 +71,7 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(804, 363));
         getContentPane().setLayout(null);
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tableD.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -92,9 +94,9 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        table.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        table.setEnabled(false);
-        jScrollPane1.setViewportView(table);
+        tableD.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tableD.setEnabled(false);
+        jScrollPane1.setViewportView(tableD);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(40, 60, 750, 250);
@@ -116,6 +118,11 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
         txtFiltrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtFiltrarActionPerformed(evt);
+            }
+        });
+        txtFiltrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFiltrarKeyReleased(evt);
             }
         });
         getContentPane().add(txtFiltrar);
@@ -146,6 +153,15 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
     private void txtFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltrarActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtFiltrarActionPerformed
+
+    private void txtFiltrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltrarKeyReleased
+        // TODO add your handling code here:
+         DefaultTableModel table = (DefaultTableModel)tableD.getModel();
+         String search = txtFiltrar.getText().toLowerCase();
+         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+         tableD.setRowSorter(tr);
+         tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_txtFiltrarKeyReleased
 
     /**
      * @param args the command line arguments
@@ -191,7 +207,7 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable table;
+    private javax.swing.JTable tableD;
     private javax.swing.JTextField txtFiltrar;
     // End of variables declaration//GEN-END:variables
 

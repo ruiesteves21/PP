@@ -15,7 +15,9 @@ import backend.Serializacao;
 import java.util.ArrayList;
 import java.util.UUID;
 import java.util.concurrent.atomic.AtomicInteger;
+import javax.swing.RowFilter;
 import javax.swing.table.TableModel;
+import javax.swing.table.TableRowSorter;
 //import static frontend.ListaHospitais.table;
 
 /**
@@ -110,6 +112,8 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         comboDoente = new javax.swing.JComboBox<>();
         comboTipo = new javax.swing.JComboBox<>();
         comboIndicacao = new javax.swing.JComboBox<>();
+        ComboSearchInd = new javax.swing.JComboBox<>();
+        ComboSearchTipo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -240,6 +244,24 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         comboIndicacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Estado --", "Livre", "Ocupado", " " }));
         getContentPane().add(comboIndicacao);
         comboIndicacao.setBounds(80, 250, 150, 30);
+
+        ComboSearchInd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nenhuma Indicacao", "Ventilador", "Desfibrilhador", "Outro" }));
+        ComboSearchInd.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ComboSearchIndItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(ComboSearchInd);
+        ComboSearchInd.setBounds(0, 299, 120, 20);
+
+        ComboSearchTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Nenhum Tipo", "Livre", "Ocupado" }));
+        ComboSearchTipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ComboSearchTipoItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(ComboSearchTipo);
+        ComboSearchTipo.setBounds(130, 300, 100, 19);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/listaEquipamentosfundo.png"))); // NOI18N
         jLabel1.setMinimumSize(new java.awt.Dimension(621, 376));
@@ -485,6 +507,42 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         }       
     }//GEN-LAST:event_tableMouseClicked
 
+    private void filtrar (String tipo){
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        table.setRowSorter(tr);
+        if (!"Nenhum Tipo".equals(tipo)){
+            tr.setRowFilter(RowFilter.regexFilter(tipo));
+        }else{
+            table.setRowSorter(tr);
+        }
+        
+    }
+    
+    private void filtrar2 (String Indicacao){
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        table.setRowSorter(tr);
+        if (!"Nenhuma Indicacao".equals(Indicacao)){
+            tr.setRowFilter(RowFilter.regexFilter(Indicacao));
+        }else{
+            table.setRowSorter(tr);
+        }
+        
+    }
+    private void ComboSearchTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboSearchTipoItemStateChanged
+        // TODO add your handling code here:
+        String tipo = ComboSearchTipo.getSelectedItem().toString();
+        
+        filtrar(tipo);
+        
+    }//GEN-LAST:event_ComboSearchTipoItemStateChanged
+
+    private void ComboSearchIndItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboSearchIndItemStateChanged
+        // TODO add your handling code here:
+        String Indicacao = ComboSearchInd.getSelectedItem().toString();
+        
+        filtrar2(Indicacao);
+    }//GEN-LAST:event_ComboSearchIndItemStateChanged
+
     /**
      * @param args the command line arguments
      */
@@ -524,6 +582,8 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboSearchInd;
+    private javax.swing.JComboBox<String> ComboSearchTipo;
     private javax.swing.JButton btEditar;
     private javax.swing.JButton btExcluir;
     private javax.swing.JButton btInserir;

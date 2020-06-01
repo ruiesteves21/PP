@@ -10,6 +10,8 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import javax.swing.RowFilter;
+import javax.swing.table.TableRowSorter;
 
 /**
  *
@@ -24,7 +26,7 @@ public class PaginaMedicoGenerica extends javax.swing.JFrame {
      */
     public PaginaMedicoGenerica(Sistema sistema,Serializacao bd) {
         initComponents();
-        model = (DefaultTableModel) table.getModel();
+        model = (DefaultTableModel) tableMed.getModel();
         this.sistema=sistema;
         this.bd = bd;
               
@@ -44,7 +46,7 @@ public class PaginaMedicoGenerica extends javax.swing.JFrame {
             model.addRow(new Object[]{medico.getIdMedico(),medico.getNomeMedico(), medico.getEspecialidade()});
             }  
         }
-            table.setModel(model);
+            tableMed.setModel(model);
     }
 
     /**
@@ -57,7 +59,7 @@ public class PaginaMedicoGenerica extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        tableMed = new javax.swing.JTable();
         jButton1 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         txtFiltrar = new javax.swing.JTextField();
@@ -70,7 +72,7 @@ public class PaginaMedicoGenerica extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(689, 393));
         getContentPane().setLayout(null);
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tableMed.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -86,7 +88,7 @@ public class PaginaMedicoGenerica extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(table);
+        jScrollPane1.setViewportView(tableMed);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(30, 50, 490, 230);
@@ -109,6 +111,12 @@ public class PaginaMedicoGenerica extends javax.swing.JFrame {
         });
         getContentPane().add(jLabel6);
         jLabel6.setBounds(10, 10, 30, 30);
+
+        txtFiltrar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                txtFiltrarKeyReleased(evt);
+            }
+        });
         getContentPane().add(txtFiltrar);
         txtFiltrar.setBounds(300, 300, 140, 30);
 
@@ -137,6 +145,15 @@ public class PaginaMedicoGenerica extends javax.swing.JFrame {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void txtFiltrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltrarKeyReleased
+        // TODO add your handling code here:
+         DefaultTableModel table = (DefaultTableModel)tableMed.getModel();
+         String search = txtFiltrar.getText().toLowerCase();
+         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
+         tableMed.setRowSorter(tr);
+         tr.setRowFilter(RowFilter.regexFilter(search));
+    }//GEN-LAST:event_txtFiltrarKeyReleased
 
     /**
      * @param args the command line arguments
@@ -182,7 +199,7 @@ public class PaginaMedicoGenerica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable table;
+    private javax.swing.JTable tableMed;
     private javax.swing.JTextField txtFiltrar;
     // End of variables declaration//GEN-END:variables
 
