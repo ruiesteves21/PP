@@ -64,7 +64,6 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         imgHome = new javax.swing.JLabel();
         txtFiltrar = new javax.swing.JTextField();
-        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -120,15 +119,6 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
         getContentPane().add(txtFiltrar);
         txtFiltrar.setBounds(230, 310, 140, 30);
 
-        jButton2.setText("jButton2");
-        jButton2.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton2ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton2);
-        jButton2.setBounds(90, 310, 73, 23);
-
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(0, -950, 750, 1370);
@@ -154,14 +144,6 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tableMouseClicked
-
-    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
-       // ListaEnfermarias varEnf = new ListaEnfermarias();
-       // varEnf.carregarTabela();
-        
-        
-    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -204,7 +186,6 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imgHome;
     private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
