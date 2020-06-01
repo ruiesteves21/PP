@@ -73,14 +73,14 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Codigo", "Nome", "Localidade", "Data Nascimento", "Cama", "Médico", "Enfermaria", "Gravidade", "Data Entrada", "Data Saída"
+                "Codigo", "Nome", "Data Nascimento", "Localidade", "Cama", "Gravidade", "Data Entrada", "Data Saída"
             }
         ) {
             Class[] types = new Class [] {
-                java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Integer.class, java.lang.String.class, java.lang.String.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
+                java.lang.Integer.class, java.lang.String.class, java.lang.Object.class, java.lang.String.class, java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                false, false, false, false, false, false, false, false, false, false
+                false, false, false, false, false, false, false, false
             };
 
             public Class getColumnClass(int columnIndex) {
