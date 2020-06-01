@@ -251,6 +251,11 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
                 ComboSearchIndItemStateChanged(evt);
             }
         });
+        ComboSearchInd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboSearchIndActionPerformed(evt);
+            }
+        });
         getContentPane().add(ComboSearchInd);
         ComboSearchInd.setBounds(0, 299, 120, 20);
 
@@ -542,6 +547,10 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         
         filtrar2(Indicacao);
     }//GEN-LAST:event_ComboSearchIndItemStateChanged
+
+    private void ComboSearchIndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboSearchIndActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboSearchIndActionPerformed
 
     /**
      * @param args the command line arguments

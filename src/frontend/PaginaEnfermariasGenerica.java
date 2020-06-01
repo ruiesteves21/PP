@@ -63,10 +63,9 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableEnf = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         imgHome = new javax.swing.JLabel();
-        txtFiltrar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        ComboTipo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,16 +100,6 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(20, 40, 440, 260);
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setText("Filtrar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(380, 310, 80, 29);
-
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -120,18 +109,19 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(10, 0, 30, 30);
 
-        txtFiltrar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtFiltrarKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtFiltrar);
-        txtFiltrar.setBounds(230, 310, 140, 30);
-
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel3.setText("Lista de Enfermarias");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(150, 0, 180, 30);
+
+        ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Tipo", "UCI", "Normal" }));
+        ComboTipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ComboTipoItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(ComboTipo);
+        ComboTipo.setBounds(313, 320, 120, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -151,22 +141,28 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
 
                                 
     
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jButton1ActionPerformed
-
     private void tableEnfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEnfMouseClicked
         // TODO add your handling code here:
     }//GEN-LAST:event_tableEnfMouseClicked
 
-    private void txtFiltrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltrarKeyReleased
+     private void filtrar (String tipo){
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        tableEnf.setRowSorter(tr);
+        if (!"Tipo".equals(tipo)){
+            tr.setRowFilter(RowFilter.regexFilter(tipo));
+        }else{
+            tableEnf.setRowSorter(tr);
+        }
+        
+    }
+    
+    private void ComboTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboTipoItemStateChanged
         // TODO add your handling code here:
-         DefaultTableModel table = (DefaultTableModel)tableEnf.getModel();
-         String search = txtFiltrar.getText().toLowerCase();
-         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
-         tableEnf.setRowSorter(tr);
-         tr.setRowFilter(RowFilter.regexFilter(search));
-    }//GEN-LAST:event_txtFiltrarKeyReleased
+        String tipo = ComboTipo.getSelectedItem().toString();
+        
+        filtrar(tipo);
+        
+    }//GEN-LAST:event_ComboTipoItemStateChanged
 
     /**
      * @param args the command line arguments
@@ -207,13 +203,12 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboTipo;
     private javax.swing.JLabel imgHome;
-    private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableEnf;
-    private javax.swing.JTextField txtFiltrar;
     // End of variables declaration//GEN-END:variables
 }

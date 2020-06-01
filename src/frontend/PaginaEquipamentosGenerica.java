@@ -61,10 +61,10 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tableEq = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         imgHome = new javax.swing.JLabel();
-        txtFiltrar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        ComboInd = new javax.swing.JComboBox<>();
+        ComboTipo = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -94,11 +94,6 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(70, 40, 690, 250);
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setText("Filtrar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(680, 310, 80, 29);
-
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -108,28 +103,38 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(10, 10, 30, 30);
 
-        txtFiltrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFiltrarActionPerformed(evt);
-            }
-        });
-        txtFiltrar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtFiltrarKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtFiltrar);
-        txtFiltrar.setBounds(500, 310, 160, 30);
-
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Lista de Equipamentos");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(290, 10, 190, 20);
 
+        ComboInd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Tipo", "Desfibrilhador", "Ventilador", "Outro" }));
+        ComboInd.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ComboIndItemStateChanged(evt);
+            }
+        });
+        ComboInd.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboIndActionPerformed(evt);
+            }
+        });
+        getContentPane().add(ComboInd);
+        ComboInd.setBounds(480, 310, 120, 30);
+
+        ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Indicacao", "Livre", "Ocupado" }));
+        ComboTipo.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ComboTipoItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(ComboTipo);
+        ComboTipo.setBounds(630, 310, 130, 30);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G4.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-180, -150, 1550, 830);
+        jLabel1.setBounds(-170, -130, 1550, 830);
 
         pack();
         setLocationRelativeTo(null);
@@ -143,19 +148,47 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
 
-    private void txtFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltrarActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txtFiltrarActionPerformed
-
-    private void txtFiltrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltrarKeyReleased
-        // TODO add your handling code here:
-         DefaultTableModel table = (DefaultTableModel)tableEq.getModel();
-         String search = txtFiltrar.getText().toLowerCase();
-         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
-         tableEq.setRowSorter(tr);
-         tr.setRowFilter(RowFilter.regexFilter(search));
+      private void filtrar (String tipo){
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        tableEq.setRowSorter(tr);
+        if (!"Selecione o Tipo".equals(tipo)){
+            tr.setRowFilter(RowFilter.regexFilter(tipo));
+        }else{
+            tableEq.setRowSorter(tr);
+        }
         
-    }//GEN-LAST:event_txtFiltrarKeyReleased
+    }
+    
+    private void filtrar2 (String Indicacao){
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        tableEq.setRowSorter(tr);
+        if (!"Selecione Indicacao".equals(Indicacao)){
+            tr.setRowFilter(RowFilter.regexFilter(Indicacao));
+        }else{
+            tableEq.setRowSorter(tr);
+        }
+        
+    }
+    
+    
+    
+    private void ComboIndItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboIndItemStateChanged
+        // TODO add your handling code here:
+        String Indicacao = ComboInd.getSelectedItem().toString();
+        
+        filtrar2(Indicacao);
+    }//GEN-LAST:event_ComboIndItemStateChanged
+
+    private void ComboTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboTipoItemStateChanged
+        // TODO add your handling code here:
+        String tipo = ComboTipo.getSelectedItem().toString();
+        
+        filtrar(tipo);
+    }//GEN-LAST:event_ComboTipoItemStateChanged
+
+    private void ComboIndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboIndActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboIndActionPerformed
 
     /**
      * @param args the command line arguments
@@ -196,12 +229,12 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboInd;
+    private javax.swing.JComboBox<String> ComboTipo;
     private javax.swing.JLabel imgHome;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableEq;
-    private javax.swing.JTextField txtFiltrar;
     // End of variables declaration//GEN-END:variables
 }

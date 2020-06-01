@@ -579,7 +579,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null," Selecione a gravidade do estado do doente","Erro",JOptionPane.ERROR_MESSAGE);             
              return;
         }
-         /*
+         
         //Se a data de Entrada for > que a data de saida
         //compareTo retorna > 0 se dataEntrada > dataSaida
          if(DataSaida.getCalendar().before(DataEntrada.getCalendar()))
@@ -623,7 +623,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data atual","Erro",JOptionPane.ERROR_MESSAGE);             
              return;
          }
-         */
+         
        
      int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
      
