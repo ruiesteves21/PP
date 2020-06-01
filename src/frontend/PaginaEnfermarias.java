@@ -462,7 +462,7 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
         
         if (indiceEnfermaria == -1){
             
-              JOptionPane.showMessageDialog(null,"Selecione uma Enfermaria","Atenção",JOptionPane.WARNING_MESSAGE); 
+              JOptionPane.showMessageDialog(null,"Selecione uma enfermaria","Atenção",JOptionPane.WARNING_MESSAGE); 
         }  else {    
                     
         PaginaEquipamentos equipamento = new PaginaEquipamentos(sistema, bd, indiceHospital, indiceEnfermaria);
@@ -479,7 +479,7 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
         
         if (indiceEnfermaria == -1){
             
-              JOptionPane.showMessageDialog(null,"Selecione um enfermeiro","Atenção",JOptionPane.WARNING_MESSAGE); 
+              JOptionPane.showMessageDialog(null,"Selecione uma enfermaria","Atenção",JOptionPane.WARNING_MESSAGE); 
         }  else {   
                    
         PaginaProfissionaisSaude p = new PaginaProfissionaisSaude(sistema, bd, indiceHospital, indiceEnfermaria);
