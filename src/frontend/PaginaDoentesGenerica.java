@@ -59,10 +59,9 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
 
         jScrollPane1 = new javax.swing.JScrollPane();
         tableD = new javax.swing.JTable();
-        jButton1 = new javax.swing.JButton();
         imgHome = new javax.swing.JLabel();
-        txtFiltrar = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
+        ComboD = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -101,11 +100,6 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(40, 60, 750, 250);
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setText("Filtrar");
-        getContentPane().add(jButton1);
-        jButton1.setBounds(710, 320, 80, 30);
-
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -115,24 +109,20 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(10, 10, 30, 30);
 
-        txtFiltrar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txtFiltrarActionPerformed(evt);
-            }
-        });
-        txtFiltrar.addKeyListener(new java.awt.event.KeyAdapter() {
-            public void keyReleased(java.awt.event.KeyEvent evt) {
-                txtFiltrarKeyReleased(evt);
-            }
-        });
-        getContentPane().add(txtFiltrar);
-        txtFiltrar.setBounds(520, 320, 170, 30);
-
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Lista de Doentes");
         getContentPane().add(jLabel3);
         jLabel3.setBounds(320, 10, 160, 30);
+
+        ComboD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gravidade", "Moderado", "Grave", "Muito Grave" }));
+        ComboD.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ComboDItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(ComboD);
+        ComboD.setBounds(630, 320, 130, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G2.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -149,20 +139,27 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
-
-    private void txtFiltrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtFiltrarActionPerformed
+   private void filtrar (String Gravidade){
+        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
+        tableD.setRowSorter(tr);
+        if (!"Gravidade".equals(Gravidade)){
+            tr.setRowFilter(RowFilter.regexFilter(Gravidade));
+        }else{
+            tableD.setRowSorter(tr);
+        }
+   }
+   
+    
+    
+    private void ComboDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboDItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_txtFiltrarActionPerformed
+        String Gravidade = ComboD.getSelectedItem().toString();
+        
+        filtrar(Gravidade);
+    }//GEN-LAST:event_ComboDItemStateChanged
 
-    private void txtFiltrarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFiltrarKeyReleased
-        // TODO add your handling code here:
-         DefaultTableModel table = (DefaultTableModel)tableD.getModel();
-         String search = txtFiltrar.getText().toLowerCase();
-         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(table);
-         tableD.setRowSorter(tr);
-         tr.setRowFilter(RowFilter.regexFilter(search));
-    }//GEN-LAST:event_txtFiltrarKeyReleased
-
+    
+     
     /**
      * @param args the command line arguments
      */
@@ -202,13 +199,12 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JComboBox<String> ComboD;
     private javax.swing.JLabel imgHome;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tableD;
-    private javax.swing.JTextField txtFiltrar;
     // End of variables declaration//GEN-END:variables
 
     private void close() {
