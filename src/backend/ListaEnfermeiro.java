@@ -22,10 +22,6 @@ public class ListaEnfermeiro implements Serializable {
         return listaEnfermeiro;
     }
     
-    public void setListaEnfermeiro(ArrayList<Enfermeiro> listaEnfermeiro){
-        this.listaEnfermeiro = listaEnfermeiro;
-    }
-    
     public void adicionar(Enfermeiro enfermeiro){
         listaEnfermeiro.add(enfermeiro);
     }

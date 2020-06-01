@@ -24,10 +24,6 @@ public class ListaMedico implements Serializable {
     public ArrayList<Medico> getListaMedico() {
         return listaMedico;
     }
-
-    public void setListaMedico(ArrayList<Medico> listaMedico) {
-        this.listaMedico = listaMedico;
-    }
      
      public void adicionar(Medico medico)
     {

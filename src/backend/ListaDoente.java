@@ -28,11 +28,6 @@ public class ListaDoente implements Serializable  {
         return listaDoente;
     }
     
-    public void setListaDoente(ArrayList<Doente> listaDoente)
-    {
-        this.listaDoente = listaDoente;
-    }
-    
     public void adicionar(Doente doente)
     {
         listaDoente.add(doente);
@@ -76,7 +71,7 @@ public class ListaDoente implements Serializable  {
            
        } else{
            
-          double percentagem = (totalModerado / listaDoente.size()) * 100;
+          double percentagem = (totalModerado / listaDoente.size() * 100);
           
           return percentagem;
        }
@@ -106,7 +101,7 @@ public class ListaDoente implements Serializable  {
            
        } else{
            
-          double percentagem = (totalGrave / listaDoente.size()) * 100;
+          double percentagem = (totalGrave / listaDoente.size() * 100);
           
           return percentagem;
        }
@@ -137,7 +132,7 @@ public class ListaDoente implements Serializable  {
            
        } else{
            
-          double percentagem = (totalMuitoGrave / listaDoente.size()) * 100;
+          double percentagem = (totalMuitoGrave / listaDoente.size() * 100);
           
           return percentagem;
        }

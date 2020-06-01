@@ -23,10 +23,6 @@ public class ListaEquipamento implements Serializable {
     public ArrayList<Equipamento> getListaEquipamento() {
         return listaEquipamento;
     }
-
-    public void setListaEquipamento(ArrayList<Equipamento> listaEquipamento) {
-        this.listaEquipamento = listaEquipamento;
-    }
     
     public void adicionar(Equipamento equipamento)
     {
@@ -77,7 +73,7 @@ public class ListaEquipamento implements Serializable {
            
        } else{
            
-          double percentagem = (totalVentOcupados / listaEquipamento.size()) * 100;
+          double percentagem = (totalVentOcupados / listaEquipamento.size() * 100);
           
           return percentagem;
        }
@@ -111,7 +107,7 @@ public class ListaEquipamento implements Serializable {
            
        } else{
            
-          double percentagem = (totalDesfOcupados / listaEquipamento.size()) * 100;
+          double percentagem = (totalDesfOcupados / listaEquipamento.size() * 100);
           
           return percentagem;
        }
@@ -145,20 +141,12 @@ public class ListaEquipamento implements Serializable {
            
        } else{
            
-          double percentagem = (totalOutOcupados / listaEquipamento.size()) * 100;
+          double percentagem = (totalOutOcupados / listaEquipamento.size() * 100);
           
           return percentagem;
        }
    }
     
-    public Equipamento getEquipamento(String id) {
-            if (listaEquipamento.contains(id)){
-                return listaEquipamento.get(Integer.parseInt(id));
-                //convertemos id em int porque definimos assim quando definimos a arraylist
-        } else{
-            throw new RuntimeException("O hospital já existe na lista");
-        }
-    }
     @Override
     public String toString()
     {

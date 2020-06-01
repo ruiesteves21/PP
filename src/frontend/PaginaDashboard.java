@@ -26,6 +26,21 @@ public class PaginaDashboard extends javax.swing.JFrame {
         this.sistema = sistema;
         this.bd = bd;
         
+          
+        txtModerado.setText(String.valueOf(this.sistema.getListaDoente().numDoenteModerado()));
+        txtGrave.setText(String.valueOf(this.sistema.getListaDoente().numDoenteGrave()));
+        txtMuitoGrave.setText(String.valueOf(this.sistema.getListaDoente().numDoenteMuitoGrave()));
+        txtModeradoPerc.setText(String.valueOf(this.sistema.getListaDoente().perDoenteModerado()));
+        txtGravePerc.setText(String.valueOf(this.sistema.getListaDoente().perDoenteGrave()));
+        txtMuitoGravePerc.setText(String.valueOf(this.sistema.getListaDoente().perDoenteMuitoGrave()));
+        
+        txtDesfibrilhador.setText(String.valueOf(this.sistema.getListaEquipamento().numDesfibrilhadorOcupados()));
+        txtVentilador.setText(String.valueOf(this.sistema.getListaEquipamento().numVentiladorOcupados()));
+        txtOutro.setText(String.valueOf(this.sistema.getListaEquipamento().numOutroOcupados()));
+        txtDesfibrilhadorPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perDesfibrilhadorOcupados()));
+        txtVentiladorPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perVentiladorOcupados()));
+        txtOutroPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perOutroOcupados()));
+        
     }
     
      private void guardarAlteracoes() {
@@ -80,7 +95,6 @@ public class PaginaDashboard extends javax.swing.JFrame {
         jLabel14 = new javax.swing.JLabel();
         imgSair = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -233,15 +247,6 @@ public class PaginaDashboard extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(850, 10, 30, 30);
 
-        jButton1.setText("Atualizar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
-            }
-        });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(440, 20, 120, 23);
-
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dash66.jpg"))); // NOI18N
         getContentPane().add(jLabel15);
         jLabel15.setBounds(-330, -80, 1280, 840);
@@ -266,28 +271,6 @@ public class PaginaDashboard extends javax.swing.JFrame {
         paginaInicialUtilizador.setVisible(true);
 
     }//GEN-LAST:event_imgHomeMouseClicked
-
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-        
-        txtModerado.setText(String.valueOf(this.sistema.getListaDoente().numDoenteModerado()));
-        txtGrave.setText(String.valueOf(this.sistema.getListaDoente().numDoenteGrave()));
-        txtMuitoGrave.setText(String.valueOf(this.sistema.getListaDoente().numDoenteMuitoGrave()));
-        txtModeradoPerc.setText(String.valueOf(this.sistema.getListaDoente().perDoenteModerado()));
-        txtGravePerc.setText(String.valueOf(this.sistema.getListaDoente().perDoenteGrave()));
-        txtMuitoGravePerc.setText(String.valueOf(this.sistema.getListaDoente().perDoenteMuitoGrave()));
-        
-        txtDesfibrilhador.setText(String.valueOf(this.sistema.getListaEquipamento().numDesfibrilhadorOcupados()));
-        txtVentilador.setText(String.valueOf(this.sistema.getListaEquipamento().numVentiladorOcupados()));
-        txtOutro.setText(String.valueOf(this.sistema.getListaEquipamento().numOutroOcupados()));
-        txtDesfibrilhadorPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perDesfibrilhadorOcupados()));
-        txtVentiladorPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perVentiladorOcupados()));
-        txtOutroPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perOutroOcupados()));
-          
-        
-        
-        
-    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -328,7 +311,6 @@ public class PaginaDashboard extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgSair;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

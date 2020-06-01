@@ -67,10 +67,6 @@ public class Medico implements Serializable {
     public void setIdMedico(String idMedico) {
         this.idMedico = idMedico;
     }
-
-    public void setListaDoente(ListaDoente listaDoente) {
-        this.listaDoente = listaDoente;
-    }
     
   
 }

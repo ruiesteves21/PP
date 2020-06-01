@@ -25,11 +25,6 @@ public class ListaHospital implements Serializable {
         return listaHospital;
     }
 
-    public void setListaHospital(ArrayList<Hospital> listaHospital)
-    {
-        this.listaHospital = listaHospital;
-    }
-
     public void adicionar(Hospital hospital)
     {
         listaHospital.add(hospital);
