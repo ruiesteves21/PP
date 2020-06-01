@@ -13,8 +13,10 @@ import java.util.ArrayList;
  */
 public class ListaEquipamento implements Serializable {
     
+    public int totalVentOcupados = 0;
+    public double percentagem = 0;
     private ArrayList<Equipamento> listaEquipamento;
-
+    
     public ListaEquipamento()
     {
         this.listaEquipamento = new ArrayList<Equipamento>();
@@ -50,7 +52,7 @@ public class ListaEquipamento implements Serializable {
        for (Equipamento e: listaEquipamento){
            
            if (e.getTipoEquipamento().equals("Ventilador") && e.getIndicacao().equals("Ocupado")){
-               totalVentOcupados ++;
+               totalVentOcupados = totalVentOcupados + 1;
                     }
         }
        
@@ -58,26 +60,16 @@ public class ListaEquipamento implements Serializable {
     }
     
     public double perVentiladorOcupados(){
-       int totalVentOcupados = 0;
        
-       for (Equipamento e: listaEquipamento){
-           
-           if (e.getTipoEquipamento().equals("Ventilador") && e.getIndicacao().equals("Ocupado")){
-               totalVentOcupados ++;
-                    }
-        }
-            // totalVentOcupados = listaEquipamento.stream().filter((e) -> (e.getTipoEquipamento().equals("Ventilador") && e.getIndicacao().equals("Ocupado"))).map((_item) -> 1).reduce(totalVentOcupados, Integer::sum);
-            
-       if (listaEquipamento.isEmpty()){
-           return 0;
-           
-       } else{
-           
-          double percentagem = (totalVentOcupados / listaEquipamento.size() * 100);
+       
+       numVentiladorOcupados();
+   
+          percentagem = (totalVentOcupados / listaEquipamento.size() * 100);
           
-          return percentagem;
-       }
-   } 
+          
+        
+        return percentagem;
+    }
      
     public double numDesfibrilhadorOcupados(){
        int totalDesfOcupados = 0;

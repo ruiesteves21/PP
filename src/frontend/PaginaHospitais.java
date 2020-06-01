@@ -35,11 +35,11 @@ public class PaginaHospitais extends javax.swing.JFrame {
         this.sistema = sistema;
         this.bd = bd;
         
-        carregarTabela();      
+        carregarTabelaHospital();      
         
     }
     
-     public void carregarTabela()
+     public void carregarTabelaHospital()
     {
         model.setRowCount(0);
         for (int i = 0; i < sistema.getListaHospital().getListaHospital().size(); i++) {
@@ -55,16 +55,6 @@ public class PaginaHospitais extends javax.swing.JFrame {
      private void guardarAlteracoes() {
         bd.gravaSistema(sistema);
     }
-     
-     private void terminar() {        
-       if (JOptionPane.showConfirmDialog(null, 
-               "Deseja realmente terminar o programa?", 
-               "Terminar", 
-               JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-           guardarAlteracoes();
-           sistema.terminar();
-       }
-   }
      
     /**
      * This method is called from within the constructor to initialize the form.
@@ -216,6 +206,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
         
         String id = UUID.randomUUID().toString();
         
+        //Se o hospital tiver o mesmo nome e localidade, já existe
         for (Hospital hospital :  sistema.getListaHospital().getListaHospital() )
         {
             if (hospital.getNome().equals(txtNome.getText()) && (hospital.getLocalidade().equals(txtLocalidade.getText())))
@@ -226,13 +217,14 @@ public class PaginaHospitais extends javax.swing.JFrame {
         
         }
         
+        //text box nome vazia
         if (txtNome.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o nome do hospital","Erro",JOptionPane.ERROR_MESSAGE);
              txtNome.requestFocus();
              return;
         }
           
-        
+        //text box localidade vazia
         if (txtLocalidade.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza a localidade em que o hospital se encontra","Erro",JOptionPane.ERROR_MESSAGE);
              txtLocalidade.requestFocus();
@@ -261,7 +253,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
         JOptionPane.showMessageDialog(null, "Hospital " + txtNome.getText() + " registado!");
         txtNome.setText("");
         txtLocalidade.setText("");
-        carregarTabela();
+        carregarTabelaHospital();
         }catch(RuntimeException e) {
             //Todas as labels estão preenchidas, no entanto com o tipo de dados errado
             JOptionPane.showMessageDialog(null,"Nome da localidade inválido","Erro",JOptionPane.ERROR_MESSAGE);
@@ -286,7 +278,9 @@ public class PaginaHospitais extends javax.swing.JFrame {
             //remove a linha selecionada
             sistema.getListaHospital().getListaHospital().remove(row);
             guardarAlteracoes();
-            JOptionPane.showMessageDialog(null,"Removido","Informação",JOptionPane.INFORMATION_MESSAGE);
+            txtNome.setText(null);
+            txtLocalidade.setText(null);
+            JOptionPane.showMessageDialog(null, "Removido","Informação",JOptionPane.INFORMATION_MESSAGE);
         }
         else
         {
@@ -350,7 +344,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
             return;
             }
         
-        carregarTabela();
+        carregarTabelaHospital();
         guardarAlteracoes();
         
     }//GEN-LAST:event_btEditarActionPerformed

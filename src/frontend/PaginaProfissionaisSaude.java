@@ -204,7 +204,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimparEnfermeiro);
-        btLimparEnfermeiro.setBounds(120, 350, 80, 30);
+        btLimparEnfermeiro.setBounds(120, 400, 80, 30);
 
         txtNomeEnfermeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -324,7 +324,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimparMedico);
-        btLimparMedico.setBounds(440, 410, 80, 30);
+        btLimparMedico.setBounds(510, 460, 80, 30);
 
         btExcluirMedico.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluirMedico.setText("Excluir");
@@ -344,7 +344,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditarEnfermeiro);
-        btEditarEnfermeiro.setBounds(120, 400, 80, 30);
+        btEditarEnfermeiro.setBounds(120, 350, 80, 30);
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setText("Editar");
@@ -354,7 +354,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(510, 460, 80, 30);
+        jButton1.setBounds(440, 410, 80, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -446,8 +446,6 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
 
         Medico medico = new Medico(sistema.getUtilizadorLigado(), txtEspecialidade.getText(), txtNomeMedico.getText(), id);     
         
-        //txtNome.setText(txtNome.getText());
-        
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().adicionar(medico);
         //inserir nas listas genericas
@@ -457,6 +455,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         txtEspecialidade.setText("");
         
         carregarTabelaMedico();
+        
         }catch(RuntimeException e) {
             //Todas as labels estão preenchidas, no entanto com o tipo de dados errado
             JOptionPane.showMessageDialog(null,"Este médico já se encontra registado","Erro",JOptionPane.ERROR_MESSAGE);
@@ -491,6 +490,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().remove(row);
             //excluir das listas genericas
             sistema.getListaEnfermeiro().getListaEnfermeiro().remove(row);
+            txtNomeEnfermeiro.setText(null);
             JOptionPane.showMessageDialog(this, "Removido!");
             guardarAlteracoes();   
         }
@@ -514,7 +514,6 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         
         }
-         
       
         if (txtNomeEnfermeiro.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o nome do enfermeiro","Erro",JOptionPane.ERROR_MESSAGE);
@@ -573,6 +572,8 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().remove(row);
             //excluir das listas genericas
             sistema.getListaMedico().getListaMedico().remove(row);
+            txtEspecialidade.setText(null);
+            txtNomeMedico.setText(null);  
             JOptionPane.showMessageDialog(this, "Removido!");
             guardarAlteracoes();   
         }

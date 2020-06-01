@@ -56,7 +56,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         this.indiceMedico = indiceMedico;
         LocalDate date = LocalDate.now(); 
         
-        carregarTabela();
+        carregarTabelaDoente();
         
         //ordena tabela de forma ascedente e descendente
         tableDoentes.setRowSorter(new TableRowSorter(model));
@@ -64,7 +64,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
     }
             
             
-    public void carregarTabela()
+    public void carregarTabelaDoente()
     {
         model.setRowCount(0);
         
@@ -98,16 +98,6 @@ public class PaginaDoentes extends javax.swing.JFrame {
     
     private void guardarAlteracoes() {
     bd.gravaSistema(sistema);
-    }
-     
-    private void terminar() {        
-       if (JOptionPane.showConfirmDialog(null, 
-               "Deseja realmente terminar o programa?", 
-               "Terminar", 
-               JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-           guardarAlteracoes();
-           sistema.terminar();
-    }
     }
     
     
@@ -167,7 +157,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(680, 450, 100, 30);
+        btEditar.setBounds(680, 350, 100, 30);
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel10.setText("Data de Saída :");
@@ -222,7 +212,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(680, 350, 100, 30);
+        btLimpar.setBounds(680, 450, 100, 30);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
@@ -348,47 +338,35 @@ public class PaginaDoentes extends javax.swing.JFrame {
             //Obter data atual
             Locale locale1 = Locale.UK;
             TimeZone tz1 = TimeZone.getTimeZone("GMT");
-            Calendar data = Calendar.getInstance(tz1, locale1);
-            String dataAtual = sdf.format(data.getTime());
+            Calendar dataAtual = Calendar.getInstance(tz1, locale1);
+            //String dataAtual = sdf.format(data.getTime());
     
             int indiceDoente = tableDoentes.getSelectedRow();
 
             Doente editarDoente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente);
 
-                if (indiceDoente == -1)
-                {
-                        JOptionPane.showMessageDialog(null,"Selecione um doente","Atenção",JOptionPane.WARNING_MESSAGE);         
-                }
-        
-           /*String Gravidade="";
-        
-            if(btModerado.isSelected()) 
-            {   
-                //verificar qual dos radiobuttons esta selecionado
-                Gravidade = "Moderado";
-                sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setGravidade(btModerado.getText());
-            } else {
-                if(btGrave.isSelected())              
-                {
-                    sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setGravidade(btGrave.getText());
-                    Gravidade = "Grave";
-                    
-                } else {
-                    if(btMuitoGrave.isSelected())
-                    {
-                        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente).setGravidade(btMuitoGrave.getText());
-                        Gravidade = "Muito Grave";
-                    }
-                }
-            }*/
+            if (indiceDoente == -1)
+            {
+                    JOptionPane.showMessageDialog(null,"Selecione um doente","Atenção",JOptionPane.WARNING_MESSAGE);         
+            }
            
             
-            if (txtCama.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null,"Introduza a cama do doente","Erro",JOptionPane.ERROR_MESSAGE);
-             txtCama.requestFocus();
-             return;
-             } 
+             for ( Doente doente : sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente() )
+            {
+                if (doente.getNomeDoente().equals(txtNome.getText()) && (String.valueOf(doente.getNCama())).equals(txtCama.getText()))
+                {
+                    JOptionPane.showMessageDialog(null,"Este doente já existe","Erro",JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
         
+            }
+          
+            if (txtCama.getText().isEmpty()) {
+                 JOptionPane.showMessageDialog(null,"Introduza a cama do doente","Erro",JOptionPane.ERROR_MESSAGE);
+                 txtCama.requestFocus();
+                 return;
+            } 
+
             if (txtNome.getText().isEmpty()) {
                  JOptionPane.showMessageDialog(null,"Introduza o nome do doente","Erro",JOptionPane.ERROR_MESSAGE);
                  txtNome.requestFocus();
@@ -406,6 +384,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
                  txtLocalidade.requestFocus();
                  return;
             }
+
             //Impede que existam localidades com digitos e caracteres no nome. Exemplo: 123fg4 
             if (txtLocalidade.getText().matches(".*\\d.*")){
                  JOptionPane.showMessageDialog(null," Nome da localidade inválido","Erro",JOptionPane.ERROR_MESSAGE);
@@ -414,53 +393,64 @@ public class PaginaDoentes extends javax.swing.JFrame {
             }
 
              if ((comboGravidade.getSelectedIndex()==0) || (comboGravidade.getSelectedIndex() < 0)){
-             JOptionPane.showMessageDialog(null," Selecione a gravidade do estado do doente","Erro",JOptionPane.ERROR_MESSAGE);             
-             return;
-            }   
-
+                 JOptionPane.showMessageDialog(null," Selecione a gravidade do estado do doente","Erro",JOptionPane.ERROR_MESSAGE);             
+                 return;
+            }
+         
+         
             //Se a data de Entrada for > que a data de saida
             //compareTo retorna > 0 se dataEntrada > dataSaida
-             if ((dataEntrada.compareTo(dataSaida))>0)
-             {
-                 JOptionPane.showMessageDialog(null," A data de entrada não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
-                 return;
-             }
 
-             if ((dataNascimento.compareTo(dataEntrada))>0)
-             {
-                 JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de entrada","Erro",JOptionPane.ERROR_MESSAGE);             
-                 return;
-             }
-
-             if ((dataNascimento.compareTo(dataSaida))>0)
-             {
-                 JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
-                 return;
-             }
-
-             if (DataEntrada.getCalendar() == null)
+             if (DataEntrada.getDate() == null)
              {
                 JOptionPane.showMessageDialog(null," Introduza a data de entrada","Erro",JOptionPane.ERROR_MESSAGE);             
                 return;
              }
 
-              if (DataSaida.getCalendar() == null)
+              if (DataSaida.getDate() == null)
              {
                 JOptionPane.showMessageDialog(null," Introduza a data de saida","Erro",JOptionPane.ERROR_MESSAGE);             
                 return;
              }
 
-              if (dataNasc.getCalendar() == null)
+              if (dataNasc.getDate() == null)
              {
                 JOptionPane.showMessageDialog(null," Introduza a data de nascimento","Erro",JOptionPane.ERROR_MESSAGE);             
                 return;
              }
 
-             if ((dataNascimento.compareTo(dataAtual)>0))
+             if(DataSaida.getCalendar().before(DataEntrada.getCalendar()))
+             {
+                 JOptionPane.showMessageDialog(null," A data de entrada não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
+                 return;
+             }
+
+             if (DataEntrada.getCalendar().before(dataNasc.getCalendar()))
+             {
+                 JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de entrada","Erro",JOptionPane.ERROR_MESSAGE);             
+                 return;
+             }
+
+             if (DataSaida.getCalendar().before(dataNasc.getCalendar()))
+             {
+                 JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
+                 return;
+             }    
+
+              if (dataAtual.before(dataNasc.getCalendar()))
              {
                  JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data atual","Erro",JOptionPane.ERROR_MESSAGE);             
                  return;
              }
+         
+       
+            int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
+     
+            if (Integer.parseInt(txtCama.getText()) > nCamas || Integer.parseInt(txtCama.getText()) <= 0) 
+                {
+                     JOptionPane.showMessageDialog(null,"O número da cama que inseriu não existe", "Erro", JOptionPane.ERROR_MESSAGE);
+                     return;
+                }
          
             
             editarDoente.setNome(txtNome.getText());
@@ -471,12 +461,12 @@ public class PaginaDoentes extends javax.swing.JFrame {
             editarDoente.setDataSaida(sdf.format(DataSaida.getDate())); 
             editarDoente.setGravidade(comboGravidade.getSelectedItem().toString());
 
-    } catch (IndexOutOfBoundsException e) {
-            JOptionPane.showMessageDialog(null,"Selecione um doente","Atenção",JOptionPane.WARNING_MESSAGE);
-            return;
-            } 
+    } catch (NullPointerException e) {
+            JOptionPane.showMessageDialog(null," Preencha todos os campos","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+        }
     
-    carregarTabela();
+    carregarTabelaDoente();
     guardarAlteracoes();
 
     }//GEN-LAST:event_btEditarActionPerformed
@@ -503,6 +493,13 @@ public class PaginaDoentes extends javax.swing.JFrame {
             //excluir das listas genericas
             sistema.getListaDoente().getListaDoente().remove(row);
             JOptionPane.showMessageDialog(this, "Removido!");
+             txtNome.setText("");
+             txtLocalidade.setText("");       
+             txtCama.setText("");
+             comboGravidade.setSelectedItem(null);         
+             dataNasc.setDate(null);
+             DataSaida.setDate(null);
+             DataEntrada.setDate(null);
             guardarAlteracoes();           
         }
         else
@@ -516,7 +513,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
     }//GEN-LAST:event_txtCamaActionPerformed
 
     private void btInserirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btInserirActionPerformed
-       // TODO add your handling code here:  
+       // TODO add your handling code here:       
        try {
         String id = UUID.randomUUID().toString();
         
@@ -529,8 +526,8 @@ public class PaginaDoentes extends javax.swing.JFrame {
         //Obter data atual
         Locale europa = Locale.UK;
         TimeZone gmt = TimeZone.getTimeZone("GMT");
-        Calendar data = Calendar.getInstance(gmt, europa);
-        String dataAtual = sdf.format(data.getTime());
+        Calendar dataAtual = Calendar.getInstance(gmt, europa);
+       // String dataAtual = sdf.format(data.getTime());
         
         String gravidadeSelecionada = comboGravidade.getSelectedItem().toString();
         
@@ -538,7 +535,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
           {
             if (doente.getNomeDoente().equals(txtNome.getText()) && (String.valueOf(doente.getNCama())).equals(txtCama.getText()))
             {
-                JOptionPane.showMessageDialog(null,"Este médico já existe","Erro",JOptionPane.ERROR_MESSAGE);
+                JOptionPane.showMessageDialog(null,"Este doente já existe","Erro",JOptionPane.ERROR_MESSAGE);
                 return;
             }
         
@@ -579,27 +576,11 @@ public class PaginaDoentes extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null," Selecione a gravidade do estado do doente","Erro",JOptionPane.ERROR_MESSAGE);             
              return;
         }
-         /*
+         
+         
         //Se a data de Entrada for > que a data de saida
         //compareTo retorna > 0 se dataEntrada > dataSaida
-         if(DataSaida.getCalendar().before(DataEntrada.getCalendar()))
-         {
-             JOptionPane.showMessageDialog(null," A data de entrada não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
-             return;
-         }
-         
-         if ((dataNascimento.compareTo(dataEntrada))>0)
-         {
-             JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de entrada","Erro",JOptionPane.ERROR_MESSAGE);             
-             return;
-         }
-     
-         if ((dataNascimento.compareTo(dataSaida))>0)
-         {
-             JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
-             return;
-         }
-         
+        
          if (DataEntrada.getDate() == null)
          {
             JOptionPane.showMessageDialog(null," Introduza a data de entrada","Erro",JOptionPane.ERROR_MESSAGE);             
@@ -617,13 +598,31 @@ public class PaginaDoentes extends javax.swing.JFrame {
             JOptionPane.showMessageDialog(null," Introduza a data de nascimento","Erro",JOptionPane.ERROR_MESSAGE);             
             return;
          }
-        
-         if ((dataNascimento.compareTo(dataAtual)>0))
+          
+         if(DataSaida.getCalendar().before(DataEntrada.getCalendar()))
+         {
+             JOptionPane.showMessageDialog(null," A data de entrada não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+         }
+         
+         if (DataEntrada.getCalendar().before(dataNasc.getCalendar()))
+         {
+             JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de entrada","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+         }
+     
+         if (DataSaida.getCalendar().before(dataNasc.getCalendar()))
+         {
+             JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
+         }    
+         
+          if (dataAtual.before(dataNasc.getCalendar()))
          {
              JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data atual","Erro",JOptionPane.ERROR_MESSAGE);             
              return;
          }
-         */
+         
        
      int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
      
@@ -657,24 +656,6 @@ public class PaginaDoentes extends javax.swing.JFrame {
                 JOptionPane.showMessageDialog(null,"aaaaaaa", "Erro", JOptionPane.ERROR_MESSAGE);
          } 
       */
-     
-       /* String Gravidade="";
-        
-            if(btModerado.isSelected()) 
-            {   
-                //verificar qual dos radiobuttons esta selecionado
-                Gravidade = "Moderado";
-            } else {
-                if(btGrave.isSelected()) 
-                {
-                    Gravidade = "Grave";
-                } else {
-                    if(btMuitoGrave.isSelected())
-                    {
-                        Gravidade = "Muito Grave";
-                    }
-                }
-            }*/
         
         Doente doente = new Doente(sistema.getUtilizadorLigado(), id, txtNome.getText(), txtLocalidade.getText(), gravidadeSelecionada, dataNascimento, dataEntrada, dataSaida, Integer.parseInt(txtCama.getText()));
        
@@ -686,30 +667,12 @@ public class PaginaDoentes extends javax.swing.JFrame {
         txtNome.setText("");
         txtLocalidade.setText("");       
         txtCama.setText("");
-        //btModerado.clearSelection();
+        comboGravidade.setSelectedItem(null);         
         dataNasc.setDate(null);
         DataSaida.setDate(null);
         DataEntrada.setDate(null);
-        carregarTabela();
         
-        /*Doente tipoDoente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().todos().get(indiceMedico).getListaDoente().getListaDoente();
-        
-        if(btModerado.isSelected()) {
-            tipoDoente.setGravidade("Moderado");          
-            carregarTabela();
-         }
-             
-        if(btGrave.isSelected()) {
-           tipoDoente.setGravidade("Grave");     
-            carregarTabela();
-        }
-        
-        if(btMuitoGrave.isSelected()) {
-            tipoDoente.setGravidade("Muito Grave");           
-            carregarTabela();
-
-                } */
-        
+        carregarTabelaDoente();   
         
         }catch(RuntimeException e) {
             //Todas as labels estão preenchidas, no entanto com o tipo de dados errado
@@ -722,8 +685,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         }
         
             
-        guardarAlteracoes();
-       // Doente d = new Doente (Integer.parseInt(txtCodigo.getText()),txtNome.getText(), txtLocalidade.getText(), ComboGrav.getSelectedItem(),/*DataNasc.getDate(), DataEntrada.getLocalDate()), DataSaida.getLocalDate()*/, Integer.parseInt(txtCama.getText()), txtEnfermaria.getText(), txtMedico.getText());
+        guardarAlteracoes();     
         
     }//GEN-LAST:event_btInserirActionPerformed
 

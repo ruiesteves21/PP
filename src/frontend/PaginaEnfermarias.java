@@ -32,11 +32,11 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
         this.bd = bd;
         this.indiceHospital=indiceHospital;
    
-        carregarTabela();       
+        carregarTabelaEnfermaria();       
     }
 
     
-    public void carregarTabela()
+    public void carregarTabelaEnfermaria()
     {
         model.setRowCount(0);
          
@@ -259,7 +259,7 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
-         DefaultTableModel model = (DefaultTableModel)table.getModel();
+         
         int row = table.getSelectedRow();
          
         if(row  >= 0){
@@ -267,6 +267,9 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
             sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().remove(row);
             //excluir das listas genericas
             sistema.getListaEnfermaria().getListaEnfermaria().remove(row);
+            txtNome.setText(null);
+            txtCamas.setText(null);
+            comboTipo.setSelectedItem(null);
             guardarAlteracoes();
             JOptionPane.showMessageDialog(this, "Removido!");
         }
@@ -281,45 +284,47 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
       
        String id = UUID.randomUUID().toString();
        
+       //Se a enfermaria tiver o mesmo nome e o mesmo nº de camas, já existe
        for (Enfermaria enfermaria: sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria() )
         {
             if (enfermaria.getNome().equals(txtNome.getText()) && (String.valueOf(enfermaria.getNCamas()).equals(txtCamas.getText())))
             {
                 JOptionPane.showMessageDialog(null,"Esta enfermaria já existe","Erro",JOptionPane.ERROR_MESSAGE);
                 return;
-            }
-        
+            }       
         }
-       
+        
+        //text box nome vazia
          if (txtNome.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null,"Introduza o nome da enfermaria","Erro",JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(null,"Introduza o nome da enfermaria","Atenção",JOptionPane.WARNING_MESSAGE);
              txtNome.requestFocus();
              return;
         }
-           
+         
+         //text box camas vazia
          if (txtCamas.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null,"Introduza o número de camas que constituem a enfermaria","Erro",JOptionPane.ERROR_MESSAGE);
+             JOptionPane.showMessageDialog(null,"Introduza o número de camas que constituem a enfermaria","Atenção",JOptionPane.WARNING_MESSAGE);
              txtCamas.requestFocus();
              return;
         }
         
-        //Impede que existam camas com letras e com digitos e caracteres no nome.
+        //Se a text box camas não for constituida, somente, por algarismos, dá erro
         if (!txtCamas.getText().matches("[0-9]+")) {
              JOptionPane.showMessageDialog(null,"Número de camas inválido","Erro",JOptionPane.ERROR_MESSAGE);
              txtNome.requestFocus();
              return;
         }
               
-        
+        //A text box nome só pode conter letras
         if (txtNome.getText().matches(".*\\d.*")){
              JOptionPane.showMessageDialog(null," Nome da enfermaria inválido","Erro",JOptionPane.ERROR_MESSAGE);
              txtNome.requestFocus();
              return;
         }
         
-         
+        //Se a comboBox não tiver com algum tipo de enfermaria selecionado, dá erro 
         if ((comboTipo.getSelectedIndex()==0 || (comboTipo.getSelectedIndex() < 0))){
-             JOptionPane.showMessageDialog(null," Selecione um tipo de enfermaria","Erro",JOptionPane.ERROR_MESSAGE);             
+             JOptionPane.showMessageDialog(null," Selecione um tipo de enfermaria","Atenção",JOptionPane.WARNING_MESSAGE);             
              return;
         }
         
@@ -334,7 +339,7 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
        txtNome.setText("");
        txtCamas.setText("");
        comboTipo.setSelectedItem(null);
-       carregarTabela();
+       carregarTabelaEnfermaria();
        } catch(RuntimeException e) {
             JOptionPane.showMessageDialog(null,"Esta enfermaria já se encontra registada!","Erro",JOptionPane.ERROR_MESSAGE);
         }
@@ -412,7 +417,7 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
             return;
             } 
 
-        carregarTabela();
+        carregarTabelaEnfermaria();
         guardarAlteracoes();
         
     }//GEN-LAST:event_btEditarActionPerformed

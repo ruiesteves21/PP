@@ -18,7 +18,7 @@ public class Sistema implements Serializable
 {
     private final ListaUtilizador listaUtilizador;
     private ListaEnfermaria listaEnfermaria;
-    private ListaEquipamento listaEquipamento;
+    public ListaEquipamento listaEquipamento;
     private Utilizador utilizadorLigado;
     private final List<RegistoAcesso> listaEntradas;
     private ListaHospital listaHospital;
