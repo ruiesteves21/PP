@@ -49,7 +49,7 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
             }
          }
          
-          table.setModel(model);
+         table.setModel(model);
           
     }
     
@@ -118,6 +118,11 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        table.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMouseClicked(evt);
             }
         });
         jScrollPane3.setViewportView(table);
@@ -443,7 +448,7 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
         
         if (indiceEnfermaria == -1){
             
-              JOptionPane.showMessageDialog(null,"Selecione um equipamento","Atenção",JOptionPane.WARNING_MESSAGE); 
+              JOptionPane.showMessageDialog(null,"Selecione uma Enfermaria","Atenção",JOptionPane.WARNING_MESSAGE); 
         }  else {    
                     
         PaginaEquipamentos equipamento = new PaginaEquipamentos(sistema, bd, indiceHospital, indiceEnfermaria);
@@ -490,6 +495,20 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_jScrollPane3MouseClicked
+
+    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+        // TODO add your handling code here:
+        int indiceEnfermaria = table.getSelectedRow();  //quando o utilizador seleciona uma enfermaria clicando
+                                                  //na tabela
+
+        if(indiceEnfermaria>=0 && indiceEnfermaria < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size()) {
+            
+            Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria);
+            txtNome.setText(enf.getNome());
+            comboTipo.setSelectedItem(enf.getTipo());
+            txtCamas.setText(String.valueOf(enf.getNCamas()));
+        }
+    }//GEN-LAST:event_tableMouseClicked
     
      
      

@@ -278,6 +278,11 @@ public class PaginaDoentes extends javax.swing.JFrame {
                 "Codigo", "Nome", "Data de Nascimento", "Localidade", "Cama", "Gravidade", "Data Entrada", "Data de Saída"
             }
         ));
+        tableDoentes.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableDoentesMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(tableDoentes);
 
         getContentPane().add(jScrollPane1);
@@ -301,7 +306,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtSearch);
-        txtSearch.setBounds(90, 40, 120, 20);
+        txtSearch.setBounds(90, 40, 120, 19);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel2.setText("Pesquisar:");
@@ -315,7 +320,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
             }
         });
         getContentPane().add(comboSearch);
-        comboSearch.setBounds(230, 40, 170, 20);
+        comboSearch.setBounds(230, 40, 170, 19);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/ListaDoentesFundo.png"))); // NOI18N
         jLabel1.setMinimumSize(new java.awt.Dimension(848, 521));
@@ -641,6 +646,24 @@ public class PaginaDoentes extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_comboSearchItemStateChanged
+
+    private void tableDoentesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableDoentesMouseClicked
+        // TODO add your handling code here:
+        int indiceDoente = tableDoentes.getSelectedRow();  //quando o utilizador seleciona uma enfermaria clicando
+                                                  //na tabela
+
+        if(indiceDoente>=0 && indiceDoente < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().size()) {
+            
+            Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente);
+            txtNome.setText(doente.getNomeDoente());
+            txtLocalidade.setText(doente.getLocalidade());
+           // DataNasc.setDate(doente.getDataNasc());
+            txtCama.setText(String.valueOf(doente.getnCama()));
+            comboGravidade.setSelectedItem(doente.getGravidade());
+           // DataEntrada.setText(doente.getDataEntrada());
+           // DataSaida.setText(doente.getDataSaida());
+        }
+    }//GEN-LAST:event_tableDoentesMouseClicked
 
     /**
      * @param args the command line arguments

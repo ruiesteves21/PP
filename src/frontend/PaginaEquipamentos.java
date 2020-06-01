@@ -452,7 +452,16 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
     private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-       
+        int indiceEquipamento = table.getSelectedRow();  //quando o utilizador seleciona um equipamentp clicando
+                                                  //na tabela
+
+        if(indiceEquipamento>=0 && indiceEquipamento < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().size()) {
+            
+            Equipamento equi = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento);
+            comboDoente.setSelectedItem(equi.getDoente());
+            comboTipo.setSelectedItem(equi.getTipoEquipamento());
+            comboIndicacao.setSelectedItem(equi.getIndicacao());;
+        }       
     }//GEN-LAST:event_tableMouseClicked
 
     /**

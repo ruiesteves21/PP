@@ -156,6 +156,11 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
+        tableEnfermeiros.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableEnfermeirosMouseClicked(evt);
+            }
+        });
         jScrollPane3.setViewportView(tableEnfermeiros);
 
         getContentPane().add(jScrollPane3);
@@ -258,6 +263,11 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
+            }
+        });
+        tableMedicos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tableMedicosMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tableMedicos);
@@ -674,6 +684,31 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         carregarTabelaMedico();
         guardarAlteracoes();
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void tableEnfermeirosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEnfermeirosMouseClicked
+        // TODO add your handling code here:
+        int indiceEnfermeiro = tableEnfermeiros.getSelectedRow();  //quando o utilizador seleciona uma enfermaria clicando
+                                                  //na tabela
+
+        if(indiceEnfermeiro>=0 && indiceEnfermeiro < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().size()) {
+            
+            Enfermeiro enf = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().get(indiceEnfermeiro);
+            txtNomeEnfermeiro.setText(enf.getNomeEnfermeiro());
+        }
+    }//GEN-LAST:event_tableEnfermeirosMouseClicked
+
+    private void tableMedicosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMedicosMouseClicked
+        // TODO add your handling code here:
+        int indiceMedico = tableMedicos.getSelectedRow();  //quando o utilizador seleciona uma enfermaria clicando
+                                                  //na tabela
+
+        if(indiceMedico>=0 && indiceMedico < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().size()) {
+            
+            Medico med = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico);
+            txtNomeMedico.setText(med.getNomeMedico());
+            txtEspecialidade.setText(med.getEspecialidade());
+        }
+    }//GEN-LAST:event_tableMedicosMouseClicked
 
     /**
      * @param args the command line arguments
