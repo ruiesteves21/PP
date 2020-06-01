@@ -64,6 +64,7 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
         jButton1 = new javax.swing.JButton();
         imgHome = new javax.swing.JLabel();
         txtFiltrar = new javax.swing.JTextField();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -118,6 +119,11 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
         imgHome.setBounds(10, 0, 30, 30);
         getContentPane().add(txtFiltrar);
         txtFiltrar.setBounds(230, 310, 140, 30);
+
+        jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel3.setText("Lista de Enfermarias");
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(150, 0, 180, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -188,6 +194,7 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JDesktopPane jDesktopPane1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable table;
     private javax.swing.JTextField txtFiltrar;

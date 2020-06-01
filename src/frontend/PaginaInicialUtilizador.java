@@ -51,6 +51,10 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
                 JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
             guardarAlteracoes();
             sistema.terminar();
+        
+            imgRetroceder.setVisible(sistema.getUtilizadorLigado() instanceof Administrador);
+            jLabel3.setVisible(!imgRetroceder.isVisible());
+
         }
     }
     
@@ -72,6 +76,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         btListaProfissionais = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
         imgRetroceder = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -165,6 +170,8 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         });
         getContentPane().add(imgRetroceder);
         imgRetroceder.setBounds(100, 10, 24, 30);
+        getContentPane().add(jLabel3);
+        jLabel3.setBounds(351, 200, 70, 50);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_1.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -252,7 +259,9 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
         dispose();
-       
+       PaginaAdministrador pa = new PaginaAdministrador(sistema, bd);
+       pa.setLocationRelativeTo(null);
+       pa.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
     /**
@@ -301,6 +310,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private javax.swing.JLabel imgSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
     private void close() {
