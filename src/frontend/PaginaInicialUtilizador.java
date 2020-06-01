@@ -71,6 +71,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         btListaEquipamentos = new javax.swing.JButton();
         btListaProfissionais = new javax.swing.JButton();
         jLabel2 = new javax.swing.JLabel();
+        imgRetroceder = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -156,6 +157,15 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         getContentPane().add(jLabel2);
         jLabel2.setBounds(140, 10, 40, 30);
 
+        imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
+        imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                imgRetrocederMouseClicked(evt);
+            }
+        });
+        getContentPane().add(imgRetroceder);
+        imgRetroceder.setBounds(100, 10, 24, 30);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_1.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(-100, 0, 620, 390);
@@ -239,6 +249,12 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         d.setVisible(true);
     }//GEN-LAST:event_jLabel2MouseClicked
 
+    private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
+        // TODO add your handling code here:
+        dispose();
+       
+    }//GEN-LAST:event_imgRetrocederMouseClicked
+
     /**
      * @param args the command line arguments
      */
@@ -281,6 +297,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private javax.swing.JButton btListaHospital;
     private javax.swing.JButton btListaProfissionais;
     private javax.swing.JLabel imgPerfil;
+    private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel imgSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
