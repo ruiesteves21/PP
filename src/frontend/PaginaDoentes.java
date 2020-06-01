@@ -527,14 +527,23 @@ public class PaginaDoentes extends javax.swing.JFrame {
         String dataSaida = sdf.format(DataSaida.getDate()); 
         
         //Obter data atual
-        Locale locale1 = Locale.UK;
-        TimeZone tz1 = TimeZone.getTimeZone("GMT");
-        Calendar data = Calendar.getInstance(tz1, locale1);
+        Locale europa = Locale.UK;
+        TimeZone gmt = TimeZone.getTimeZone("GMT");
+        Calendar data = Calendar.getInstance(gmt, europa);
         String dataAtual = sdf.format(data.getTime());
         
         String gravidadeSelecionada = comboGravidade.getSelectedItem().toString();
         
-   
+          for ( Doente doente : sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente() )
+          {
+            if (doente.getNomeDoente().equals(txtNome.getText()) && (String.valueOf(doente.getNCama())).equals(txtCama.getText()))
+            {
+                JOptionPane.showMessageDialog(null,"Este médico já existe","Erro",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        
+          }
+          
         if (txtCama.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza a cama do doente","Erro",JOptionPane.ERROR_MESSAGE);
              txtCama.requestFocus();
@@ -558,6 +567,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
              txtLocalidade.requestFocus();
              return;
         }
+        
         //Impede que existam localidades com digitos e caracteres no nome. Exemplo: 123fg4 
         if (txtLocalidade.getText().matches(".*\\d.*")){
              JOptionPane.showMessageDialog(null," Nome da localidade inválido","Erro",JOptionPane.ERROR_MESSAGE);
@@ -572,7 +582,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
          
         //Se a data de Entrada for > que a data de saida
         //compareTo retorna > 0 se dataEntrada > dataSaida
-         if ((dataEntrada.compareTo(dataSaida))>0)
+         if(DataSaida.getCalendar().before(DataEntrada.getCalendar()))
          {
              JOptionPane.showMessageDialog(null," A data de entrada não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
              return;
@@ -590,19 +600,19 @@ public class PaginaDoentes extends javax.swing.JFrame {
              return;
          }
          
-         if (DataEntrada.getCalendar() == null)
+         if (DataEntrada.getDate() == null)
          {
             JOptionPane.showMessageDialog(null," Introduza a data de entrada","Erro",JOptionPane.ERROR_MESSAGE);             
             return;
          }
          
-          if (DataSaida.getCalendar() == null)
+          if (DataSaida.getDate() == null)
          {
             JOptionPane.showMessageDialog(null," Introduza a data de saida","Erro",JOptionPane.ERROR_MESSAGE);             
             return;
          }
           
-          if (dataNasc.getCalendar() == null)
+          if (dataNasc.getDate() == null)
          {
             JOptionPane.showMessageDialog(null," Introduza a data de nascimento","Erro",JOptionPane.ERROR_MESSAGE);             
             return;

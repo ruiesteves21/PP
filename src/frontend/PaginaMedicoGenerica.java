@@ -27,26 +27,10 @@ public class PaginaMedicoGenerica extends javax.swing.JFrame {
         model = (DefaultTableModel) table.getModel();
         this.sistema=sistema;
         this.bd = bd;
-        
-        //carregarTabelaEnfermeiro();
+              
         carregarTabelaMedico();
     }
     
-     /*public void carregarTabelaEnfermeiro()
-    {
-         model.setRowCount(0);
-        
-        for (int i = 0; i < sistema.getListaEnfermeiro().getListaEnfermeiro().size(); i++) {
-            
-            Enfermeiro enfermeiro = sistema.getListaEnfermeiro().getListaEnfermeiro().get(i);
-            
-              if (enfermeiro.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-             model.addRow(new Object[]{enfermeiro.getIdEnfermeiro(), enfermeiro.getNomeEnfermeiro()});
-              }
-        }
-        
-            table.setModel(model);
-    }*/
      
      public void carregarTabelaMedico()
     {

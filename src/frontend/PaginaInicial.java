@@ -50,12 +50,20 @@ public class PaginaInicial extends javax.swing.JFrame {
     
     
     private void terminar() {        
-       if (JOptionPane.showConfirmDialog(null, 
+       UIManager.put("OptionPane.noButtonText", "Não");  
+       UIManager.put("OptionPane.yesButtonText", "Sim");
+        
+        if (JOptionPane.showConfirmDialog(null, 
                "Deseja realmente terminar o programa?", 
-               "Terminar", 
+               "Terminar",
+               
                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-           guardarAlteracoes();
-           sistema.terminar();
+                dispose();
+                PaginaLogin l = new PaginaLogin(sistema, bd);
+                l.setVisible(true);
+                guardarAlteracoes();
+                dispose();
+            
        }
    }
      
@@ -145,23 +153,7 @@ public class PaginaInicial extends javax.swing.JFrame {
 
     private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
         // TODO add your handling code here:
-        //PaginaLogin l = new PaginaLogin(sistema, bd);
-        //l.setVisible(true);
-        UIManager.put("OptionPane.noButtonText", "Não");  
-        UIManager.put("OptionPane.yesButtonText", "Sim");
-        
-        if (JOptionPane.showConfirmDialog(null, 
-               "Deseja realmente terminar o programa?", 
-               "Terminar",
-               
-               JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                dispose();
-                PaginaLogin l = new PaginaLogin(sistema, bd);
-                l.setVisible(true);
-                guardarAlteracoes();
-                dispose();
-            
-       }
+       terminar();
     }//GEN-LAST:event_imgSairMouseClicked
 
     /**

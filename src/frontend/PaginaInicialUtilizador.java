@@ -36,7 +36,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         //O processo de fecho da janela será controlado pelo programa
         this.setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                 
-        
+        imgRetroceder.setVisible(sistema.getUtilizadorLigado() instanceof Administrador);
     }
     
     private void guardarAlteracoes() {
@@ -45,17 +45,21 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     
     
     private void terminar() {        
-        if (JOptionPane.showConfirmDialog(null, 
-                "Deseja realmente terminar o programa?", 
-                "Terminar", 
-                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            guardarAlteracoes();
-            sistema.terminar();
+       UIManager.put("OptionPane.noButtonText", "Não");  
+       UIManager.put("OptionPane.yesButtonText", "Sim");
         
-            imgRetroceder.setVisible(sistema.getUtilizadorLigado() instanceof Administrador);
-            jLabel3.setVisible(!imgRetroceder.isVisible());
-
-        }
+        if (JOptionPane.showConfirmDialog(null, 
+               "Deseja realmente terminar o programa?", 
+               "Terminar",
+               
+               JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
+                dispose();
+                PaginaLogin l = new PaginaLogin(sistema, bd);
+                l.setVisible(true);
+                guardarAlteracoes();
+                dispose();
+            
+       }
     }
     
     /**
@@ -103,7 +107,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btListaEnfermarias);
-        btListaEnfermarias.setBounds(10, 260, 180, 30);
+        btListaEnfermarias.setBounds(10, 110, 180, 30);
 
         imgPerfil.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/perfilIcon.png"))); // NOI18N
         imgPerfil.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -121,7 +125,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgSair);
-        imgSair.setBounds(60, 10, 24, 30);
+        imgSair.setBounds(390, 10, 24, 30);
 
         btListaDoentes.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btListaDoentes.setText("Lista de Doentes");
@@ -131,7 +135,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btListaDoentes);
-        btListaDoentes.setBounds(10, 110, 180, 30);
+        btListaDoentes.setBounds(10, 260, 180, 30);
 
         btListaEquipamentos.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btListaEquipamentos.setText("Lista de Equipamentos");
@@ -160,7 +164,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(140, 10, 40, 30);
+        jLabel2.setBounds(60, 10, 40, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -169,7 +173,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgRetroceder);
-        imgRetroceder.setBounds(100, 10, 24, 30);
+        imgRetroceder.setBounds(110, 10, 24, 30);
         getContentPane().add(jLabel3);
         jLabel3.setBounds(351, 200, 70, 50);
 
@@ -206,21 +210,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
         // TODO add your handling code here:
-       UIManager.put("OptionPane.noButtonText", "Não");  
-       UIManager.put("OptionPane.yesButtonText", "Sim");
-        
-        if (JOptionPane.showConfirmDialog(null, 
-               "Deseja realmente terminar o programa?", 
-               "Terminar",
-               
-               JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                dispose();
-                PaginaLogin l = new PaginaLogin(sistema, bd);
-                l.setVisible(true);
-                guardarAlteracoes();
-                dispose();
-            
-       }
+      terminar();
     }//GEN-LAST:event_imgSairMouseClicked
 
     private void btListaDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaDoentesActionPerformed
@@ -233,11 +223,10 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
     private void btListaProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaProfissionaisActionPerformed
         // TODO add your handling code here:
-        
+        dispose();
         PaginaMedicoGenerica p = new PaginaMedicoGenerica(sistema,bd);
         p.setLocationRelativeTo(null);
-        p.setVisible(true);
-        this.close();
+        p.setVisible(true);       
     }//GEN-LAST:event_btListaProfissionaisActionPerformed
 
     private void btListaEnfermariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaEnfermariasActionPerformed
@@ -313,7 +302,4 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 
-    private void close() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }
