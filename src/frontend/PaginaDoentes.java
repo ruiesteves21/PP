@@ -360,7 +360,17 @@ public class PaginaDoentes extends javax.swing.JFrame {
                 }
         
             }
-          
+            
+            for ( Doente doente : sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente() )
+            {
+                if (doente.getNomeDoente().equals(txtNome.getText()) && (String.valueOf(doente.getNCama())).equals(txtCama.getText()))
+                {
+                    JOptionPane.showMessageDialog(null,"Este doente já existe","Erro",JOptionPane.ERROR_MESSAGE);
+                    return;
+                }
+        
+            } 
+             
             if (txtCama.getText().isEmpty()) {
                  JOptionPane.showMessageDialog(null,"Introduza a cama do doente","Erro",JOptionPane.ERROR_MESSAGE);
                  txtCama.requestFocus();
@@ -545,7 +555,17 @@ public class PaginaDoentes extends javax.swing.JFrame {
              JOptionPane.showMessageDialog(null,"Introduza a cama do doente","Erro",JOptionPane.ERROR_MESSAGE);
              txtCama.requestFocus();
              return;
-        } 
+        }
+        
+        for ( Doente doente : sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente() )
+        {
+            if ((String.valueOf(doente.getnCama())).equals(txtCama.getText()))
+            {
+                JOptionPane.showMessageDialog(null,"Essa cama já está ocupada","Erro",JOptionPane.ERROR_MESSAGE);
+                return;
+            }
+        
+        }
         
         if (txtNome.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o nome do doente","Erro",JOptionPane.ERROR_MESSAGE);
@@ -751,7 +771,9 @@ public class PaginaDoentes extends javax.swing.JFrame {
             Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente);
             txtNome.setText(doente.getNomeDoente());
             txtLocalidade.setText(doente.getLocalidade());
-           // DataNasc.setDate(doente.getDataNasc());
+           
+
+           //setDate(doente.getDataNasc());
             txtCama.setText(String.valueOf(doente.getnCama()));
             comboGravidade.setSelectedItem(doente.getGravidade());
            // DataEntrada.setText(doente.getDataEntrada());
