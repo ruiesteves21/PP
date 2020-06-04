@@ -27,10 +27,14 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
      */
     public PaginaEnfermariasGenerica(Sistema sistema,Serializacao bd) {
         initComponents();
-        model = (DefaultTableModel) tableEnf.getModel();
+        model = (DefaultTableModel) tableEnfermaria.getModel();
         this.sistema=sistema;
         this.bd = bd;
+        
         carregarTabelaGenerica();
+        
+         //ordena tabela de forma ascedente e descendente
+        tableEnfermaria.setRowSorter(new TableRowSorter(model));
         
     }
     
@@ -47,7 +51,7 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
              }
          }
          
-          tableEnf.setModel(model);
+          tableEnfermaria.setModel(model);
           
     }
     
@@ -62,7 +66,7 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
 
         jDesktopPane1 = new javax.swing.JDesktopPane();
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableEnf = new javax.swing.JTable();
+        tableEnfermaria = new javax.swing.JTable();
         imgHome = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         ComboTipo = new javax.swing.JComboBox<>();
@@ -74,7 +78,7 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(496, 364));
         getContentPane().setLayout(null);
 
-        tableEnf.setModel(new javax.swing.table.DefaultTableModel(
+        tableEnfermaria.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -90,12 +94,12 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        tableEnf.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableEnfermaria.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableEnfMouseClicked(evt);
+                tableEnfermariaMouseClicked(evt);
             }
         });
-        jScrollPane1.setViewportView(tableEnf);
+        jScrollPane1.setViewportView(tableEnfermaria);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(20, 40, 440, 260);
@@ -141,17 +145,17 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
 
                                 
     
-    private void tableEnfMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEnfMouseClicked
+    private void tableEnfermariaMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEnfermariaMouseClicked
         // TODO add your handling code here:
-    }//GEN-LAST:event_tableEnfMouseClicked
+    }//GEN-LAST:event_tableEnfermariaMouseClicked
 
      private void filtrar (String tipo){
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        tableEnf.setRowSorter(tr);
+        tableEnfermaria.setRowSorter(tr);
         if (!"Tipo".equals(tipo)){
             tr.setRowFilter(RowFilter.regexFilter(tipo));
         }else{
-            tableEnf.setRowSorter(tr);
+            tableEnfermaria.setRowSorter(tr);
         }
         
     }
@@ -209,6 +213,6 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableEnf;
+    private javax.swing.JTable tableEnfermaria;
     // End of variables declaration//GEN-END:variables
 }

@@ -50,8 +50,8 @@ public class ListaDoente implements Serializable  {
     
     public double numDoenteModerado(){
        int totalModerado = 0;
-       for (Doente d: listaDoente){
-           if (d.getGravidade().equals("Moderado")){
+       for (Doente doente: listaDoente){
+           if (doente.getGravidade().equals("Moderado")){
                totalModerado ++;
            }
        }
@@ -60,8 +60,8 @@ public class ListaDoente implements Serializable  {
     
     public double perDoenteModerado(){
        int totalModerado = 0;
-       for (Doente d: listaDoente){
-           if (d.getGravidade().equals("Moderado")){
+       for (Doente doente: listaDoente){
+           if (doente.getGravidade().equals("Moderado")){
                totalModerado ++;
            }
        }
@@ -79,8 +79,8 @@ public class ListaDoente implements Serializable  {
     
     public double numDoenteGrave(){
        int totalGrave = 0;
-       for (Doente d: listaDoente){
-           if (d.getGravidade().equals("Grave")){
+       for (Doente doente: listaDoente){
+           if (doente.getGravidade().equals("Grave")){
                totalGrave ++;
            }
        }
@@ -89,9 +89,9 @@ public class ListaDoente implements Serializable  {
     
     public double perDoenteGrave(){
        int totalGrave = 0;
-       for (Doente d: listaDoente){
+       for (Doente doente: listaDoente){
            
-           if (d.getGravidade().equals("Grave")){
+           if (doente.getGravidade().equals("Grave")){
                totalGrave++;
            }
        }
@@ -110,8 +110,8 @@ public class ListaDoente implements Serializable  {
     
     public double numDoenteMuitoGrave(){
        int totalMuitoGrave = 0;
-       for (Doente d: listaDoente){
-           if (d.getGravidade().equals("Muito Grave")){
+       for (Doente doente: listaDoente){
+           if (doente.getGravidade().equals("Muito Grave")){
                totalMuitoGrave ++;
            }
        }
@@ -120,9 +120,9 @@ public class ListaDoente implements Serializable  {
     
      public double perDoenteMuitoGrave(){
        int totalMuitoGrave = 0;
-       for (Doente d: listaDoente){
+       for (Doente doente: listaDoente){
            
-           if (d.getGravidade().equals("Grave")){
+           if (doente.getGravidade().equals("Grave")){
                totalMuitoGrave++;
            }
        }
@@ -143,50 +143,6 @@ public class ListaDoente implements Serializable  {
     public String toString()
     {
         return listaDoente.toString();
-    }
-    
-   /*public double perDoenteModerada(){
-       int contador = 0;
-       for (Doente d: listaDoente){
-           if (d.isGravidadeModerada()){
-               contador ++;
-           }
-       }
-       if (listaDoente.size()==0){
-           return 0;
-       }else{
-         return (contador/ listaDoente.size())*100;
-       }
-   }
-   
-    public double perDoenteGrave(){
-       int contador = 0;
-       for (Doente d: listaDoente){
-           if (d.isGravidadeGrave()){
-               contador ++;
-           }
-       }
-       if (listaDoente.size()==0){
-           return 0;
-       }else{
-         return (contador/ listaDoente.size())*100;
-       }
-   }
-   
-    public double perDoenteMuitoGrave(){
-       int contador = 0;
-       for (Doente d: listaDoente){
-           if (d.isGravidadeMuitoGrave()){
-               contador ++;
-           }
-       }
-       if (listaDoente.size()==0){
-           return 0;
-       }else{
-         return (contador/ listaDoente.size())*100;
-       }
-   }*/
-    
-    
+    }   
     
 }

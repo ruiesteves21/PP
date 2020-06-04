@@ -25,14 +25,17 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
      */
     public PaginaDoentesGenerica(Sistema sistema,Serializacao bd) {
         initComponents();
-        model = (DefaultTableModel) tableD.getModel();
+        model = (DefaultTableModel) tableDoente.getModel();
         this.sistema=sistema;
         this.bd = bd;
         
-        carregarTabela();
+        carregarTabelaDoenteGen();
+        
+         //ordena tabela de forma ascedente e descendente
+        tableDoente.setRowSorter(new TableRowSorter(model));
     }
     
-    public void carregarTabela()
+    public void carregarTabelaDoenteGen()
     {
         model.setRowCount(0);
         
@@ -45,7 +48,7 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
 
             }
         }
-        tableD.setModel(model);
+        tableDoente.setModel(model);
     }
     
     /**
@@ -58,10 +61,10 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableD = new javax.swing.JTable();
+        tableDoente = new javax.swing.JTable();
         imgHome = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        ComboD = new javax.swing.JComboBox<>();
+        ComboGravidade = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -70,7 +73,7 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(804, 363));
         getContentPane().setLayout(null);
 
-        tableD.setModel(new javax.swing.table.DefaultTableModel(
+        tableDoente.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -93,9 +96,9 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        tableD.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
-        tableD.setEnabled(false);
-        jScrollPane1.setViewportView(tableD);
+        tableDoente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        tableDoente.setEnabled(false);
+        jScrollPane1.setViewportView(tableDoente);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(40, 60, 750, 250);
@@ -115,14 +118,14 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(320, 10, 160, 30);
 
-        ComboD.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gravidade", "Moderado", "Grave", "Muito Grave" }));
-        ComboD.addItemListener(new java.awt.event.ItemListener() {
+        ComboGravidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gravidade", "Moderado", "Grave", "Muito Grave" }));
+        ComboGravidade.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ComboDItemStateChanged(evt);
+                ComboGravidadeItemStateChanged(evt);
             }
         });
-        getContentPane().add(ComboD);
-        ComboD.setBounds(630, 320, 130, 30);
+        getContentPane().add(ComboGravidade);
+        ComboGravidade.setBounds(630, 320, 130, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G2.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -139,24 +142,25 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
         paginaInicialUtilizador.setLocationRelativeTo(null);
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
-   private void filtrar (String Gravidade){
+   
+    private void filtrar (String gravidade){
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        tableD.setRowSorter(tr);
-        if (!"Gravidade".equals(Gravidade)){
-            tr.setRowFilter(RowFilter.regexFilter(Gravidade));
+        tableDoente.setRowSorter(tr);
+        if (!"Gravidade".equals(gravidade)){
+            tr.setRowFilter(RowFilter.regexFilter(gravidade));
         }else{
-            tableD.setRowSorter(tr);
+            tableDoente.setRowSorter(tr);
         }
    }
    
     
     
-    private void ComboDItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboDItemStateChanged
+    private void ComboGravidadeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboGravidadeItemStateChanged
         // TODO add your handling code here:
-        String Gravidade = ComboD.getSelectedItem().toString();
+        String gravidade = ComboGravidade.getSelectedItem().toString();
         
-        filtrar(Gravidade);
-    }//GEN-LAST:event_ComboDItemStateChanged
+        filtrar(gravidade);
+    }//GEN-LAST:event_ComboGravidadeItemStateChanged
 
     
      
@@ -199,12 +203,12 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboD;
+    private javax.swing.JComboBox<String> ComboGravidade;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableD;
+    private javax.swing.JTable tableDoente;
     // End of variables declaration//GEN-END:variables
 
     private void close() {

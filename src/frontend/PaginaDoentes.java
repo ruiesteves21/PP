@@ -54,7 +54,6 @@ public class PaginaDoentes extends javax.swing.JFrame {
         this.indiceHospital = indiceHospital;
         this.indiceEnfermaria = indiceEnfermaria;
         this.indiceMedico = indiceMedico;
-        LocalDate date = LocalDate.now(); 
         
         carregarTabelaDoente();
         
@@ -551,13 +550,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         
           }
           
-        if (txtCama.getText().isEmpty()) {
-             JOptionPane.showMessageDialog(null,"Introduza a cama do doente","Erro",JOptionPane.ERROR_MESSAGE);
-             txtCama.requestFocus();
-             return;
-        }
-        
-        for ( Doente doente : sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente() )
+           for ( Doente doente : sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente() )
         {
             if ((String.valueOf(doente.getnCama())).equals(txtCama.getText()))
             {
@@ -566,6 +559,13 @@ public class PaginaDoentes extends javax.swing.JFrame {
             }
         
         }
+          
+        if (txtCama.getText().isEmpty()) {
+             JOptionPane.showMessageDialog(null,"Introduza a cama do doente","Erro",JOptionPane.ERROR_MESSAGE);
+             txtCama.requestFocus();
+             return;
+        }
+        
         
         if (txtNome.getText().isEmpty()) {
              JOptionPane.showMessageDialog(null,"Introduza o nome do doente","Erro",JOptionPane.ERROR_MESSAGE);

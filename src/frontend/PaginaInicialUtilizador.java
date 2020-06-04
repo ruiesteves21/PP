@@ -78,7 +78,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         btListaDoentes = new javax.swing.JButton();
         btListaEquipamentos = new javax.swing.JButton();
         btListaProfissionais = new javax.swing.JButton();
-        jLabel2 = new javax.swing.JLabel();
+        imgDash = new javax.swing.JLabel();
         imgRetroceder = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
@@ -157,14 +157,14 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
         getContentPane().add(btListaProfissionais);
         btListaProfissionais.setBounds(10, 210, 180, 30);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dashboard (1).png"))); // NOI18N
-        jLabel2.addMouseListener(new java.awt.event.MouseAdapter() {
+        imgDash.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dashboard (1).png"))); // NOI18N
+        imgDash.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                jLabel2MouseClicked(evt);
+                imgDashMouseClicked(evt);
             }
         });
-        getContentPane().add(jLabel2);
-        jLabel2.setBounds(60, 10, 40, 30);
+        getContentPane().add(imgDash);
+        imgDash.setBounds(60, 10, 40, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -188,17 +188,17 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private void btListaHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaHospitalActionPerformed
         // TODO add your handling code here:
         dispose();
-        PaginaHospitais p = new PaginaHospitais(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
+        PaginaHospitais pagHospital = new PaginaHospitais(sistema,bd);
+        pagHospital.setLocationRelativeTo(null);
+        pagHospital.setVisible(true);
     }//GEN-LAST:event_btListaHospitalActionPerformed
 
     private void btListaEquipamentosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaEquipamentosActionPerformed
         // TODO add your handling code here:
         dispose();
-        PaginaEquipamentosGenerica p = new PaginaEquipamentosGenerica(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
+        PaginaEquipamentosGenerica pagEquipGenerica = new PaginaEquipamentosGenerica(sistema,bd);
+        pagEquipGenerica.setLocationRelativeTo(null);
+        pagEquipGenerica.setVisible(true);
     }//GEN-LAST:event_btListaEquipamentosActionPerformed
 
     private void imgPerfilMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgPerfilMouseClicked
@@ -216,41 +216,41 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private void btListaDoentesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaDoentesActionPerformed
         // TODO add your handling code here:
         dispose();
-        PaginaDoentesGenerica p = new PaginaDoentesGenerica(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
+        PaginaDoentesGenerica pagDoenteGenerica = new PaginaDoentesGenerica(sistema,bd);
+        pagDoenteGenerica.setLocationRelativeTo(null);
+        pagDoenteGenerica.setVisible(true);
     }//GEN-LAST:event_btListaDoentesActionPerformed
 
     private void btListaProfissionaisActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaProfissionaisActionPerformed
         // TODO add your handling code here:
         dispose();
-        PaginaMedicoGenerica p = new PaginaMedicoGenerica(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);       
+        PaginaProfSaudeGenerica pagEnfGenerica = new PaginaProfSaudeGenerica(sistema,bd);
+        pagEnfGenerica.setLocationRelativeTo(null);
+        pagEnfGenerica.setVisible(true);       
     }//GEN-LAST:event_btListaProfissionaisActionPerformed
 
     private void btListaEnfermariasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btListaEnfermariasActionPerformed
         // TODO add your handling code here:
         dispose();
-        PaginaEnfermariasGenerica p = new PaginaEnfermariasGenerica(sistema,bd);
-        p.setLocationRelativeTo(null);
-        p.setVisible(true);
+        PaginaEnfermariasGenerica pagEnfermariaGen = new PaginaEnfermariasGenerica(sistema,bd);
+        pagEnfermariaGen.setLocationRelativeTo(null);
+        pagEnfermariaGen.setVisible(true);
     }//GEN-LAST:event_btListaEnfermariasActionPerformed
 
-    private void jLabel2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel2MouseClicked
+    private void imgDashMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgDashMouseClicked
         // TODO add your handling code here:
         dispose();
-        PaginaDashboard d = new PaginaDashboard(sistema,bd);
-        d.setLocationRelativeTo(null);
-        d.setVisible(true);
-    }//GEN-LAST:event_jLabel2MouseClicked
+        PaginaDashboard pagDashboard = new PaginaDashboard(sistema,bd);
+        pagDashboard.setLocationRelativeTo(null);
+        pagDashboard.setVisible(true);
+    }//GEN-LAST:event_imgDashMouseClicked
 
     private void imgRetrocederMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetrocederMouseClicked
         // TODO add your handling code here:
         dispose();
-       PaginaAdministrador pa = new PaginaAdministrador(sistema, bd);
-       pa.setLocationRelativeTo(null);
-       pa.setVisible(true);
+       PaginaAdministrador pagAdmin = new PaginaAdministrador(sistema, bd);
+       pagAdmin.setLocationRelativeTo(null);
+       pagAdmin.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
     /**
@@ -294,11 +294,11 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
     private javax.swing.JButton btListaEquipamentos;
     private javax.swing.JButton btListaHospital;
     private javax.swing.JButton btListaProfissionais;
+    private javax.swing.JLabel imgDash;
     private javax.swing.JLabel imgPerfil;
     private javax.swing.JLabel imgRetroceder;
     private javax.swing.JLabel imgSair;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     // End of variables declaration//GEN-END:variables
 

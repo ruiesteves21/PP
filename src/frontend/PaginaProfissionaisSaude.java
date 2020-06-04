@@ -34,8 +34,6 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
     DefaultTableModel modelMedico; 
     private Sistema sistema;
     private Serializacao bd;
-    int varHosp; 
-    private ListaMedico listaMedico;
     private int indiceHospital;
     private int indiceEnfermaria;
     
@@ -47,7 +45,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         this.indiceHospital = indiceHospital;
         this.indiceEnfermaria = indiceEnfermaria;
         this.bd = bd;
-        //listaMedico = sistema.getListaHospital().getListaHospital().get(sistema.getHospitalSelecionado()).getListaMedico();
+       
         carregarTabelaEnfermeiro();
         carregarTabelaMedico();
     }

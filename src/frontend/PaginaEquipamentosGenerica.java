@@ -27,14 +27,17 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
     public PaginaEquipamentosGenerica(Sistema sistema, Serializacao bd) {
         initComponents();
         
-        model = (DefaultTableModel) tableEq.getModel();
+        model = (DefaultTableModel) tableEquipamento.getModel();
         this.sistema=sistema;
         this.bd = bd;
         
-        carregarTabelaGenerica();
+        carregarTabelaEquipGenerica();
+        
+         //ordena tabela de forma ascedente e descendente
+        tableEquipamento.setRowSorter(new TableRowSorter(model));
     }
     
-     public void carregarTabelaGenerica()
+     public void carregarTabelaEquipGenerica()
     {
         model.setRowCount(0);
          
@@ -47,7 +50,7 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
             }
          }
          
-          tableEq.setModel(model);
+          tableEquipamento.setModel(model);
           
     }
     /**
@@ -60,11 +63,11 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane1 = new javax.swing.JScrollPane();
-        tableEq = new javax.swing.JTable();
+        tableEquipamento = new javax.swing.JTable();
         imgHome = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
-        ComboInd = new javax.swing.JComboBox<>();
         ComboTipo = new javax.swing.JComboBox<>();
+        ComboIndicacao = new javax.swing.JComboBox<>();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -73,7 +76,7 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(807, 358));
         getContentPane().setLayout(null);
 
-        tableEq.setModel(new javax.swing.table.DefaultTableModel(
+        tableEquipamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -89,7 +92,7 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
                 return types [columnIndex];
             }
         });
-        jScrollPane1.setViewportView(tableEq);
+        jScrollPane1.setViewportView(tableEquipamento);
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(70, 40, 690, 250);
@@ -109,28 +112,28 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
         getContentPane().add(jLabel3);
         jLabel3.setBounds(290, 10, 190, 20);
 
-        ComboInd.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione o Tipo", "Desfibrilhador", "Ventilador", "Outro" }));
-        ComboInd.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                ComboIndItemStateChanged(evt);
-            }
-        });
-        ComboInd.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                ComboIndActionPerformed(evt);
-            }
-        });
-        getContentPane().add(ComboInd);
-        ComboInd.setBounds(480, 310, 120, 30);
-
-        ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecione Indicacao", "Livre", "Ocupado" }));
+        ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione Tipo --", "Desfibrilhador", "Ventilador", "Outro" }));
         ComboTipo.addItemListener(new java.awt.event.ItemListener() {
             public void itemStateChanged(java.awt.event.ItemEvent evt) {
                 ComboTipoItemStateChanged(evt);
             }
         });
+        ComboTipo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                ComboTipoActionPerformed(evt);
+            }
+        });
         getContentPane().add(ComboTipo);
-        ComboTipo.setBounds(630, 310, 130, 30);
+        ComboTipo.setBounds(410, 310, 140, 30);
+
+        ComboIndicacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione Indicacao --", "Livre", "Ocupado" }));
+        ComboIndicacao.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                ComboIndicacaoItemStateChanged(evt);
+            }
+        });
+        getContentPane().add(ComboIndicacao);
+        ComboIndicacao.setBounds(600, 310, 160, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G4.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -148,47 +151,47 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
         paginaInicialUtilizador.setVisible(true);
     }//GEN-LAST:event_imgHomeMouseClicked
 
-      private void filtrar (String tipo){
+      private void filtrarTipo (String tipo){
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        tableEq.setRowSorter(tr);
-        if (!"Selecione o Tipo".equals(tipo)){
+        tableEquipamento.setRowSorter(tr);
+        if (!"-- Selecione Tipo --".equals(tipo)){
             tr.setRowFilter(RowFilter.regexFilter(tipo));
         }else{
-            tableEq.setRowSorter(tr);
+            tableEquipamento.setRowSorter(tr);
         }
         
     }
     
-    private void filtrar2 (String Indicacao){
+    private void filtrarIndicacao (String indicacao){
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        tableEq.setRowSorter(tr);
-        if (!"Selecione Indicacao".equals(Indicacao)){
-            tr.setRowFilter(RowFilter.regexFilter(Indicacao));
+        tableEquipamento.setRowSorter(tr);
+        if (!"-- Selecione Indicacao --".equals(indicacao)){
+            tr.setRowFilter(RowFilter.regexFilter(indicacao));
         }else{
-            tableEq.setRowSorter(tr);
+            tableEquipamento.setRowSorter(tr);
         }
         
     }
     
     
     
-    private void ComboIndItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboIndItemStateChanged
-        // TODO add your handling code here:
-        String Indicacao = ComboInd.getSelectedItem().toString();
-        
-        filtrar2(Indicacao);
-    }//GEN-LAST:event_ComboIndItemStateChanged
-
     private void ComboTipoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboTipoItemStateChanged
         // TODO add your handling code here:
         String tipo = ComboTipo.getSelectedItem().toString();
         
-        filtrar(tipo);
+        filtrarTipo(tipo);
     }//GEN-LAST:event_ComboTipoItemStateChanged
 
-    private void ComboIndActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboIndActionPerformed
+    private void ComboIndicacaoItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_ComboIndicacaoItemStateChanged
         // TODO add your handling code here:
-    }//GEN-LAST:event_ComboIndActionPerformed
+        String indicacao = ComboIndicacao.getSelectedItem().toString();
+        
+        filtrarIndicacao(indicacao);
+    }//GEN-LAST:event_ComboIndicacaoItemStateChanged
+
+    private void ComboTipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ComboTipoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_ComboTipoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -229,12 +232,12 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JComboBox<String> ComboInd;
+    private javax.swing.JComboBox<String> ComboIndicacao;
     private javax.swing.JComboBox<String> ComboTipo;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JTable tableEq;
+    private javax.swing.JTable tableEquipamento;
     // End of variables declaration//GEN-END:variables
 }
