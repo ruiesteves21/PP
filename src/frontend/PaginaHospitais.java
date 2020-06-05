@@ -5,14 +5,11 @@
  */
 package frontend;
 import backend.Hospital;
-import backend.Utilizador;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
-import java.util.ArrayList;
 import java.util.UUID;
-import javax.swing.table.TableModel;
 
 
 /**
@@ -31,7 +28,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
     public PaginaHospitais(Sistema sistema, Serializacao bd) {
         initComponents();
         
-        model = (DefaultTableModel) table.getModel();
+        model = (DefaultTableModel) tableHospital.getModel();
         this.sistema = sistema;
         this.bd = bd;
         
@@ -77,7 +74,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
         txtLocalidade = new javax.swing.JTextField();
         btEnfermaria = new javax.swing.JButton();
         jScrollPane2 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        tableHospital = new javax.swing.JTable();
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -164,7 +161,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
         getContentPane().add(btEnfermaria);
         btEnfermaria.setBounds(20, 280, 170, 29);
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tableHospital.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null},
                 {null, null, null},
@@ -183,12 +180,12 @@ public class PaginaHospitais extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        table.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableHospital.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableMouseClicked(evt);
+                tableHospitalMouseClicked(evt);
             }
         });
-        jScrollPane2.setViewportView(table);
+        jScrollPane2.setViewportView(tableHospital);
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(220, 60, 340, 290);
@@ -270,7 +267,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
          
-        int row = table.getSelectedRow();
+        int row = tableHospital.getSelectedRow();
         //ou seja se a linha estiver selecionada
         
         if(row >= 0){
@@ -291,7 +288,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
         try {
-            int indiceHospital = table.getSelectedRow();
+            int indiceHospital = tableHospital.getSelectedRow();
             Hospital editarHospital = sistema.getListaHospital().getListaHospital().get(indiceHospital);
 
                if (indiceHospital == -1){
@@ -368,7 +365,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
     private void btEnfermariaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEnfermariaActionPerformed
         // TODO add your handling code here:
               
-        int indiceHospital = table.getSelectedRow();    //abre a janela que cria as tarefas de um projeto
+        int indiceHospital = tableHospital.getSelectedRow();    //abre a janela que cria as tarefas de um projeto
                                                     //selecionado da tabela
         if (indiceHospital == -1){
             
@@ -404,9 +401,9 @@ public class PaginaHospitais extends javax.swing.JFrame {
         }*/  
     }//GEN-LAST:event_btEnfermariaActionPerformed
 
-    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
+    private void tableHospitalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableHospitalMouseClicked
         // TODO add your handling code here:
-         int indiceHospital = table.getSelectedRow();  //quando o utilizador seleciona um hospital clicando
+         int indiceHospital = tableHospital.getSelectedRow();  //quando o utilizador seleciona um hospital clicando
                                                   //na tabela
 
         if(indiceHospital>=0 && indiceHospital < sistema.getListaHospital().getListaHospital().size()) {
@@ -436,7 +433,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
         txtLocalidade.setText(table.getValueAt(rowIndex, 2).toString());
         //txtCodigo.setEnabled(false);
         }*/
-    }//GEN-LAST:event_tableMouseClicked
+    }//GEN-LAST:event_tableHospitalMouseClicked
 
     
     
@@ -494,7 +491,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTable table;
+    private javax.swing.JTable tableHospital;
     private javax.swing.JTextField txtLocalidade;
     private javax.swing.JTextField txtNome;
     // End of variables declaration//GEN-END:variables

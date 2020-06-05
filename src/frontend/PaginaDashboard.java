@@ -7,6 +7,7 @@ package frontend;
 
 import backend.Serializacao;
 import backend.Sistema;
+import backend.Utilizador;
 import javax.swing.JOptionPane;
 
 /**
@@ -21,13 +22,18 @@ public class PaginaDashboard extends javax.swing.JFrame {
     private Sistema sistema;
     private Serializacao bd;
     
+    
     public PaginaDashboard(Sistema sistema, Serializacao bd) {
         initComponents();
         this.sistema = sistema;
         this.bd = bd;
         
-          
-        txtModerado.setText(String.valueOf(this.sistema.getListaDoente().numDoenteModerado()));
+        atualizar();  
+       
+    }
+    
+    private void atualizar() {
+         txtModerado.setText(String.valueOf(this.sistema.getListaDoente().numDoenteModerado()));
         txtGrave.setText(String.valueOf(this.sistema.getListaDoente().numDoenteGrave()));
         txtMuitoGrave.setText(String.valueOf(this.sistema.getListaDoente().numDoenteMuitoGrave()));
         txtModeradoPerc.setText(String.valueOf(this.sistema.getListaDoente().perDoenteModerado()));
@@ -41,20 +47,6 @@ public class PaginaDashboard extends javax.swing.JFrame {
         txtVentiladorPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perVentiladorOcupados()));
         txtOutroPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perOutroOcupados()));
         
-    }
-    
-     private void guardarAlteracoes() {
-        bd.gravaSistema(sistema);
-    }
-     
-     private void terminar() {        
-        if (JOptionPane.showConfirmDialog(null, 
-                "Deseja realmente terminar o programa?", 
-                "Terminar", 
-                JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-            guardarAlteracoes();
-            sistema.terminar();
-        }
     }
 
     /**
@@ -93,7 +85,6 @@ public class PaginaDashboard extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         txtModerado = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
-        imgSair = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
         jLabel15 = new javax.swing.JLabel();
 
@@ -229,15 +220,6 @@ public class PaginaDashboard extends javax.swing.JFrame {
         getContentPane().add(jLabel14);
         jLabel14.setBounds(580, 10, 200, 47);
 
-        imgSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
-        imgSair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgSairMouseClicked(evt);
-            }
-        });
-        getContentPane().add(imgSair);
-        imgSair.setBounds(810, 10, 24, 30);
-
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
@@ -257,11 +239,6 @@ public class PaginaDashboard extends javax.swing.JFrame {
     private void txtModeradoPercActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtModeradoPercActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtModeradoPercActionPerformed
-
-    private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
-        // TODO add your handling code here:
-        terminar();
-    }//GEN-LAST:event_imgSairMouseClicked
 
     private void imgHomeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgHomeMouseClicked
         // TODO add your handling code here:
@@ -310,7 +287,6 @@ public class PaginaDashboard extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JLabel imgHome;
-    private javax.swing.JLabel imgSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;

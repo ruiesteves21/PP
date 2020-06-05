@@ -110,7 +110,7 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(10, 10, 30, 30);
+        imgHome.setBounds(760, 10, 30, 30);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel3.setForeground(new java.awt.Color(255, 255, 255));

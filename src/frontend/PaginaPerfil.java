@@ -139,7 +139,6 @@ public class PaginaPerfil extends javax.swing.JFrame {
         txtUsername = new javax.swing.JTextField();
         txtNome = new javax.swing.JTextField();
         btEditar = new javax.swing.JButton();
-        jLabel6 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         btFechar = new javax.swing.JButton();
         txtSenha = new javax.swing.JPasswordField();
@@ -180,10 +179,6 @@ public class PaginaPerfil extends javax.swing.JFrame {
         });
         getContentPane().add(btEditar);
         btEditar.setBounds(160, 300, 80, 29);
-
-        jLabel6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
-        getContentPane().add(jLabel6);
-        jLabel6.setBounds(320, 10, 30, 30);
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel8.setText("Confirma Senha:");
@@ -270,7 +265,6 @@ public class PaginaPerfil extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel5;
-    private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JPasswordField txtConfirmacao;
     private javax.swing.JTextField txtNome;

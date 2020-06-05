@@ -12,6 +12,7 @@ import backend.Enfermaria;
 import javax.swing.JOptionPane;
 import backend.Serializacao;
 import backend.Sistema;
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.time.LocalDate;
 import java.util.ArrayList;
@@ -34,11 +35,10 @@ public class PaginaDoentes extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    private ListaDoente listaDoente;
     private int indiceHospital;
     private int indiceEnfermaria;
     private int indiceMedico;
-   
+   private DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
   
     
     /**
@@ -635,6 +635,12 @@ public class PaginaDoentes extends javax.swing.JFrame {
          {
              JOptionPane.showMessageDialog(null," A data de nascimento não pode ser superior à data de saída","Erro",JOptionPane.ERROR_MESSAGE);             
              return;
+         } 
+         
+         if (dataAtual.before(DataEntrada.getCalendar()))
+         {
+             JOptionPane.showMessageDialog(null," A data de entrada não pode ser superior à data atual","Erro",JOptionPane.ERROR_MESSAGE);             
+             return;
          }    
          
           if (dataAtual.before(dataNasc.getCalendar()))
@@ -773,7 +779,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
             txtLocalidade.setText(doente.getLocalidade());
            
 
-           //setDate(doente.getDataNasc());
+            //dataNasc.setDate(doente.getDataNasc());
             txtCama.setText(String.valueOf(doente.getnCama()));
             comboGravidade.setSelectedItem(doente.getGravidade());
            // DataEntrada.setText(doente.getDataEntrada());

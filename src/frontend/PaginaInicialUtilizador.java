@@ -10,6 +10,7 @@ import javax.swing.JOptionPane;
 import backend.Serializacao;
 import backend.Administrador;
 import backend.RegistoAcesso;
+import backend.Utilizador;
 import javax.swing.UIManager;
 
 /**
@@ -23,6 +24,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
      */
     private Sistema sistema;
     private Serializacao bd;
+    
     
     public PaginaInicialUtilizador(Sistema sistema, Serializacao bd) {
         initComponents();

@@ -13,8 +13,7 @@ import java.util.ArrayList;
  */
 public class ListaEquipamento implements Serializable {
     
-    public int totalVentOcupados = 0;
-    public double percentagem = 0;
+    
     private ArrayList<Equipamento> listaEquipamento;
     
     public ListaEquipamento()
@@ -60,15 +59,25 @@ public class ListaEquipamento implements Serializable {
     }
     
     public double perVentiladorOcupados(){
+       int totalVentOcupados = 0;
+       double percentagem = 0;
        
+       for (Equipamento e: listaEquipamento){
+           
+           if (e.getTipoEquipamento().equals("Ventilador") && e.getIndicacao().equals("Ocupado")){
+               totalVentOcupados = totalVentOcupados + 1;
+                    }
+        }
        
-       numVentiladorOcupados();
-   
-          percentagem = (totalVentOcupados / listaEquipamento.size() * 100);
-          
-          
+       /*if (listaEquipamento.isEmpty()){
+           return 0;
+           
+       } else{*/
+       
+                percentagem = (totalVentOcupados / listaEquipamento.size()) * 100;
         
-        return percentagem;
+                return percentagem;
+        //}
     }
      
     public double numDesfibrilhadorOcupados(){
@@ -86,6 +95,7 @@ public class ListaEquipamento implements Serializable {
     
     public double perDesfibrilhadorOcupados(){
         int totalDesfOcupados = 0;
+        double percentagem = 0;
         
        for (Equipamento e: listaEquipamento){
            
@@ -94,15 +104,15 @@ public class ListaEquipamento implements Serializable {
                     }
        }
             
-       if (listaEquipamento.isEmpty()){
+      /* if (listaEquipamento.isEmpty()){
            return 0;
            
-       } else{
+       } else{*/
            
-          double percentagem = (totalDesfOcupados / listaEquipamento.size() * 100);
+          percentagem = (totalDesfOcupados /listaEquipamento.size()) * 100;
           
           return percentagem;
-       }
+      // }
    } 
     
     public double numOutroOcupados(){

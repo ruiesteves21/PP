@@ -111,7 +111,7 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(10, 0, 30, 30);
+        imgHome.setBounds(460, 0, 30, 30);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel3.setText("Lista de Enfermarias");
