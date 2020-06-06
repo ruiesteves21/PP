@@ -114,7 +114,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(655, 480));
+        setMinimumSize(new java.awt.Dimension(805, 480));
         setUndecorated(true);
         setSize(new java.awt.Dimension(819, 415));
         getContentPane().setLayout(null);

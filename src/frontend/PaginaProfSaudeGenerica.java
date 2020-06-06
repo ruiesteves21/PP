@@ -96,7 +96,7 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(729, 480));
+        setMinimumSize(new java.awt.Dimension(805, 480));
         setUndecorated(true);
         getContentPane().setLayout(null);
 
