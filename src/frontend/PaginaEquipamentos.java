@@ -80,8 +80,9 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
             for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().size(); i++) {
             
                  Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(i);
-            
+                 if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
                 comboDoente.addItem(doente.getNomeDoente());           
+            }
             }
         }
         
