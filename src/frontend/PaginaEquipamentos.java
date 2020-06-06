@@ -33,7 +33,11 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
     private int indiceMedico;
     
     /**
-     * Creates new form ListaEquipamentos
+     * 
+     * @param sistema
+     * @param bd
+     * @param indiceHospital
+     * @param indiceEnfermaria 
      */
     public PaginaEquipamentos(Sistema sistema, Serializacao bd, int indiceHospital, int indiceEnfermaria) {
         initComponents();
@@ -71,12 +75,16 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         
         try {
             
-        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().size(); i++) {
+        for (int indiceMedico = 0; indiceMedico < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().size(); indiceMedico++) {
             
-            Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(i);
+            for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().size(); i++) {
             
-            comboDoente.addItem(doente.getNomeDoente());           
-        }   
+                 Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(i);
+            
+                comboDoente.addItem(doente.getNomeDoente());           
+            }
+        }
+        
         } catch (IndexOutOfBoundsException e) {
             JOptionPane.showMessageDialog(null,"Neste momento, não há doentes registados!!","Aviso",JOptionPane.INFORMATION_MESSAGE);
         }
@@ -238,7 +246,7 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         getContentPane().add(comboTipo);
         comboTipo.setBounds(80, 190, 150, 30);
 
-        comboIndicacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Estado --", "Livre", "Ocupado", " " }));
+        comboIndicacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Estado --", "Livre", "Ocupado" }));
         getContentPane().add(comboIndicacao);
         comboIndicacao.setBounds(80, 250, 150, 30);
 

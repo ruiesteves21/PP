@@ -7,7 +7,6 @@ package backend;
 
 import java.io.Serializable;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 
 /**
@@ -48,68 +47,60 @@ public class ListaDoente implements Serializable  {
         return listaDoente.contains(doente);
     }
     
-    public double numDoenteModerado(){
+    public int numDoenteModerado(){
        int totalModerado = 0;
+       
        for (Doente doente: listaDoente){
            if (doente.getGravidade().equals("Moderado")){
                totalModerado ++;
            }
        }
-            return totalModerado;
+       
+       return totalModerado;
     }
     
-    public double perDoenteModerado(){
-       int totalModerado = 0;
-       for (Doente doente: listaDoente){
-           if (doente.getGravidade().equals("Moderado")){
-               totalModerado ++;
-           }
-       }
-            
-       if (listaDoente.isEmpty()){
-           return 0;
-           
-       } else{
-           
-          double percentagem = (totalModerado / listaDoente.size() * 100);
+    public float perDoenteModerado(){
+       int totalModerado;
+       float percentagem;
+       float totalDoente = listaDoente.size();
+       
+       totalModerado = numDoenteModerado();
+       
+       percentagem = (totalModerado / totalDoente) * 100;
           
-          return percentagem;
-       }
+       return percentagem;
+       
    }
     
-    public double numDoenteGrave(){
+    public int numDoenteGrave(){
        int totalGrave = 0;
+       
        for (Doente doente: listaDoente){
            if (doente.getGravidade().equals("Grave")){
                totalGrave ++;
            }
        }
-            return totalGrave;
+       
+       return totalGrave;
     }
     
-    public double perDoenteGrave(){
-       int totalGrave = 0;
-       for (Doente doente: listaDoente){
-           
-           if (doente.getGravidade().equals("Grave")){
-               totalGrave++;
-           }
-       }
-            
-       if (listaDoente.isEmpty()){
-           return 0;
-           
-       } else{
-           
-          double percentagem = (totalGrave / listaDoente.size() * 100);
+    public float perDoenteGrave(){
+       int totalGrave;
+       float percentagem;
+       float totalDoente = listaDoente.size();
+       
+       totalGrave = numDoenteGrave();
+       
+       percentagem = (totalGrave / totalDoente) * 100;
           
-          return percentagem;
-       }
+       return percentagem;
+       
    }
     
     
-    public double numDoenteMuitoGrave(){
+    public int numDoenteMuitoGrave(){
        int totalMuitoGrave = 0;
+       
        for (Doente doente: listaDoente){
            if (doente.getGravidade().equals("Muito Grave")){
                totalMuitoGrave ++;
@@ -118,24 +109,16 @@ public class ListaDoente implements Serializable  {
             return totalMuitoGrave;
     }
     
-     public double perDoenteMuitoGrave(){
-       int totalMuitoGrave = 0;
-       for (Doente doente: listaDoente){
-           
-           if (doente.getGravidade().equals("Grave")){
-               totalMuitoGrave++;
-           }
-       }
-            
-       if (listaDoente.isEmpty()){
-           return 0;
-           
-       } else{
-           
-          double percentagem = (totalMuitoGrave / listaDoente.size() * 100);
+     public float perDoenteMuitoGrave(){
+       int totalMuitoGrave;
+       float percentagem;
+       float totalDoente = listaDoente.size();
+       
+       totalMuitoGrave = numDoenteMuitoGrave();
+       
+       percentagem = (totalMuitoGrave / totalDoente) * 100;
           
-          return percentagem;
-       }
+       return percentagem;
    }
      
     

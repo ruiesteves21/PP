@@ -5,29 +5,15 @@
  */
 package frontend;
 
-import backend.Equipamento;
-import backend.ListaMedico;
 import backend.Medico;
-import backend.Utilizador;
 import backend.Enfermeiro;
 import backend.Serializacao;
 import backend.Sistema;
-import java.util.ArrayList;
 import java.util.UUID;
-//import backend.ListaProfissionaisSaude;
-
-//import static frontend.ListaHospitais.table;
-
-//import static frontend.ListaHospitais.table;
-
-
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * 
- */
+
 public class PaginaProfissionaisSaude extends javax.swing.JFrame {
     
     DefaultTableModel modelEnfermeiro; 
@@ -37,6 +23,13 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
     private int indiceHospital;
     private int indiceEnfermaria;
     
+    /**
+     * 
+     * @param sistema
+     * @param bd
+     * @param indiceHospital
+     * @param indiceEnfermaria 
+     */
     public PaginaProfissionaisSaude(Sistema sistema, Serializacao bd, int indiceHospital, int indiceEnfermaria) {
         initComponents();
         modelEnfermeiro = (DefaultTableModel) tableEnfermeiros.getModel();

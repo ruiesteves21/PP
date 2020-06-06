@@ -19,7 +19,12 @@ import javax.swing.UIManager;
 public class PaginaRegistoAcessos extends javax.swing.JFrame {
     private final Sistema sistema;
     private Serializacao bd;
-
+    
+    /**
+     * 
+     * @param sistema
+     * @param bd 
+     */
     public PaginaRegistoAcessos(Sistema sistema, Serializacao bd) {
         initComponents();
         this.sistema = sistema;   
@@ -109,7 +114,6 @@ public class PaginaRegistoAcessos extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         tabAcessos = new javax.swing.JTable();
         imgRetroceder6 = new javax.swing.JLabel();
-        imgSair = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         imgRetroceder = new javax.swing.JLabel();
         imgRetroceder1 = new javax.swing.JLabel();
@@ -165,16 +169,7 @@ public class PaginaRegistoAcessos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgRetroceder6);
-        imgRetroceder6.setBounds(270, 10, 24, 30);
-
-        imgSair.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/logout.png"))); // NOI18N
-        imgSair.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                imgSairMouseClicked(evt);
-            }
-        });
-        getContentPane().add(imgSair);
-        imgSair.setBounds(310, 10, 24, 30);
+        imgRetroceder6.setBounds(310, 10, 24, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dash66.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -214,25 +209,6 @@ public class PaginaRegistoAcessos extends javax.swing.JFrame {
         pack();
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
-    private void imgSairMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgSairMouseClicked
-        // TODO add your handling code here:
-        UIManager.put("OptionPane.noButtonText", "Não");  
-        UIManager.put("OptionPane.yesButtonText", "Sim");
-        
-        if (JOptionPane.showConfirmDialog(null, 
-               "Deseja realmente terminar o programa?", 
-               "Terminar",
-               
-               JOptionPane.YES_NO_OPTION) == JOptionPane.YES_OPTION) {
-                dispose();
-                PaginaLogin l = new PaginaLogin(sistema, bd);
-                l.setVisible(true);
-                guardarAlteracoes();
-                dispose();
-            
-       }
-    }//GEN-LAST:event_imgSairMouseClicked
 
     private void imgRetroceder1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder1MouseClicked
         // TODO add your handling code here:
@@ -300,7 +276,6 @@ public class PaginaRegistoAcessos extends javax.swing.JFrame {
     private javax.swing.JLabel imgRetroceder4;
     private javax.swing.JLabel imgRetroceder5;
     private javax.swing.JLabel imgRetroceder6;
-    private javax.swing.JLabel imgSair;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tabAcessos;

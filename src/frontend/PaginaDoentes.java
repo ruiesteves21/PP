@@ -6,16 +6,12 @@
  */
 package frontend;
 
-import backend.ListaDoente;
 import backend.Doente;
-import backend.Enfermaria;
 import javax.swing.JOptionPane;
 import backend.Serializacao;
 import backend.Sistema;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
-import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.UUID;
 import java.util.Date;
@@ -38,11 +34,16 @@ public class PaginaDoentes extends javax.swing.JFrame {
     private int indiceHospital;
     private int indiceEnfermaria;
     private int indiceMedico;
-   private DateFormat df = new SimpleDateFormat("dd/MM/yyyy");
+   
   
     
     /**
-     * Creates new form ListaDoentes
+     * 
+     * @param sistema
+     * @param bd
+     * @param indiceHospital
+     * @param indiceEnfermaria
+     * @param indiceMedico 
      */
     
     public PaginaDoentes(Sistema sistema, Serializacao bd, int indiceHospital, int indiceEnfermaria, int indiceMedico) {
@@ -61,8 +62,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         tableDoentes.setRowSorter(new TableRowSorter(model));
        
     }
-            
-            
+                
     public void carregarTabelaDoente()
     {
         model.setRowCount(0);
@@ -72,7 +72,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
             Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(i);
             
              if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-            model.addRow(new Object[]{doente.getIdDoente(), doente.getNomeDoente(), doente.getDataNasc(), doente.getLocalidade(), doente.getNCama(), doente.getGravidade(), doente.getDataEntrada(), doente.getDataSaida()});
+            model.addRow(new Object[]{doente.getNCama(), doente.getNomeDoente(), doente.getDataNasc(), doente.getLocalidade(), doente.getGravidade(), doente.getDataEntrada(), doente.getDataSaida(), doente.getIdDoente()});
 
             }
         }
@@ -267,7 +267,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
                 {null, null, null, null, null, null, null, null}
             },
             new String [] {
-                "Codigo", "Nome", "Data de Nascimento", "Localidade", "Cama", "Gravidade", "Data Entrada", "Data de Saída"
+                "Cama", "Nome", "Data de Nascimento", "Localidade", "Gravidade", "Data Entrada", "Data de Saída", "Codigo"
             }
         ));
         tableDoentes.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -280,7 +280,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(30, 70, 780, 190);
 
-        comboGravidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione Gravidade -- ", "Moderado", "Grave ", "Muito Grave" }));
+        comboGravidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione Gravidade -- ", "Moderado", "Grave", "Muito Grave" }));
         getContentPane().add(comboGravidade);
         comboGravidade.setBounds(390, 300, 160, 30);
 
@@ -322,7 +322,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(848, 521));
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
-
+    
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
     try {
@@ -540,6 +540,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
         
         String gravidadeSelecionada = comboGravidade.getSelectedItem().toString();
         
+        
           for ( Doente doente : sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente() )
           {
             if (doente.getNomeDoente().equals(txtNome.getText()) && (String.valueOf(doente.getNCama())).equals(txtCama.getText()))
@@ -650,6 +651,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
          }
          
        
+     
      int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
      
             if (Integer.parseInt(txtCama.getText()) > nCamas || Integer.parseInt(txtCama.getText()) <= 0) 
@@ -779,7 +781,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
             txtLocalidade.setText(doente.getLocalidade());
            
 
-            //dataNasc.setDate(doente.getDataNasc());
+            dataNasc.setDateFormatString(tableDoentes.getValueAt(indiceDoente, 2).toString());
             txtCama.setText(String.valueOf(doente.getnCama()));
             comboGravidade.setSelectedItem(doente.getGravidade());
            // DataEntrada.setText(doente.getDataEntrada());

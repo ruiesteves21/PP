@@ -45,7 +45,7 @@ public class ListaEquipamento implements Serializable {
         return listaEquipamento.contains(equipamento);
     }
     
-     public double numVentiladorOcupados(){
+     public int numVentiladorOcupados(){
        int totalVentOcupados = 0;
        
        for (Equipamento e: listaEquipamento){
@@ -58,29 +58,28 @@ public class ListaEquipamento implements Serializable {
             return totalVentOcupados;
     }
     
-    public double perVentiladorOcupados(){
-       int totalVentOcupados = 0;
-       double percentagem = 0;
+    public float perVentiladorOcupados(){
+       float totalVentOcupados;
+       float totalVentiladores = 0;
+       float percentagem;
+       float totalEquipamento = listaEquipamento.size();
+       
+       totalVentOcupados = numVentiladorOcupados();
        
        for (Equipamento e: listaEquipamento){
            
-           if (e.getTipoEquipamento().equals("Ventilador") && e.getIndicacao().equals("Ocupado")){
-               totalVentOcupados = totalVentOcupados + 1;
+           if (e.getTipoEquipamento().equals("Ventilador") && (e.getIndicacao().equals("Ocupado") || e.getIndicacao().equals("Livre"))){
+               totalVentiladores = totalVentiladores + 1;
                     }
         }
+    
+       percentagem =  (totalVentOcupados / totalVentiladores /*totalEquipamento*/) * 100;
        
-       /*if (listaEquipamento.isEmpty()){
-           return 0;
-           
-       } else{*/
-       
-                percentagem = (totalVentOcupados / listaEquipamento.size()) * 100;
+       return percentagem;
         
-                return percentagem;
-        //}
     }
      
-    public double numDesfibrilhadorOcupados(){
+    public int numDesfibrilhadorOcupados(){
        int totalDesfOcupados = 0;
        
        for (Equipamento e: listaEquipamento){
@@ -93,29 +92,28 @@ public class ListaEquipamento implements Serializable {
             return totalDesfOcupados;
     }
     
-    public double perDesfibrilhadorOcupados(){
-        int totalDesfOcupados = 0;
-        double percentagem = 0;
-        
-       for (Equipamento e: listaEquipamento){
-           
-           if (e.getTipoEquipamento().equals("Desfibrilhador") && e.getIndicacao().equals("Ocupado")){
-               totalDesfOcupados ++;
-                    }
-       }
+    public float perDesfibrilhadorOcupados(){
+        float totalDesfOcupados;
+        float totalDesfibrilhador = 0;
+        float percentagem;
+        float totalEquipamento = listaEquipamento.size();
+      
             
-      /* if (listaEquipamento.isEmpty()){
-           return 0;
+        totalDesfOcupados = numDesfibrilhadorOcupados();
+        
+         for (Equipamento e: listaEquipamento){
            
-       } else{*/
-           
-          percentagem = (totalDesfOcupados /listaEquipamento.size()) * 100;
+           if (e.getTipoEquipamento().equals("Desfibrilhador") && (e.getIndicacao().equals("Ocupado") || e.getIndicacao().equals("Livre"))){
+               totalDesfibrilhador = totalDesfibrilhador + 1;
+                    }
+        }
+         
+        percentagem = (totalDesfOcupados / totalDesfibrilhador /*totalEquipamento*/) * 100;
           
-          return percentagem;
-      // }
+        return percentagem;     
    } 
     
-    public double numOutroOcupados(){
+    public int numOutroOcupados(){
        int totalOutOcupados = 0;
        
        for (Equipamento e: listaEquipamento){
@@ -128,25 +126,24 @@ public class ListaEquipamento implements Serializable {
             return totalOutOcupados;
     }
     
-     public double perOutroOcupados(){
-        int totalOutOcupados = 0;
-       
-       for (Equipamento e: listaEquipamento){
+     public float perOutroOcupados(){
+        float totalOutOcupados;
+        float totalOutros = 0;
+        float percentagem;
+        float totalEquipamento = listaEquipamento.size();
+        
+        totalOutOcupados = numOutroOcupados();
+        
+        for (Equipamento e: listaEquipamento){
            
-           if (e.getTipoEquipamento().equals("Outro") && e.getIndicacao().equals("Ocupado")){
-               totalOutOcupados ++;
+           if (e.getTipoEquipamento().equals("Outro") && (e.getIndicacao().equals("Ocupado") || e.getIndicacao().equals("Livre"))){
+               totalOutros = totalOutros + 1;
                     }
-       }
-            
-       if (listaEquipamento.isEmpty()){
-           return 0;
-           
-       } else{
-           
-          double percentagem = (totalOutOcupados / listaEquipamento.size() * 100);
+        }
+        
+        percentagem = (totalOutOcupados / totalOutros /*totalEquipamento*/) * 100;
           
-          return percentagem;
-       }
+        return percentagem;      
    }
     
     @Override

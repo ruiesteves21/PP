@@ -22,7 +22,11 @@ public class PaginaDashboard extends javax.swing.JFrame {
     private Sistema sistema;
     private Serializacao bd;
     
-    
+    /**
+     * 
+     * @param sistema
+     * @param bd 
+     */
     public PaginaDashboard(Sistema sistema, Serializacao bd) {
         initComponents();
         this.sistema = sistema;
@@ -33,6 +37,8 @@ public class PaginaDashboard extends javax.swing.JFrame {
     }
     
     private void atualizar() {
+        
+        try {
          txtModerado.setText(String.valueOf(this.sistema.getListaDoente().numDoenteModerado()));
         txtGrave.setText(String.valueOf(this.sistema.getListaDoente().numDoenteGrave()));
         txtMuitoGrave.setText(String.valueOf(this.sistema.getListaDoente().numDoenteMuitoGrave()));
@@ -47,6 +53,9 @@ public class PaginaDashboard extends javax.swing.JFrame {
         txtVentiladorPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perVentiladorOcupados()));
         txtOutroPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perOutroOcupados()));
         
+        } catch (ArithmeticException e) {
+            JOptionPane.showMessageDialog(null,"Neste momento, não há equipamentos ou doentes registados!!","Aviso",JOptionPane.INFORMATION_MESSAGE);
+        }
     }
 
     /**

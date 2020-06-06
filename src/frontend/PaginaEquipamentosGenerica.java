@@ -22,7 +22,9 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
     private Serializacao bd;
 
     /**
-     * Creates new form ListaEquipamentosGenerica
+     * 
+     * @param sistema
+     * @param bd 
      */
     public PaginaEquipamentosGenerica(Sistema sistema, Serializacao bd) {
         initComponents();

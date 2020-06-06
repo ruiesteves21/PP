@@ -22,8 +22,12 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
     private Sistema sistema;
     private Serializacao bd;
     private int indiceHospital;
-     /**
-     * Creates new form ListaEnfermarias
+     
+    /**
+     * 
+     * @param sistema
+     * @param bd
+     * @param indiceHospital 
      */
     public PaginaEnfermarias(Sistema sistema, Serializacao bd, int indiceHospital) {
         initComponents();

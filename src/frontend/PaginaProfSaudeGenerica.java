@@ -14,17 +14,16 @@ import backend.Serializacao;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
-/**
- *
- * @author pedro
- */
 public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
     DefaultTableModel modelEnfermeiro; 
     DefaultTableModel modelMedico; 
     private Sistema sistema;
     private Serializacao bd;
+   
     /**
-     * Creates new form PaginaEnfermeiroGenerica
+     * 
+     * @param sistema
+     * @param bd 
      */
     public PaginaProfSaudeGenerica(Sistema sistema,Serializacao bd) {
         initComponents();
@@ -97,6 +96,7 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(729, 462));
+        setUndecorated(true);
         getContentPane().setLayout(null);
 
         tableEnfermeiro.setModel(new javax.swing.table.DefaultTableModel(

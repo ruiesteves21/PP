@@ -24,6 +24,11 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     private Serializacao bd;
     private AbstractTableModel modeloTabelaAdmin;
     
+    /**
+     * 
+     * @param sistema
+     * @param bd 
+     */
     public PaginaAdministrador (Sistema sistema, Serializacao bd) {
         initComponents();
         

@@ -18,13 +18,15 @@ import java.util.UUID;
  */
 public class PaginaHospitais extends javax.swing.JFrame {
 
-    /**
-     * Creates new form Lista_Hospitais
-     */
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
     
+    /**
+     * 
+     * @param sistema
+     * @param bd 
+     */
     public PaginaHospitais(Sistema sistema, Serializacao bd) {
         initComponents();
         

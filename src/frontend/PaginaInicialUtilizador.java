@@ -13,19 +13,17 @@ import backend.RegistoAcesso;
 import backend.Utilizador;
 import javax.swing.UIManager;
 
-/**
- *
- * @author ssoar
- */
+
 public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
-    /**
-     * Creates new form PaginaInicialUtilizador
-     */
     private Sistema sistema;
     private Serializacao bd;
     
-    
+    /**
+     * 
+     * @param sistema
+     * @param bd 
+     */
     public PaginaInicialUtilizador(Sistema sistema, Serializacao bd) {
         initComponents();
         

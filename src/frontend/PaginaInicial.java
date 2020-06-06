@@ -19,6 +19,11 @@ public class PaginaInicial extends javax.swing.JFrame {
     private Sistema sistema;
     private Serializacao bd;
     
+    /**
+     * 
+     * @param sistema
+     * @param bd 
+     */
     public PaginaInicial(Sistema sistema, Serializacao bd) 
     {
         initComponents();

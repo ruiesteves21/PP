@@ -23,7 +23,9 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
     private Serializacao bd;
     
     /**
-     * Creates new form ListaEnfermariasGenerica
+     * 
+     * @param sistema
+     * @param bd 
      */
     public PaginaEnfermariasGenerica(Sistema sistema,Serializacao bd) {
         initComponents();

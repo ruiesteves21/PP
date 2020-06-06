@@ -10,16 +10,16 @@ import backend.Sistema;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 
-/**
- *
- * @author ssoar
- */
 public class PaginaLogin extends javax.swing.JFrame {
 
     private Sistema sistema;
     private Serializacao bd;
    
-    
+    /**
+     * 
+     * @param sistema
+     * @param bd 
+     */
     public PaginaLogin(Sistema sistema, Serializacao bd) {
         initComponents();
         

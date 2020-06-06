@@ -20,8 +20,11 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
+    
     /**
-     * Creates new form ListaDoentesGenerica
+     * 
+     * @param sistema
+     * @param bd 
      */
     public PaginaDoentesGenerica(Sistema sistema,Serializacao bd) {
         initComponents();

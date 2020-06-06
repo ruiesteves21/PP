@@ -21,6 +21,12 @@ public class PaginaPerfil extends javax.swing.JFrame {
     //Referencia o Utilizador que queremos visualizar/editar
     private Utilizador utilizador;   
     
+    /**
+     * 
+     * @param sistema
+     * @param utilizador
+     * @param listagem 
+     */
     public PaginaPerfil(Sistema sistema, Utilizador utilizador, PaginaAdministrador listagem) {
         
         initComponents();          
