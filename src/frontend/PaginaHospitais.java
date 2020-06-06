@@ -80,7 +80,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
         jLabel2 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(570, 370));
+        setMinimumSize(new java.awt.Dimension(805, 480));
         setUndecorated(true);
         setSize(new java.awt.Dimension(570, 370));
         getContentPane().setLayout(null);
@@ -93,7 +93,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(20, 230, 80, 29);
+        btLimpar.setBounds(10, 290, 80, 29);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -103,19 +103,19 @@ public class PaginaHospitais extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(110, 230, 80, 29);
+        btEditar.setBounds(10, 240, 80, 29);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 18)); // NOI18N
         jLabel1.setText("Lista de Hospitais");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(190, 10, 150, 25);
+        jLabel1.setBounds(350, 10, 150, 25);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel4.setText("Nome :");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(20, 90, 60, 20);
+        jLabel4.setBounds(10, 90, 60, 20);
         getContentPane().add(txtNome);
-        txtNome.setBounds(110, 90, 100, 30);
+        txtNome.setBounds(110, 80, 120, 30);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
@@ -125,7 +125,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btInserir);
-        btInserir.setBounds(20, 190, 80, 29);
+        btInserir.setBounds(10, 190, 80, 29);
 
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
@@ -135,7 +135,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(110, 190, 80, 29);
+        btExcluir.setBounds(10, 340, 80, 29);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -144,14 +144,14 @@ public class PaginaHospitais extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(520, 10, 30, 30);
+        imgHome.setBounds(730, 40, 30, 30);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setText("Localidade :");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(20, 140, 80, 20);
+        jLabel6.setBounds(10, 150, 80, 20);
         getContentPane().add(txtLocalidade);
-        txtLocalidade.setBounds(110, 140, 100, 30);
+        txtLocalidade.setBounds(110, 140, 120, 30);
 
         btEnfermaria.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEnfermaria.setText("Ir para Enfermaria");
@@ -161,7 +161,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEnfermaria);
-        btEnfermaria.setBounds(20, 280, 170, 29);
+        btEnfermaria.setBounds(590, 390, 170, 29);
 
         tableHospital.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -190,11 +190,11 @@ public class PaginaHospitais extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tableHospital);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(220, 60, 340, 290);
+        jScrollPane2.setBounds(270, 80, 490, 290);
 
-        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_3.jpg"))); // NOI18N
+        jLabel2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundPRI.png"))); // NOI18N
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(0, -30, 640, 440);
+        jLabel2.setBounds(0, -10, 910, 550);
 
         pack();
         setLocationRelativeTo(null);

@@ -73,7 +73,7 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(807, 358));
+        setMinimumSize(new java.awt.Dimension(805, 480));
         setUndecorated(true);
         setSize(new java.awt.Dimension(807, 358));
         getContentPane().setLayout(null);
@@ -97,7 +97,7 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableEquipamento);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(70, 40, 690, 250);
+        jScrollPane1.setBounds(70, 100, 690, 270);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -106,13 +106,12 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(10, 10, 30, 30);
+        imgHome.setBounds(730, 50, 30, 30);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Lista de Equipamentos");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(290, 10, 190, 20);
+        jLabel3.setBounds(320, 10, 190, 20);
 
         ComboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione Tipo --", "Desfibrilhador", "Ventilador", "Outro" }));
         ComboTipo.addItemListener(new java.awt.event.ItemListener() {
@@ -126,7 +125,7 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboTipo);
-        ComboTipo.setBounds(410, 310, 140, 30);
+        ComboTipo.setBounds(410, 400, 140, 30);
 
         ComboIndicacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecione Indicacao --", "Livre", "Ocupado" }));
         ComboIndicacao.addItemListener(new java.awt.event.ItemListener() {
@@ -135,9 +134,9 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboIndicacao);
-        ComboIndicacao.setBounds(600, 310, 160, 30);
+        ComboIndicacao.setBounds(600, 400, 160, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G4.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundPRI.png"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(-170, -130, 1550, 830);
 

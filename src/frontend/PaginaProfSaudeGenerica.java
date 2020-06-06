@@ -92,10 +92,11 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
         txtFiltrarMed = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
+        jLabel6 = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(729, 462));
+        setMinimumSize(new java.awt.Dimension(729, 480));
         setUndecorated(true);
         getContentPane().setLayout(null);
 
@@ -123,7 +124,7 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableEnfermeiro);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(10, 120, 300, 220);
+        jScrollPane1.setBounds(20, 110, 350, 220);
 
         txtFiltrarEnf.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyReleased(java.awt.event.KeyEvent evt) {
@@ -131,7 +132,7 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFiltrarEnf);
-        txtFiltrarEnf.setBounds(130, 390, 140, 30);
+        txtFiltrarEnf.setBounds(110, 340, 140, 30);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -140,12 +141,12 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(650, 10, 30, 30);
+        imgHome.setBounds(750, 10, 30, 30);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel3.setText("Enfermeiros");
+        jLabel3.setText("Lista Genérica de Profissionais de Saude");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 70, 110, 30);
+        jLabel3.setBounds(270, 10, 340, 30);
 
         tableMedico.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -161,12 +162,12 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
         jScrollPane2.setViewportView(tableMedico);
 
         getContentPane().add(jScrollPane2);
-        jScrollPane2.setBounds(400, 120, 300, 220);
+        jScrollPane2.setBounds(440, 110, 340, 220);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel4.setText("Médicos");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(410, 70, 80, 30);
+        jLabel4.setBounds(440, 70, 80, 30);
 
         txtFiltrarMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -179,22 +180,27 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtFiltrarMed);
-        txtFiltrarMed.setBounds(540, 390, 140, 30);
+        txtFiltrarMed.setBounds(540, 340, 140, 30);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel2.setText("Pesquisar:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(40, 400, 70, 14);
+        jLabel2.setBounds(20, 350, 70, 14);
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel5.setText("Pesquisar: ");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(440, 390, 66, 20);
+        jLabel5.setBounds(440, 350, 70, 20);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
+        jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
+        jLabel6.setText("Enfermeiros");
+        getContentPane().add(jLabel6);
+        jLabel6.setBounds(20, 70, 110, 30);
+
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundPRI.png"))); // NOI18N
         jLabel1.setMinimumSize(new java.awt.Dimension(729, 462));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-40, -780, 770, 1240);
+        jLabel1.setBounds(0, -150, 830, 1030);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
@@ -278,6 +284,7 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTable tableEnfermeiro;

@@ -122,7 +122,7 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(613, 389));
+        setMinimumSize(new java.awt.Dimension(805, 480));
         setUndecorated(true);
         setSize(new java.awt.Dimension(604, 333));
         getContentPane().setLayout(null);
@@ -158,22 +158,22 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         jScrollPane3.setViewportView(table);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(240, 70, 370, 240);
+        jScrollPane3.setBounds(280, 90, 480, 300);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel3.setText("Lista de Equipamentos");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(210, 10, 190, 20);
+        jLabel3.setBounds(310, 10, 190, 20);
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel5.setText("Indicação:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(10, 250, 80, 20);
+        jLabel5.setBounds(10, 220, 80, 20);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel4.setText("Doente :");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(10, 130, 60, 20);
+        jLabel4.setBounds(10, 100, 60, 20);
 
         btInserir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserir.setText("Inserir");
@@ -183,7 +183,7 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btInserir);
-        btInserir.setBounds(230, 330, 80, 30);
+        btInserir.setBounds(10, 270, 80, 30);
 
         btLimpar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimpar.setText("Limpar");
@@ -193,7 +193,7 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(530, 330, 80, 30);
+        btLimpar.setBounds(10, 330, 80, 30);
 
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
@@ -203,7 +203,7 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(430, 330, 80, 29);
+        btExcluir.setBounds(120, 330, 80, 29);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -213,12 +213,12 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditar);
-        btEditar.setBounds(330, 330, 80, 29);
+        btEditar.setBounds(120, 270, 80, 29);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel9.setText("Tipo :");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(10, 190, 40, 20);
+        jLabel9.setBounds(10, 160, 40, 20);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -227,7 +227,7 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgRetroceder);
-        imgRetroceder.setBounds(520, 10, 24, 30);
+        imgRetroceder.setBounds(690, 40, 24, 30);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -236,24 +236,24 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(560, 10, 30, 30);
+        imgHome.setBounds(730, 40, 30, 30);
 
         comboDoente.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Doente não selecionado" }));
         getContentPane().add(comboDoente);
-        comboDoente.setBounds(80, 130, 150, 30);
+        comboDoente.setBounds(90, 90, 150, 30);
 
         comboTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Tipo --", "Desfibrilhador", "Ventilador", "Outro" }));
         getContentPane().add(comboTipo);
-        comboTipo.setBounds(80, 190, 150, 30);
+        comboTipo.setBounds(90, 150, 150, 30);
 
         comboIndicacao.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "-- Selecionar Estado --", "Livre", "Ocupado" }));
         getContentPane().add(comboIndicacao);
-        comboIndicacao.setBounds(80, 250, 150, 30);
+        comboIndicacao.setBounds(90, 210, 150, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/listaEquipamentosfundo.png"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundPRI.png"))); // NOI18N
         jLabel1.setMinimumSize(new java.awt.Dimension(621, 376));
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(0, 0, 650, 420);
+        jLabel1.setBounds(0, 0, 840, 520);
 
         pack();
         setLocationRelativeTo(null);

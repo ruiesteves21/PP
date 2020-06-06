@@ -114,7 +114,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(635, 525));
+        setMinimumSize(new java.awt.Dimension(655, 480));
         setUndecorated(true);
         setSize(new java.awt.Dimension(819, 415));
         getContentPane().setLayout(null);
@@ -122,7 +122,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
         jLabel3.setText("Lista de Profissionais de Saúde");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(190, 0, 270, 20);
+        jLabel3.setBounds(270, 10, 270, 20);
 
         tableEnfermeiros.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -155,7 +155,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         jScrollPane3.setViewportView(tableEnfermeiros);
 
         getContentPane().add(jScrollPane3);
-        jScrollPane3.setBounds(20, 60, 280, 230);
+        jScrollPane3.setBounds(20, 60, 330, 230);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel6.setText("Nome Enfermeiro :");
@@ -165,7 +165,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel8.setText("Especialidade :");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(330, 350, 100, 20);
+        jLabel8.setBounds(420, 350, 100, 20);
 
         btInserirMedico.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserirMedico.setText("Inserir");
@@ -175,7 +175,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btInserirMedico);
-        btInserirMedico.setBounds(330, 410, 80, 29);
+        btInserirMedico.setBounds(420, 390, 80, 29);
 
         btLDoentes.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLDoentes.setText("Lista Doentes");
@@ -185,7 +185,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLDoentes);
-        btLDoentes.setBounds(350, 460, 120, 29);
+        btLDoentes.setBounds(640, 390, 130, 29);
 
         btLimparEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimparEnfermeiro.setText("Limpar");
@@ -195,7 +195,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimparEnfermeiro);
-        btLimparEnfermeiro.setBounds(120, 400, 80, 30);
+        btLimparEnfermeiro.setBounds(20, 440, 80, 30);
 
         txtNomeEnfermeiro.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -203,7 +203,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNomeEnfermeiro);
-        txtNomeEnfermeiro.setBounds(160, 300, 140, 30);
+        txtNomeEnfermeiro.setBounds(200, 300, 150, 30);
 
         imgRetroceder.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/undo-button2.png"))); // NOI18N
         imgRetroceder.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -212,7 +212,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgRetroceder);
-        imgRetroceder.setBounds(560, 0, 24, 30);
+        imgRetroceder.setBounds(700, 20, 24, 30);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -221,7 +221,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(600, 0, 30, 30);
+        imgHome.setBounds(740, 20, 30, 30);
 
         btExcluirEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluirEnfermeiro.setText("Excluir");
@@ -231,7 +231,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluirEnfermeiro);
-        btExcluirEnfermeiro.setBounds(220, 350, 80, 29);
+        btExcluirEnfermeiro.setBounds(120, 440, 80, 29);
 
         tableMedicos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -264,7 +264,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableMedicos);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(330, 60, 290, 230);
+        jScrollPane1.setBounds(420, 60, 350, 230);
 
         btInserirEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btInserirEnfermeiro.setText("Inserir");
@@ -274,12 +274,12 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btInserirEnfermeiro);
-        btInserirEnfermeiro.setBounds(20, 350, 80, 29);
+        btInserirEnfermeiro.setBounds(20, 390, 80, 29);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel2.setText("Medicos");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(330, 40, 90, 20);
+        jLabel2.setBounds(420, 40, 90, 20);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel4.setText("Enfermeiros");
@@ -289,7 +289,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 1, 14)); // NOI18N
         jLabel5.setText("Nome Médico:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(330, 310, 100, 20);
+        jLabel5.setBounds(420, 310, 100, 20);
 
         txtNomeMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -297,7 +297,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtNomeMedico);
-        txtNomeMedico.setBounds(500, 300, 120, 30);
+        txtNomeMedico.setBounds(620, 300, 150, 30);
 
         txtEspecialidade.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -305,7 +305,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtEspecialidade);
-        txtEspecialidade.setBounds(500, 340, 120, 30);
+        txtEspecialidade.setBounds(620, 340, 150, 30);
 
         btLimparMedico.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btLimparMedico.setText("Limpar");
@@ -315,7 +315,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimparMedico);
-        btLimparMedico.setBounds(510, 460, 80, 30);
+        btLimparMedico.setBounds(420, 440, 80, 30);
 
         btExcluirMedico.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluirMedico.setText("Excluir");
@@ -325,7 +325,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluirMedico);
-        btExcluirMedico.setBounds(550, 410, 80, 29);
+        btExcluirMedico.setBounds(520, 440, 80, 29);
 
         btEditarEnfermeiro.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditarEnfermeiro.setText("Editar");
@@ -335,7 +335,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btEditarEnfermeiro);
-        btEditarEnfermeiro.setBounds(120, 350, 80, 30);
+        btEditarEnfermeiro.setBounds(120, 390, 80, 30);
 
         jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jButton1.setText("Editar");
@@ -345,11 +345,11 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         getContentPane().add(jButton1);
-        jButton1.setBounds(440, 410, 80, 30);
+        jButton1.setBounds(520, 390, 80, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G5.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundPRI.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-10, -380, 1050, 950);
+        jLabel1.setBounds(0, -160, 840, 1050);
 
         pack();
         setLocationRelativeTo(null);

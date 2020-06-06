@@ -71,7 +71,7 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(804, 363));
+        setMinimumSize(new java.awt.Dimension(805, 480));
         setUndecorated(true);
         setSize(new java.awt.Dimension(804, 363));
         getContentPane().setLayout(null);
@@ -104,7 +104,7 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
         jScrollPane1.setViewportView(tableDoente);
 
         getContentPane().add(jScrollPane1);
-        jScrollPane1.setBounds(40, 60, 750, 250);
+        jScrollPane1.setBounds(30, 110, 750, 250);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -113,13 +113,12 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(760, 10, 30, 30);
+        imgHome.setBounds(750, 50, 30, 30);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 1, 18)); // NOI18N
-        jLabel3.setForeground(new java.awt.Color(255, 255, 255));
         jLabel3.setText("Lista de Doentes");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(320, 10, 160, 30);
+        jLabel3.setBounds(340, 10, 160, 30);
 
         ComboGravidade.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Gravidade", "Moderado", "Grave", "Muito Grave" }));
         ComboGravidade.addItemListener(new java.awt.event.ItemListener() {
@@ -128,11 +127,11 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
             }
         });
         getContentPane().add(ComboGravidade);
-        ComboGravidade.setBounds(630, 320, 130, 30);
+        ComboGravidade.setBounds(650, 400, 130, 30);
 
-        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/G2.jpg"))); // NOI18N
+        jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundPRI.png"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-590, -410, 1700, 1100);
+        jLabel1.setBounds(-10, -220, 1700, 1100);
 
         pack();
         setLocationRelativeTo(null);

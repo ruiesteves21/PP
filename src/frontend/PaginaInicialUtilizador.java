@@ -179,7 +179,7 @@ public class PaginaInicialUtilizador extends javax.swing.JFrame {
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/pag_ini_1.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(-100, 0, 620, 390);
+        jLabel1.setBounds(-100, 0, 640, 390);
 
         pack();
         setLocationRelativeTo(null);
