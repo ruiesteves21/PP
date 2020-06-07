@@ -50,19 +50,4 @@ public class ListaHospital implements Serializable {
         }
     }
      
-
-     
-    @Override
-    public String toString()
-    {
-        String s = "";
-
-        for (Hospital hospital : listaHospital) {
-            s += hospital.toString() + "\n";
-        }
-
-        return s;
-    }
-     
-    
 }

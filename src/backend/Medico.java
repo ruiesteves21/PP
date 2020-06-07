@@ -19,10 +19,20 @@ public class Medico implements Serializable {
     private String idMedico;
     private ListaDoente listaDoente; 
     
+    /**
+     * 
+     */
     public Medico() {
         
     }
     
+    /**
+     * 
+     * @param utiLigado
+     * @param especialidade
+     * @param nome
+     * @param idMedico 
+     */
     public Medico(Utilizador utiLigado, String especialidade, String nome, String idMedico) {
         this.utiLigado = utiLigado;
         this.especialidade = especialidade;
@@ -30,12 +40,8 @@ public class Medico implements Serializable {
         this.idMedico = idMedico;    
         listaDoente = new ListaDoente();
     }
-    
-     public static UUID randomUUID(){
-        UUID uuid = UUID.randomUUID();
-        return uuid;
-        }
-
+      
+    //getters
     public Utilizador getUtiLigado() {
         return utiLigado;
     }
@@ -55,7 +61,8 @@ public class Medico implements Serializable {
     public String getIdMedico() {
         return idMedico;
     }
-
+    
+    //setters
     public void setEspecialidade(String especialidade) {
         this.especialidade = especialidade;
     }
@@ -68,5 +75,9 @@ public class Medico implements Serializable {
         this.idMedico = idMedico;
     }
     
+    public static UUID randomUUID(){
+       UUID uuid = UUID.randomUUID();
+       return uuid;
+       }
   
 }

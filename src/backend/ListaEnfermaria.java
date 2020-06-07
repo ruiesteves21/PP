@@ -7,6 +7,7 @@ package backend;
 
 import java.io.Serializable;
 import java.util.ArrayList;
+
 /**
  *
  * 
@@ -38,43 +39,5 @@ public class ListaEnfermaria implements Serializable {
     {
         return listaEnfermaria.size();
     }
-    
-    /**
-     * Este metodo serve para saber todos as enfermarias em que o doente está internado
-     * @param doente
-     * @return Lista de Enfermarias em que o doente se encontra
-     
-    
-    public ArrayList<Enfermaria> listaEnfermariaDoente(Doente doente)
-    {
-        ArrayList<Enfermaria> nEnfermaria = new ArrayList<>();
-
-        for (Enfermaria enfermaria : listaEnfermaria) {
-            if (enfermaria.getDoentes().existe(doente)) {
-                nEnfermaria.add(enfermaria);
-            }
-        }
-
-        return nEnfermaria;
-    }
-    
-    
-     * Este metodo serve para saber todos as enfermarias onde o equipamento está colocado
-     * @param equipamento
-     * @return Lista de Enfermarias em que o equipamento se encontra
-     
-    
-    public ArrayList<Enfermaria> listaEnfermariaEquipamento (Equipamento equipamento)
-    {
-        ArrayList<Enfermaria> nEquipamento = new ArrayList<>();
-
-        for (Enfermaria enfermaria : listaEnfermaria) {
-            if (enfermaria.getEquipamento().existe(equipamento)) {
-                nEquipamento.add(enfermaria);
-            }
-        }
-
-        return nEquipamento;
-    }*/
     
 }

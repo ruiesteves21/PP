@@ -10,7 +10,6 @@ import java.util.UUID;
 
 /**
  *
- * @author rodrm
  */
 public class Enfermaria extends Enfermeiro implements Serializable {
     private String nome;
@@ -22,11 +21,22 @@ public class Enfermaria extends Enfermeiro implements Serializable {
     private ListaEnfermeiro listaEnfermeiro;
     private ListaMedico listaMedico;
     
+    /**
+     * 
+     */
     public Enfermaria () 
     {
     
     }
-
+    
+    /**
+     * 
+     * @param utiLigado
+     * @param nome
+     * @param idEnfermaria
+     * @param nCamas
+     * @param tipo 
+     */
     public Enfermaria(Utilizador utiLigado, String nome, String idEnfermaria, int nCamas, String tipo) {
         this.utiLigado = utiLigado;
         this.nome = nome;
@@ -38,11 +48,7 @@ public class Enfermaria extends Enfermeiro implements Serializable {
         listaMedico = new ListaMedico();
     }
     
-    public static UUID randomUUID(){
-        UUID uuid = UUID.randomUUID();
-        return uuid;
-        }
-
+    //getters
     public Utilizador getUtiLigado() {
         return utiLigado;
     }
@@ -76,6 +82,7 @@ public class Enfermaria extends Enfermeiro implements Serializable {
         return nCamas;
     }
     
+    //setters
     public void setIdEnfermaria(String idEnfermaria) {
         this.idEnfermaria = idEnfermaria;
     }
@@ -89,38 +96,14 @@ public class Enfermaria extends Enfermeiro implements Serializable {
         this.nome = nome;
     }
     
-    public void setnCamas(int nCamas) {
+    public void setNCamas(int nCamas) {
         this.nCamas = nCamas;
     }
-
-   
     
-    // Metodos para alterar o tipo de enfermaria
-    public void setTipoNaoIniciada()
-    {
-        tipo = "Não iniciada";
-    }
-
-    public void setTipoUCI()
-    {
-        tipo = "UCI";
-    }
-    
-    public void setTipoNormal()
-    {
-        tipo = "Normal";
-    }
-    
-    
-    @Override
-    public String toString() {
-        return "Enfermaria{" + "idEnfermaria=" + idEnfermaria + ", tipo=" + tipo + ", nCamas=" + nCamas + '}';
-    }
-
-   
-    
-
-
+    public static UUID randomUUID(){
+        UUID uuid = UUID.randomUUID();
+        return uuid;
+        }
 }
     
     

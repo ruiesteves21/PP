@@ -18,30 +18,32 @@ public class Hospital implements Serializable  {
     private String idHospital;
     private Utilizador utiLigado;
     private ListaEnfermaria listaEnfermaria;
-    /*
-   
-    private ListaMedico listaMedico;*/
+
     
-    
+    /**
+     * 
+     */
     public Hospital() 
     {
     
     }
-
+    
+    /**
+     * 
+     * @param utiLigado
+     * @param nome
+     * @param localidade
+     * @param idHospital 
+     */
     public Hospital(Utilizador utiLigado, String nome, String localidade, String idHospital) {
         this.utiLigado = utiLigado;
         this.nome = nome;
         this.localidade = localidade;
         this.idHospital = idHospital;
-        listaEnfermaria = new ListaEnfermaria();
-       
+        listaEnfermaria = new ListaEnfermaria();  
     }
     
-    public static UUID randomUUID(){
-        UUID uuid = UUID.randomUUID();
-        return uuid;
-        }
-            
+    
     //Getters
     
      public Utilizador getUtiLigado() {
@@ -81,26 +83,9 @@ public class Hospital implements Serializable  {
         this.idHospital = idHospital;
     }
 
-    /*public ListaDoente getListaDoente() {
-        return listaDoente;
-    }
-
-    public ListaEquipamento getListaEquipamento() {
-        return listaEquipamento;
-    }
-
-    public ListaMedico getListaMedico() {
-        return listaMedico;
-    }*/
-    
-    
-
-    @Override
-    public String toString() {
-        return "Hospital{" + "nome=" + nome + ", localidade=" + localidade + ", idHospital=" + idHospital + '}';
-    }
-    
-    
-    
-    
+     public static UUID randomUUID(){
+        UUID uuid = UUID.randomUUID();
+        return uuid;
+        }
+     
 }

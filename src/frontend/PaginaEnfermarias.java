@@ -412,7 +412,7 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
                 }       
 
                 editarEnfermaria.setNome(txtNome.getText());
-                editarEnfermaria.setnCamas(Integer.parseInt(txtCamas.getText()));
+                editarEnfermaria.setNCamas(Integer.parseInt(txtCamas.getText()));
                 editarEnfermaria.setTipo(comboTipo.getSelectedItem().toString());
                 
                 

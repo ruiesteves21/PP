@@ -15,22 +15,29 @@ public class Utilizador implements Serializable {
     private String nome;
     private String password;    
     private String username; 
-
+    
+    /**
+     * 
+     */
     public Utilizador()
     {
         
     }
     
+    /**
+     * 
+     * @param username
+     * @param password
+     * @param nome 
+     */
     public Utilizador (String username, String password, String nome)
     {
         this.username = username;
         this.password = password;
-        this.nome = nome;
-       
+        this.nome = nome;    
     }
 
-
-    
+    //getters
     public String getNome() {
         return nome;
     }
@@ -38,13 +45,12 @@ public class Utilizador implements Serializable {
     public String getPassword() {
         return password;
     }
-   
-    
+      
     public String getUsername() {
         return username;
     }
         
-
+    //setters
     public void setNome(String nome) {
         this.nome = nome;
     }

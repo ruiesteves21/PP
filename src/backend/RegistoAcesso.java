@@ -16,26 +16,38 @@ public class RegistoAcesso implements Serializable {
     
     private Utilizador medico;
     private LocalDateTime data;
-
-    public RegistoAcesso() {  }
-
+    
+    /**
+     * 
+     */
+    public RegistoAcesso() 
+    { 
+        
+    }
+    
+    /**
+     * 
+     * @param utilizador
+     * @param data 
+     */
     public RegistoAcesso(Utilizador utilizador, LocalDateTime data) {
         this.medico = utilizador;
         this.data = data;
     }
-
+    
+    //getters
     public Utilizador getMedico() {
         return medico;
     }
-
+    
+     public LocalDateTime getData() {
+        return data;
+    }
+     
     public void setMedico(Utilizador medico) {
         this.medico = medico;
     }
-
-    public LocalDateTime getData() {
-        return data;
-    }
-
+    
     public void setData(LocalDateTime data) {
         this.data = data;
     }      

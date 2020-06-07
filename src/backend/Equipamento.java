@@ -23,12 +23,23 @@ public class Equipamento implements Serializable {
     private boolean disponivel;
     private boolean indisponivel;
     private String doente;
-
+    
+    /**
+     * 
+     */
     public Equipamento() 
     {
         
     }
-
+    
+    /**
+     * 
+     * @param utiLigado
+     * @param idEquip
+     * @param indicacao
+     * @param tipoEquipamento
+     * @param doente 
+     */
     public Equipamento(Utilizador utiLigado, String idEquip, String indicacao, String tipoEquipamento, String doente) {
         this.utiLigado = utiLigado;
         this.idEquip = idEquip;
@@ -36,16 +47,11 @@ public class Equipamento implements Serializable {
         this.tipoEquipamento = tipoEquipamento;
         this.doente = doente;
     }
-    
-    public static UUID randomUUID(){
-        UUID uuid = UUID.randomUUID();
-        return uuid;
-        }
-
+      
+    //getters
     public Utilizador getUtiLigado() {
         return utiLigado;
-    }
-    
+    } 
     
     public String getDoente() {
         return doente;
@@ -67,14 +73,7 @@ public class Equipamento implements Serializable {
         return dataOcupado;
     }
     
-    public boolean isDisponivel(){
-        return disponivel ;
-    }
-    
-    public boolean isIndisponivel(){
-        return indisponivel ;
-    }
-
+    //setters
     public void setIdEquip(String idEquip) {
         this.idEquip = idEquip;
     }
@@ -97,25 +96,8 @@ public class Equipamento implements Serializable {
         this.doente = doente;
     }
     
-    // Metodos para alterar o estado da tarefa
-    public void setIndicacaoNaoIniciada()
-    {
-        indicacao = "Não iníciada";
-    }
-
-    public void setIndicacaoLivre()
-    {
-        indicacao = "Livre";
-    }
-   
-    public void setIndicacaoOcupada(Calendar dt)
-    {
-       indicacao = "Ocupada";
-        dataOcupado = dt;
-    }
-    
-    @Override
-    public String toString() {
-        return "Equipamento{" + "idEquip=" + idEquip + ", indicacao=" + indicacao + ", dataOcupado=" + dataOcupado + '}';
-    }
+   public static UUID randomUUID(){
+        UUID uuid = UUID.randomUUID();
+        return uuid;
+        }
 }

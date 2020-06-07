@@ -26,7 +26,9 @@ public class Sistema implements Serializable
     private ListaDoente listaDoente;
     private ListaMedico listaMedico;
     
-
+    /**
+     * 
+     */
     public Sistema()
     {
         listaUtilizador = new ListaUtilizador();
@@ -104,7 +106,5 @@ public class Sistema implements Serializable
     
     public void terminar() {
         System.exit(0);
-    }
-    
-    
+    }  
 }

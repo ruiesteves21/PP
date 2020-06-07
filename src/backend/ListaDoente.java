@@ -10,7 +10,7 @@ import java.util.ArrayList;
 
 
 /**
- *
+ * 
  * 
  */
 public class ListaDoente implements Serializable  {
@@ -120,12 +120,5 @@ public class ListaDoente implements Serializable  {
           
        return percentagem;
    }
-     
-    
-    @Override
-    public String toString()
-    {
-        return listaDoente.toString();
-    }   
     
 }

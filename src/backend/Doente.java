@@ -5,9 +5,6 @@
  */
 package backend;
 import java.io.Serializable;
-import java.time.LocalDate;
-import java.util.Calendar;
-import java.util.Date;
 /**
  *
  * 
@@ -26,10 +23,26 @@ public class Doente implements Serializable
     private String dataSaida;
 
 
+    /**
+     * 
+     */
+    
     
     public Doente(){   
     }
-
+    
+    /**
+     * 
+     * @param utiLigado
+     * @param idDoente
+     * @param nome
+     * @param localidade
+     * @param gravidade
+     * @param dataNasc
+     * @param dataEntrada
+     * @param dataSaida
+     * @param nCama 
+     */
     public Doente(Utilizador utiLigado, String idDoente, String nome, String localidade, String gravidade, String dataNasc, String dataEntrada, String dataSaida,int nCama) {
         this.utiLigado = utiLigado;
         this.idDoente = idDoente;
@@ -70,10 +83,6 @@ public class Doente implements Serializable
         return dataNasc;
     }
 
-    public int getnCama() {
-        return nCama;
-    }
-
     public String getDataEntrada() {
         return dataEntrada;
     }
@@ -100,7 +109,7 @@ public class Doente implements Serializable
         this.localidade = localidade;
     }
 
-    public void setnCama(int nCama) {
+    public void setNCama(int nCama) {
         this.nCama = nCama;
     }
 
@@ -119,60 +128,5 @@ public class Doente implements Serializable
     public void setDataSaida(String dataSaida){
         this.dataSaida = dataSaida;
     }
-    
-    
-    public void setCama(int nova){
-        if(nova>= 1)
-            this.nCama = nova;
-        else {
-            System.out.println("ERRO:Número da cama começa em 1.");
-        }
-    }
-    
-    public void setGravidadeMuitoGrave()
-    {
-       gravidade = "Muito grave";
-    }
-   
-    public void setGravidadeGrave()
-    {
-       gravidade = "Grave";
-    }
-    
-    public void setGravidadeModerada()
-    {
-        this.gravidade = "Moderada";
-    }
-
-    
-    // Metodos para alterar o estado do Doente
-    public void setGravidadeNaoRegistada()
-    {
-        gravidade = "Não Registada";
-    }
-    
-    public boolean isGravidadeModerada(){
-        return ("Moderada".equals(this.gravidade)) ;
-    }
-    
-    public boolean isGravidadeGrave(){
-        return ("Grave".equals(this.gravidade)) ;
-    }
-    
-    public boolean isGravidadeMuitoGrave(){
-         return ("Muito Grave".equals(this.gravidade)) ;
-    }
-    
-    
-    /*public void setTeveAlta(String dt){
-        this.gravidade = "Teve Alta";
-        this.dataSaida = Calendar.getInstance();;
-    }*/
-    
-    @Override
-    public String toString() {
-        return "Doente{" + "idDoente=" + idDoente + ", nome=" + nome + ", localidade=" + localidade + ", data de nascimento=" + dataNasc + ", gravidade=" + gravidade + ", dataEntrada=" + dataEntrada + ", dataSaida=" + dataSaida + ", nCama =" + nCama + '}';
-    }
-    
     
 }

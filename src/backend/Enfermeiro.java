@@ -18,12 +18,20 @@ public class Enfermeiro implements Serializable {
     private String nomeEnfermeiro;
     private ListaDoente listaDoente;
     
-
+    /**
+     * 
+     */
     public Enfermeiro() 
     {
         
     }
-
+    
+    /**
+     * 
+     * @param utiLigado
+     * @param idEnfermeiro
+     * @param nomeEnfermeiro 
+     */
     public Enfermeiro(Utilizador utiLigado, String idEnfermeiro, String nomeEnfermeiro) {
         this.utiLigado = utiLigado;
         this.idEnfermeiro = idEnfermeiro;
@@ -31,16 +39,11 @@ public class Enfermeiro implements Serializable {
         listaDoente = new ListaDoente();
         
     }
-
-     public static UUID randomUUID(){
-        UUID uuid = UUID.randomUUID();
-        return uuid;
-        }
-
+ 
+    //getters
     public Utilizador getUtiLigado() {
         return utiLigado;
     }
-     
      
     public String getIdEnfermeiro() {
         return idEnfermeiro;
@@ -54,6 +57,7 @@ public class Enfermeiro implements Serializable {
         return listaDoente;
     }
     
+    //setters
     public void setIdEnfermeiro(String idProfSaude) {
         this.idEnfermeiro = idProfSaude;
     }
@@ -62,10 +66,9 @@ public class Enfermeiro implements Serializable {
         this.nomeEnfermeiro = nomeProfSaude;
     }
 
-    @Override
-    public String toString() {
-        return "Enfermeiro{" + "idEnfermeiro=" + idEnfermeiro + ", nomeEnfermeiro=" + nomeEnfermeiro + '}';
-    }
-    
-    
+  public static UUID randomUUID(){
+        UUID uuid = UUID.randomUUID();
+        return uuid;
+        }
+
 }

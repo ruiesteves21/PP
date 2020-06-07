@@ -211,53 +211,23 @@ public class PaginaRegistoAcessos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void imgRetroceder1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder1MouseClicked
-        // TODO add your handling code here:
-        dispose();
-        PaginaHospitais lh = new PaginaHospitais(sistema, bd);
-        /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
-        FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
-        lh.setLocationRelativeTo(null);
-        lh.setVisible(true);
+        // TODO add your handling code here:     
     }//GEN-LAST:event_imgRetroceder1MouseClicked
 
     private void imgRetroceder2MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder2MouseClicked
-        // TODO add your handling code here:
-        dispose();
-        PaginaHospitais lh = new PaginaHospitais(sistema, bd);
-        /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
-        FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
-        lh.setLocationRelativeTo(null);
-        lh.setVisible(true);
+        // TODO add your handling code here:      
     }//GEN-LAST:event_imgRetroceder2MouseClicked
 
     private void imgRetroceder3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder3MouseClicked
-        // TODO add your handling code here:
-        dispose();
-        PaginaHospitais lh = new PaginaHospitais(sistema, bd);
-        /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
-        FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
-        lh.setLocationRelativeTo(null);
-        lh.setVisible(true);
+        // TODO add your handling code here:     
     }//GEN-LAST:event_imgRetroceder3MouseClicked
 
     private void imgRetroceder4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder4MouseClicked
-        // TODO add your handling code here:
-        dispose();
-        PaginaHospitais lh = new PaginaHospitais(sistema, bd);
-        /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
-        FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
-        lh.setLocationRelativeTo(null);
-        lh.setVisible(true);
+        // TODO add your handling code here:     
     }//GEN-LAST:event_imgRetroceder4MouseClicked
 
     private void imgRetroceder5MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder5MouseClicked
-        // TODO add your handling code here:
-        dispose();
-        PaginaHospitais lh = new PaginaHospitais(sistema, bd);
-        /*FichaHospital p = new FichaHospital(sistema,bd,varHosp);
-        FichaHospital p = new FichaHospital(sistema,bd,table.getSelectedRow()); */
-        lh.setLocationRelativeTo(null);
-        lh.setVisible(true);
+        // TODO add your handling code here:    
     }//GEN-LAST:event_imgRetroceder5MouseClicked
 
     private void imgRetroceder6MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_imgRetroceder6MouseClicked

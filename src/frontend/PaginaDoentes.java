@@ -466,7 +466,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
             
             editarDoente.setNome(txtNome.getText());
             editarDoente.setLocalidade(txtLocalidade.getText());
-            editarDoente.setCama(Integer.parseInt(txtCama.getText()));
+            editarDoente.setNCama(Integer.parseInt(txtCama.getText()));
             editarDoente.setDataEntrada(sdf.format(DataEntrada.getDate()));
             editarDoente.setDataNasc(sdf.format(dataNasc.getDate()));
             editarDoente.setDataSaida(sdf.format(DataSaida.getDate())); 
@@ -555,7 +555,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
           
            for ( Doente doente : sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente() )
         {
-            if ((String.valueOf(doente.getnCama())).equals(txtCama.getText()))
+            if ((String.valueOf(doente.getNCama())).equals(txtCama.getText()))
             {
                 JOptionPane.showMessageDialog(null,"Essa cama já está ocupada","Erro",JOptionPane.ERROR_MESSAGE);
                 return;
@@ -784,7 +784,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
            
 
             dataNasc.setDateFormatString(tableDoentes.getValueAt(indiceDoente, 2).toString());
-            txtCama.setText(String.valueOf(doente.getnCama()));
+            txtCama.setText(String.valueOf(doente.getNCama()));
             comboGravidade.setSelectedItem(doente.getGravidade());
            // DataEntrada.setText(doente.getDataEntrada());
            // DataSaida.setText(doente.getDataSaida());

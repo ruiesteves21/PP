@@ -34,19 +34,6 @@ public class ListaEnfermeiro implements Serializable {
         return listaEnfermeiro.size();
     }
     
-      @Override
-    public String toString()
-    {
-        String s = "";
-
-        for (Enfermeiro enfermeiro : listaEnfermeiro) {
-            s += enfermeiro.toString() + "\n";
-        }
-
-        return s;
-    }
-    
-    
 }
 
 
