@@ -105,102 +105,102 @@ public class PaginaDashboard extends javax.swing.JFrame {
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel13.setText("Enfermaria mais Problemática:");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(20, 350, 200, 20);
+        jLabel13.setBounds(20, 430, 200, 20);
 
         txtEnfermariaProb.setEditable(false);
         getContentPane().add(txtEnfermariaProb);
-        txtEnfermariaProb.setBounds(250, 340, 185, 30);
+        txtEnfermariaProb.setBounds(250, 420, 185, 30);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel9.setText("Outros equipamentos Ocupados:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(20, 300, 220, 20);
+        jLabel9.setBounds(20, 380, 220, 20);
 
         txtOutro.setEditable(false);
         getContentPane().add(txtOutro);
-        txtOutro.setBounds(250, 290, 185, 30);
+        txtOutro.setBounds(250, 370, 185, 30);
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel8.setText("Ventiladores Ocupados:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(20, 250, 160, 20);
+        jLabel8.setBounds(20, 330, 160, 20);
 
         txtVentilador.setEditable(false);
         getContentPane().add(txtVentilador);
-        txtVentilador.setBounds(250, 240, 185, 30);
+        txtVentilador.setBounds(250, 320, 185, 30);
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel12.setText("% Outros equipamentos Ocupados:");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(450, 350, 230, 20);
+        jLabel12.setBounds(450, 380, 230, 20);
 
         txtOutroPerc.setEditable(false);
         getContentPane().add(txtOutroPerc);
-        txtOutroPerc.setBounds(700, 340, 180, 30);
+        txtOutroPerc.setBounds(700, 370, 180, 30);
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel11.setText("% Ventiladores Ocupados:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(450, 300, 170, 20);
+        jLabel11.setBounds(450, 330, 170, 20);
 
         txtVentiladorPerc.setEditable(false);
         getContentPane().add(txtVentiladorPerc);
-        txtVentiladorPerc.setBounds(700, 290, 180, 30);
+        txtVentiladorPerc.setBounds(700, 320, 180, 30);
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel10.setText("% Desfibrilhadores Ocupados:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(450, 250, 190, 20);
+        jLabel10.setBounds(450, 280, 190, 20);
 
         txtDesfibrilhadorPerc.setEditable(false);
         getContentPane().add(txtDesfibrilhadorPerc);
-        txtDesfibrilhadorPerc.setBounds(700, 240, 180, 30);
+        txtDesfibrilhadorPerc.setBounds(700, 270, 180, 30);
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel7.setText("Desfibrilhadores Ocupados:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(20, 200, 180, 20);
+        jLabel7.setBounds(20, 280, 180, 20);
 
         txtDesfibrilhador.setEditable(false);
         getContentPane().add(txtDesfibrilhador);
-        txtDesfibrilhador.setBounds(250, 190, 185, 30);
+        txtDesfibrilhador.setBounds(250, 270, 185, 30);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("Doentes em estado Muito Grave:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 150, 220, 20);
+        jLabel2.setBounds(20, 230, 220, 20);
 
         txtMuitoGrave.setEditable(false);
         getContentPane().add(txtMuitoGrave);
-        txtMuitoGrave.setBounds(250, 140, 185, 30);
+        txtMuitoGrave.setBounds(250, 220, 185, 30);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel3.setText("Doentes em estado Grave:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 100, 170, 20);
+        jLabel3.setBounds(20, 180, 170, 20);
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel5.setText("% Doentes em estado Muito Grave:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(450, 200, 230, 20);
+        jLabel5.setBounds(450, 230, 230, 20);
 
         txtMuitoGravePerc.setEditable(false);
         getContentPane().add(txtMuitoGravePerc);
-        txtMuitoGravePerc.setBounds(700, 190, 180, 30);
+        txtMuitoGravePerc.setBounds(700, 220, 180, 30);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setText("% Doentes em estado Grave:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(450, 150, 190, 20);
+        jLabel6.setBounds(450, 180, 190, 20);
 
         txtGravePerc.setEditable(false);
         getContentPane().add(txtGravePerc);
-        txtGravePerc.setBounds(700, 140, 180, 30);
+        txtGravePerc.setBounds(700, 170, 180, 30);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel4.setText("% Doentes em estado Moderado: ");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(450, 100, 220, 20);
+        jLabel4.setBounds(450, 130, 220, 20);
 
         txtModeradoPerc.setEditable(false);
         txtModeradoPerc.addActionListener(new java.awt.event.ActionListener() {
@@ -209,25 +209,25 @@ public class PaginaDashboard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtModeradoPerc);
-        txtModeradoPerc.setBounds(700, 90, 180, 30);
+        txtModeradoPerc.setBounds(700, 120, 180, 30);
 
         txtGrave.setEditable(false);
         getContentPane().add(txtGrave);
-        txtGrave.setBounds(250, 90, 185, 30);
+        txtGrave.setBounds(250, 170, 185, 30);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel1.setText("Doentes em estado Moderado:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 50, 200, 20);
+        jLabel1.setBounds(20, 130, 200, 20);
 
         txtModerado.setEditable(false);
         getContentPane().add(txtModerado);
-        txtModerado.setBounds(250, 40, 185, 30);
+        txtModerado.setBounds(250, 120, 185, 30);
 
         jLabel14.setFont(new java.awt.Font("Leelawadee", 1, 36)); // NOI18N
         jLabel14.setText("Dashboard");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(580, 10, 200, 47);
+        jLabel14.setBounds(350, 10, 200, 44);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -236,7 +236,7 @@ public class PaginaDashboard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(imgHome);
-        imgHome.setBounds(850, 10, 30, 30);
+        imgHome.setBounds(840, 10, 30, 30);
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dash66.jpg"))); // NOI18N
         getContentPane().add(jLabel15);
