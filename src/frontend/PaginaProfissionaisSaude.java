@@ -9,6 +9,7 @@ import backend.Medico;
 import backend.Enfermeiro;
 import backend.Serializacao;
 import backend.Sistema;
+import java.util.ArrayList;
 import java.util.UUID;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -45,14 +46,15 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
     
     public void carregarTabelaEnfermeiro()
     {
-         modelEnfermeiro.setRowCount(0);
-        
-        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().size(); i++) {
+        modelEnfermeiro.setRowCount(0);        
+        ArrayList<Enfermeiro> enfermeiro = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro();
+         
+        for (int indiceEnfermeiro = 0; indiceEnfermeiro < enfermeiro.size(); indiceEnfermeiro++) {
             
-            Enfermeiro enfermeiro = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().get(i);
+            Enfermeiro profEnfermeiro = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().get(indiceEnfermeiro);
             
-             if (enfermeiro.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-             modelEnfermeiro.addRow(new Object[]{enfermeiro.getIdEnfermeiro(), enfermeiro.getNomeEnfermeiro()});
+             if (profEnfermeiro.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                 modelEnfermeiro.addRow(new Object[]{profEnfermeiro.getIdEnfermeiro(), profEnfermeiro.getNomeEnfermeiro()});
              }
         }
             tableEnfermeiros.setModel(modelEnfermeiro);
@@ -61,13 +63,14 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
      public void carregarTabelaMedico()
     {
         modelMedico.setRowCount(0);
+        ArrayList<Medico> medico = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico();
         
-        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().size(); i++) {
+        for (int indiceMedico = 0; indiceMedico < medico.size(); indiceMedico++) {
             
-            Medico medico = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(i);
+            Medico profMedico = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico);
             
-             if (medico.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-            modelMedico.addRow(new Object[]{medico.getIdMedico(),medico.getNomeMedico(), medico.getEspecialidade()});
+            if (profMedico.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                modelMedico.addRow(new Object[]{profMedico.getIdMedico(),profMedico.getNomeMedico(), profMedico.getEspecialidade()});
              }
         }
             tableMedicos.setModel(modelMedico);
@@ -439,8 +442,6 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().adicionar(medico);
-        //inserir nas listas genericas
-        sistema.getListaMedico().adicionar(medico);
         JOptionPane.showMessageDialog(null, "Medico " + txtNomeMedico.getText() + " registado!");
         txtNomeMedico.setText("");
         txtEspecialidade.setText("");
@@ -478,12 +479,12 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         int row = tableEnfermeiros.getSelectedRow();
         if(row >= 0){
             model.removeRow(row); //remove a linha selecionada
-            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().remove(row);
-            //excluir das listas genericas
-            sistema.getListaEnfermeiro().getListaEnfermeiro().remove(row);
+            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().remove(row);            
+            carregarTabelaEnfermeiro();
+            guardarAlteracoes(); 
             txtNomeEnfermeiro.setText(null);
             JOptionPane.showMessageDialog(this, "Removido!");
-            guardarAlteracoes();   
+              
         }
         else
         {
@@ -522,9 +523,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         Enfermeiro enfermeiro = new Enfermeiro(sistema.getUtilizadorLigado(), id, txtNomeEnfermeiro.getText());             
         
         try {
-        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().adicionar(enfermeiro);
-        //inserir nas listas genericas
-        sistema.getListaEnfermeiro().adicionar(enfermeiro);
+        sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().adicionar(enfermeiro);       
         JOptionPane.showMessageDialog(null, "Enfermeiro " + txtNomeEnfermeiro.getText() + " registado!");
         txtNomeEnfermeiro.setText("");        
         carregarTabelaEnfermeiro();
@@ -560,13 +559,13 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         int row = tableMedicos.getSelectedRow();
         if(row >= 0){
             model.removeRow(row); //remove a linha selecionada
-            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().remove(row);
-            //excluir das listas genericas
-            sistema.getListaMedico().getListaMedico().remove(row);
+            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().remove(row);            
+            carregarTabelaMedico();
+            guardarAlteracoes(); 
             txtEspecialidade.setText(null);
             txtNomeMedico.setText(null);  
             JOptionPane.showMessageDialog(this, "Removido!");
-            guardarAlteracoes();   
+             
         }
         else
         {

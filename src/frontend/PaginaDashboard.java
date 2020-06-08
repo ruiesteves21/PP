@@ -5,10 +5,17 @@
  */
 package frontend;
 
+import backend.Doente;
+import backend.Enfermaria;
+import backend.Equipamento;
+import backend.Hospital;
+import backend.ListaDoente;
+import backend.Medico;
 import backend.Serializacao;
 import backend.Sistema;
 import backend.Utilizador;
 import javax.swing.JOptionPane;
+import javax.swing.table.DefaultTableModel;
 
 /**
  *
@@ -27,10 +34,11 @@ public class PaginaDashboard extends javax.swing.JFrame {
      * @param sistema
      * @param bd 
      */
-    public PaginaDashboard(Sistema sistema, Serializacao bd) {
+    public PaginaDashboard(Sistema sistema, Serializacao bd)  {
         initComponents();
         this.sistema = sistema;
         this.bd = bd;
+        
         
         atualizar();  
        
@@ -38,26 +46,318 @@ public class PaginaDashboard extends javax.swing.JFrame {
     
     private void atualizar() {
         
-        try {
-         txtModerado.setText(String.valueOf(this.sistema.getListaDoente().numDoenteModerado()));
-        txtGrave.setText(String.valueOf(this.sistema.getListaDoente().numDoenteGrave()));
-        txtMuitoGrave.setText(String.valueOf(this.sistema.getListaDoente().numDoenteMuitoGrave()));
-        txtModeradoPerc.setText(String.valueOf(this.sistema.getListaDoente().perDoenteModerado()));
-        txtGravePerc.setText(String.valueOf(this.sistema.getListaDoente().perDoenteGrave()));
-        txtMuitoGravePerc.setText(String.valueOf(this.sistema.getListaDoente().perDoenteMuitoGrave()));
-        
-        txtDesfibrilhador.setText(String.valueOf(this.sistema.getListaEquipamento().numDesfibrilhadorOcupados()));
-        txtVentilador.setText(String.valueOf(this.sistema.getListaEquipamento().numVentiladorOcupados()));
-        txtOutro.setText(String.valueOf(this.sistema.getListaEquipamento().numOutroOcupados()));
-        txtDesfibrilhadorPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perDesfibrilhadorOcupados()));
-        txtVentiladorPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perVentiladorOcupados()));
-        txtOutroPerc.setText(String.valueOf(this.sistema.getListaEquipamento().perOutroOcupados()));
-        
+        try {                       
+            txtVentilador.setText(String.valueOf(numVentiladorOcupados()));
+            txtDesfibrilhador.setText(String.valueOf(numDesfibrilhadorOcupados()));
+            txtOutro.setText(String.valueOf(numOutroOcupados()));  
+            txtDesfibrilhadorPerc.setText(String.valueOf(perDesfibrilhadorOcupados()));
+            txtVentiladorPerc.setText(String.valueOf(perVentiladorOcupados()));
+            txtOutroPerc.setText(String.valueOf(perOutroOcupados()));
+            
+            doentesModerado();
+            doentesGrave();
+            doentesMuitoGrave();  
+            
+            camasOcupadas();
+            
         } catch (ArithmeticException e) {
             JOptionPane.showMessageDialog(null,"Neste momento, não há equipamentos ou doentes registados!!","Aviso",JOptionPane.INFORMATION_MESSAGE);
         }
     }
+    
+    public int numVentiladorOcupados(){
+      //ArrayList<Hospital> hospital = sistema.getListaHospital().getListaHospital();
+      // ArrayList<Enfermaria> enfermaria =  sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria();      
+       int totalVentOcupados = 0;
+       
+        for (Hospital hospital : sistema.getListaHospital().getListaHospital()) {
+              
+            for(Enfermaria enfermaria: hospital.getListaEnfermaria().getListaEnfermaria()) {
+                
+                for (Equipamento equipamento: enfermaria.getListaEquipamento().getListaEquipamento()) {
+                   
+                    if (equipamento.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                         
+                        if (equipamento.getTipoEquipamento().equals("Ventilador") && equipamento.getIndicacao().equals("Ocupado")){
+                            totalVentOcupados = totalVentOcupados + 1;
+                        }
+                     }
+                }
+            }
+        }             
+        return totalVentOcupados;
+    }
+    
+    public float perVentiladorOcupados(){
+       float totalVentOcupados;
+       float totalVentiladores = 0;
+       float percentagem;
+       
+       totalVentOcupados = numVentiladorOcupados();
+       
+        for (Hospital hospital : sistema.getListaHospital().getListaHospital()) {
+              
+            for(Enfermaria enfermaria: hospital.getListaEnfermaria().getListaEnfermaria()) {
+                
+                for (Equipamento equipamento: enfermaria.getListaEquipamento().getListaEquipamento()) {
+                    
+                    if (equipamento.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                         
+                        if (equipamento.getTipoEquipamento().equals("Ventilador") && (equipamento.getIndicacao().equals("Ocupado") || equipamento.getIndicacao().equals("Livre"))){
+                            totalVentiladores = totalVentiladores + 1;
+                        }
+                     }
+                }
+            }
+        }
+    
+       percentagem =  (totalVentOcupados / totalVentiladores) * 100;
+       
+       return percentagem;
+        
+    }
+    
+     public int numDesfibrilhadorOcupados(){
+        int totalDesfOcupados = 0;
+       
+        for (Hospital hospital : sistema.getListaHospital().getListaHospital()) {
+              
+            for(Enfermaria enfermaria: hospital.getListaEnfermaria().getListaEnfermaria()) {
+                
+                for (Equipamento equipamento: enfermaria.getListaEquipamento().getListaEquipamento()) {
+                   
+                    if (equipamento.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                         
+                        if (equipamento.getTipoEquipamento().equals("Desfibrilhador") && equipamento.getIndicacao().equals("Ocupado")){
+                            totalDesfOcupados ++;
+                        }
+                     }
+                }
+            }
+        }             
+        return totalDesfOcupados;
+    }
+     
+    public float perDesfibrilhadorOcupados(){
+        float totalDesfOcupados;
+        float totalDesfibrilhador = 0;
+        float percentagem;
+       
+        totalDesfOcupados = numDesfibrilhadorOcupados();
+       
+        for (Hospital hospital : sistema.getListaHospital().getListaHospital()) {
+              
+            for(Enfermaria enfermaria: hospital.getListaEnfermaria().getListaEnfermaria()) {
+                
+                for (Equipamento equipamento: enfermaria.getListaEquipamento().getListaEquipamento()) {
+                    
+                    if (equipamento.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                         
+                        if (equipamento.getTipoEquipamento().equals("Desfibrilhador") && (equipamento.getIndicacao().equals("Ocupado") || equipamento.getIndicacao().equals("Livre"))){
+                               totalDesfibrilhador = totalDesfibrilhador + 1;
+                        }
+                    }
+                }
+            }
+        }
+            
+        percentagem = (totalDesfOcupados / totalDesfibrilhador) * 100;
+          
+        return percentagem; 
+        
+    }
+    
+     public int numOutroOcupados(){
+       int totalOutOcupados = 0;
+       
+        for (Hospital hospital : sistema.getListaHospital().getListaHospital()) {
+              
+            for(Enfermaria enfermaria: hospital.getListaEnfermaria().getListaEnfermaria()) {
+                
+                for (Equipamento equipamento: enfermaria.getListaEquipamento().getListaEquipamento()) {
+                    
+                    if (equipamento.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                        
+                        if (equipamento.getTipoEquipamento().equals("Outro") && equipamento.getIndicacao().equals("Ocupado")){
+                            totalOutOcupados ++;
+                        }
+                    }
+                }
+             }  
+        }
+       
+        return totalOutOcupados;
+    }
+     
+     public float perOutroOcupados(){
+        float totalOutOcupados;
+        float totalOutros = 0;
+        float percentagem;
+        
+        totalOutOcupados = numOutroOcupados();
+        
+        for (Hospital hospital : sistema.getListaHospital().getListaHospital()) {
+              
+            for(Enfermaria enfermaria: hospital.getListaEnfermaria().getListaEnfermaria()) {
+                
+                for (Equipamento equipamento: enfermaria.getListaEquipamento().getListaEquipamento()) {
+                    
+                    if (equipamento.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                         
+                        if (equipamento.getTipoEquipamento().equals("Outro") && (equipamento.getIndicacao().equals("Ocupado") || equipamento.getIndicacao().equals("Livre"))){
+                            totalOutros = totalOutros + 1;
+                        }
+                    }
+                }
+            }
+        }
+        
+        percentagem = (totalOutOcupados / totalOutros) * 100;
+          
+        return percentagem;      
+   }
+     
+     public void doentesModerado(){
+       int totalModerado = 0;
+       float totalDoentes = 0;
+       float percentagem;  
+       
+       for (Hospital hospital: sistema.getListaHospital().getListaHospital()) {
 
+            for (Enfermaria enfermaria: hospital.getListaEnfermaria().getListaEnfermaria()) {
+
+                for (Medico medico: enfermaria.getListaMedico().getListaMedico()) {
+
+                    for (Doente doente:  medico.getListaDoente().getListaDoente()) {
+                         if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                             totalDoentes += 1;
+                         }
+                         
+                        if (doente.getGravidade().equals("Moderado") && (doente.getUtiLigado().equals(sistema.getUtilizadorLigado()))){
+                            totalModerado ++;
+                        }
+                    }
+                }
+            }
+        }    
+       
+        txtModerado.setText(Integer.toString(totalModerado));
+        percentagem = (totalModerado / totalDoentes) * 100;
+        txtModeradoPerc.setText(Float.toString(percentagem));
+    }
+    
+    
+    public void doentesGrave(){
+       int totalGrave = 0;
+       float totalDoentes = 0;
+       float percentagem; 
+       
+       for (Hospital hospital: sistema.getListaHospital().getListaHospital()) {
+
+            for (Enfermaria enfermaria: hospital.getListaEnfermaria().getListaEnfermaria()) {
+
+                for (Medico medico: enfermaria.getListaMedico().getListaMedico()) {
+
+                    for (Doente doente:  medico.getListaDoente().getListaDoente()) {
+                        if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                             totalDoentes += 1;
+                         }
+                        
+                        if (doente.getGravidade().equals("Grave") && (doente.getUtiLigado().equals(sistema.getUtilizadorLigado()))){
+                            totalGrave ++;
+                        }
+                    }
+                }
+            }
+       }       
+       txtGrave.setText(Integer.toString(totalGrave));
+       percentagem = (totalGrave / totalDoentes) * 100;
+       txtGravePerc.setText(Float.toString(percentagem));
+    }
+    
+    public void doentesMuitoGrave(){
+       int totalMuitoGrave = 0;
+       float totalDoentes = 0;
+       float percentagem; 
+       
+       for (Hospital hospital: sistema.getListaHospital().getListaHospital()) {
+
+            for (Enfermaria enfermaria: hospital.getListaEnfermaria().getListaEnfermaria()) {
+
+                for (Medico medico: enfermaria.getListaMedico().getListaMedico()) {
+
+                    for (Doente doente:  medico.getListaDoente().getListaDoente()) {
+                        if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                             totalDoentes += 1;
+                         }
+                        
+                        if (doente.getGravidade().equals("Muito Grave") && (doente.getUtiLigado().equals(sistema.getUtilizadorLigado()))){
+                            totalMuitoGrave ++;
+                        }
+                    }
+                }
+            }
+        }
+       txtMuitoGrave.setText(Integer.toString(totalMuitoGrave));
+       percentagem = (totalMuitoGrave / totalDoentes) * 100;
+       txtMuitoGravePerc.setText(Float.toString(percentagem));
+    }
+    
+    private void camasOcupadas() {
+        Enfermaria enf = new Enfermaria();
+        int totalDoentes = 0;
+        int max = -1;
+        
+        for (Hospital hospital: sistema.getListaHospital().getListaHospital()) {
+
+            for (Enfermaria enfermaria: hospital.getListaEnfermaria().getListaEnfermaria()) {
+
+                for (Medico medico: enfermaria.getListaMedico().getListaMedico()) {
+
+                    //for (Doente doente:  medico.getListaDoente().getListaDoente()) {
+                        if (medico.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                             totalDoentes = medico.getListaDoente().getListaDoente().size();
+                         }
+                    //}
+                }
+                
+                if(totalDoentes > max) {
+                    enf = enfermaria;
+                    max = totalDoentes;
+                }       
+            }   
+        }
+        
+        txtEnfCamas.setText(enf.getNome());
+    }
+    
+    private void EquipamentoLivre() {   
+        Equipamento equip = new Equipamento();
+        int totalEquipamento = 0; 
+        int max = -1;
+        
+        for (Hospital hospital : sistema.getListaHospital().getListaHospital()) {
+              
+            for(Enfermaria enfermaria: hospital.getListaEnfermaria().getListaEnfermaria()) {
+                
+                for (Equipamento equipamento: enfermaria.getListaEquipamento().getListaEquipamento()) {
+                    
+                    if (equipamento.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                        
+                        if (equipamento.getIndicacao().equals("Ocupado")) {
+                            totalEquipamento+= 1;
+                        }
+                    }
+                    
+                    if(totalEquipamento > max) {
+                        equip = equipamento;
+                        max = totalEquipamento;
+                    }                     
+                }
+            }
+        }
+        //txtEnfEquip.setText(equip.());
+    }
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -68,7 +368,7 @@ public class PaginaDashboard extends javax.swing.JFrame {
     private void initComponents() {
 
         jLabel13 = new javax.swing.JLabel();
-        txtEnfermariaProb = new javax.swing.JTextField();
+        txtEnfCamas = new javax.swing.JTextField();
         jLabel9 = new javax.swing.JLabel();
         txtOutro = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
@@ -95,6 +395,9 @@ public class PaginaDashboard extends javax.swing.JFrame {
         txtModerado = new javax.swing.JTextField();
         jLabel14 = new javax.swing.JLabel();
         imgHome = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
+        txtEnfEquip = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -103,104 +406,104 @@ public class PaginaDashboard extends javax.swing.JFrame {
         getContentPane().setLayout(null);
 
         jLabel13.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jLabel13.setText("Enfermaria mais Problemática:");
+        jLabel13.setText("Enfermaria:");
         getContentPane().add(jLabel13);
-        jLabel13.setBounds(20, 350, 200, 20);
+        jLabel13.setBounds(140, 460, 110, 20);
 
-        txtEnfermariaProb.setEditable(false);
-        getContentPane().add(txtEnfermariaProb);
-        txtEnfermariaProb.setBounds(250, 340, 185, 30);
+        txtEnfCamas.setEditable(false);
+        getContentPane().add(txtEnfCamas);
+        txtEnfCamas.setBounds(270, 70, 185, 30);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel9.setText("Outros equipamentos Ocupados:");
         getContentPane().add(jLabel9);
-        jLabel9.setBounds(20, 300, 220, 20);
+        jLabel9.setBounds(10, 390, 220, 20);
 
         txtOutro.setEditable(false);
         getContentPane().add(txtOutro);
-        txtOutro.setBounds(250, 290, 185, 30);
+        txtOutro.setBounds(230, 390, 185, 30);
 
         jLabel8.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel8.setText("Ventiladores Ocupados:");
         getContentPane().add(jLabel8);
-        jLabel8.setBounds(20, 250, 160, 20);
+        jLabel8.setBounds(10, 340, 160, 20);
 
         txtVentilador.setEditable(false);
         getContentPane().add(txtVentilador);
-        txtVentilador.setBounds(250, 240, 185, 30);
+        txtVentilador.setBounds(230, 330, 185, 30);
 
         jLabel12.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel12.setText("% Outros equipamentos Ocupados:");
         getContentPane().add(jLabel12);
-        jLabel12.setBounds(450, 350, 230, 20);
+        jLabel12.setBounds(450, 390, 230, 20);
 
         txtOutroPerc.setEditable(false);
         getContentPane().add(txtOutroPerc);
-        txtOutroPerc.setBounds(700, 340, 180, 30);
+        txtOutroPerc.setBounds(700, 390, 180, 30);
 
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel11.setText("% Ventiladores Ocupados:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(450, 300, 170, 20);
+        jLabel11.setBounds(450, 340, 170, 20);
 
         txtVentiladorPerc.setEditable(false);
         getContentPane().add(txtVentiladorPerc);
-        txtVentiladorPerc.setBounds(700, 290, 180, 30);
+        txtVentiladorPerc.setBounds(700, 330, 180, 30);
 
         jLabel10.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel10.setText("% Desfibrilhadores Ocupados:");
         getContentPane().add(jLabel10);
-        jLabel10.setBounds(450, 250, 190, 20);
+        jLabel10.setBounds(450, 280, 190, 20);
 
         txtDesfibrilhadorPerc.setEditable(false);
         getContentPane().add(txtDesfibrilhadorPerc);
-        txtDesfibrilhadorPerc.setBounds(700, 240, 180, 30);
+        txtDesfibrilhadorPerc.setBounds(700, 270, 180, 30);
 
         jLabel7.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel7.setText("Desfibrilhadores Ocupados:");
         getContentPane().add(jLabel7);
-        jLabel7.setBounds(20, 200, 180, 20);
+        jLabel7.setBounds(10, 290, 180, 20);
 
         txtDesfibrilhador.setEditable(false);
         getContentPane().add(txtDesfibrilhador);
-        txtDesfibrilhador.setBounds(250, 190, 185, 30);
+        txtDesfibrilhador.setBounds(230, 280, 185, 30);
 
         jLabel2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel2.setText("Doentes em estado Muito Grave:");
         getContentPane().add(jLabel2);
-        jLabel2.setBounds(20, 150, 220, 20);
+        jLabel2.setBounds(10, 230, 220, 20);
 
         txtMuitoGrave.setEditable(false);
         getContentPane().add(txtMuitoGrave);
-        txtMuitoGrave.setBounds(250, 140, 185, 30);
+        txtMuitoGrave.setBounds(230, 230, 185, 30);
 
         jLabel3.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel3.setText("Doentes em estado Grave:");
         getContentPane().add(jLabel3);
-        jLabel3.setBounds(20, 100, 170, 20);
+        jLabel3.setBounds(10, 180, 170, 20);
 
         jLabel5.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel5.setText("% Doentes em estado Muito Grave:");
         getContentPane().add(jLabel5);
-        jLabel5.setBounds(450, 200, 230, 20);
+        jLabel5.setBounds(450, 230, 230, 20);
 
         txtMuitoGravePerc.setEditable(false);
         getContentPane().add(txtMuitoGravePerc);
-        txtMuitoGravePerc.setBounds(700, 190, 180, 30);
+        txtMuitoGravePerc.setBounds(700, 220, 180, 30);
 
         jLabel6.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel6.setText("% Doentes em estado Grave:");
         getContentPane().add(jLabel6);
-        jLabel6.setBounds(450, 150, 190, 20);
+        jLabel6.setBounds(450, 180, 190, 20);
 
         txtGravePerc.setEditable(false);
         getContentPane().add(txtGravePerc);
-        txtGravePerc.setBounds(700, 140, 180, 30);
+        txtGravePerc.setBounds(700, 170, 180, 30);
 
         jLabel4.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel4.setText("% Doentes em estado Moderado: ");
         getContentPane().add(jLabel4);
-        jLabel4.setBounds(450, 100, 220, 20);
+        jLabel4.setBounds(450, 130, 220, 20);
 
         txtModeradoPerc.setEditable(false);
         txtModeradoPerc.addActionListener(new java.awt.event.ActionListener() {
@@ -209,25 +512,25 @@ public class PaginaDashboard extends javax.swing.JFrame {
             }
         });
         getContentPane().add(txtModeradoPerc);
-        txtModeradoPerc.setBounds(700, 90, 180, 30);
+        txtModeradoPerc.setBounds(700, 120, 180, 30);
 
         txtGrave.setEditable(false);
         getContentPane().add(txtGrave);
-        txtGrave.setBounds(250, 90, 185, 30);
+        txtGrave.setBounds(230, 180, 185, 30);
 
         jLabel1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel1.setText("Doentes em estado Moderado:");
         getContentPane().add(jLabel1);
-        jLabel1.setBounds(20, 50, 200, 20);
+        jLabel1.setBounds(10, 130, 200, 20);
 
         txtModerado.setEditable(false);
         getContentPane().add(txtModerado);
-        txtModerado.setBounds(250, 40, 185, 30);
+        txtModerado.setBounds(230, 130, 185, 30);
 
         jLabel14.setFont(new java.awt.Font("Leelawadee", 1, 36)); // NOI18N
         jLabel14.setText("Dashboard");
         getContentPane().add(jLabel14);
-        jLabel14.setBounds(580, 10, 200, 47);
+        jLabel14.setBounds(570, 20, 200, 47);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -238,7 +541,22 @@ public class PaginaDashboard extends javax.swing.JFrame {
         getContentPane().add(imgHome);
         imgHome.setBounds(850, 10, 30, 30);
 
+        jLabel16.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel16.setText("Com maior número de camas ocupadas:");
+        getContentPane().add(jLabel16);
+        jLabel16.setBounds(220, 490, 270, 20);
+
+        jLabel17.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jLabel17.setText("Menor número de equipamentos livres:");
+        getContentPane().add(jLabel17);
+        jLabel17.setBounds(220, 540, 270, 20);
+        getContentPane().add(txtEnfEquip);
+        txtEnfEquip.setBounds(500, 540, 190, 30);
+
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dash66.jpg"))); // NOI18N
+        jLabel15.setMaximumSize(new java.awt.Dimension(939, 611));
+        jLabel15.setMinimumSize(new java.awt.Dimension(939, 611));
+        jLabel15.setPreferredSize(new java.awt.Dimension(939, 611));
         getContentPane().add(jLabel15);
         jLabel15.setBounds(-330, -80, 1280, 840);
 
@@ -303,6 +621,8 @@ public class PaginaDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -313,7 +633,8 @@ public class PaginaDashboard extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel9;
     private javax.swing.JTextField txtDesfibrilhador;
     private javax.swing.JTextField txtDesfibrilhadorPerc;
-    private javax.swing.JTextField txtEnfermariaProb;
+    private javax.swing.JTextField txtEnfCamas;
+    private javax.swing.JTextField txtEnfEquip;
     private javax.swing.JTextField txtGrave;
     private javax.swing.JTextField txtGravePerc;
     private javax.swing.JTextField txtModerado;

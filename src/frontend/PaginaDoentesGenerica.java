@@ -5,7 +5,6 @@
  */
 package frontend;
 import backend.Doente;
-import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
@@ -20,7 +19,9 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
     DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    
+    private int indiceHospital;
+    private int indiceEnfermaria;
+    private int indiceMedico;
     /**
      * 
      * @param sistema
@@ -40,18 +41,33 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
     
     public void carregarTabelaDoenteGen()
     {
-        model.setRowCount(0);
-        
-        for (int i = 0; i < sistema.getListaDoente().getListaDoente().size(); i++) {
-            
-            Doente doente = sistema.getListaDoente().getListaDoente().get(i);
-            
-             if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-            model.addRow(new Object[]{doente.getIdDoente(), doente.getNomeDoente(), doente.getDataNasc(), doente.getLocalidade(), doente.getNCama(), doente.getGravidade(), doente.getDataEntrada(), doente.getDataSaida()});
 
+        model.setRowCount(0);
+
+       /* ArrayList<Hospital> hospital = sistema.getListaHospital().getListaHospital();
+        ArrayList<Enfermaria> enfermaria = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria(); 
+        ArrayList<Medico> medico = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico();
+        ArrayList<Doente> doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente();*/
+
+        for (indiceHospital = 0; indiceHospital < sistema.getListaHospital().getListaHospital().size(); indiceHospital++) {
+
+            for (indiceEnfermaria = 0; indiceEnfermaria < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size(); indiceEnfermaria++) {
+
+                for (indiceMedico = 0 ; indiceMedico < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().size() ; indiceMedico++) {
+
+                    for (int indiceDoente = 0; indiceDoente <  sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().size(); indiceDoente++) {
+
+                        Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente);
+
+                        if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                            model.addRow(new Object[]{doente.getIdDoente(), doente.getNomeDoente(), doente.getDataNasc(), doente.getLocalidade(), doente.getNCama(), doente.getGravidade(), doente.getDataEntrada(), doente.getDataSaida()});
+                        }
+                    }
+                }
             }
         }
         tableDoente.setModel(model);
+              
     }
     
     /**

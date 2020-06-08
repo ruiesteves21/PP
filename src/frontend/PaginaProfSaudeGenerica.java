@@ -4,13 +4,17 @@
  * and open the template in the editor.
  */
 package frontend;
+import backend.Enfermaria;
 import backend.Enfermeiro;
+import backend.Equipamento;
+import backend.Hospital;
 import backend.ListaEnfermeiro;
 import backend.Medico;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import java.util.ArrayList;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
@@ -19,6 +23,8 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
     DefaultTableModel modelMedico; 
     private Sistema sistema;
     private Serializacao bd;
+    private int indiceHospital;
+    private int indiceEnfermaria;
    
     /**
      * 
@@ -42,34 +48,53 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
     
     public void carregarTabelaEnfermeiro()
     {
+
         modelEnfermeiro.setRowCount(0);
-         
-         for(int i=0; i< sistema.getListaEnfermeiro().getListaEnfermeiro().size(); i++) {
-             
-            Enfermeiro enfermeiro = sistema.getListaEnfermeiro().getListaEnfermeiro().get(i);
-            
-             if (enfermeiro.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-            modelEnfermeiro.addRow(new Object[] {enfermeiro.getIdEnfermeiro(), enfermeiro.getNomeEnfermeiro()});
-             }
-         }
-         
-          tableEnfermeiro.setModel(modelEnfermeiro);
-          
+
+      /* ArrayList<Hospital> hospital = sistema.getListaHospital().getListaHospital();
+       ArrayList<Enfermaria> enfermaria = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria();
+       ArrayList<Enfermeiro> enfermeiro = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro();*/
+
+        for (indiceHospital = 0; indiceHospital < sistema.getListaHospital().getListaHospital().size(); indiceHospital++) {
+
+            for(indiceEnfermaria = 0; indiceEnfermaria < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size(); indiceEnfermaria++) {
+
+                    for(int indiceEnfermeiro = 0; indiceEnfermeiro < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().size(); indiceEnfermeiro++) {
+
+                       Enfermeiro profEnfermeiro = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().get(indiceEnfermeiro);
+
+                        if (profEnfermeiro.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                             modelEnfermeiro.addRow(new Object[] {profEnfermeiro.getIdEnfermeiro(), profEnfermeiro.getNomeEnfermeiro()});
+                        }
+                    }
+                }
+            }                         
+        tableEnfermeiro.setModel(modelEnfermeiro);            
     }
     
      public void carregarTabelaMedico()
     {
         modelMedico.setRowCount(0);
-        
-        for (int i = 0; i < sistema.getListaMedico().getListaMedico().size(); i++) {
-            
-            Medico medico = sistema.getListaMedico().getListaMedico().get(i);
-            
-            if (medico.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-            modelMedico.addRow(new Object[]{medico.getIdMedico(),medico.getNomeMedico(), medico.getEspecialidade()});
-            }  
+
+        /*ArrayList<Hospital> hospital = sistema.getListaHospital().getListaHospital();
+        ArrayList<Enfermaria> enfermaria = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria(); 
+        ArrayList<Medico> medico = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico();*/
+
+        for (indiceHospital = 0; indiceHospital < sistema.getListaHospital().getListaHospital().size(); indiceHospital++) {
+
+            for(indiceEnfermaria = 0; indiceEnfermaria < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size(); indiceEnfermaria++) {
+
+                for (int indiceMedico = 0 ; indiceMedico < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().size() ; indiceMedico++) {
+
+                    Medico profMedico = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico);
+
+                    if (profMedico.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                         modelMedico.addRow(new Object[]{profMedico.getIdMedico(),profMedico.getNomeMedico(), profMedico.getEspecialidade()});
+                    }  
+                }
+            }
         }
-            tableMedico.setModel(modelMedico);
+        tableMedico.setModel(modelMedico);          
     }
 
     /**

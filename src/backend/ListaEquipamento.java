@@ -15,6 +15,9 @@ public class ListaEquipamento implements Serializable {
     
     
     private ArrayList<Equipamento> listaEquipamento;
+    private Sistema sistema;
+    private int indiceHospital;
+    private int indiceEnfermaria;
     
     public ListaEquipamento()
     {
@@ -45,15 +48,25 @@ public class ListaEquipamento implements Serializable {
         return listaEquipamento.contains(equipamento);
     }
     
-     public int numVentiladorOcupados(){
+     /*public int numVentiladorOcupados(){
+       //ArrayList<Hospital> hospital = sistema.getListaHospital().getListaHospital();
+      // ArrayList<Enfermaria> enfermaria =  sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria();      
        int totalVentOcupados = 0;
        
-       for (Equipamento e: listaEquipamento){
-           
-           if (e.getTipoEquipamento().equals("Ventilador") && e.getIndicacao().equals("Ocupado")){
-               totalVentOcupados = totalVentOcupados + 1;
+      // for (Equipamento e: listaEquipamento){
+        for (Hospital hospital : sistema.getListaHospital().getListaHospital()) {
+              
+            for(Enfermaria enfermaria: hospital.getListaEnfermaria().getListaEnfermaria()) {
+                
+                for (Equipamento equipamento: enfermaria.getListaEquipamento().getListaEquipamento()) {
+                   
+                    if (equipamento.getTipoEquipamento().equals("Ventilador") && equipamento.getIndicacao().equals("Ocupado")){
+                        totalVentOcupados = totalVentOcupados + 1;
                     }
+                }
+            }
         }
+        //}
        
             return totalVentOcupados;
     }
@@ -73,7 +86,7 @@ public class ListaEquipamento implements Serializable {
                     }
         }
     
-       percentagem =  (totalVentOcupados / totalVentiladores /*totalEquipamento*/) * 100;
+       percentagem =  (totalVentOcupados / totalVentiladores) * 100;
        
        return percentagem;
         
@@ -96,7 +109,6 @@ public class ListaEquipamento implements Serializable {
         float totalDesfOcupados;
         float totalDesfibrilhador = 0;
         float percentagem;
-        float totalEquipamento = listaEquipamento.size();
       
             
         totalDesfOcupados = numDesfibrilhadorOcupados();
@@ -108,7 +120,7 @@ public class ListaEquipamento implements Serializable {
                     }
         }
          
-        percentagem = (totalDesfOcupados / totalDesfibrilhador /*totalEquipamento*/) * 100;
+        percentagem = (totalDesfOcupados / totalDesfibrilhador) * 100;
           
         return percentagem;     
    } 
@@ -130,7 +142,6 @@ public class ListaEquipamento implements Serializable {
         float totalOutOcupados;
         float totalOutros = 0;
         float percentagem;
-        float totalEquipamento = listaEquipamento.size();
         
         totalOutOcupados = numOutroOcupados();
         
@@ -141,10 +152,10 @@ public class ListaEquipamento implements Serializable {
                     }
         }
         
-        percentagem = (totalOutOcupados / totalOutros /*totalEquipamento*/) * 100;
+        percentagem = (totalOutOcupados / totalOutros) * 100;
           
         return percentagem;      
-   }
+   }*/
     
     @Override
     public String toString()

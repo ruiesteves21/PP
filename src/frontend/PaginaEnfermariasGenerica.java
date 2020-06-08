@@ -5,11 +5,13 @@
  */
 package frontend;
 import backend.Enfermaria;
+import backend.Hospital;
 import backend.ListaEnfermaria;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import java.util.ArrayList;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
@@ -21,13 +23,13 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
      DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
-    
+    private int indiceHospital;
     /**
      * 
      * @param sistema
      * @param bd 
      */
-    public PaginaEnfermariasGenerica(Sistema sistema,Serializacao bd) {
+    public PaginaEnfermariasGenerica(Sistema sistema, Serializacao bd) {
         initComponents();
         model = (DefaultTableModel) tableEnfermaria.getModel();
         this.sistema=sistema;
@@ -41,20 +43,26 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
     }
     
      public void carregarTabelaGenerica()
-    {
+    {        
         model.setRowCount(0);
-         
-         for(int i=0; i< sistema.getListaEnfermaria().getListaEnfermaria().size(); i++) {
-             
-            Enfermaria enf = sistema.getListaEnfermaria().getListaEnfermaria().get(i);
-            
-             if (enf.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-            model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getNCamas(), enf.getIdEnfermaria() });
-             }
-         }
-         
-          tableEnfermaria.setModel(model);
-          
+
+        //ArrayList<Hospital> hospital = sistema.getListaHospital().getListaHospital();
+       // ArrayList<Enfermaria> enfermaria =  sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria();
+
+        for (indiceHospital = 0; indiceHospital < sistema.getListaHospital().getListaHospital().size(); indiceHospital++) {
+
+            for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size(); i++) {
+
+                Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(i);
+
+                if (enf.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                    model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getNCamas(), enf.getIdEnfermaria() });
+                     }
+                }
+            }
+
+        tableEnfermaria.setModel(model);        
+        
     }
     
     /**

@@ -41,7 +41,7 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
      */
     public PaginaEquipamentos(Sistema sistema, Serializacao bd, int indiceHospital, int indiceEnfermaria) {
         initComponents();
-        model = (DefaultTableModel) table.getModel();
+        model = (DefaultTableModel) tableEquipamento.getModel();
         this.sistema=sistema;
         this.bd = bd;
         this.indiceEnfermaria = indiceEnfermaria;
@@ -57,18 +57,18 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
     public void carregarTabelaEquipamentos()
     {
         model.setRowCount(0);
+        ArrayList<Equipamento> equipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento();
         
-        
-        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().size(); i++) {
+        for (int indiceEquipamento = 0; indiceEquipamento < equipamento.size(); indiceEquipamento++) {
             
-            Equipamento equipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(i);
+            Equipamento equip = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento);
             
-            if (equipamento.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-            model.addRow(new Object[]{equipamento.getIdEquip(), equipamento.getTipoEquipamento(), equipamento.getIndicacao(), equipamento.getDoente()});
+            if (equip.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+            model.addRow(new Object[]{equip.getIdEquip(), equip.getTipoEquipamento(), equip.getIndicacao(), equip.getDoente()});
             }
         }
         
-         table.setModel(model);
+         tableEquipamento.setModel(model);
     }
     
     private void carregarComboBox() {
@@ -106,7 +106,7 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
     private void initComponents() {
 
         jScrollPane3 = new javax.swing.JScrollPane();
-        table = new javax.swing.JTable();
+        tableEquipamento = new javax.swing.JTable();
         jLabel3 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -128,7 +128,7 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         setSize(new java.awt.Dimension(604, 333));
         getContentPane().setLayout(null);
 
-        table.setModel(new javax.swing.table.DefaultTableModel(
+        tableEquipamento.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -151,12 +151,12 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
                 return canEdit [columnIndex];
             }
         });
-        table.addMouseListener(new java.awt.event.MouseAdapter() {
+        tableEquipamento.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
-                tableMouseClicked(evt);
+                tableEquipamentoMouseClicked(evt);
             }
         });
-        jScrollPane3.setViewportView(table);
+        jScrollPane3.setViewportView(tableEquipamento);
 
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(280, 90, 480, 300);
@@ -313,9 +313,7 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         Equipamento equipamento = new Equipamento(sistema.getUtilizadorLigado(), id, disponibilidade, tipo, doenteSelecionado);
         
         try {
-                sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().adicionar(equipamento);
-                //inserir nas listas genericas
-                sistema.getListaEquipamento().adicionar(equipamento);
+                sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().adicionar(equipamento);                
                 JOptionPane.showMessageDialog(null, "Equipamento registado!");       
                 comboDoente.setSelectedItem(null); 
                 comboTipo.setSelectedItem(null);
@@ -338,7 +336,7 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
     private void btEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarActionPerformed
         // TODO add your handling code here:
         try {
-                int indiceEquipamento = table.getSelectedRow();
+                int indiceEquipamento = tableEquipamento.getSelectedRow();
 
                 Equipamento editarEquipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento);
 
@@ -394,18 +392,18 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
 
     private void btExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btExcluirActionPerformed
         // TODO add your handling code here:
-         DefaultTableModel model = (DefaultTableModel)table.getModel();
-        int row = table.getSelectedRow();
+         DefaultTableModel model = (DefaultTableModel)tableEquipamento.getModel();
+        int row = tableEquipamento.getSelectedRow();
         if(row >= 0){
             model.removeRow(row); //remove a linha selecionada
             sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().remove(row);
-            //excluir das listas genericas
-            sistema.getListaEquipamento().getListaEquipamento().remove(row);
+            carregarTabelaEquipamentos();
+            guardarAlteracoes();
             comboIndicacao.setSelectedItem(null);   
             comboDoente.setSelectedItem(null);
             comboTipo.setSelectedItem(null);
             JOptionPane.showMessageDialog(this, "Removido!");
-            guardarAlteracoes();           
+                       
         }
         else
         {
@@ -430,8 +428,8 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         l.setVisible(true);
     }//GEN-LAST:event_imgRetrocederMouseClicked
 
-    private void tableMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableMouseClicked
-        int indiceEquipamento = table.getSelectedRow();  //quando o utilizador seleciona um equipamentp clicando
+    private void tableEquipamentoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEquipamentoMouseClicked
+        int indiceEquipamento = tableEquipamento.getSelectedRow();  //quando o utilizador seleciona um equipamentp clicando
                                                   //na tabela
 
         if(indiceEquipamento>=0 && indiceEquipamento < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().size()) {
@@ -441,26 +439,26 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
             comboTipo.setSelectedItem(equi.getTipoEquipamento());
             comboIndicacao.setSelectedItem(equi.getIndicacao());;
         }       
-    }//GEN-LAST:event_tableMouseClicked
+    }//GEN-LAST:event_tableEquipamentoMouseClicked
 
     private void filtrar (String tipo){
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        table.setRowSorter(tr);
+        tableEquipamento.setRowSorter(tr);
         if (!"Nenhum Tipo".equals(tipo)){
             tr.setRowFilter(RowFilter.regexFilter(tipo));
         }else{
-            table.setRowSorter(tr);
+            tableEquipamento.setRowSorter(tr);
         }
         
     }
     
     private void filtrar2 (String Indicacao){
         TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        table.setRowSorter(tr);
+        tableEquipamento.setRowSorter(tr);
         if (!"Nenhuma Indicacao".equals(Indicacao)){
             tr.setRowFilter(RowFilter.regexFilter(Indicacao));
         }else{
-            table.setRowSorter(tr);
+            tableEquipamento.setRowSorter(tr);
         }
         
     }
@@ -518,6 +516,6 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JTable table;
+    private javax.swing.JTable tableEquipamento;
     // End of variables declaration//GEN-END:variables
 }

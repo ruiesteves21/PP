@@ -12,6 +12,7 @@ import backend.Serializacao;
 import backend.Sistema;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.UUID;
 import java.util.Date;
@@ -67,13 +68,14 @@ public class PaginaDoentes extends javax.swing.JFrame {
     {
         model.setRowCount(0);
         
-        for (int i = 0; i < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().size(); i++) {
+        ArrayList<Doente> doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente();
+        
+        for (int indiceDoente = 0; indiceDoente < doente.size(); indiceDoente++) {
             
-            Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(i);
+            Doente doent = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente);
             
-             if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-            model.addRow(new Object[]{doente.getNCama(), doente.getNomeDoente(), doente.getDataNasc(), doente.getLocalidade(), doente.getGravidade(), doente.getDataEntrada(), doente.getDataSaida(), doente.getIdDoente()});
-
+             if (doent.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                 model.addRow(new Object[]{doent.getNCama(), doent.getNomeDoente(), doent.getDataNasc(), doent.getLocalidade(), doent.getGravidade(), doent.getDataEntrada(), doent.getDataSaida(), doent.getIdDoente()});
             }
         }
         tableDoentes.setModel(model);
@@ -500,18 +502,18 @@ public class PaginaDoentes extends javax.swing.JFrame {
         int row = tableDoentes.getSelectedRow();
         if(row >= 0){
             model.removeRow(row); //remove a linha selecionada
-            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().remove(row);
-            //excluir das listas genericas
-            sistema.getListaDoente().getListaDoente().remove(row);
+            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().remove(row);            
+            carregarTabelaDoente();
+            guardarAlteracoes();      
             JOptionPane.showMessageDialog(this, "Removido!");
-             txtNome.setText("");
-             txtLocalidade.setText("");       
-             txtCama.setText("");
-             comboGravidade.setSelectedItem(null);         
-             dataNasc.setDate(null);
-             DataSaida.setDate(null);
-             DataEntrada.setDate(null);
-            guardarAlteracoes();           
+            txtNome.setText("");
+            txtLocalidade.setText("");       
+            txtCama.setText("");
+            comboGravidade.setSelectedItem(null);         
+            dataNasc.setDate(null);
+            DataSaida.setDate(null);
+            DataEntrada.setDate(null);
+                 
         }
         else
         {
@@ -691,8 +693,6 @@ public class PaginaDoentes extends javax.swing.JFrame {
        
         try {
         sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().adicionar(doente);
-        //inserir nas listas genericas
-        sistema.getListaDoente().adicionar(doente);
         JOptionPane.showMessageDialog(null, "Doente " + txtNome.getText() + " adicionado!");
         txtNome.setText("");
         txtLocalidade.setText("");       

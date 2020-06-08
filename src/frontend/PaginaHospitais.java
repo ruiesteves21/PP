@@ -9,6 +9,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import java.util.ArrayList;
 import java.util.UUID;
 
 
@@ -41,12 +42,14 @@ public class PaginaHospitais extends javax.swing.JFrame {
      public void carregarTabelaHospital()
     {
         model.setRowCount(0);
-        for (int i = 0; i < sistema.getListaHospital().getListaHospital().size(); i++) {
-            Hospital hospital = sistema.getListaHospital().getListaHospital().get(i);
+        ArrayList<Hospital> hospital = sistema.getListaHospital().getListaHospital();
+         
+        for (int i = 0; i < hospital.size(); i++) {
             
-            if (hospital.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-            model.addRow(new Object[]{hospital.getIdHospital(), hospital.getNome(),hospital.getLocalidade()});
-
+            Hospital hosp = sistema.getListaHospital().getListaHospital().get(i);
+            
+            if (hosp.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                 model.addRow(new Object[]{hosp.getIdHospital(), hosp.getNome(), hosp.getLocalidade()});
             }
          }
     }
@@ -93,7 +96,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(10, 290, 80, 29);
+        btLimpar.setBounds(10, 340, 80, 29);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -135,7 +138,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(10, 340, 80, 29);
+        btExcluir.setBounds(10, 290, 80, 29);
 
         imgHome.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/sydney-opera-house.png"))); // NOI18N
         imgHome.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -154,7 +157,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
         txtLocalidade.setBounds(110, 140, 120, 30);
 
         btEnfermaria.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        btEnfermaria.setText("Ir para Enfermaria");
+        btEnfermaria.setText("Lista Enfermaria");
         btEnfermaria.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btEnfermariaActionPerformed(evt);
@@ -271,11 +274,12 @@ public class PaginaHospitais extends javax.swing.JFrame {
          
         int row = tableHospital.getSelectedRow();
         //ou seja se a linha estiver selecionada
-        
+
         if(row >= 0){
             model.removeRow(row);
             //remove a linha selecionada
             sistema.getListaHospital().getListaHospital().remove(row);
+            carregarTabelaHospital();
             guardarAlteracoes();
             txtNome.setText(null);
             txtLocalidade.setText(null);

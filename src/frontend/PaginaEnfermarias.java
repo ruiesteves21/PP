@@ -11,6 +11,7 @@ import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import java.util.ArrayList;
 import java.util.UUID;
 
 /**
@@ -43,8 +44,9 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
     public void carregarTabelaEnfermaria()
     {
         model.setRowCount(0);
-         
-         for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size(); i++) {
+        ArrayList<Enfermaria> enfermaria =  sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria();
+        
+         for(int i=0; i< enfermaria.size(); i++) {
              
             Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(i);
              
@@ -189,7 +191,7 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btLimpar);
-        btLimpar.setBounds(10, 320, 80, 29);
+        btLimpar.setBounds(10, 370, 80, 29);
 
         btExcluir.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btExcluir.setText("Excluir");
@@ -199,7 +201,7 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
             }
         });
         getContentPane().add(btExcluir);
-        btExcluir.setBounds(10, 370, 80, 29);
+        btExcluir.setBounds(10, 320, 80, 29);
 
         btEditar.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         btEditar.setText("Editar");
@@ -268,13 +270,13 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
          
         if(row  >= 0){
             model.removeRow(row ); //remove a linha selecionada
-            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().remove(row);
-            //excluir das listas genericas
-            sistema.getListaEnfermaria().getListaEnfermaria().remove(row);
+            sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().remove(row);           
+            carregarTabelaEnfermaria();
+            guardarAlteracoes();
             txtNome.setText(null);
             txtCamas.setText(null);
             comboTipo.setSelectedItem(null);
-            guardarAlteracoes();
+            
             JOptionPane.showMessageDialog(this, "Removido!");
         }
         else
@@ -336,9 +338,7 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
        Enfermaria enf = new Enfermaria(sistema.getUtilizadorLigado(), txtNome.getText(), id, Integer.parseInt(txtCamas.getText()), comboTipo.getSelectedItem().toString());
        
        try {
-       sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().adicionar(enf);
-       //adicionar nas listas genericas
-       sistema.getListaEnfermaria().adicionar(enf);
+       sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().adicionar(enf);       
        JOptionPane.showMessageDialog(null, "Enfermaria " + txtNome.getText() + " registada!");
        txtNome.setText("");
        txtCamas.setText("");

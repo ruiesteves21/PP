@@ -4,11 +4,14 @@
  * and open the template in the editor.
  */
 package frontend;
+import backend.Enfermaria;
 import backend.Equipamento;
+import backend.Hospital;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 import backend.Sistema;
 import backend.Serializacao;
+import java.util.ArrayList;
 import javax.swing.RowFilter;
 import javax.swing.table.TableRowSorter;
 
@@ -20,6 +23,8 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
      DefaultTableModel model; 
     private Sistema sistema;
     private Serializacao bd;
+    private int indiceHospital;
+    private int indiceEnfermaria;
 
     /**
      * 
@@ -41,20 +46,28 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
     
      public void carregarTabelaEquipGenerica()
     {
-        model.setRowCount(0);
-         
-         for(int i=0; i< sistema.getListaEquipamento().getListaEquipamento().size(); i++) {
-             
-            Equipamento equipamento = sistema.getListaEquipamento().getListaEquipamento().get(i);
-            
-            if (equipamento.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-             model.addRow(new Object[]{equipamento.getIdEquip(), equipamento.getTipoEquipamento(), equipamento.getIndicacao(), equipamento.getDoente()});
+
+        model.setRowCount(0);        
+
+        /*ArrayList<Hospital> hospital = sistema.getListaHospital().getListaHospital();
+        ArrayList<Enfermaria> enfermaria =  sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria(); */     
+
+        for (indiceHospital = 0; indiceHospital < sistema.getListaHospital().getListaHospital().size(); indiceHospital++) {
+
+            for(indiceEnfermaria = 0; indiceEnfermaria < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size(); indiceEnfermaria++) {
+
+                for (int indiceEquipamento = 0; indiceEquipamento < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().size(); indiceEquipamento++) {
+
+                    Equipamento equipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento);
+
+                    if (equipamento.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                         model.addRow(new Object[]{equipamento.getIdEquip(), equipamento.getTipoEquipamento(), equipamento.getIndicacao(), equipamento.getDoente()});
+                    }
+                }
             }
-         }
-         
-          tableEquipamento.setModel(model);
-          
-    }
+         }               
+        tableEquipamento.setModel(model); 
+}
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
