@@ -55,6 +55,10 @@ public class ListaUtilizador implements Serializable {
         return listaUtilizador.size();
     }
     
+    public void remover(String username) {
+        listaUtilizador.remove(username);
+    }
+    
     public Utilizador getUtilizador(String username) throws UtilizadorNaoExistenteException {
         if (listaUtilizador.containsKey(username)){
             return listaUtilizador.get(username);

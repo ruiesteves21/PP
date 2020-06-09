@@ -101,16 +101,38 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         
         String username = (String) modeloTabelaAdmin.getValueAt(rowIndex, 0);
         
-        try {
-            Utilizador medico = sistema.getListaUtilizador().getUtilizador(username);
-             PaginaPerfil perfil = new PaginaPerfil(sistema, medico, this);   
-            perfil.setVisible(true);
-        } catch (ListaUtilizador.UtilizadorNaoExistenteException ex) {            
-            JOptionPane.showMessageDialog(this, ex.getMessage());
-        }
+            try {
+                Utilizador medico = sistema.getListaUtilizador().getUtilizador(username);
+                 PaginaPerfil perfil = new PaginaPerfil(sistema, medico, this);   
+                perfil.setVisible(true);
+            } catch (ListaUtilizador.UtilizadorNaoExistenteException ex) {            
+                JOptionPane.showMessageDialog(this, ex.getMessage());
+            }
         }
     }
     
+    private void remover() {
+        int rowIndex = tabelUtilizadores.getSelectedRow();
+        //Se nenhum registo selecionado, nao é possivel remover
+        if (rowIndex == -1) {
+            
+              JOptionPane.showMessageDialog(null,"Selecione um utilizador","Atenção",JOptionPane.WARNING_MESSAGE); 
+        }  else {  
+            
+            String username = (String) modeloTabelaAdmin.getValueAt(rowIndex, 0);
+            
+            try {
+                sistema.getListaUtilizador().remover(username);
+                atualizar();
+                guardarAlteracoes();
+                 JOptionPane.showMessageDialog(null,"Removido","Informação",JOptionPane.INFORMATION_MESSAGE); 
+                 
+            } catch (Exception e) {
+                 JOptionPane.showMessageDialog(this, e.getMessage());
+            }    
+        }
+    }
+       
     private void guardarAlteracoes() {
         bd.gravaSistema(sistema);
     }
@@ -146,10 +168,11 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         btEditar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         btRegistoAcesso = new javax.swing.JButton();
+        jButton2 = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(366, 368));
+        setMinimumSize(new java.awt.Dimension(375, 419));
         setUndecorated(true);
         setSize(new java.awt.Dimension(366, 368));
         getContentPane().setLayout(null);
@@ -224,6 +247,16 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         getContentPane().add(btRegistoAcesso);
         btRegistoAcesso.setBounds(40, 320, 160, 30);
 
+        jButton2.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        jButton2.setText("Remover");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
+        getContentPane().add(jButton2);
+        jButton2.setBounds(230, 370, 100, 30);
+
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dash66.jpg"))); // NOI18N
         getContentPane().add(jLabel1);
         jLabel1.setBounds(-500, 0, 1120, 430);
@@ -263,6 +296,11 @@ public class PaginaAdministrador extends javax.swing.JFrame {
         PaginaRegistoAcessos registoAcessos = new PaginaRegistoAcessos(sistema, bd);
         registoAcessos.setVisible(true);
     }//GEN-LAST:event_btRegistoAcessoActionPerformed
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        // TODO add your handling code here:
+        remover();
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -306,6 +344,7 @@ public class PaginaAdministrador extends javax.swing.JFrame {
     private javax.swing.JButton btRegistoAcesso;
     private javax.swing.JLabel imgSair;
     private javax.swing.JButton jButton1;
+    private javax.swing.JButton jButton2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable tabelUtilizadores;

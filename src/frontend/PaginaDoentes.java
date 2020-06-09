@@ -642,11 +642,11 @@ public class PaginaDoentes extends javax.swing.JFrame {
              return;
          } 
          
-         if (dataAtual.before(DataEntrada.getCalendar()))
+         if (DataEntrada.getCalendar().before(dataAtual))
          {
-             JOptionPane.showMessageDialog(null," A data de entrada não pode ser superior à data atual","Erro",JOptionPane.ERROR_MESSAGE);             
-             return;
-         }    
+             JOptionPane.showMessageDialog(null," A data de entrada não pode ser inferior à data atual","Erro",JOptionPane.ERROR_MESSAGE);             
+             return; 
+         }
          
           if (dataAtual.before(dataNasc.getCalendar()))
          {

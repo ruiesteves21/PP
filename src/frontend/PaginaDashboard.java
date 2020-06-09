@@ -59,9 +59,9 @@ public class PaginaDashboard extends javax.swing.JFrame {
             doentesMuitoGrave();  
             
             camasOcupadas();
-            EquipamentoLivre();
+            equipamentoLivre();
             
-        } catch (ArithmeticException e) {
+        } catch (Exception e) {
             JOptionPane.showMessageDialog(null,"Neste momento, não há equipamentos ou doentes registados!!","Aviso",JOptionPane.INFORMATION_MESSAGE);
         }
     }
@@ -332,7 +332,7 @@ public class PaginaDashboard extends javax.swing.JFrame {
         txtEnfCamas.setText(enf.getNome());
     }
     
-    private void EquipamentoLivre() {   
+    private void equipamentoLivre() {   
         Enfermaria enf = null;
         int totalEquipamento = 0; 
         int max = -1;

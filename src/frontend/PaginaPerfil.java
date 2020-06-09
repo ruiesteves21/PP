@@ -107,6 +107,7 @@ public class PaginaPerfil extends javax.swing.JFrame {
           
             try {
                 sistema.getListaUtilizador().adicionar(novoMedico);
+                
             } catch (ListaUtilizador.UtilizadorDuplicadoException ex) {
                 JOptionPane.showMessageDialog(this, ex.getMessage());
                 return;
