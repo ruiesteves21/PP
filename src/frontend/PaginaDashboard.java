@@ -59,6 +59,7 @@ public class PaginaDashboard extends javax.swing.JFrame {
             doentesMuitoGrave();  
             
             camasOcupadas();
+            EquipamentoLivre();
             
         } catch (ArithmeticException e) {
             JOptionPane.showMessageDialog(null,"Neste momento, não há equipamentos ou doentes registados!!","Aviso",JOptionPane.INFORMATION_MESSAGE);
@@ -304,7 +305,7 @@ public class PaginaDashboard extends javax.swing.JFrame {
     }
     
     private void camasOcupadas() {
-        Enfermaria enf = new Enfermaria();
+        Enfermaria enf = null;
         int totalDoentes = 0;
         int max = -1;
         
@@ -314,11 +315,11 @@ public class PaginaDashboard extends javax.swing.JFrame {
 
                 for (Medico medico: enfermaria.getListaMedico().getListaMedico()) {
 
-                    //for (Doente doente:  medico.getListaDoente().getListaDoente()) {
-                        if (medico.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
-                             totalDoentes = medico.getListaDoente().getListaDoente().size();
+                    for (Doente doente:  medico.getListaDoente().getListaDoente()) {
+                        if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                             totalDoentes+= 1;
                          }
-                    //}
+                    }
                 }
                 
                 if(totalDoentes > max) {
@@ -332,7 +333,7 @@ public class PaginaDashboard extends javax.swing.JFrame {
     }
     
     private void EquipamentoLivre() {   
-        Equipamento equip = new Equipamento();
+        Enfermaria enf = null;
         int totalEquipamento = 0; 
         int max = -1;
         
@@ -347,16 +348,16 @@ public class PaginaDashboard extends javax.swing.JFrame {
                         if (equipamento.getIndicacao().equals("Ocupado")) {
                             totalEquipamento+= 1;
                         }
-                    }
-                    
-                    if(totalEquipamento > max) {
-                        equip = equipamento;
-                        max = totalEquipamento;
-                    }                     
+                    }                                                        
                 }
+                
+                if(totalEquipamento > max) {
+                   enf = enfermaria;
+                   max = totalEquipamento;
+                }    
             }
         }
-        //txtEnfEquip.setText(equip.());
+        txtEnfEquip.setText(enf.getNome());
     }
     /**
      * This method is called from within the constructor to initialize the form.
@@ -401,7 +402,7 @@ public class PaginaDashboard extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setMinimumSize(new java.awt.Dimension(895, 396));
+        setMinimumSize(new java.awt.Dimension(939, 611));
         setUndecorated(true);
         getContentPane().setLayout(null);
 
@@ -412,7 +413,7 @@ public class PaginaDashboard extends javax.swing.JFrame {
 
         txtEnfCamas.setEditable(false);
         getContentPane().add(txtEnfCamas);
-        txtEnfCamas.setBounds(270, 70, 185, 30);
+        txtEnfCamas.setBounds(490, 490, 185, 30);
 
         jLabel9.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel9.setText("Outros equipamentos Ocupados:");
@@ -444,7 +445,7 @@ public class PaginaDashboard extends javax.swing.JFrame {
         jLabel11.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
         jLabel11.setText("% Ventiladores Ocupados:");
         getContentPane().add(jLabel11);
-        jLabel11.setBounds(450, 340, 170, 20);
+        jLabel11.setBounds(450, 330, 170, 20);
 
         txtVentiladorPerc.setEditable(false);
         getContentPane().add(txtVentiladorPerc);
@@ -550,8 +551,10 @@ public class PaginaDashboard extends javax.swing.JFrame {
         jLabel17.setText("Menor número de equipamentos livres:");
         getContentPane().add(jLabel17);
         jLabel17.setBounds(220, 540, 270, 20);
+
+        txtEnfEquip.setEditable(false);
         getContentPane().add(txtEnfEquip);
-        txtEnfEquip.setBounds(500, 540, 190, 30);
+        txtEnfEquip.setBounds(490, 540, 190, 30);
 
         jLabel15.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/dash66.jpg"))); // NOI18N
         jLabel15.setMaximumSize(new java.awt.Dimension(939, 611));
