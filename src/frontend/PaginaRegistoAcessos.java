@@ -158,6 +158,10 @@ public class PaginaRegistoAcessos extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(tabAcessos);
+        if (tabAcessos.getColumnModel().getColumnCount() > 0) {
+            tabAcessos.getColumnModel().getColumn(0).setResizable(false);
+            tabAcessos.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(40, 50, 271, 234);
