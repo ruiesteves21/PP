@@ -38,16 +38,5 @@ public class ListaHospital implements Serializable {
      public int tamanho()
     {
         return listaHospital.size();
-    }
-    
-     public Hospital getHospital(String id) { 
-         
-            if (listaHospital.contains(id)){
-                //convertemos id em int porque definimos assim quando definimos a arraylist
-            return listaHospital.get(Integer.parseInt(id));
-        } else{
-            throw new RuntimeException("O hospital já existe na lista");
-        }
-    }
-     
+    }     
 }

@@ -157,6 +157,12 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(tableEquipamento);
+        if (tableEquipamento.getColumnModel().getColumnCount() > 0) {
+            tableEquipamento.getColumnModel().getColumn(0).setResizable(false);
+            tableEquipamento.getColumnModel().getColumn(1).setResizable(false);
+            tableEquipamento.getColumnModel().getColumn(2).setResizable(false);
+            tableEquipamento.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(280, 90, 480, 300);

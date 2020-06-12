@@ -132,6 +132,12 @@ public class PaginaEnfermarias extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(table);
+        if (table.getColumnModel().getColumnCount() > 0) {
+            table.getColumnModel().getColumn(0).setResizable(false);
+            table.getColumnModel().getColumn(1).setResizable(false);
+            table.getColumnModel().getColumn(2).setResizable(false);
+            table.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(260, 100, 520, 300);

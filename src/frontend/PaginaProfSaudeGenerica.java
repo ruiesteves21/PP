@@ -136,9 +136,16 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                true, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tableEnfermeiro.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -147,6 +154,10 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tableEnfermeiro);
+        if (tableEnfermeiro.getColumnModel().getColumnCount() > 0) {
+            tableEnfermeiro.getColumnModel().getColumn(0).setResizable(false);
+            tableEnfermeiro.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(20, 110, 350, 220);
@@ -183,8 +194,21 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
             new String [] {
                 "Código", "Nome", "Especialidade"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         jScrollPane2.setViewportView(tableMedico);
+        if (tableMedico.getColumnModel().getColumnCount() > 0) {
+            tableMedico.getColumnModel().getColumn(0).setResizable(false);
+            tableMedico.getColumnModel().getColumn(1).setResizable(false);
+            tableMedico.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(440, 110, 340, 220);

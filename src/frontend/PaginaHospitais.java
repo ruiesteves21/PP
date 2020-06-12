@@ -191,6 +191,11 @@ public class PaginaHospitais extends javax.swing.JFrame {
             }
         });
         jScrollPane2.setViewportView(tableHospital);
+        if (tableHospital.getColumnModel().getColumnCount() > 0) {
+            tableHospital.getColumnModel().getColumn(0).setResizable(false);
+            tableHospital.getColumnModel().getColumn(1).setResizable(false);
+            tableHospital.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane2);
         jScrollPane2.setBounds(270, 80, 490, 290);

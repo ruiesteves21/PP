@@ -17,11 +17,8 @@ public class Equipamento implements Serializable {
     
     private String idEquip;
     private String indicacao; //livre, ocupado
-    private Calendar  dataOcupado;
     private Utilizador utiLigado;
     private String tipoEquipamento;
-    private boolean disponivel;
-    private boolean indisponivel;
     private String doente;
     
     /**
@@ -68,10 +65,6 @@ public class Equipamento implements Serializable {
     public String getIndicacao() {
         return indicacao;
     }
-
-    public Calendar getDataOcupado() {
-        return dataOcupado;
-    }
     
     //setters
     public void setIdEquip(String idEquip) {
@@ -85,11 +78,6 @@ public class Equipamento implements Serializable {
     
     public void setIndicacao(String indicacao) {
         this.indicacao = indicacao;
-    }
-    
-    
-    public void setDataOcupado(Calendar dataOcupado) {
-        this.dataOcupado = dataOcupado;
     }
     
     public void setDoente(String doente) {

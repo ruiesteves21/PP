@@ -273,13 +273,31 @@ public class PaginaDoentes extends javax.swing.JFrame {
             new String [] {
                 "Cama", "Nome", "Data de Nascimento", "Localidade", "Gravidade", "Data Entrada", "Data de Saída", "Codigo"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                true, false, true, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         tableDoentes.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 tableDoentesMouseClicked(evt);
             }
         });
         jScrollPane1.setViewportView(tableDoentes);
+        if (tableDoentes.getColumnModel().getColumnCount() > 0) {
+            tableDoentes.getColumnModel().getColumn(0).setResizable(false);
+            tableDoentes.getColumnModel().getColumn(1).setResizable(false);
+            tableDoentes.getColumnModel().getColumn(2).setResizable(false);
+            tableDoentes.getColumnModel().getColumn(3).setResizable(false);
+            tableDoentes.getColumnModel().getColumn(4).setResizable(false);
+            tableDoentes.getColumnModel().getColumn(5).setResizable(false);
+            tableDoentes.getColumnModel().getColumn(6).setResizable(false);
+            tableDoentes.getColumnModel().getColumn(7).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(10, 80, 780, 190);

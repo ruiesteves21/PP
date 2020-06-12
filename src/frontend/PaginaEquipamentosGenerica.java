@@ -102,12 +102,25 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.Integer.class, java.lang.Object.class, java.lang.Object.class, java.lang.String.class
             };
+            boolean[] canEdit = new boolean [] {
+                true, false, false, true
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
             }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
         });
         jScrollPane1.setViewportView(tableEquipamento);
+        if (tableEquipamento.getColumnModel().getColumnCount() > 0) {
+            tableEquipamento.getColumnModel().getColumn(0).setResizable(false);
+            tableEquipamento.getColumnModel().getColumn(1).setResizable(false);
+            tableEquipamento.getColumnModel().getColumn(2).setResizable(false);
+            tableEquipamento.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(70, 100, 690, 270);

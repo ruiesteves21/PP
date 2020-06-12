@@ -99,9 +99,16 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
             Class[] types = new Class [] {
                 java.lang.String.class, java.lang.String.class, java.lang.Integer.class, java.lang.Integer.class
             };
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
 
             public Class getColumnClass(int columnIndex) {
                 return types [columnIndex];
+            }
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
             }
         });
         tableEnfermaria.addMouseListener(new java.awt.event.MouseAdapter() {
@@ -110,6 +117,12 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tableEnfermaria);
+        if (tableEnfermaria.getColumnModel().getColumnCount() > 0) {
+            tableEnfermaria.getColumnModel().getColumn(0).setResizable(false);
+            tableEnfermaria.getColumnModel().getColumn(1).setResizable(false);
+            tableEnfermaria.getColumnModel().getColumn(2).setResizable(false);
+            tableEnfermaria.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(50, 80, 710, 260);

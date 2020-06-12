@@ -139,7 +139,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
                 java.lang.Integer.class, java.lang.Object.class
             };
             boolean[] canEdit = new boolean [] {
-                true, false
+                false, false
             };
 
             public Class getColumnClass(int columnIndex) {
@@ -156,6 +156,10 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         jScrollPane3.setViewportView(tableEnfermeiros);
+        if (tableEnfermeiros.getColumnModel().getColumnCount() > 0) {
+            tableEnfermeiros.getColumnModel().getColumn(0).setResizable(false);
+            tableEnfermeiros.getColumnModel().getColumn(1).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane3);
         jScrollPane3.setBounds(20, 60, 330, 230);
@@ -265,6 +269,11 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             }
         });
         jScrollPane1.setViewportView(tableMedicos);
+        if (tableMedicos.getColumnModel().getColumnCount() > 0) {
+            tableMedicos.getColumnModel().getColumn(0).setResizable(false);
+            tableMedicos.getColumnModel().getColumn(1).setResizable(false);
+            tableMedicos.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(420, 60, 350, 230);

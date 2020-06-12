@@ -47,7 +47,7 @@ public class ListaDoente implements Serializable  {
         return listaDoente.contains(doente);
     }
     
-    public int numDoenteModerado(){
+    /*public int numDoenteModerado(){
        int totalModerado = 0;
        
        for (Doente doente: listaDoente){
@@ -119,6 +119,6 @@ public class ListaDoente implements Serializable  {
        percentagem = (totalMuitoGrave / totalDoente) * 100;
           
        return percentagem;
-   }
+   }*/
     
 }

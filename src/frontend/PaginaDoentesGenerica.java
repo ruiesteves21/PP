@@ -118,6 +118,16 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
         tableDoente.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         tableDoente.setEnabled(false);
         jScrollPane1.setViewportView(tableDoente);
+        if (tableDoente.getColumnModel().getColumnCount() > 0) {
+            tableDoente.getColumnModel().getColumn(0).setResizable(false);
+            tableDoente.getColumnModel().getColumn(1).setResizable(false);
+            tableDoente.getColumnModel().getColumn(2).setResizable(false);
+            tableDoente.getColumnModel().getColumn(3).setResizable(false);
+            tableDoente.getColumnModel().getColumn(4).setResizable(false);
+            tableDoente.getColumnModel().getColumn(5).setResizable(false);
+            tableDoente.getColumnModel().getColumn(6).setResizable(false);
+            tableDoente.getColumnModel().getColumn(7).setResizable(false);
+        }
 
         getContentPane().add(jScrollPane1);
         jScrollPane1.setBounds(30, 110, 750, 250);
