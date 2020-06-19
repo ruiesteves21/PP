@@ -63,6 +63,7 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
             
             Equipamento equip = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento);
             
+            //compara o utilizador que está associado ao equipamento com o que está logado no preciso momento
             if (equip.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
             model.addRow(new Object[]{equip.getIdEquip(), equip.getTipoEquipamento(), equip.getIndicacao(), equip.getDoente()});
             }
@@ -447,27 +448,6 @@ public class PaginaEquipamentos extends javax.swing.JFrame {
         }       
     }//GEN-LAST:event_tableEquipamentoMouseClicked
 
-    private void filtrar (String tipo){
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        tableEquipamento.setRowSorter(tr);
-        if (!"Nenhum Tipo".equals(tipo)){
-            tr.setRowFilter(RowFilter.regexFilter(tipo));
-        }else{
-            tableEquipamento.setRowSorter(tr);
-        }
-        
-    }
-    
-    private void filtrar2 (String Indicacao){
-        TableRowSorter<DefaultTableModel> tr = new TableRowSorter<DefaultTableModel>(model);
-        tableEquipamento.setRowSorter(tr);
-        if (!"Nenhuma Indicacao".equals(Indicacao)){
-            tr.setRowFilter(RowFilter.regexFilter(Indicacao));
-        }else{
-            tableEquipamento.setRowSorter(tr);
-        }
-        
-    }
     /**
      * @param args the command line arguments
      */

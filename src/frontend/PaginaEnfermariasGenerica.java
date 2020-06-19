@@ -54,7 +54,8 @@ public class PaginaEnfermariasGenerica extends javax.swing.JFrame {
             for(int i=0; i< sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().size(); i++) {
 
                 Enfermaria enf = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(i);
-
+                
+                //compara o utilizador que está associado ao enfermeiro com o que está logado no preciso momento
                 if (enf.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
                     model.addRow(new Object[] {enf.getNome(), enf.getTipo(), enf.getNCamas(), enf.getIdEnfermaria() });
                      }

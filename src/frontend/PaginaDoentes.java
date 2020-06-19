@@ -74,6 +74,7 @@ public class PaginaDoentes extends javax.swing.JFrame {
             
             Doente doent = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente);
             
+            //compara o utilizador que está associado ao doente com o que está logado no preciso momento
              if (doent.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
                  model.addRow(new Object[]{doent.getNCama(), doent.getNomeDoente(), doent.getDataNasc(), doent.getLocalidade(), doent.getGravidade(), doent.getDataEntrada(), doent.getDataSaida(), doent.getIdDoente()});
             }
@@ -561,7 +562,9 @@ public class PaginaDoentes extends javax.swing.JFrame {
        // String dataAtual = sdf.format(data.getTime());
         
         String gravidadeSelecionada = comboGravidade.getSelectedItem().toString();
-        
+         
+        //Percorre a tabela doentes e vai ver se o nome de cada doente inserido
+        //é igual ao nome que se encontra na text box
         
           for ( Doente doente : sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente() )
           {
@@ -573,8 +576,10 @@ public class PaginaDoentes extends javax.swing.JFrame {
         
           }
           
+           //Percorre a tabela doentes e vai ver se o nº de cama de cada doente inserido
+           //é igual ao nº de cama que se encontra ne text box
            for ( Doente doente : sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente() )
-        {
+           {
             if ((String.valueOf(doente.getNCama())).equals(txtCama.getText()))
             {
                 JOptionPane.showMessageDialog(null,"Essa cama já está ocupada","Erro",JOptionPane.ERROR_MESSAGE);
@@ -596,8 +601,16 @@ public class PaginaDoentes extends javax.swing.JFrame {
              return;
         }  
         
+        //Impede que existam doentes com digitos e caracteres no nome. Exemplo: 123fg4 
         if (txtNome.getText().matches(".*\\d.*")){
              JOptionPane.showMessageDialog(null," Nome do doente inválido","Erro",JOptionPane.ERROR_MESSAGE);
+             txtNome.requestFocus();
+             return;
+        }
+        
+        //Se a text box camas não for constituida, somente, por algarismos, dá erro
+        if (!txtCama.getText().matches("[0-9]+")) {
+             JOptionPane.showMessageDialog(null,"Número de cama inválido","Erro",JOptionPane.ERROR_MESSAGE);
              txtNome.requestFocus();
              return;
         }
@@ -673,9 +686,12 @@ public class PaginaDoentes extends javax.swing.JFrame {
          }
          
        
-     
+     //Busca o número de camas que a enfermaria que selecionei é constituida
      int nCamas = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getNCamas();
-     
+            
+     //Se o nº da cama que está na text box for superior ao que foi definido anteriormente
+     //Se o nº da cama for negativo
+     // =>>>>> Erro
             if (Integer.parseInt(txtCama.getText()) > nCamas || Integer.parseInt(txtCama.getText()) <= 0) 
                 {
                      JOptionPane.showMessageDialog(null,"O número da cama que inseriu não existe", "Erro", JOptionPane.ERROR_MESSAGE);

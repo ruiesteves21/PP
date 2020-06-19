@@ -59,7 +59,8 @@ public class PaginaEquipamentosGenerica extends javax.swing.JFrame {
                 for (int indiceEquipamento = 0; indiceEquipamento < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().size(); indiceEquipamento++) {
 
                     Equipamento equipamento = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEquipamento().getListaEquipamento().get(indiceEquipamento);
-
+                    
+                    //compara o utilizador que está associado ao equipamento com o que está logado no preciso momento
                     if (equipamento.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
                          model.addRow(new Object[]{equipamento.getIdEquip(), equipamento.getTipoEquipamento(), equipamento.getIndicacao(), equipamento.getDoente()});
                     }

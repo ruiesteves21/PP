@@ -62,7 +62,8 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
                     for(int indiceEnfermeiro = 0; indiceEnfermeiro < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().size(); indiceEnfermeiro++) {
 
                        Enfermeiro profEnfermeiro = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().get(indiceEnfermeiro);
-
+                       
+                       //compara o utilizador que está associado ao enfermeiro com o que está logado no preciso momento
                         if (profEnfermeiro.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
                              modelEnfermeiro.addRow(new Object[] {profEnfermeiro.getIdEnfermeiro(), profEnfermeiro.getNomeEnfermeiro()});
                         }
@@ -87,7 +88,8 @@ public class PaginaProfSaudeGenerica extends javax.swing.JFrame {
                 for (int indiceMedico = 0 ; indiceMedico < sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().size() ; indiceMedico++) {
 
                     Medico profMedico = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico);
-
+                    
+                    //compara o utilizador que está associado ao medico com o que está logado no preciso momento
                     if (profMedico.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
                          modelMedico.addRow(new Object[]{profMedico.getIdMedico(),profMedico.getNomeMedico(), profMedico.getEspecialidade()});
                     }  

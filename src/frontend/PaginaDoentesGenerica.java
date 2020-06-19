@@ -58,7 +58,8 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
                     for (int indiceDoente = 0; indiceDoente <  sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().size(); indiceDoente++) {
 
                         Doente doente = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico).getListaDoente().getListaDoente().get(indiceDoente);
-
+                        
+                        //compara o utilizador que está associado ao doente com o que está logado no preciso momento
                         if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
                             model.addRow(new Object[]{doente.getIdDoente(), doente.getNomeDoente(), doente.getDataNasc(), doente.getLocalidade(), doente.getNCama(), doente.getGravidade(), doente.getDataEntrada(), doente.getDataSaida()});
                         }
@@ -239,7 +240,4 @@ public class PaginaDoentesGenerica extends javax.swing.JFrame {
     private javax.swing.JTable tableDoente;
     // End of variables declaration//GEN-END:variables
 
-    private void close() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
 }

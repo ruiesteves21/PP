@@ -48,6 +48,7 @@ public class PaginaHospitais extends javax.swing.JFrame {
             
             Hospital hosp = sistema.getListaHospital().getListaHospital().get(i);
             
+            //compara o utilizador que está associado ao hospital com o que está logado no preciso momento
             if (hosp.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
                  model.addRow(new Object[]{hosp.getIdHospital(), hosp.getNome(), hosp.getLocalidade()});
             }

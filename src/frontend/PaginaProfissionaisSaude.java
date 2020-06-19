@@ -53,6 +53,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             
             Enfermeiro profEnfermeiro = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro().get(indiceEnfermeiro);
             
+            //compara o utilizador que está associado ao enfermeiro com o que está logado no preciso momento
              if (profEnfermeiro.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
                  modelEnfermeiro.addRow(new Object[]{profEnfermeiro.getIdEnfermeiro(), profEnfermeiro.getNomeEnfermeiro()});
              }
@@ -69,6 +70,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
             
             Medico profMedico = sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico().get(indiceMedico);
             
+            //compara o utilizador que está associado ao medico com o que está logado no preciso momento
             if (profMedico.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
                 modelMedico.addRow(new Object[]{profMedico.getIdMedico(),profMedico.getNomeMedico(), profMedico.getEspecialidade()});
              }
@@ -113,7 +115,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         btLimparMedico = new javax.swing.JButton();
         btExcluirMedico = new javax.swing.JButton();
         btEditarEnfermeiro = new javax.swing.JButton();
-        jButton1 = new javax.swing.JButton();
+        btEditarMed = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -349,15 +351,15 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         getContentPane().add(btEditarEnfermeiro);
         btEditarEnfermeiro.setBounds(120, 390, 80, 30);
 
-        jButton1.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
-        jButton1.setText("Editar");
-        jButton1.addActionListener(new java.awt.event.ActionListener() {
+        btEditarMed.setFont(new java.awt.Font("Yu Gothic UI", 0, 14)); // NOI18N
+        btEditarMed.setText("Editar");
+        btEditarMed.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButton1ActionPerformed(evt);
+                btEditarMedActionPerformed(evt);
             }
         });
-        getContentPane().add(jButton1);
-        jButton1.setBounds(520, 390, 80, 30);
+        getContentPane().add(btEditarMed);
+        btEditarMed.setBounds(520, 390, 80, 30);
 
         jLabel1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagens/backgroundPRI.png"))); // NOI18N
         getContentPane().add(jLabel1);
@@ -409,6 +411,9 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         
        String id = UUID.randomUUID().toString();
        
+        //Percorre a tabela de medicos e vai ver se o nome de cada medico inserido
+        //é igual ao nome que se encontra na text box
+         
        for (Medico medico :  sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaMedico().getListaMedico() )
         {
             if (medico.getNomeMedico().equals(txtNomeMedico.getText()) && (medico.getEspecialidade()).equals(txtEspecialidade.getText()))
@@ -506,6 +511,8 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         
          String id = UUID.randomUUID().toString();
          
+          //Percorre a tabela de enfermeiros e vai ver se o nome de cada enfermeiro inserido
+         //é igual ao nome que se encontra na text box
          for (Enfermeiro enfermeiro: sistema.getListaHospital().getListaHospital().get(indiceHospital).getListaEnfermaria().getListaEnfermaria().get(indiceEnfermaria).getListaEnfermeiro().getListaEnfermeiro() )
         {
             if (enfermeiro.getNomeEnfermeiro().equals(txtNomeEnfermeiro.getText()))
@@ -631,7 +638,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         
     }//GEN-LAST:event_btEditarEnfermeiroActionPerformed
 
-    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    private void btEditarMedActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btEditarMedActionPerformed
         // TODO add your handling code here:
         try {
                 int indiceMedico = tableMedicos.getSelectedRow();
@@ -691,7 +698,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
         
         carregarTabelaMedico();
         guardarAlteracoes();
-    }//GEN-LAST:event_jButton1ActionPerformed
+    }//GEN-LAST:event_btEditarMedActionPerformed
 
     private void tableEnfermeirosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tableEnfermeirosMouseClicked
         // TODO add your handling code here:
@@ -758,6 +765,7 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btEditarEnfermeiro;
+    private javax.swing.JButton btEditarMed;
     private javax.swing.JButton btExcluirEnfermeiro;
     private javax.swing.JButton btExcluirMedico;
     private javax.swing.JButton btInserirEnfermeiro;
@@ -767,7 +775,6 @@ public class PaginaProfissionaisSaude extends javax.swing.JFrame {
     private javax.swing.JButton btLimparMedico;
     private javax.swing.JLabel imgHome;
     private javax.swing.JLabel imgRetroceder;
-    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;

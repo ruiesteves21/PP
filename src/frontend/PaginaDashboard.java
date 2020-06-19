@@ -231,9 +231,11 @@ public class PaginaDashboard extends javax.swing.JFrame {
 
                     for (Doente doente:  medico.getListaDoente().getListaDoente()) {
                          if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                             //buscar todos os doentes que estão inseridos nos hospitais
                              totalDoentes += 1;
                          }
                          
+                         //buscar os doentes com gravidade moderada
                         if (doente.getGravidade().equals("Moderado") && (doente.getUtiLigado().equals(sistema.getUtilizadorLigado()))){
                             totalModerado ++;
                         }
@@ -261,9 +263,11 @@ public class PaginaDashboard extends javax.swing.JFrame {
 
                     for (Doente doente:  medico.getListaDoente().getListaDoente()) {
                         if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                            //buscar todos os doentes que estão inseridos nos hospitais
                              totalDoentes += 1;
                          }
                         
+                         //buscar os doentes com gravidade grave
                         if (doente.getGravidade().equals("Grave") && (doente.getUtiLigado().equals(sistema.getUtilizadorLigado()))){
                             totalGrave ++;
                         }
@@ -289,9 +293,11 @@ public class PaginaDashboard extends javax.swing.JFrame {
 
                     for (Doente doente:  medico.getListaDoente().getListaDoente()) {
                         if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                            //buscar todos os doentes que estão inseridos nos hospitais
                              totalDoentes += 1;
                          }
                         
+                         //buscar os doentes com gravidade muito grave
                         if (doente.getGravidade().equals("Muito Grave") && (doente.getUtiLigado().equals(sistema.getUtilizadorLigado()))){
                             totalMuitoGrave ++;
                         }
@@ -317,6 +323,7 @@ public class PaginaDashboard extends javax.swing.JFrame {
 
                     for (Doente doente:  medico.getListaDoente().getListaDoente()) {
                         if (doente.getUtiLigado().equals(sistema.getUtilizadorLigado())) {
+                             //buscar todos os doentes que estão inseridos nos hospitais
                              totalDoentes+= 1;
                          }
                     }
